@@ -64,8 +64,7 @@ router.post("/signup", (req, res) => {
       return res.status(400).json(errors);
     } else {
       const newUser = new User({
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
+        username: req.body.username,
         email: req.body.email,
         password: req.body.password
       });
