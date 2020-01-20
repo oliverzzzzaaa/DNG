@@ -1,11 +1,12 @@
 import React from "react";
+import "./lobby.css";
 
 class Lobby extends React.Component {
   render() {
     return (
-      <div>
-        <h1>A</h1>
-        <footer>Copyright &copy; 2019 </footer>
+      <div className="lobby">
+        <h1 onClick={this.props.click}>Lobby</h1>
+        <div>{this.props.msg}</div>
       </div>
     );
   }
