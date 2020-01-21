@@ -9,13 +9,9 @@ export const setAuthToken = token => {
 };
 
 export const signup = (userData) => {
-  return axios.post('/api/users/register', userData);
+  return axios.post('/signup', userData);
 };
 
 export const login = (userData) => {
-  return axios.post('/api/users/login', userData);
+  return axios.post('/login', userData);
 };
-
-// export const connectUser = (userId, connectionCode) => {
-//   return axios.patch(`/api/users/${userId}/connect`, { connectionCode });
-// };
