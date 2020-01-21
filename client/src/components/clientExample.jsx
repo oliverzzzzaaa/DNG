@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import openSocket from "socket.io-client";
-class LoggedIn extends Component {
+class ClientExample extends Component {
   constructor() {
     super();
     this.state = {
