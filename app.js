@@ -1,5 +1,6 @@
-const express = require("express");
-const app = express();
+const app = require("express")();
+var http = require("http").createServer(app);
+const io = require("socket.io")(http);
 const mongoose = require("mongoose");
 const db = require("./config/keys").mongoURI;
 const users = require("./routes/api/users");
@@ -17,4 +18,13 @@ require("./config/passport")(passport);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/", users);
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+
+io.on("connection", socket => {
+  console.log("New client connected");
+  socket.emit("WELCOME", { data: "welcome" });
+  socket.on("disconnect", () => {
+    console.log("Client disconnected");
+  });
+});
+
+http.listen(port, () => console.log(`Listening on port ${port}`));
