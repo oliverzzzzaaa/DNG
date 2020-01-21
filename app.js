@@ -21,10 +21,19 @@ app.use("/", users);
 
 io.on("connection", socket => {
   console.log("New client connected");
-  socket.emit("WELCOME", { data: "Welcome, I reveived your msg." });
-  socket.on("SOMEACTIONTYPE", socket =>
-    socket.emit("SOMERESPONCETYPE", { msg: "A component that useing socket" })
+
+  socket.on("WELCOME", () =>
+    socket.emit("WELCOME", {
+      msg: "Welcome, you are connecting to server now."
+    })
   );
+
+  socket.on("SOMEACTIONTYPE", () =>
+    socket.emit("SOMERESPONSETYPE", {
+      msg: "If you getting this, that means server received your msg"
+    })
+  );
+
   socket.on("disconnect", () => {
     console.log("Client disconnected");
   });

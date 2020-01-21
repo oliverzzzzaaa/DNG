@@ -10,13 +10,14 @@ class ClientComponentExample extends Component {
   }
   componentDidMount() {
     const socket = MySocket.getSocket();
+    socket.emit("WELCOME", {});
     socket.on("WELCOME", data => this.setState({ response: data }));
   }
   render() {
     const { response } = this.state;
     return (
       <div style={{ textAlign: "center" }}>
-        {response ? <p>{response.data}</p> : <p>Loading...</p>}
+        {response ? <p>{response.msg}</p> : <p>Loading...</p>}
       </div>
     );
   }
