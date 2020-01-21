@@ -21,7 +21,10 @@ app.use("/", users);
 
 io.on("connection", socket => {
   console.log("New client connected");
-  socket.emit("WELCOME", { data: "welcome" });
+  socket.emit("WELCOME", { data: "Welcome, I reveived your msg." });
+  socket.on("SOMEACTIONTYPE", socket =>
+    socket.emit("SOMERESPONCETYPE", { msg: "A component that useing socket" })
+  );
   socket.on("disconnect", () => {
     console.log("Client disconnected");
   });

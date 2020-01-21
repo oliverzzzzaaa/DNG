@@ -1,16 +1,15 @@
 import React, { Component } from "react";
-import openSocket from "socket.io-client";
-class ClientExample extends Component {
+import MySocket from "../socket";
+
+class ClientComponentExample extends Component {
   constructor() {
     super();
     this.state = {
-      response: false,
-      endpoint: "http://localhost:5000"
+      response: false
     };
   }
   componentDidMount() {
-    const { endpoint } = this.state;
-    const socket = openSocket(endpoint);
+    const socket = MySocket.getSocket();
     socket.on("WELCOME", data => this.setState({ response: data }));
   }
   render() {
@@ -22,4 +21,4 @@ class ClientExample extends Component {
     );
   }
 }
-export default LoggedIn;
+export default ClientComponentExample;
