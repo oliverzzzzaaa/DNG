@@ -1,0 +1,16 @@
+.scoreboard-li {
+    list-style: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+.scoreboard-name{
+    margin-right: 10px;
+}
+
+.scoreboard-div {
+    width: 20%;
+}
