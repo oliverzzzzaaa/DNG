@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
     "server": "nodemon app.js",
-    "client-install": "npm install --prefix client",
+    "build": "npm install && npm install --prefix client",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "storybook": "npm run storybook --prefix client"
@@ -24,6 +24,7 @@
     "mongoose": "^5.8.9",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
+    "socket.io": "^2.3.0",
     "validator": "^12.1.0"
   },
   "devDependencies": {

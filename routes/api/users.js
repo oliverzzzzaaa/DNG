@@ -52,12 +52,12 @@ router.get("/login", (req, res) => {
 });
 
 router.post("/signup", (req, res) => {
+  console.log("sign up");
+  console.log(req.body);
   const { errors, isValid } = validateRegisterInput(req.body);
-
   if (!isValid) {
     return res.status(400).json(errors);
   }
-
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
       errors.email = "Email already exists";
@@ -104,6 +104,11 @@ router.get(
   }
 );
 
-router.get("/haha", () => console.log("aaa"));
+router.get("/haha", () => {
+  console.log("aaa");
+  res.json({
+    Ok: "Ok"
+  });
+});
 
 module.exports = router;
