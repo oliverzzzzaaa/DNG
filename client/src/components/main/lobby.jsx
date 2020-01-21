@@ -1,6 +1,8 @@
 import React from "react";
 import "./lobby.css";
 import CanvasContainer from "../game/canvas";
+import Chat from '../game/chat/chat'
+import ScoreBoard from '../game/scoreboard/scoreboard'
 
 class Lobby extends React.Component {
   constructor(props) {
@@ -36,8 +38,14 @@ class Lobby extends React.Component {
         >
           viewer
         </button>
-        <div style={{ border: "1px solid red", position: "relative" }}>
+        <div>
+          <ScoreBoard />
+        </div>
+        <div className="canvas-container">
           <CanvasContainer isDrawer={this.state.isDrawer} />
+        </div>
+        <div>
+          <Chat />
         </div>
       </div>
     );
