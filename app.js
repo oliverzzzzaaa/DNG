@@ -19,7 +19,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/", users);
 
+const loggedInUsers = [];
+
 io.on("connection", socket => {
+  loggedInUsers.push(socket);
   console.log("New client connected");
 
   socket.on("WELCOME", () =>
@@ -33,6 +36,18 @@ io.on("connection", socket => {
       msg: "If you getting this, that means server received your msg"
     })
   );
+
+  socket.on("pathData", data => {
+    loggedInUsers.forEach(sk => {
+      sk.emit("pathData", data);
+    });
+  });
+
+  socket.on("clearDrawing", () => {
+    loggedInUsers.forEach(sk => {
+      sk.emit("clearDrawing");
+    });
+  });
 
   socket.on("disconnect", () => {
     console.log("Client disconnected");
