@@ -1,7 +1,11 @@
 import React from "react";
 import Lobby from "./main/lobby";
+<<<<<<< HEAD
 import Chat from "./chat/chat";
 import CanvasContainer from "./game/canvas";
+=======
+import Chat from "./game/chat/chat";
+>>>>>>> added some css
 
 export default {
   title: "Watch"
@@ -43,3 +47,6 @@ export const DrawerAndViewer = () => (
     <CanvasContainer isDrawer={true} />
   </div>
 );
+export const WaitingExample = () => (
+  <Waiting messages={messages} action={sendMsgInGame} />
+)
