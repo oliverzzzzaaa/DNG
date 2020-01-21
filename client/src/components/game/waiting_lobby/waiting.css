@@ -1,0 +1,21 @@
+.waiting-room {
+    display: flex;
+    height: 700px;
+}
+
+.waiting-room-profiles {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.waiting-room-ready-button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.chat-component-div {
+    width: 30%;
+}
