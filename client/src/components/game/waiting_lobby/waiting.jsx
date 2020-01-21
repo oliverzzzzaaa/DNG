@@ -10,7 +10,6 @@ class Waiting extends React.Component {
     render() {
         return(
             <div>
-                
                 <div className="chat-component-div">
                     <Chat messages={this.props.messages}/>
                 </div>
