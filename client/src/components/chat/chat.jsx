@@ -32,7 +32,7 @@ class Chat extends React.Component {
   }
 
   keyPress(e) {
-    if (e.keyCode == 13 && e.currentTarget.value !== "") {
+    if (e.keyCode === 13 && e.currentTarget.value !== "") {
       if (this.props.action) {
         this.props.action(e.currentTarget.value);
       }

@@ -1,6 +1,7 @@
 import React from "react";
 import Lobby from "./main/lobby";
 import Chat from "./chat/chat";
+import CanvasContainer from "./game/canvas";
 
 export default {
   title: "Watch"
@@ -18,4 +19,10 @@ const sendMsgInGame = msg => {
 };
 export const ChatComponentExample = () => (
   <Chat messages={messages} action={sendMsgInGame} />
+);
+
+export const DrawerAndViewer = () => (
+  <div style={{ border: "1px solid red", position: "relative" }}>
+    <CanvasContainer isDrawer={true} />
+  </div>
 );
