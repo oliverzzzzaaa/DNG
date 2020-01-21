@@ -13,12 +13,14 @@ function signJwt(user, response) {
   jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, response);
 }
 
-//TODO: change res structure
-router.get("/", (req, res) =>
-  res.json({ msg: "This is the users login page route" })
-);
+// //TODO: change res structure
+// router.get("/", (req, res) =>
+//   res.json({ msg: "This is the users login page route" })
+// );
 
-router.get("/login", (req, res) => {
+router.post("/login", (req, res) => {
+  console.log("log in");
+  console.log(req.body);
   const { errors, isValid } = validateLoginInput(req.body);
 
   if (!isValid) {
