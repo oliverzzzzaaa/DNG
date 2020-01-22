@@ -9,15 +9,23 @@ function Game(players) {
     this.targetWord = "";
     this.time = 60;
     this.usedWords = [];
-    this.intervalId = null;
+    this.timeoutId = undefined;
 }
 
 Game.prototype.startGame = function() {
-    while (this.currentRound < this.numRounds) {
         this.startRound()
-    }
     //emit end game
 }
+
+Game.prototype.endRound = function() {
+    console.log("Round is over!")
+    console.log(this.usedWords)
+    if (this.currentRound < this.numRounds) {
+        this.startRound()
+    }
+}
+
+
 
 Game.prototype.startRound = function() {
     if (this.currentRound < this.numRounds) {
@@ -31,19 +39,16 @@ Game.prototype.startRound = function() {
         // console.log(this.targetWord)
         this.usedWords.push(this.targetWord)
         //emit the word to the drawer, emit start timer
-        console.log(this.usedWords)
-        this.intervalId = setInterval(this.tick, 1000)
+        this.timeoutId = setTimeout(() => this.endRound(), 1000)
+        if (this.won()) {
+            clearTimeout(this.timeoutId);
+            this.endRound()
+        }
     }
     // until this.roundIsOver
     //goes back to startGame, starting next round
 }
 
-Game.prototype.tick = function() {
-    if (this.time > 0) {
-        this.time -=1;
-        console.log(this.time);
-    }
-}
 
 Game.prototype.won = function() {
     //If players === Array of objects
@@ -61,15 +66,6 @@ Game.prototype.won = function() {
 //         return false;
 //     }
 // }
-
-Game.prototype.roundIsOver = function() {
-    if (this.wonRound() || this.time === 0) {
-        clearInterval(this.intervalId)
-        return true;
-    } else {
-        return false;
-    }
-}
 
 
 
