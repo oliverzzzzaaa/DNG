@@ -73,7 +73,7 @@ const mediumWords = [
     {word: "shade"},
     {word: "gap"},
     {word: "dustpan"},
-    {word: "cobra"}
+    {word: "cobra"},
     {word: "lip"},
     {word: "photograph"},
     {word: "newborn"},
