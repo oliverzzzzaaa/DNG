@@ -53,11 +53,11 @@ const easyWords = [
 ]
 
 const mediumWords = [
-    {word: "artist"},
-    {word: "tire"},
-    {word: "glass"},
-    {word: "brush"},
-    {word: "key"},
+    {word: "artist", clues: ["6 letters", "a job"]},
+    {word: "tire", clues: ["4 letters", "an object"]},
+    {word: "glass", clues: ["5 letters", "material type"]},
+    {word: "brush", clues: ["5 letters", "a tool"]},
+    {word: "key", clues: ["3 letters", "a small object"]},
     {word: "mouth"},
     {word: "waterfall"},
     {word: "iron"},
@@ -106,7 +106,7 @@ const mediumWords = [
 ]
 
 const hardWords = [
-    
+
 ]
 
 module.exports = easyWords;
