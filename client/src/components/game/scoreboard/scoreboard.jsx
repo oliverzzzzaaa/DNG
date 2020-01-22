@@ -78,7 +78,7 @@ class ScoreBoard extends React.Component {
         }
         return(
             <div className="scoreboard-div">
-                <ul>
+                <ul className="scoreboard-ul">
                     {rankedUsers}
                 </ul>
             </div>

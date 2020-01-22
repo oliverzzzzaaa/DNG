@@ -31,7 +31,7 @@ class Timer extends React.Component {
 
     render() {
         return(
-            <div id="timer-div">
+            <div id="timer-circle">
                 {this.state.seconds}
             </div>
         )

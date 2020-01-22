@@ -17,6 +17,11 @@ class Chat extends React.Component {
       document.getElementsByClassName("msg-list")[0].lastChild.scrollIntoView({ behavior: "smooth" });
     }
   }
+  componentDidUpdate() {
+    if(document.getElementsByClassName("msg-list")[0].lastChild){
+      document.getElementsByClassName("msg-list")[0].lastChild.scrollIntoView({ behavior: "smooth" });
+    }
+  }
 
   renderMessages() {
     if (this.props.messages) {

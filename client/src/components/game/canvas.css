@@ -6,7 +6,8 @@
 .canvas-container {
   border: 1px solid red;
   position: relative;
-  width: 40%;
+  /* width: 40%; */
+  height: 95%;
 }
 
 
