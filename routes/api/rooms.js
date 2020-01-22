@@ -20,11 +20,7 @@ router.post(
     };
     rooms.join(roomId, room);
     UserManagement.getConnectedSocket().forEach(socket => {
-<<<<<<< HEAD
-      socket.emit("createRoom", { id: roomId, players: rooms.get(roomId) });
-=======
       socket.emit("updateRoom", { id: roomId, players: rooms.get(roomId) });
->>>>>>> 990219bac44d54672b4e05b825111a284aefb4df
     });
     res.json({ roomId });
   }
@@ -48,11 +44,7 @@ router.post(
       })
     ) {
       UserManagement.getConnectedSocket().forEach(socket => {
-<<<<<<< HEAD
-        socket.emit("joinRoom", {
-=======
         socket.emit("updateRoom", {
->>>>>>> 990219bac44d54672b4e05b825111a284aefb4df
           id: roomId,
           players: rooms.get(roomId)
         });
