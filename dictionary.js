@@ -1,7 +1,7 @@
 
 
 
-const easyWords = [
+export const easyWords = [
     { word: "moon"},
     { word: "fork"},
     { word: "elephant"},
