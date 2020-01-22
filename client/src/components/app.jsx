@@ -4,7 +4,7 @@ import Lobby from "./main/lobby";
 import { Route } from "react-router-dom";
 import ClientComponentExample from "./clientComponentExample";
 import Client2 from "./clientExample2";
-
+import HomePage from "./home";
 import Room from "./room/room";
 import SignupForm from "./session/signup_form_container";
 import LoginForm from "./session/login_form_container";
@@ -16,7 +16,7 @@ const App = () => (
     <Switch>
       <AuthRoute exact path="/login" component={LoginForm} />
       <Route exact path="/signup" component={SignupForm} />
-      <Route exact path='/home' component={HomePage} /> 
+      <Route exact path='/' component={HomePage} /> 
       <ProtectedRoute exact path="/lobby" component={Lobby} />
       <ProtectedRoute exact path="/room/:id" component={Room} />
     </Switch>

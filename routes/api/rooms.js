@@ -20,7 +20,7 @@ router.post(
     };
     rooms.join(roomId, room);
     UserManagement.getConnectedSocket().forEach(socket => {
-      socket.emit("roomActivities", { id: roomId, players: rooms.get(roomId) });
+      socket.emit("createRoom", { id: roomId, players: rooms.get(roomId) });
     });
     res.json({ roomId });
   }
@@ -44,7 +44,7 @@ router.post(
       })
     ) {
       UserManagement.getConnectedSocket().forEach(socket => {
-        socket.emit("roomActivities", {
+        socket.emit("joinRoom", {
           id: roomId,
           players: rooms.get(roomId)
         });
@@ -67,7 +67,7 @@ router.post(
     const roomId = rooms.leave(userId);
     if (roomId) {
       UserManagement.getConnectedSocket().forEach(socket => {
-        socket.emit("roomActivities", {
+        socket.emit("leaveRoom", {
           id: roomId,
           players: rooms.get(roomId)
         });

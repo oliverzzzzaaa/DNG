@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const createRoom = (userData) => {
-    return axios.post('/create', userData);
+    return axios.post('rooms/create', userData);
 };
 
 export const joinRoom = (payload) => {

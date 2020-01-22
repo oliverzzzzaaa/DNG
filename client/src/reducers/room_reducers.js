@@ -5,7 +5,7 @@ export default function (state={}, action) {
 
     switch (action.type) {
         case RECEIVE_NEW_ROOM:
-            return action.data;
+            return Object.assign({}, state, {[action.data.data.roomId]: action.data});
         case RECEIVE_LEAVE_ROOM:
             return {};
         default:

@@ -1,16 +1,18 @@
 import React from 'react';
 import GameRoomItem from './game_room_item';
 import './game_rooms.css';
+import MySocket from "../../../socket"
 
 
 class GameRooms extends React.Component{
-
     // constructor(props){
     //     super(props);
     // }
-    componentDidMount(){
-      console.log(this.props.rooms)
-    }
+
+    // componentDidMount(){
+    //   const socket = MySocket.getSocket();
+    //   socket.on("createRoom", () => console.log('create room'));
+    // }
 
     render(){
         return (
@@ -26,7 +28,7 @@ class GameRooms extends React.Component{
             </div>
             <div className="game-rooms-buttons">
               <button onClick={()=> this.props.createRoom(this.props.currentUser)}>Create Room</button>
-              <button onClick={()=> this.props.joinRoom(this.props.currentUser)}>Join Room</button>
+              <button onClick={()=> this.props.joinRoom()}>Join Room</button>
             </div>
           </div>
         );

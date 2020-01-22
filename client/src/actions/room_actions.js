@@ -17,7 +17,11 @@ const receiveLeaveRoom = userId => ({
 
 export const createRoom = userData => dispatch => (
     APIRoomUtil.createRoom(userData)
-        .then(data => dispatch(receiveNewRoom(data)))
+        .then(data => {
+            dispatch(receiveNewRoom(data));
+            // console.log(data.data.roomId);
+            window.location.hash = `/room/${data.data.roomId}`;
+        })
 )
 
 export const joinRoom = payload =>  dispatch => (

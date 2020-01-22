@@ -8,6 +8,7 @@ class Lobby extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     let tempmessages = [
       { sender: "player1", body: "now can work on css" },
