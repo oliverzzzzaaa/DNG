@@ -1,7 +1,6 @@
 
 
-
-export const easyWords = [
+const easyWords = [
     { word: "moon"},
     { word: "fork"},
     { word: "elephant"},
@@ -52,3 +51,5 @@ export const easyWords = [
     { word: 'camera'},
     { word: 'mouth'}
 ]
+
+module.exports = easyWords;
