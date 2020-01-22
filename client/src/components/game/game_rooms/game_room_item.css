@@ -1,0 +1,7 @@
+.game-room-div {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid red;
+    width: 33%;
+    height: 33%;
+}

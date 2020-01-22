@@ -1,0 +1,17 @@
+.game-rooms-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.game-rooms-container {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    width: 500px;
+    height: 500px;
+}
+
+.game-rooms-buttons {
+    display: flex;
+    justify-content: flex-end;
+}

@@ -1,21 +1,12 @@
 import openSocket from "socket.io-client";
-
 export default class MySocket {
   socket;
-  static getSocket = () => {
+  static getSocket = (userId) => {
     if (MySocket.socket === undefined) {
       const endpoint = "http://localhost:5000";
       MySocket.socket = openSocket(endpoint);
     }
-    return MySocket.socket;
-  };
-
-  static login = userId => {
-    if (MySocket.socket === undefined) {
-      const endpoint = "http://localhost:5000";
-      MySocket.socket = openSocket(endpoint);
-    }
-    MySocket.socket.emit("login", { userId });
+    MySocket.socket.emit("login", { userId:1 });
     return MySocket.socket;
   };
 }
