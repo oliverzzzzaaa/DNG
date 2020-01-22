@@ -1,9 +1,11 @@
 import React from "react";
 import "./lobby.css";
 import CanvasContainer from "../game/canvas";
-import Chat from '../game/chat/chat'
-import ScoreBoard from '../game/scoreboard/scoreboard'
-import Timer from '../game/timer/timer'
+import Chat from "../game/chat/chat";
+import ScoreBoard from "../game/scoreboard/scoreboard";
+import Timer from "../game/timer/timer";
+import ClientComponentExample from "../clientComponentExample";
+import Client2 from "../clientExample2";
 
 class Lobby extends React.Component {
   constructor(props) {
@@ -13,39 +15,51 @@ class Lobby extends React.Component {
     };
   }
   render() {
-    let tempmessages = [{ sender: "player1", body: "now can work on css" },
-    { sender: "player2", body: "message two"},
-    { sender: "player1", body: "message three"},
-    { sender: "player2", body: "message four"},
-    { sender: "player1", body: "message five"},
-    { sender: "player2", body: "message six"},
-    { sender: "player1", body: "message seven"},
-    { sender: "player1", body: "message eight"},
-    { sender: "player1", body: "message that is really really long and might go to the next line"},
-    { sender: "player1", body: "message ten"},
-    { sender: "player1", body: "message 11"},
-    { sender: "player1", body: "message 11"},
-    { sender: "player1", body: "message 11"},
-    { sender: "player1", body: "message 11"},
-    { sender: "player1", body: "message 11"},
-    { sender: "player1", body: "message cool"},
-    { sender: "player1", body: "message abc"},
-    { sender: "player1", body: "message aaa"},
-    { sender: "player1", body: "message banana"},
-    { sender: "player1", body: "message cool"},
-    { sender: "player1", body: "message pineapple"},
-    { sender: "player1", body: "message apple bottom jeans"},
-    { sender: "player1", body: "message haha"},
-  ]
+    let tempmessages = [
+      { sender: "player1", body: "now can work on css" },
+      { sender: "player2", body: "message two" },
+      { sender: "player1", body: "message three" },
+      { sender: "player2", body: "message four" },
+      { sender: "player1", body: "message five" },
+      { sender: "player2", body: "message six" },
+      { sender: "player1", body: "message seven" },
+      { sender: "player1", body: "message eight" },
+      {
+        sender: "player1",
+        body: "message that is really really long and might go to the next line"
+      },
+      { sender: "player1", body: "message ten" },
+      { sender: "player1", body: "message 11" },
+      { sender: "player1", body: "message 11" },
+      { sender: "player1", body: "message 11" },
+      { sender: "player1", body: "message 11" },
+      { sender: "player1", body: "message 11" },
+      { sender: "player1", body: "message cool" },
+      { sender: "player1", body: "message abc" },
+      { sender: "player1", body: "message aaa" },
+      { sender: "player1", body: "message banana" },
+      { sender: "player1", body: "message cool" },
+      { sender: "player1", body: "message pineapple" },
+      { sender: "player1", body: "message apple bottom jeans" },
+      { sender: "player1", body: "message haha" }
+    ];
     return (
       <div className="lobby">
+        <ClientComponentExample />
         <h1 onClick={this.props.click}>Lobby</h1>
         <div>{this.props.msg}</div>
+
+        <div>All loggedin users</div>
+        <button>create</button>
+        <button>join</button>
+        <div className="game-rooms">
+          <h1>rooms</h1>
+        </div>
 
         {
           //TODO: this is just a draft, to make sure it works.
         }
-       <div className="game-components-div">
+        <div className="game-components-div">
           <div className="lobby-scoreboard-div">
             <ScoreBoard />
           </div>
@@ -55,30 +69,32 @@ class Lobby extends React.Component {
             </div>
             <div className="canvas-container">
               <button
-              onClick={() =>
-                this.setState({
-                  isDrawer: true
-                })
-              }
-            >
-              drawer
-            </button>
-            <button
-              onClick={() =>
-                this.setState({
-                  isDrawer: false
-                })
-              }
-            >
-              viewer
-            </button>
+                onClick={() =>
+                  this.setState({
+                    isDrawer: true
+                  })
+                }
+              >
+                drawer
+              </button>
+              <button
+                onClick={() =>
+                  this.setState({
+                    isDrawer: false
+                  })
+                }
+              >
+                viewer
+              </button>
               <CanvasContainer isDrawer={this.state.isDrawer} />
             </div>
           </div>
-          <div>
-            <Chat messages={tempmessages}/>
-          </div>
-       </div>
+          <div></div>
+        </div>
+        {
+          //TODO: remove above to game component
+        }
+        <Chat messages={tempmessages} />
       </div>
     );
   }

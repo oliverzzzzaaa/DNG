@@ -1,0 +1,46 @@
+createRoom:
+request
+	url: /rooms/create
+	data: {
+		id: <currentUserId>,
+		image: <imgUrl>,
+		name: <username>
+	}
+
+
+response
+{
+		id: <roomId>,
+		players:[
+			{
+				id: <userId>,
+				image: <imgUrl>,
+				name: <username>,
+				ready: <t/f>
+			}
+		]
+	}
+
+joinRoom:
+request
+	url: /rooms/join
+	data: {
+		roomId: <roomId>,
+		id: <currentUserId>,
+		image: <imgUrl>,
+		name: <username>
+	}
+
+response
+	{
+		id:"1775352", 
+		players:[
+			{id:1, image:"url",name:"user", ready: <t/f>},
+			{id:4, image:"url",name:"username", ready: <t/f>}
+		]
+	}
+
+leaveRoom:
+request
+	url: /rooms/leave
+	data: {id: <userId>}
