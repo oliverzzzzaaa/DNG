@@ -1,5 +1,6 @@
 module.exports = class Rooms {
-  rooms;
+  // rooms;
+
   constructor() {
     this.rooms = new Map();
     this.map = new Map();
@@ -15,6 +16,14 @@ module.exports = class Rooms {
 
   get(id) {
     return this.rooms.get(id);
+  }
+
+  getRoomByPlayer(userId) {
+    const roomId = this.map.get(userId);
+    if (roomId) {
+      return this.rooms.get(roomId);
+    }
+    return null;
   }
 
   create() {

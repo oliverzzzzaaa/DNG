@@ -1,6 +1,5 @@
 
 
-
 const easyWords = [
     { word: "moon"},
     { word: "fork"},
@@ -52,3 +51,62 @@ const easyWords = [
     { word: 'camera'},
     { word: 'mouth'}
 ]
+
+const mediumWords = [
+    {word: "artist"},
+    {word: "tire"},
+    {word: "glass"},
+    {word: "brush"},
+    {word: "key"},
+    {word: "mouth"},
+    {word: "waterfall"},
+    {word: "iron"},
+    {word: "poodle"},
+    {word: "librarian"},
+    {word: "window"},
+    {word: "sandal"},
+    {word: "parachute"},
+    {word: "seashell"},
+    {word: "crown"},
+    {word: "lawn mower"},
+    {word: "manatee"},
+    {word: "shade"},
+    {word: "gap"},
+    {word: "dustpan"},
+    {word: "cobra"}
+    {word: "lip"},
+    {word: "photograph"},
+    {word: "newborn"},
+    {word: "penguin"},
+    {word: "dinner"},
+    {word: "canoe"},
+    {word: "button"},
+    {word: "scissors"},
+    {word: "drums"},
+    {word: "banjo"},
+    {word: "toilet paper"},
+    {word: "daddy longlegs"},
+    {word: "slope"},
+    {word: "skate"},
+    {word: "hurricane"},
+    {word: "eraser"},
+    {word: "vest"},
+    {word: "shake"},
+    {word: "doghouse"},
+    {word: "match"},
+    {word: "soup"},
+    {word: "electricity"},
+    {word: "tongue"},
+    {word: "germ"},
+    {word: "wheelbarrow"},
+    {word: "rocket"},
+    {word: "tissue"},
+    {word: "sailboat"},
+    {word: "strawberry"}
+]
+
+const hardWords = [
+    
+]
+
+module.exports = easyWords;

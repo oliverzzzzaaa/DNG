@@ -32,3 +32,6 @@
   width: 15%;
 }
 
+.lobby-page {
+  display: flex;
+}

@@ -9,15 +9,20 @@ router.post(
   (req, res) => {
     const rooms = Rooms.getInstance();
     const roomId = rooms.create();
-    rooms.join(roomId, {
+    //TODO: change image back
+    const room = {
       id: req.body.id,
-      image: req.body.image,
-      name: req.body.name
-    });
+      // image: req.body.image,
+      image:
+        "https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#/media/File:HTTP_logo.svg",
+      name: req.body.name,
+      ready: false
+    };
+    rooms.join(roomId, room);
     UserManagement.getConnectedSocket().forEach(socket => {
       socket.emit("roomActivities", { id: roomId, players: rooms.get(roomId) });
     });
-    res.json({ status: "success" });
+    res.json({ roomId });
   }
 );
 
@@ -30,8 +35,12 @@ router.post(
     if (
       rooms.join(roomId, {
         id: req.body.id,
-        image: req.body.image,
-        name: req.body.name
+        //TODO: change image back
+        // image: req.body.image,
+        image:
+          "https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#/media/File:HTTP_logo.svg",
+        name: req.body.name,
+        ready: false
       })
     ) {
       UserManagement.getConnectedSocket().forEach(socket => {
@@ -40,9 +49,11 @@ router.post(
           players: rooms.get(roomId)
         });
       });
-      res.json({ status: "success" });
+      res.json({
+        roomId
+      });
     } else {
-      res.status(404).json({ msg: "Room is not exists!" });
+      res.status(404).json({ msg: "Room does not exist!" });
     }
   }
 );
@@ -63,12 +74,9 @@ router.post(
       });
       res.json({ status: "success" });
     } else {
-      res.status(404).json({ msg: "Room is not exists!" });
+      res.status(404).json({ msg: "Room does not exist!" });
     }
   }
 );
 
-// {
-//     hostId: 1,
-// }
 module.exports = router;

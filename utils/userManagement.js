@@ -1,6 +1,7 @@
 module.exports = class UserManagement {
-  loggedInUsers;
-  connectedSockets;
+  
+  // loggedInUsers;
+  // connectedSockets;
 
   static setup() {
     this.loggedInUsers = new Map();
@@ -29,6 +30,13 @@ module.exports = class UserManagement {
       this.setup();
     }
     return this.loggedInUsers.get(userId);
+  }
+
+  static getUserId(socketId) {
+    if (this.loggedInUsers === undefined) {
+      this.setup();
+    }
+    this.connectedSockets.get(socketId);
   }
 
   static getConnectedSocket() {

@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const port = process.env.PORT || 5000;
 const UserManagement = require("./utils/userManagement");
+const Rooms = require("./utils/rooms");
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -24,10 +25,38 @@ app.use("/rooms", rooms);
 
 const loggedInUsers = [];
 
+function getRoomBySocketId(id) {
+  const playerId = UserManagement.getUserId(id);
+  const rooms = Rooms.getInstance();
+  return rooms.getRoomByPlayer(playerId);
+}
+
 io.on("connection", socket => {
-  console.log(socket.id);
   loggedInUsers.push(socket);
   console.log("New client connected");
+
+  socket.on("start", () => {
+    const room = getRoomBySocketId(socket.id);
+    room.forEach(user => {
+      //TODO: change gameState to real game state
+      UserManagement.getSocket(user.id).emit("start", { gameState: room });
+    });
+  });
+
+  socket.on("ready", () => {
+    const playerId = UserManagement.getUserId(id);
+    const room = getRoomBySocketId(socket.id);
+    room.map(player => {
+      if (player.id === playerId) {
+        player.ready = true;
+      }
+      return player;
+    });
+    room.forEach(user => {
+      //TODO: change gameState to real game state
+      UserManagement.getSocket(user.id).emit("gameState", { gameState: room });
+    });
+  });
 
   socket.on("login", payload => {
     UserManagement.login(payload.userId, socket);
