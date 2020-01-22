@@ -1,9 +1,14 @@
 import React from 'react'
 import './scoreboard.css'
 
+//temporary Addscore on click, to confirm functionality
+
+
 class ScoreBoard extends React.Component {
     constructor(props) {
         super(props)
+        this.addScore = this.addScore.bind(this)
+        this.sortByScore = this.sortByScore.bind(this)
         // below is a sample state
         this.state = {
             1: {
@@ -23,6 +28,12 @@ class ScoreBoard extends React.Component {
                 username: "Yin",
                 score: 5,
                 guessed: true
+            },
+            4: {
+                id: 4,
+                username: "Johnson",
+                score: 5,
+                guessed: false
             }
         }
     }
@@ -43,10 +54,10 @@ class ScoreBoard extends React.Component {
         return players.sort(compare)
     }
 
-    addScore(userId) {
-        let amt = 1
-        let originalScore = this.state[userId].score
-        this.setState({[userId]: originalScore + amt})
+    addScore(id, amt = 1) {
+        let newUserInfo = this.state[id]
+        newUserInfo.score = newUserInfo.score + amt
+        this.setState({[id]: newUserInfo})
     }
 
     render() {
@@ -57,8 +68,7 @@ class ScoreBoard extends React.Component {
                 return(
                     <li className="scoreboard-li" key={user.id}>
                         <div className="scoreboard-user-icon">
-                        
-                        <span className="scordboard-name">{user.username}</span>
+                        <span className="scordboard-name" onClick={() => this.addScore(user.id)}>{user.username}</span>
                         </div>
                         <div className="scoreboard-score">{user.score}</div>
                         {/* <span>{(user.guessed === true ? "GOT IT" : null)}</span> */}
@@ -68,7 +78,7 @@ class ScoreBoard extends React.Component {
         }
         return(
             <div className="scoreboard-div">
-                <ul>
+                <ul className="scoreboard-ul">
                     {rankedUsers}
                 </ul>
             </div>
