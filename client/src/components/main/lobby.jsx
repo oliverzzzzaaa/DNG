@@ -1,6 +1,9 @@
 import React from "react";
 import "./lobby.css";
 import CanvasContainer from "../game/canvas";
+import Chat from '../game/chat/chat'
+import ScoreBoard from '../game/scoreboard/scoreboard'
+import Timer from '../game/timer/timer'
 
 class Lobby extends React.Component {
   constructor(props) {
@@ -10,6 +13,30 @@ class Lobby extends React.Component {
     };
   }
   render() {
+    let tempmessages = [{ sender: "player1", body: "now can work on css" },
+    { sender: "player2", body: "message two"},
+    { sender: "player1", body: "message three"},
+    { sender: "player2", body: "message four"},
+    { sender: "player1", body: "message five"},
+    { sender: "player2", body: "message six"},
+    { sender: "player1", body: "message seven"},
+    { sender: "player1", body: "message eight"},
+    { sender: "player1", body: "message that is really really long and might go to the next line"},
+    { sender: "player1", body: "message ten"},
+    { sender: "player1", body: "message 11"},
+    { sender: "player1", body: "message 11"},
+    { sender: "player1", body: "message 11"},
+    { sender: "player1", body: "message 11"},
+    { sender: "player1", body: "message 11"},
+    { sender: "player1", body: "message cool"},
+    { sender: "player1", body: "message abc"},
+    { sender: "player1", body: "message aaa"},
+    { sender: "player1", body: "message banana"},
+    { sender: "player1", body: "message cool"},
+    { sender: "player1", body: "message pineapple"},
+    { sender: "player1", body: "message apple bottom jeans"},
+    { sender: "player1", body: "message haha"},
+  ]
     return (
       <div className="lobby">
         <h1 onClick={this.props.click}>Lobby</h1>
@@ -18,27 +45,40 @@ class Lobby extends React.Component {
         {
           //TODO: this is just a draft, to make sure it works.
         }
-        <button
-          onClick={() =>
-            this.setState({
-              isDrawer: true
-            })
-          }
-        >
-          drawer
-        </button>
-        <button
-          onClick={() =>
-            this.setState({
-              isDrawer: false
-            })
-          }
-        >
-          viewer
-        </button>
-        <div style={{ border: "1px solid red", position: "relative" }}>
-          <CanvasContainer isDrawer={this.state.isDrawer} />
-        </div>
+       <div className="game-components-div">
+          <div className="lobby-scoreboard-div">
+            <ScoreBoard />
+          </div>
+          <div id="canvas-and-timer-div">
+            <div id="timer-div">
+              <Timer />
+            </div>
+            <div className="canvas-container">
+              <button
+              onClick={() =>
+                this.setState({
+                  isDrawer: true
+                })
+              }
+            >
+              drawer
+            </button>
+            <button
+              onClick={() =>
+                this.setState({
+                  isDrawer: false
+                })
+              }
+            >
+              viewer
+            </button>
+              <CanvasContainer isDrawer={this.state.isDrawer} />
+            </div>
+          </div>
+          <div>
+            <Chat messages={tempmessages}/>
+          </div>
+       </div>
       </div>
     );
   }

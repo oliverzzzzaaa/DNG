@@ -5,11 +5,22 @@ class Chat extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: ""
+      newMessage: ""
     };
     this.renderMessages = this.renderMessages.bind(this);
     this.keyPress = this.keyPress.bind(this);
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentDidMount() {
+    if(document.getElementsByClassName("msg-list")[0].lastChild){
+      document.getElementsByClassName("msg-list")[0].lastChild.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+  componentDidUpdate() {
+    if(document.getElementsByClassName("msg-list")[0].lastChild){
+      document.getElementsByClassName("msg-list")[0].lastChild.scrollIntoView({ behavior: "smooth" });
+    }
   }
 
   renderMessages() {
@@ -17,12 +28,14 @@ class Chat extends React.Component {
       return (
         <ul className="msg-list">
           {this.props.messages.map((msg, i) => (
-            <li key={i} className="msg-body">
+            <li key={i} className="msg-li">
               {
                 // user icon is better to have its own component
               }
               <div className="user-icon">{msg.sender}:</div>
-              {msg.body}
+              <span className="msg-body">
+                {msg.body}
+              </span>
             </li>
           ))}
         </ul>
@@ -35,13 +48,14 @@ class Chat extends React.Component {
     if (e.keyCode === 13 && e.currentTarget.value !== "") {
       if (this.props.action) {
         this.props.action(e.currentTarget.value);
+        //action should send the message to the server
       }
     }
   }
 
   handleChange(e) {
     this.setState({
-      message: e.currentTarget.value
+      newMessage: e.currentTarget.value
     });
   }
 
@@ -49,12 +63,13 @@ class Chat extends React.Component {
     return (
       <div className="chat">
         <div className="msg-container">{this.renderMessages()}</div>
-        <div className="chat-input">
+        <div className="chat-input-div">
           <input
             onKeyDown={this.keyPress}
             onChange={this.handleChange}
             type="text"
             value={this.state.message}
+            className="chat-input"
           />
         </div>
       </div>

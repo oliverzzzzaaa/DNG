@@ -116,7 +116,7 @@ export default class CanvasContainer extends React.Component {
           {
             //TODO: this is just an example, needed change later
           }
-          <br style={{ cloor: "black" }} />
+          <br style={{ color: "black" }} />
           <button
             style={{ background: "black", color: "white" }}
             onClick={() => this.setColor("black")}
