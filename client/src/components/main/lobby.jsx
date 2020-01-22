@@ -1,6 +1,7 @@
 import React from "react";
 import "./lobby.css";
 import Chat from "../game/chat/chat";
+import MySocket from "../../socket";
 import ClientComponentExample from "../clientComponentExample";
 import GameRooms from "../game/game_rooms/game_rooms_container";
 
@@ -8,6 +9,14 @@ class Lobby extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  componentDidMount() {
+    const socket = MySocket.getSocket();
+    socket.emit("WELCOME", {});
+    socket.emit("login", { userId: this.props.currentUser.id });
+    socket.on("roomActivities", data => this.props.receiveRooms(data));
+  }
+
   render() {
     let tempmessages = [
       { sender: "player1", body: "now can work on css" },
