@@ -11,7 +11,9 @@ class ClientComponentExample extends Component {
   componentDidMount() {
     const socket = MySocket.getSocket();
     socket.emit("WELCOME", {});
+    socket.emit("login", { userId: Math.ceil(Math.random() * 10000) });
     socket.on("WELCOME", data => this.setState({ response: data }));
+    socket.on("roomActivities", data => console.log(data));
   }
   render() {
     const { response } = this.state;

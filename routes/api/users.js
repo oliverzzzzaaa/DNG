@@ -13,11 +13,6 @@ function signJwt(user, response) {
   jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, response);
 }
 
-//TODO: change res structure
-router.get("/", (req, res) =>
-  res.json({ msg: "This is the users login page route" })
-);
-
 router.get("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
 

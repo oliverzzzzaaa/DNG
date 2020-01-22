@@ -9,4 +9,13 @@ export default class MySocket {
     }
     return MySocket.socket;
   };
+
+  static login = userId => {
+    if (MySocket.socket === undefined) {
+      const endpoint = "http://localhost:5000";
+      MySocket.socket = openSocket(endpoint);
+    }
+    MySocket.socket.emit("login", { userId });
+    return MySocket.socket;
+  };
 }
