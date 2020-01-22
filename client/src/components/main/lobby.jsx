@@ -1,22 +1,22 @@
 import React from "react";
 import "./lobby.css";
-import CanvasContainer from "../game/canvas";
 import Chat from "../game/chat/chat";
-import ScoreBoard from "../game/scoreboard/scoreboard";
-import Timer from "../game/timer/timer";
+import MySocket from "../../socket";
 import ClientComponentExample from "../clientComponentExample";
-import Client2 from "../clientExample2";
-import GameRooms from "../game/game_rooms/game_rooms_container"
-import WaitingRoom from "../game/waiting_lobby/waiting";
-
+import GameRooms from "../game/game_rooms/game_rooms_container";
 
 class Lobby extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isDrawer: false
-    };
   }
+
+  componentDidMount() {
+    const socket = MySocket.getSocket();
+    socket.emit("WELCOME", {});
+    socket.emit("login", { userId: this.props.currentUser.id });
+    socket.on("roomActivities", data => this.props.receiveRooms(data));
+  }
+
   render() {
     let tempmessages = [
       { sender: "player1", body: "now can work on css" },
@@ -61,47 +61,7 @@ class Lobby extends React.Component {
 
         <div className="game-rooms">
           <h1>rooms</h1>
-          {/* <WaitingRoom messages={tempmessages} /> */}
         </div>
-
-        {
-          //TODO: this is just a draft, to make sure it works.
-        }
-        <div className="game-components-div">
-          <div className="lobby-scoreboard-div">
-            <ScoreBoard />
-          </div>
-          <div id="canvas-and-timer-div">
-            <div id="timer-div">
-              <Timer />
-            </div>
-            <div className="canvas-container">
-              <button
-                onClick={() =>
-                  this.setState({
-                    isDrawer: true
-                  })
-                }
-              >
-                drawer
-              </button>
-              <button
-                onClick={() =>
-                  this.setState({
-                    isDrawer: false
-                  })
-                }
-              >
-                viewer
-              </button>
-              <CanvasContainer isDrawer={this.state.isDrawer} />
-            </div>
-          </div>
-          <div></div>
-        </div>
-        {
-          //TODO: remove above to game component
-        }
         <Chat messages={tempmessages} />
       </div>
     );
