@@ -17,6 +17,14 @@ module.exports = class Rooms {
     return this.rooms.get(id);
   }
 
+  getRoomByPlayer(userId) {
+    const roomId = this.map.get(userId);
+    if (roomId) {
+      return this.rooms.get(roomId);
+    }
+    return null;
+  }
+
   create() {
     let roomId = Math.ceil(Math.random() * 10000000).toString();
     while (this.rooms.has(roomId)) {
