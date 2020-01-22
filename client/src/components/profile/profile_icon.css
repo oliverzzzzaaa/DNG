@@ -21,9 +21,10 @@
     align-items: center;
     width: 50%;
     /* padding-top: 100%; */
-    height: calc( width * 1);
-    /* width: 50%;
-    height: 50%; */
+    /* position: relative; */
+    /* height: 10vw; */
+    /* width: 50%; */
+    height: 50%;
 }
 
 .profile-icon-image {
@@ -31,6 +32,7 @@
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
+    /* position: absolute; */
 }
 
 .profile-icon-username-container {
