@@ -1,5 +1,6 @@
 module.exports = class Rooms {
-  rooms;
+  // rooms;
+
   constructor() {
     this.rooms = new Map();
     this.map = new Map();

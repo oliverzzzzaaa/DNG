@@ -6,6 +6,9 @@ import ScoreBoard from "../game/scoreboard/scoreboard";
 import Timer from "../game/timer/timer";
 import ClientComponentExample from "../clientComponentExample";
 import Client2 from "../clientExample2";
+import GameRooms from "../game/game_rooms/game_rooms_container"
+import WaitingRoom from "../game/waiting_lobby/waiting";
+
 
 class Lobby extends React.Component {
   constructor(props) {
@@ -48,12 +51,17 @@ class Lobby extends React.Component {
         <ClientComponentExample />
         <h1 onClick={this.props.click}>Lobby</h1>
         <div>{this.props.msg}</div>
+        <div className="lobby-page">
+          <div>All loggedin users</div>
+          <GameRooms />
+          <Chat messages={tempmessages} />
+        </div>
+        {/* <button>create</button>
+        <button>join</button> */}
 
-        <div>All loggedin users</div>
-        <button>create</button>
-        <button>join</button>
         <div className="game-rooms">
           <h1>rooms</h1>
+          {/* <WaitingRoom messages={tempmessages} /> */}
         </div>
 
         {

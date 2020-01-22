@@ -53,7 +53,7 @@ router.post(
         roomId
       });
     } else {
-      res.status(404).json({ msg: "Room is not exists!" });
+      res.status(404).json({ msg: "Room does not exist!" });
     }
   }
 );
@@ -74,7 +74,7 @@ router.post(
       });
       res.json({ status: "success" });
     } else {
-      res.status(404).json({ msg: "Room is not exists!" });
+      res.status(404).json({ msg: "Room does not exist!" });
     }
   }
 );
