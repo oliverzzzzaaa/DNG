@@ -2,15 +2,19 @@ import React from "react";
 import { Switch } from "react-router-dom";
 import Lobby from "./main/lobby";
 import { Route } from "react-router-dom";
-import SignupForm from "./session/signup_form_container";
-import LoginForm from "./session/login_form_container";
+import ClientComponentExample from "./clientComponentExample";
+import Client2 from "./clientExample2";
+import SignupForm from './session/signup_form_container';
+import LoginForm from './session/login_form_container';
+import { AuthRoute, ProtectedRoute} from '../util/route';
+
 
 const App = () => (
   <div>
     <Switch>
-      <Route exact path="/" component={LoginForm} />
+      <AuthRoute exact path="/" component={LoginForm} />
       <Route exact path="/signup" component={SignupForm} />
-      <Route exact path="/lobby" component={Lobby} />
+      <ProtectedRoute exact path="/lobby" component={Lobby} />
     </Switch>
   </div>
 );
