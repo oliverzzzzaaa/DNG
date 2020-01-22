@@ -8,10 +8,9 @@ import SignupForm from './session/signup_form_container';
 import LoginForm from './session/login_form_container';
 import { AuthRoute, ProtectedRoute} from '../util/route';
 
+
 const App = () => (
   <div>
-    <ClientComponentExample />
-    <Client2 />
     <Switch>
       <AuthRoute exact path="/" component={LoginForm} />
       <Route exact path="/signup" component={SignupForm} />
