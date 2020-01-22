@@ -1,6 +1,5 @@
 
 
-
 const easyWords = [
     { word: "moon"},
     { word: "fork"},
@@ -52,3 +51,5 @@ const easyWords = [
     { word: 'camera'},
     { word: 'mouth'}
 ]
+
+module.exports = easyWords;
