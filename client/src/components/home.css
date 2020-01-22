@@ -6,6 +6,7 @@
     align-items: center;
     text-align: center;
     /* background-image: url(./image/random.jpg); */
+    background-color: black;
     background-position: center;
     background-repeat: none;
     background-size: cover;
@@ -53,7 +54,7 @@
     font-size: 20px;
     margin: 0 auto;
     margin-top: 30px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     background-color: red;
 }
 
