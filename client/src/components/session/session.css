@@ -1,0 +1,91 @@
+.session-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.session-image {
+    width: 50%;
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    /* background-image: url('fat_pikachu.jpeg'); */
+    background-position: 50%;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.session-left {
+    width: 50%;
+    position:fixed;
+    top:0;
+    bottom:0;
+    right:0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    align-items: center;
+}
+
+.session-left ul {
+  margin-top: 30px;
+}
+
+.session-left ul li {
+  display: flex;
+  padding: 15px 0;
+  font-size: 13px;
+  align-items: center;
+}
+
+.session-main h3 {
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
+.session-main label {
+  font-size: 13px;
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+.session-main input {
+  margin: 10px 0;
+  width: 350px;
+  height: 35px;
+  box-sizing: border-box;
+  border: 1px solid var(--shadow-1);
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 13px;
+  background: var(--shadow-1);
+}
+
+.session-main input:hover {
+  border: 1px solid lightgray;
+}
+
+.session-main .session-button {
+  display: flex;
+  width: 412px;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.session-main .submit-button {
+  margin-top: 40px;
+  padding: 17px 50px;
+  font-size: 12px;
+  font-weight: 700;
+  height: auto;
+  width: auto;
+  background: yellow;
+}
