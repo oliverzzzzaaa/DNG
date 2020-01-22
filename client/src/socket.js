@@ -1,5 +1,4 @@
 import openSocket from "socket.io-client";
-
 export default class MySocket {
   socket;
   static getSocket = userId => {

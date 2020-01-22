@@ -52,5 +52,5 @@ export const login = user => dispatch =>
       window.location.hash = "/lobby";
     })
     .catch(err => {
-      dispatch(receiveErrors(err.response.data));
+      dispatch(receiveErrors(err));
     });
