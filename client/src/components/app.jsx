@@ -4,11 +4,13 @@ import LobbyContainer from "./main/lobbyContainer";
 import { Route } from "react-router-dom";
 import ClientComponentExample from "./clientComponentExample";
 import Client2 from "./clientExample2";
+
 import HomePage from './home';
 import Room from "./room/room";
 import SignupForm from "./session/signup_form_container";
 import LoginForm from "./session/login_form_container";
 import { AuthRoute, ProtectedRoute } from "../util/route";
+
 
 
 const App = () => (
