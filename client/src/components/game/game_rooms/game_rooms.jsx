@@ -17,17 +17,18 @@ class GameRooms extends React.Component {
       <div className="game-rooms-div">
         <div className="game-rooms-container">
           {this.props.rooms.map((room, idx) => (
-            <GameRoomItem
-              className="game-room-index"
-              room={room}
-              key={idx}
-            />
+            <GameRoomItem className="game-room-index" room={room} key={idx} />
           ))}
         </div>
         <div className="game-rooms-buttons">
-          <button onClick={() => this.props.createRoom(this.props.currentUser)}>
-            Create
-          </button>
+          <div className="game-rooms-create-button">
+            <span
+              className="game-rooms-create-text"
+              onClick={() => this.props.createRoom(this.props.currentUser)}
+            >
+              Create
+            </span>
+          </div>
           <JoinModal
             join={this.props.joinRoom}
             user={Object.assign({}, this.props.currentUser)}

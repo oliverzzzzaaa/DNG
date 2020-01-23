@@ -1,6 +1,9 @@
-.lobby h1 {
-  border: 1px solid blue;
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
+@import url('https://fonts.googleapis.com/css?family=Handlee&display=swap');
+/* .test {
+  font-family: 'Indie Flower', serif;
 }
+
 
 .game-components-div {
   display: flex;
@@ -14,8 +17,6 @@
 
 #timer-div {
   text-align: end;
-  /* border-radius: 100px; */
-  /* border: 1px solid black; */
   display: flex;
   justify-content: flex-end;
   height: 8%;
@@ -31,8 +32,57 @@
 
 .lobby-scoreboard-div {
   width: 15%;
+} */
+
+.lobby {
+  display: flex;
+  padding: 5% 10% 10% 5%;
+  height: 800px;
 }
 
-.lobby-page {
-  display: flex;
+.lobby h1 {
+  font-family: 'Indie Flower', cursive;
+  color: black;
+}
+
+.game-rooms-div {
+  width: 68%;
+  margin-right: 2%;
+}
+
+.lobby .chat {
+  width: 30%;
+  /* height: 600px; */
+  border: solid black;
+  border-width: 3px 4px 3px 5px;
+  border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+  transform: rotate(2deg);
+  border-bottom: none;
+}
+
+.lobby .msg-container {
+  padding: 20px;
+}
+
+.lobby .msg-list {
+  margin: 20px;
+  padding: 0px;
+  /* padding: 20px; */
+  height: 98%;
+  margin: 0px;
+}
+
+input {
+  outline: none;
+}
+
+.lobby .chat-input{
+  /* border-style: hidden; */
+  border: solid black;
+  border-width: 3px 4px 3px 5px;
+  border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+}
+
+.lobby .user-icon, .lobby .msg-body {
+  font-family: 'Handlee', cursive;
 }

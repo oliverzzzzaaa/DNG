@@ -39,9 +39,11 @@ export default class JoinModal extends React.Component {
   render() {
     return (
       <div className="join-room-btn">
-        <Button variant="primary" onClick={this.handleShow}>
-          Join
-        </Button>
+        
+        <span 
+        className="join-room-text"
+        onClick={this.handleShow}>Join</span>
+        
 
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
