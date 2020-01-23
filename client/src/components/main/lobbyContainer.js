@@ -4,9 +4,9 @@ import Lobby from "./lobby";
 
 // delete this
 function receiveRooms(rooms) {
-  alert(JSON.stringify(rooms));
   return {
-    type: "HI"
+    type: "HI",
+    rooms
   };
 }
 
