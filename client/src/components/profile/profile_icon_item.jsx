@@ -3,6 +3,7 @@ import React from 'react'
 class ProfileIconItem extends React.Component{
 
     render(){
+        
         return(
             <div className="profile-icon-container">
                 <div className="profile-icon-image-container">

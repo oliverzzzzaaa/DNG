@@ -14,13 +14,7 @@ export default class Game extends React.Component {
   render() {
     return (
       <div className="game-components-div">
-        <div className="lobby-scoreboard-div">
-          <ScoreBoard />
-        </div>
         <div id="canvas-and-timer-div">
-          <div id="timer-div">
-            <Timer />
-          </div>
           <div className="canvas-container">
             <div className="canvas-button-container">
               <button onClick={() => this.setState({ isDrawer: true })} className='canvas-button'>
@@ -34,9 +28,13 @@ export default class Game extends React.Component {
             <CanvasContainer isDrawer={this.state.isDrawer} />
           </div>
         </div>
-        <div >
-          <Chat />
-        </div>
+          <div className='scoreboard-chat'>
+            <div className="lobby-scoreboard-div">
+              <Timer />
+              <ScoreBoard />
+              <Chat />
+            </div>
+          </div>
       </div>
     );
   }

@@ -8,11 +8,18 @@
 .game-components-div {
   display: flex;
   justify-content: space-between;
-  
+  min-height: 700px;
+  width: 100%;
+  height: 100%;
+  background-image: url("./pawel-czerwinski-ExsA-QgEa6I-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 #canvas-and-timer-div {
-  width: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
 #timer-div {
@@ -24,7 +31,6 @@
 
 #timer-circle {
   border: 1px solid black;
-  width: 7%;
   text-align: center;
   border-radius: 20%;
   font-size: 20px;
