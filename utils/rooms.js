@@ -19,11 +19,11 @@ module.exports = class Rooms {
   }
 
   getRooms() {
-    const rooms = {};
-    for (let [key, value] of this.rooms.entries()) {
-      rooms[key] = { id: key, players: value };
-    }
-    return rooms;
+    // const rooms = {};
+    // for (let [key, value] of this.rooms.entries()) {
+    //   rooms[key] = { id: key, players: value };
+    // }
+    return Object.fromEntries(this.rooms);
   }
 
   getRoomByPlayer(userId) {
@@ -39,8 +39,7 @@ module.exports = class Rooms {
     while (this.rooms.has(roomId)) {
       roomId = Math.ceil(Math.random() * 10000000).toString();
     }
-    this.rooms.set(roomId, []);
-    console.log(this.rooms.keys());
+    this.rooms.set(roomId, { id: roomId, onGame: false, players: [] });
     return roomId;
   }
 
@@ -48,7 +47,7 @@ module.exports = class Rooms {
     console.log(typeof this.rooms);
     const room = this.rooms.get(roomId);
     if (room) {
-      room.push(user);
+      room.players.push(user);
       this.map.set(user.id, roomId);
       return true;
     }
@@ -58,12 +57,15 @@ module.exports = class Rooms {
   leave(userId) {
     const roomId = this.map.get(userId);
     if (roomId) {
-      this.rooms.set(
-        roomId,
-        this.rooms.get(roomId).filter(user => user.id !== userId)
+      // this.rooms.set(
+      //   roomId,
+      //   this.rooms.get(roomId).filter(user => user.id !== userId)
+      // );
+      this.rooms.players = this.rooms.players.filter(
+        user => user.id !== userId
       );
       this.map.delete(userId);
-      if (this.rooms.get(roomId).length < 1) {
+      if (this.rooms.get(roomId).players.length < 1) {
         this.rooms.delete(roomId);
       }
       return roomId;

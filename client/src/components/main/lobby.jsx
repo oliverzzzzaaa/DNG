@@ -13,7 +13,6 @@ class Lobby extends React.Component {
   componentDidMount() {
     const socket = MySocket.getSocket();
     socket.on("loggedIn", payload => {
-      console.log(payload);
       this.props.receiveRooms(payload.rooms);
     });
 

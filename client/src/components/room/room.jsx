@@ -1,21 +1,21 @@
 import React from "react";
 import Game from "../game/game";
-import Chat from '../game/chat/chat'
-import Waiting from '../game/waiting_lobby/waiting'
-import './room.css'
+import Chat from "../game/chat/chat";
+import Waiting from "../game/waiting_lobby/waiting";
+import "./room.css";
 
 export default class Room extends React.Component {
-  
   constructor(props) {
-    super(props)
+    super(props);
     //have ready in state?
     this.state = {
-      ready: true
-    }
+      ready: false
+    };
   }
 
-  render() {
+  componentDidMount
 
+  render() {
     let tempmessages = [
       { sender: "player1", body: "now can work on css" },
       { sender: "player2", body: "message two" },
@@ -51,7 +51,8 @@ export default class Room extends React.Component {
         username: "Yin",
         email: "yin@email.com",
         password: "password",
-        image: "http://calligraphyalphabet.org/wp-content/uploads/roman-calligraphy-alphabet-y.jpg",
+        image:
+          "http://calligraphyalphabet.org/wp-content/uploads/roman-calligraphy-alphabet-y.jpg",
         score: 5,
         date: Date.now
       },
@@ -60,7 +61,8 @@ export default class Room extends React.Component {
         username: "Oliver",
         email: "oliver@email.com",
         password: "password",
-        image: "http://calligraphyalphabet.org/wp-content/uploads/roman-calligraphy-alphabet-o.jpg",
+        image:
+          "http://calligraphyalphabet.org/wp-content/uploads/roman-calligraphy-alphabet-o.jpg",
         score: 1,
         date: Date.now
       },
@@ -69,7 +71,8 @@ export default class Room extends React.Component {
         username: "Johnson",
         email: "johnson@email.com",
         password: "password",
-        image: "https://images-na.ssl-images-amazon.com/images/I/61LhNj3htIL._SL1500_.jpg",
+        image:
+          "https://images-na.ssl-images-amazon.com/images/I/61LhNj3htIL._SL1500_.jpg",
         score: 3,
         date: Date.now
       },
@@ -78,24 +81,28 @@ export default class Room extends React.Component {
         username: "Guanyao",
         email: "guanyao@email.com",
         password: "password",
-        image: "https://ih0.redbubble.net/image.713977306.0352/fpp,small,lustre,wall_texture,product,750x1000.u8.jpg",
+        image:
+          "https://ih0.redbubble.net/image.713977306.0352/fpp,small,lustre,wall_texture,product,750x1000.u8.jpg",
         score: 0,
         date: Date.now
       }
-    ]
+    ];
 
     return (
       <div className="room-div">
         <div className="game-or-waiting-div">
-          {this.state.ready ? <Game /> : (
+          {this.state.ready ? (
+            <Game />
+          ) : (
             <div>
               <Waiting messages={this.props.messages} users={users} />
-              <div className="room-chat-div"><Chat messages={tempmessages} /></div>
+              <div className="room-chat-div">
+                <Chat messages={tempmessages} />
+              </div>
             </div>
           )}
         </div>
-        
       </div>
-    )
-  } 
+    );
+  }
 }

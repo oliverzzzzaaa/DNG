@@ -6,9 +6,6 @@ import {Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Waiting extends React.Component {
-    // constructor(props) {
-    //     super(props)
-    // }
 
     render() {
         return(
