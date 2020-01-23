@@ -1,8 +1,10 @@
 .chat {
   position: relative;
-  border: 4px solid pink;
+  border: 5px solid pink;
   width: 100%;
-  height: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
   border-radius: 10px;
   background-color: rgb(252, 243, 243);
   box-shadow: 9px 5px 5px 1px rgb(121, 163, 184);
@@ -10,21 +12,20 @@
 
 .msg-container {
   height: 40vh;
-  /* min-height: 280px;
-  overflow-y: scroll; */
 }
 
 .msg-list {
-  padding: 10px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  height: 90%;
+  max-height: 610px;
 }
 
 .msg-li {
   display: flex;
   padding-bottom: 7px;
+  font-size: 14px;
 }
 
 .msg-li > .user-icon {
@@ -52,7 +53,6 @@
   font-size: 16px;
   background-color: inherit;
   border: none;
-  /* no border until we decide color */
 }
 
 .user-icon {

@@ -44,3 +44,5 @@ leaveRoom:
 request
 	url: /rooms/leave
 	data: {id: <userId>}
+
+socket.on("removeRoom", ({id: <roomId>})=>{})

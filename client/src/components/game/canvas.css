@@ -58,8 +58,8 @@
 
 .color-picker-btn {
   flex-direction: column;
-  justify-content: flex-end;
-  margin-top: -110%;
+  margin-top: -123%;
+  margin-left: -8%;
   width: 5%;
 }
 
