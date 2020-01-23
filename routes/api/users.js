@@ -13,15 +13,12 @@ function signJwt(user, response) {
   jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, response);
 }
 
-
 // //TODO: change res structure
 // router.get("/", (req, res) =>
 //   res.json({ msg: "This is the users login page route" })
 // );
 
 router.post("/login", (req, res) => {
-  console.log("log in");
-  console.log(req.body);
   const { errors, isValid } = validateLoginInput(req.body);
 
   if (!isValid) {
@@ -45,6 +42,7 @@ router.post("/login", (req, res) => {
             success: true,
             token: "Bearer " + token
           });
+          // res.json(user);
         });
       } else {
         errors.login = "Incorrect email or password";
@@ -55,8 +53,6 @@ router.post("/login", (req, res) => {
 });
 
 router.post("/signup", (req, res) => {
-  console.log("sign up");
-  console.log(req.body);
   const { errors, isValid } = validateRegisterInput(req.body);
   if (!isValid) {
     return res.status(400).json(errors);
@@ -85,6 +81,7 @@ router.post("/signup", (req, res) => {
                   success: true,
                   token: "Bearer " + token
                 });
+                // res.json(user);
               })
             )
             .catch(err => res.json({ msg: "failure" }));
@@ -106,12 +103,5 @@ router.get(
     });
   }
 );
-
-router.get("/haha", () => {
-  console.log("aaa");
-  res.json({
-    Ok: "Ok"
-  });
-});
 
 module.exports = router;
