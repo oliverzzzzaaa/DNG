@@ -5,6 +5,7 @@
 .game-components-div {
   display: flex;
   justify-content: space-between;
+  
 }
 
 #canvas-and-timer-div {
@@ -17,12 +18,12 @@
   /* border: 1px solid black; */
   display: flex;
   justify-content: flex-end;
-  height: 5%;
+  height: 8%;
 }
 
 #timer-circle {
   border: 1px solid black;
-  width: 5%;
+  width: 7%;
   text-align: center;
   border-radius: 20%;
   font-size: 20px;

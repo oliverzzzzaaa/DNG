@@ -117,21 +117,21 @@ export default class CanvasContainer extends React.Component {
             //TODO: this is just an example, needed change later
           }
           <br style={{ color: "black" }} />
-          <button
+          <button className='canvas-bottom-button'
             style={{ background: "black", color: "white" }}
             onClick={() => this.setColor("black")}
           >
             Black
           </button>
-          <button
+          <button className='canvas-bottom-button'
             style={{ background: "red", color: "white" }}
             onClick={() => this.setColor("red")}
           >
             Red
           </button>
-          <button onClick={() => this.setStrokeWidth(2)}>thin</button>
-          <button onClick={() => this.setStrokeWidth(10)}>thick</button>
-          <button
+          <button onClick={() => this.setStrokeWidth(2)} className='canvas-bottom-button' >thin</button>
+          <button onClick={() => this.setStrokeWidth(10)} className='canvas-bottom-button' >thick</button>
+          <button className='canvas-bottom-button'
             onClick={() => {
               this.clear();
               MySocket.getSocket().emit("clearDrawing");
