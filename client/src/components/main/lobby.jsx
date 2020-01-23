@@ -3,7 +3,7 @@ import "./lobby.css";
 import Chat from "../game/chat/chat";
 import MySocket from "../../socket";
 import ClientComponentExample from "../clientComponentExample";
-import GameRooms from "../game/game_rooms/game_rooms_container";
+import GameRooms from "../game/game_rooms/game_rooms";
 
 class Lobby extends React.Component {
   constructor(props) {
@@ -14,7 +14,14 @@ class Lobby extends React.Component {
     const socket = MySocket.getSocket();
     socket.emit("WELCOME", {});
     socket.emit("login", { userId: this.props.currentUser.id });
-    socket.on("roomActivities", data => this.props.receiveRooms(data));
+    socket.on("loggedIn", allrooms => {
+      this.props.receiveRooms(allrooms);
+    });
+
+    socket.on("updateRoom", data => {
+      // console.log(data)
+      this.props.receiveRoom(data)
+    });
   }
 
   render() {
@@ -48,17 +55,19 @@ class Lobby extends React.Component {
     ];
     return (
       <div className="lobby">
-        <ClientComponentExample />
+        {/* <ClientComponentExample /> */}
         <h1 onClick={this.props.click}>Lobby</h1>
         <div>{this.props.msg}</div>
         <div className="lobby-page">
           <div>All loggedin users</div>
-          <GameRooms />
+          <GameRooms
+          currentUser={this.props.currentUser} 
+          rooms={this.props.rooms} 
+          createRoom={this.props.createRoom} 
+          joinRoom={this.props.joinRoom}
+          />
           <Chat messages={tempmessages} />
         </div>
-        {/* <button>create</button>
-        <button>join</button> */}
-
         <div className="game-rooms">
           <h1>rooms</h1>
         </div>
