@@ -13,38 +13,7 @@ export default class Room extends React.Component {
     };
   }
 
-  componentDidMount
-
   render() {
-    let tempmessages = [
-      { sender: "player1", body: "now can work on css" },
-      { sender: "player2", body: "message two" },
-      { sender: "player1", body: "message three" },
-      { sender: "player2", body: "message four" },
-      { sender: "player1", body: "message five" },
-      { sender: "player2", body: "message six" },
-      { sender: "player1", body: "message seven" },
-      { sender: "player1", body: "message eight" },
-      {
-        sender: "player1",
-        body: "message that is really really long and might go to the next line"
-      },
-      { sender: "player1", body: "message ten" },
-      { sender: "player1", body: "message 11" },
-      { sender: "player1", body: "message 11" },
-      { sender: "player1", body: "message 11" },
-      { sender: "player1", body: "message 11" },
-      { sender: "player1", body: "message 11" },
-      { sender: "player1", body: "message cool" },
-      { sender: "player1", body: "message abc" },
-      { sender: "player1", body: "message aaa" },
-      { sender: "player1", body: "message banana" },
-      { sender: "player1", body: "message cool" },
-      { sender: "player1", body: "message pineapple" },
-      { sender: "player1", body: "message apple bottom jeans" },
-      { sender: "player1", body: "message haha" }
-    ];
-
     const users = [
       {
         id: 1,
@@ -88,13 +57,41 @@ export default class Room extends React.Component {
       }
     ];
 
+    let tempmessages = [
+      { sender: "player1", body: "now can work on css" },
+      { sender: "player2", body: "message two" },
+      { sender: "player1", body: "message three" },
+      { sender: "player2", body: "message four" },
+      { sender: "player1", body: "message five" },
+      { sender: "player2", body: "message six" },
+      { sender: "player1", body: "message seven" },
+      { sender: "player1", body: "message eight" },
+      {
+        sender: "player1",
+        body: "message that is really really long and might go to the next line"
+      },
+      { sender: "player1", body: "message ten" },
+      { sender: "player1", body: "message 11" },
+      { sender: "player1", body: "message 11" },
+      { sender: "player1", body: "message 11" },
+      { sender: "player1", body: "message 11" },
+      { sender: "player1", body: "message 11" },
+      { sender: "player1", body: "message cool" },
+      { sender: "player1", body: "message abc" },
+      { sender: "player1", body: "message aaa" },
+      { sender: "player1", body: "message banana" },
+      { sender: "player1", body: "message cool" },
+      { sender: "player1", body: "message pineapple" },
+      { sender: "player1", body: "message apple bottom jeans" },
+      { sender: "player1", body: "message haha" }
+    ];
     return (
       <div className="room-div">
         <div className="game-or-waiting-div">
           {this.state.ready ? (
             <Game />
           ) : (
-            <div>
+            <div className="waiting-and-chat">
               <Waiting messages={this.props.messages} users={users} />
               <div className="room-chat-div">
                 <Chat messages={tempmessages} />
@@ -106,3 +103,7 @@ export default class Room extends React.Component {
     );
   }
 }
+
+
+
+//Photo by Amy Shamblen on Unsplash
