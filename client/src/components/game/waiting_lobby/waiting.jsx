@@ -13,13 +13,11 @@ class Waiting extends React.Component {
             <div className="waiting-room">
                 <div className="waiting-room-profiles">
                     <ProfileIcon users={this.props.users} />
-                    <div className="waiting-room-ready-button">
-                        <button>Ready</button>
-                    </div>
+                    <button className="waiting-room-ready2">Ready</button>
                 </div>
-                <div className="chat-component-div">
-                    <Chat />
-                </div>
+                {/* <div className="waiting-room-ready-button">
+                    <button>Ready</button>
+                </div> */}
             </div>
         )
     }
