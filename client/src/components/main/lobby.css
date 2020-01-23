@@ -1,4 +1,4 @@
-html {
+html, body {
   height: 100%;
   width: 100%;
   position: fixed;
@@ -8,19 +8,21 @@ html {
   border: 1px solid blue;
 }
 
+.lobby-scoreboard-div {
+  width: 100%;
+  padding: 5%;
+}
+
 .game-components-div {
   display: flex;
   justify-content: space-between;
-  min-height: 700px;
   width: 100%;
-  height: 100%;
-  background-image: url("./pawel-czerwinski-ExsA-QgEa6I-unsplash.jpg");
-  background-size: cover;
-  background-position: center;
+  height: auto;
 }
 
 #canvas-and-timer-div {
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: row;
 }
@@ -29,7 +31,7 @@ html {
   text-align: end;
   display: flex;
   justify-content: flex-end;
-  height: 8%;
+  height: 8vh;
 }
 
 #timer-circle {

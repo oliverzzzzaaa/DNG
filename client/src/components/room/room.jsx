@@ -9,7 +9,7 @@ export default class Room extends React.Component {
     super(props);
     //have ready in state?
     this.state = {
-      ready: false
+      ready: true
     };
   }
 

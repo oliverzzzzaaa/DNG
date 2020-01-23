@@ -2,7 +2,7 @@
   position: relative;
   border: 5px solid pink;
   width: 100%;
-  height: 90vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -11,7 +11,7 @@
 }
 
 .msg-container {
-  height: 100%;
+  height: 40vh;
 }
 
 .msg-list {
@@ -63,5 +63,5 @@
 
 .msg-body {
   position: relative;
-  width: 20%;
+  width: 20%vh;
 }

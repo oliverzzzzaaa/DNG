@@ -1,12 +1,12 @@
 .scoreboard-ul {
-    width: 15%;
     display: block;
     padding: 10px;
+    margin: 0;
 }   
 .scoreboard-li {
     list-style: none;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     justify-content: space-between;
     font-size: 15px;
 }
@@ -17,6 +17,5 @@
 
 .scoreboard-div {
     width: 30%;
-    height: 100%;
     display: flex;
 }
