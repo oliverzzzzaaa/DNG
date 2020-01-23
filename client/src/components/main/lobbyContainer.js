@@ -1,21 +1,27 @@
 import { connect } from "react-redux";
 import Lobby from "./lobby";
+import { receiveRooms, receiveRoom, createRoom, joinRoom } from "./../../actions/room_actions";
 // import receiveRooms
 
 // delete this
-function receiveRooms(rooms) {
-  return {
-    type: "HI",
-    rooms
-  };
-}
+// function receiveRooms(rooms) {
+//   return {
+//     type: "HI",
+//     rooms
+//   };
+// }
 
 const mapStateToProps = state => ({
-  currentUser: state.session.user
+  currentUser: state.session.user,
+  rooms: Object.values(state.rooms)
 });
 
 const mapDispatchToProps = dispatch => ({
-  receiveRooms: rooms => dispatch(receiveRooms(rooms))
+  receiveRooms: rooms => dispatch(receiveRooms(rooms)),
+  receiveRoom: room => dispatch(receiveRoom(room)),
+  createRoom: userData => dispatch(createRoom(userData)),
+  joinRoom: payload => dispatch(joinRoom(payload))
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Lobby);
