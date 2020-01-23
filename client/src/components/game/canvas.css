@@ -4,10 +4,50 @@
 }
 
 .canvas-container {
-  border: 1px solid red;
-  position: relative;
-  /* width: 40%; */
+  display: inline-block;
+  border: 7px groove #43677c;
+  border-radius: 35px;
+  box-shadow: 9px 11px 22px 1px rgb(51, 90, 110);
+  -webkit-box-shadow: 9px 11px 22px 1px #344955; 
   height: 95%;
 }
 
+.canvas-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+}
 
+.canvas-button {
+	box-shadow: 3px 4px 0px 0px #adadad;
+	background:linear-gradient(to bottom, #ffffff 5%, #F9AA33 100%);
+	background-color:#ffffff;
+	border-radius: 20px;
+	border:1px solid #0a0a0a;
+	color:#000000;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+	text-decoration:none;
+  margin-right: 5px;
+}
+
+.color-picker-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+.canvas-bottom-button {
+  box-shadow: 3px 4px 0px 0px #adadad;
+	background:linear-gradient(to bottom, #ffffff 5%, #F9AA33 100%);
+	background-color:#ffffff;
+	border-radius: 20px;
+	border:1px solid #0a0a0a;
+	color:#000000;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+	text-decoration:none;
+  margin-right: 5px;
+}
