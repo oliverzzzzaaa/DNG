@@ -60,6 +60,9 @@ io.on("connection", socket => {
 
   socket.on("login", payload => {
     UserManagement.login(payload.userId, socket);
+    socket.emit("loggedIn", {
+      rooms: Rooms.getInstance().getRooms()
+    });
   });
 
   socket.on("WELCOME", () =>
@@ -89,6 +92,22 @@ io.on("connection", socket => {
   });
 
   socket.on("disconnect", () => {
+    const playerId = UserManagement.getUserId(socket.id);
+    const roomId = Rooms.getInstance().leave(playerId);
+    if (Rooms.getInstance().get(roomId)) {
+      UserManagement.getConnectedSocket().forEach(socket => {
+        socket.emit("updateRoom", {
+          id: roomId,
+          players: Rooms.getInstance().get(roomId)
+        });
+      });
+    } else {
+      UserManagement.getConnectedSocket().forEach(socket => {
+        socket.emit("removeRoom", {
+          id: roomId
+        });
+      });
+    }
     UserManagement.logout(socket.id);
     console.log("Client disconnected");
   });

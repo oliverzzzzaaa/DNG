@@ -18,6 +18,10 @@ module.exports = class Rooms {
     return this.rooms.get(id);
   }
 
+  getRooms() {
+    return this.rooms.values();
+  }
+
   getRoomByPlayer(userId) {
     const roomId = this.map.get(userId);
     if (roomId) {
@@ -55,6 +59,9 @@ module.exports = class Rooms {
         this.rooms.get(roomId).filter(user => user.id !== userId)
       );
       this.map.delete(userId);
+      if (this.rooms.get(roomId).length < 1) {
+        this.rooms.delete(roomId);
+      }
       return roomId;
     }
     return false;
