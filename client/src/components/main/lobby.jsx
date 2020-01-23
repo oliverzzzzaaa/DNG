@@ -12,15 +12,15 @@ class Lobby extends React.Component {
 
   componentDidMount() {
     const socket = MySocket.getSocket();
-    socket.emit("WELCOME", {});
-    socket.emit("login", { userId: this.props.currentUser.id });
-    socket.on("loggedIn", allrooms => {
-      this.props.receiveRooms(allrooms);
+    socket.on("loggedIn", payload => {
+      this.props.receiveRooms(payload.rooms);
     });
 
+    socket.emit("WELCOME", {});
+    socket.emit("login", { userId: this.props.currentUser.id });
+
     socket.on("updateRoom", data => {
-      // console.log(data)
-      this.props.receiveRoom(data)
+      this.props.receiveRoom(data);
     });
   }
 

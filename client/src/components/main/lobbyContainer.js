@@ -1,6 +1,11 @@
 import { connect } from "react-redux";
 import Lobby from "./lobby";
-import { receiveRooms, receiveRoom, createRoom, joinRoom } from "./../../actions/room_actions";
+import {
+  receiveRooms,
+  receiveRoom,
+  createRoom,
+  joinRoom
+} from "./../../actions/room_actions";
 // import receiveRooms
 
 // delete this
@@ -21,7 +26,6 @@ const mapDispatchToProps = dispatch => ({
   receiveRoom: room => dispatch(receiveRoom(room)),
   createRoom: userData => dispatch(createRoom(userData)),
   joinRoom: payload => dispatch(joinRoom(payload))
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Lobby);

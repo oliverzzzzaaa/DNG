@@ -1,5 +1,5 @@
-import React from 'react';
-import './game_room_item.css'
+import React from "react";
+import "./game_room_item.css";
 
 class GameRoomItem extends React.Component{
     render(){

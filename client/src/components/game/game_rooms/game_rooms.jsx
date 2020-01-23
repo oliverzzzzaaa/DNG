@@ -4,13 +4,6 @@ import "./game_rooms.css";
 import JoinModal from "./modal";
 
 class GameRooms extends React.Component {
-  // constructor(props){
-  //     super(props);
-  // }
-  // componentDidMount() {
-  //   console.log(this.props.rooms);
-  // }
-
   render() {
     // const rooms = Object.values(this.props.rooms);
     return (
