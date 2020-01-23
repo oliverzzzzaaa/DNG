@@ -1,6 +1,7 @@
 .game-rooms-div {
-    display: flex;
-    flex-direction: column;
+    display: block;
+    flex-direction: row;
+    width: 100%;
 }
 
 .game-rooms-container {

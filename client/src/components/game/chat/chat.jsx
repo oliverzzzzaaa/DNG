@@ -13,13 +13,19 @@ class Chat extends React.Component {
   }
 
   componentDidMount() {
-    if(document.getElementsByClassName("msg-list")[0].lastChild){
-      document.getElementsByClassName("msg-list")[0].lastChild.scrollIntoView({ behavior: "smooth" });
+    if (document.getElementsByClassName("msg-list")[0]) {
+      if (document.getElementsByClassName("msg-list")[0].lastChild) {
+        document
+          .getElementsByClassName("msg-list")[0]
+          .lastChild.scrollIntoView({ behavior: "smooth" });
+      }
     }
   }
   componentDidUpdate() {
-    if(document.getElementsByClassName("msg-list")[0].lastChild){
-      document.getElementsByClassName("msg-list")[0].lastChild.scrollIntoView({ behavior: "smooth" });
+    if (document.getElementsByClassName("msg-list")[0].lastChild) {
+      document
+        .getElementsByClassName("msg-list")[0]
+        .lastChild.scrollIntoView({ behavior: "smooth" });
     }
   }
 
@@ -33,9 +39,7 @@ class Chat extends React.Component {
                 // user icon is better to have its own component
               }
               <div className="user-icon">{msg.sender}:</div>
-              <span className="msg-body">
-                {msg.body}
-              </span>
+              <span className="msg-body">{msg.body}</span>
             </li>
           ))}
         </ul>
