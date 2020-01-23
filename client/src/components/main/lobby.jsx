@@ -14,7 +14,7 @@ class Lobby extends React.Component {
     const socket = MySocket.getSocket();
     socket.emit("WELCOME", {});
     socket.emit("login", { userId: this.props.currentUser.id });
-    socket.on("roomActivities", data => this.props.receiveRooms(data));
+    socket.on("updateRoom", data => this.props.receiveRooms(data));
   }
 
   render() {
@@ -56,9 +56,6 @@ class Lobby extends React.Component {
           <GameRooms />
           <Chat messages={tempmessages} />
         </div>
-        {/* <button>create</button>
-        <button>join</button> */}
-
         <div className="game-rooms">
           <h1>rooms</h1>
         </div>

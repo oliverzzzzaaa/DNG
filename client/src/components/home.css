@@ -12,39 +12,39 @@
     background-size: cover;
 }
 
-.home-logo{
-    margin: 0 auto;
-    align-self: center;
-    padding: 20px;
+.home-logo {
+  margin: 0 auto;
+  align-self: center;
+  padding: 20px;
 }
 
-.carousels img{
-    width: 300px;
-    height: auto;
-    padding: 20px;
+.carousels img {
+  width: 300px;
+  height: auto;
+  padding: 20px;
 }
 
 .home-button {
-    display: flex;
-    flex-direction: row;
-    padding: 20px;
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
 }
 
 .home-login {
-    width: 200px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 20px;
-    margin: 0 auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    background-color: red;
+  width: 200px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: red;
 }
 
 .home-login:hover {
-    cursor: pointer;
-    background-color: blue;
-    color: white;
+  cursor: pointer;
+  background-color: blue;
+  color: white;
 }
 
 .home-signup {
@@ -59,7 +59,7 @@
 }
 
 .home-signup:hover {
-    cursor: pointer;
-    background-color: blue;
-    color: white;
+  cursor: pointer;
+  background-color: blue;
+  color: white;
 }

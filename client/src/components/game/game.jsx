@@ -2,6 +2,7 @@ import React from "react";
 import CanvasContainer from "../game/canvas";
 import ScoreBoard from "../game/scoreboard/scoreboard";
 import Timer from "../game/timer/timer";
+import Chat from "./chat/chat";
 
 export default class Game extends React.Component {
   constructor(props) {
@@ -42,7 +43,9 @@ export default class Game extends React.Component {
             <CanvasContainer isDrawer={this.state.isDrawer} />
           </div>
         </div>
-        <div></div>
+        <div >
+          <Chat />
+        </div>
       </div>
     );
   }
