@@ -65,6 +65,7 @@
 .lobby .msg-container {
   height: 95%;
   padding: 20px;
+  padding-bottom: 0px;
 }
 
 .lobby .msg-list {
@@ -79,16 +80,19 @@ input {
 }
 
 .lobby .chat-input-div {
-  border: none;
+  border: solid black;
+  border-width: 3px 4px 3px 5px;
+  border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
   box-shadow: 9px 5px 5px 1px rgb(121, 163, 184);
+  background: white;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .lobby .chat-input{
   /* border-style: hidden; */
-  background: white;
-  border: solid black;
-  border-width: 3px 4px 3px 5px;
-  border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+  /* background: white; */
+  font-family: 'Handlee', cursive;
 }
 
 .lobby .user-icon, .lobby .msg-body {
