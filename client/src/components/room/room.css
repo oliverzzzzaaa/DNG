@@ -1,0 +1,28 @@
+.game-or-waiting-div {
+    width: 70%;
+    padding: 0, 5%, 0, 5%;
+    /* padding: 5px; */
+}
+ 
+.room-div {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    /* background-color: pink; */
+    background-color: lightblue;
+}
+
+.room-chat-div {
+    width: 25%;
+    /* padding: 5%; */
+    padding: 3% 5% 3% 0;
+}
+
+.waiting-leave {
+    margin-right: 5px;
+}
+
+body {
+    position: fixed;
+}

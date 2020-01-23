@@ -34,9 +34,6 @@ export default class Game extends React.Component {
             <CanvasContainer isDrawer={this.state.isDrawer} />
           </div>
         </div>
-        <div >
-          <Chat />
-        </div>
       </div>
     );
   }
