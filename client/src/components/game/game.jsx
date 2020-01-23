@@ -22,24 +22,15 @@ export default class Game extends React.Component {
             <Timer />
           </div>
           <div className="canvas-container">
-            <button
-              onClick={() =>
-                this.setState({
-                  isDrawer: true
-                })
-              }
-            >
-              drawer
-            </button>
-            <button
-              onClick={() =>
-                this.setState({
-                  isDrawer: false
-                })
-              }
-            >
-              viewer
-            </button>
+            <div className="canvas-button-container">
+              <button onClick={() => this.setState({ isDrawer: true })} className='canvas-button'>
+                drawer
+              </button>
+              <button
+                onClick={() => this.setState({ isDrawer: false })} className='canvas-button'>
+                viewer
+              </button>
+            </div>
             <CanvasContainer isDrawer={this.state.isDrawer} />
           </div>
         </div>
