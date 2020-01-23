@@ -30,12 +30,8 @@ class HomePage extends React.Component {
                     </Carousel>
                 </div>
                 <div className='home-button'>
-                    <button className='home-login'>
-                        Log In<Link to='/login' />
-                    </button>
-                    <button className='home-signup'>
-                        Sign Up<Link to='/signup'/>
-                    </button>
+                        <Link to='/login' className='home-login'> Log In </Link>
+                        <Link to='/signup' className='home-signup'>Sign Up</Link>
                 </div>
             </div>
         )
