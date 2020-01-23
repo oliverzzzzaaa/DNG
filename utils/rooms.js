@@ -19,7 +19,11 @@ module.exports = class Rooms {
   }
 
   getRooms() {
-    return this.rooms.values();
+    const rooms = {};
+    for (let [key, value] of this.rooms.entries()) {
+      rooms[key] = { id: key, players: value };
+    }
+    return rooms;
   }
 
   getRoomByPlayer(userId) {
