@@ -1,8 +1,12 @@
+.scoreboard-ul {
+    width: 15%;
+    display: block;
+    padding: 10px;
+}   
 .scoreboard-li {
     list-style: none;
     padding-top: 10px;
     padding-bottom: 10px;
-    display: flex;
     justify-content: space-between;
     font-size: 15px;
 }
@@ -16,9 +20,3 @@
     height: 100%;
     display: flex;
 }
-
-.scoreboard-ul {
-    width: 25%;
-    display: block;
-    padding: 5px;
-}   
