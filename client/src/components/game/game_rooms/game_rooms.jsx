@@ -26,19 +26,12 @@ class GameRooms extends React.Component {
         </div>
         <div className="game-rooms-buttons">
           <button onClick={() => this.props.createRoom(this.props.currentUser)}>
-            Create Room
+            Create
           </button>
           <JoinModal
             join={this.props.joinRoom}
             user={Object.assign({}, this.props.currentUser)}
           />
-          <button
-            onClick={() =>
-              this.props.joinRoom(Object.assign({}, this.props.currentUser))
-            }
-          >
-            Join Room
-          </button>
         </div>
       </div>
     );
