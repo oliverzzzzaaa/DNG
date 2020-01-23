@@ -5,7 +5,23 @@
     border-width: 5px 3px 3px 5px;
     border-radius:95% 4% 97% 5%/4% 94% 3% 95%;
     transform: rotate(2deg);
-    width: 30%;
-    height: 30%;
-    margin: 20px;
+    width: 40%;
+    height: 40%;
+    margin: 5%;
+    padding: 2%;
+    cursor: pointer;
+}
+.game-room-player-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 50%;
+}
+
+.game-room-player {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    object-fit: cover;
 }

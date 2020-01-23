@@ -46,34 +46,30 @@
   height: 800px;
 }
 
-.lobby h1 {
-  font-family: 'Indie Flower', cursive;
-  color: black;
-}
-
 .game-rooms-div {
   width: 68%;
   margin-right: 2%;
+  box-shadow: 9px 5px 5px 1px rgb(121, 163, 184);
 }
 
 .lobby .chat {
   width: 30%;
-  /* height: 600px; */
   border: solid black;
   border-width: 3px 4px 3px 5px;
   border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
   transform: rotate(2deg);
   border-bottom: none;
+  background: none;
 }
 
 .lobby .msg-container {
+  height: 95%;
   padding: 20px;
 }
 
 .lobby .msg-list {
   margin: 20px;
   padding: 0px;
-  /* padding: 20px; */
   height: 98%;
   margin: 0px;
 }
@@ -82,8 +78,14 @@ input {
   outline: none;
 }
 
+.lobby .chat-input-div {
+  border: none;
+  box-shadow: 9px 5px 5px 1px rgb(121, 163, 184);
+}
+
 .lobby .chat-input{
   /* border-style: hidden; */
+  background: white;
   border: solid black;
   border-width: 3px 4px 3px 5px;
   border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
@@ -91,4 +93,5 @@ input {
 
 .lobby .user-icon, .lobby .msg-body {
   font-family: 'Handlee', cursive;
+  width: fit-content;
 }

@@ -56,7 +56,7 @@ class Lobby extends React.Component {
     return (
       <div className="lobby">
         {/* <ClientComponentExample /> */}
-        <h1>Lobby</h1>
+        {/* <h1>Lobby</h1> */}
         {/* <div>{this.props.msg}</div> */}
         {/* <div className="lobby-page"> */}
           {/* <div className="test">All loggedin users</div> */}

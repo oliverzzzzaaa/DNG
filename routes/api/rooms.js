@@ -14,7 +14,7 @@ router.post(
       id: req.body.id,
       // image: req.body.image,
       image:
-        "https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#/media/File:HTTP_logo.svg",
+        "https://i7.pngguru.com/preview/178/419/741/computer-icons-avatar-login-user-avatar.jpg",
       name: req.body.name,
       ready: false
     };
@@ -37,8 +37,7 @@ router.post(
         id: req.body.id,
         //TODO: change image back
         // image: req.body.image,
-        image:
-          "https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#/media/File:HTTP_logo.svg",
+        image: "https://image.flaticon.com/icons/png/512/194/194938.png",
         name: req.body.name,
         ready: false
       })
