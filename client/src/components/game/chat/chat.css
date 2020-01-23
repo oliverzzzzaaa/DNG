@@ -1,15 +1,17 @@
 .chat {
   position: relative;
-  border: 5px solid black;
+  border: 4px solid pink;
   width: 100%;
   display: flex;
   flex-direction: column;
   height: 100%;
   border-radius: 10px;
+  background-color: rgb(252, 243, 243);
+  box-shadow: 9px 5px 5px 1px rgb(121, 163, 184);
 }
 
 .msg-container {
-  height: 95%;
+  height: 100%;
 }
 
 .msg-list {
@@ -37,7 +39,8 @@
   box-sizing: border-box;
   height: 6%;
   position: relative;
-
+  border-top: 2px solid pink;
+  background-color: inherit;
 }
 
 .chat-input {
@@ -47,6 +50,9 @@
   box-sizing: border-box;
   height: 100%;
   font-size: 16px;
+  background-color: inherit;
+  border: none;
+  /* no border until we decide color */
 }
 
 .user-icon {

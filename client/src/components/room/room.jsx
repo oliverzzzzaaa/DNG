@@ -32,5 +32,5 @@ export default class Room extends React.Component {
         </div>
       </div>
     )
-  }
+  } 
 }
