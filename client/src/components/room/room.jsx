@@ -86,18 +86,15 @@ export default class Room extends React.Component {
       { sender: "player1", body: "message haha" }
     ];
     return (
-      <div className="room-div">
+      <div className="room-div container-fluid">
         <div className="game-or-waiting-div">
-          {this.state.ready ? (
-            <Game />
-          ) : (
-            <div className="waiting-and-chat">
-              <Waiting messages={this.props.messages} users={users} />
+          {this.state.ready ? <Game /> : (
+            <div className="waiting-div"> 
+              <Waiting messages={this.props.messages} users={users}/>
               <div className="room-chat-div">
-                <Chat messages={tempmessages} />
+                <Chat messages={tempmessages}/>
               </div>
-            </div>
-          )}
+            </div>)}
         </div>
       </div>
     );
