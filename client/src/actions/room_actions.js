@@ -1,9 +1,14 @@
 import * as APIRoomUtil from '../util/room';
 // import MySocket from "../socket";
 
-// export const RECEIVE_ALL_ROOMS = "RECEIVE_ALL_ROOMS";
+export const RECEIVE_ALL_ROOMS = "RECEIVE_ALL_ROOMS";
 export const RECEIVE_NEW_ROOM = "RECEIVE_NEW_ROOM";
 export const RECEIVE_LEAVE_ROOM = "RECEIVE_LEAVE_ROOM";
+
+const receiveAllRooms = rooms => ({
+    type: RECEIVE_ALL_ROOMS,
+    rooms
+})
 
 const receiveNewRoom = data => ({
     type: RECEIVE_NEW_ROOM,
@@ -15,14 +20,26 @@ const receiveLeaveRoom = userId => ({
     userId
 })
 
+export const receiveRooms = rooms => dispatch => (
+    // console.log(dispatch(receiveAllRooms(rooms)))
+    dispatch(receiveAllRooms(rooms))
+) 
+
 export const createRoom = userData => dispatch => (
     APIRoomUtil.createRoom(userData)
-        .then(data => dispatch(receiveNewRoom(data)))
+        .then(data => {
+                        console.log(data);
+            dispatch(receiveNewRoom(data.data));
+            window.location.hash = `/room/${data.data.id}`;
+        })
 )
 
 export const joinRoom = payload =>  dispatch => (
     APIRoomUtil.joinRoom(payload)
-        .then(data => dispatch(receiveNewRoom(data)))
+        .then(data => {
+            dispatch(receiveNewRoom(data.data));
+            window.location.hash = `/room/${data.data.id}`;
+        })
 )
 
 export const leaveRoom = userId => dispatch => (
@@ -30,3 +47,7 @@ export const leaveRoom = userId => dispatch => (
         .then(() => dispatch(receiveLeaveRoom(userId)))
 )
 
+export const receiveRoom = room => dispatch => (
+    // console.log(room)
+    dispatch(receiveNewRoom(room))
+)
