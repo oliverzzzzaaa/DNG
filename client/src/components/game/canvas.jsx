@@ -109,9 +109,11 @@ export default class CanvasContainer extends React.Component {
 
   render() {
     return (
-      <div>
-        {`you are the ${this.props.isDrawer ? "drawer" : "viewer"}!`}
-        <canvas id="pictionary-canvas" />
+      <div className='canvas-page'>
+        <div className='canvas-main'>
+          {`you are the ${this.props.isDrawer ? "drawer" : "viewer"}!`}
+          <canvas className='canvas-area'/>
+        </div>
         <div className="color-picker-btn">
           {
             //TODO: this is just an example, needed change later
