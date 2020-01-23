@@ -49,6 +49,7 @@ export const login = user => dispatch =>
       APIUtil.setAuthToken(token);
       const decoded = jwt_decode(token);
       dispatch(receiveCurrentUser(decoded));
+      // dispatch(receiveCurrentUser(res.data));
       window.location.hash = "/lobby";
     })
     .catch(err => {
