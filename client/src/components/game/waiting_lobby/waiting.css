@@ -1,16 +1,24 @@
+@media (max-width: 767px) {
+
+}
+
+
 .waiting-room {
     display: flex;
-    height: 700px;
+    height: 67%;
+    width: 67%;
     flex-direction: column;
 }
 
 .waiting-room-profiles {
-    width: 85%;
-    height: 85%;
+    /* width: 85%;
+    height: 85%; */
+    width: 90vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     margin-top: 4%;
-    margin-left: 4%;    
+    margin-left: 10%;    
     /* padding-left: 8%; */
     /* padding-right: 8%; */
     /* border: 3px groove #0336FF; */
