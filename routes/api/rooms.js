@@ -10,7 +10,7 @@ router.post(
     const rooms = Rooms.getInstance();
     const roomId = rooms.create();
     //TODO: change image back
-    const room = {
+    const player = {
       id: req.body.id,
       // image: req.body.image,
       image:
@@ -18,11 +18,11 @@ router.post(
       name: req.body.name,
       ready: false
     };
-    rooms.join(roomId, room);
+    rooms.join(roomId, player);
     UserManagement.getConnectedSocket().forEach(socket => {
       socket.emit("updateRoom", { id: roomId, players: rooms.get(roomId) });
     });
-    res.json({ roomId });
+    res.json({ id: roomId, players: rooms.get(roomId) });
   }
 );
 
@@ -50,7 +50,8 @@ router.post(
         });
       });
       res.json({
-        roomId
+        id: roomId,
+        players: rooms.get(roomId)
       });
     } else {
       res.status(404).json({ msg: "Room does not exist!" });
@@ -67,7 +68,7 @@ router.post(
     const roomId = rooms.leave(userId);
     if (roomId) {
       UserManagement.getConnectedSocket().forEach(socket => {
-        socket.emit("roomActivities", {
+        socket.emit("leaveRoom", {
           id: roomId,
           players: rooms.get(roomId)
         });
