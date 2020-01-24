@@ -7,9 +7,6 @@ import Chat from "./chat/chat";
 export default class Game extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isDrawer: false
-    };
   }
   render() {
     return (
@@ -25,16 +22,21 @@ export default class Game extends React.Component {
                 viewer
               </button>
             </div> */}
-            <CanvasContainer isDrawer={this.state.isDrawer} />
+            {/* TODO: change to this.props.currentUserId === currentDrawer */}
+            <CanvasContainer
+              isDrawer={
+                this.props.currentUserId === this.props.room.players[0].id
+              }
+            />
           </div>
         </div>
-          <div className='scoreboard-chat'>
-            <div className="lobby-scoreboard-div">
-              <Timer />
-              <ScoreBoard />
-              <Chat />
-            </div>
+        <div className="scoreboard-chat">
+          <div className="lobby-scoreboard-div">
+            <Timer />
+            <ScoreBoard />
+            <Chat />
           </div>
+        </div>
       </div>
     );
   }

@@ -109,31 +109,44 @@ export default class CanvasContainer extends React.Component {
 
   render() {
     return (
-      <div className='canvas-page'>
-        <div className='canvas-main'>
+      <div className="canvas-page">
+        <div className="canvas-main">
           {`you are the ${this.props.isDrawer ? "drawer" : "viewer"}!`}
-          <canvas className='canvas-area'/>
+          <canvas className="canvas-area" id="pictionary-canvas" />
         </div>
         <div className="color-picker-btn">
           {
             //TODO: this is just an example, needed change later
           }
           <br style={{ color: "black" }} />
-          <button className='canvas-bottom-button'
+          <button
+            className="canvas-bottom-button"
             style={{ background: "black", color: "white" }}
             onClick={() => this.setColor("black")}
           >
             Black
           </button>
-          <button className='canvas-bottom-button'
+          <button
+            className="canvas-bottom-button"
             style={{ background: "red", color: "white" }}
             onClick={() => this.setColor("red")}
           >
             Red
           </button>
-          <button onClick={() => this.setStrokeWidth(2)} className='canvas-bottom-button' >thin</button>
-          <button onClick={() => this.setStrokeWidth(10)} className='canvas-bottom-button' >thick</button>
-          <button className='canvas-bottom-button'
+          <button
+            onClick={() => this.setStrokeWidth(2)}
+            className="canvas-bottom-button"
+          >
+            thin
+          </button>
+          <button
+            onClick={() => this.setStrokeWidth(10)}
+            className="canvas-bottom-button"
+          >
+            thick
+          </button>
+          <button
+            className="canvas-bottom-button"
             onClick={() => {
               this.clear();
               MySocket.getSocket().emit("clearDrawing");
