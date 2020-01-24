@@ -39,7 +39,12 @@ module.exports = class Rooms {
     while (this.rooms.has(roomId)) {
       roomId = Math.ceil(Math.random() * 10000000).toString();
     }
-    this.rooms.set(roomId, { id: roomId, onGame: false, players: [] });
+    this.rooms.set(roomId, {
+      id: roomId,
+      ready: false,
+      onGame: false,
+      players: []
+    });
     return roomId;
   }
 
@@ -68,6 +73,6 @@ module.exports = class Rooms {
       }
       return { id: roomId, isEmpty: empty };
     }
-    return false;
+    return null;
   }
 };
