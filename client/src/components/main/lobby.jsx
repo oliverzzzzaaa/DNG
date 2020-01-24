@@ -56,22 +56,23 @@ class Lobby extends React.Component {
     return (
       <div className="lobby">
         {/* <ClientComponentExample /> */}
-        <h1 onClick={this.props.click}>Lobby</h1>
-        <div>{this.props.msg}</div>
-        <div className="lobby-page">
-          <div>All loggedin users</div>
+        {/* <h1>Lobby</h1> */}
+        {/* <div>{this.props.msg}</div> */}
+        {/* <div className="lobby-page"> */}
+          {/* <div className="test">All loggedin users</div> */}
           <GameRooms
-            currentUser={this.props.currentUser}
-            rooms={this.props.rooms}
-            createRoom={this.props.createRoom}
-            joinRoom={this.props.joinRoom}
+          className="game-rooms"
+          currentUser={this.props.currentUser} 
+          rooms={this.props.rooms} 
+          createRoom={this.props.createRoom} 
+          joinRoom={this.props.joinRoom}
           />
           <Chat messages={tempmessages} />
-        </div>
-        <div className="game-rooms">
+        {/* </div> */}
+        {/* <div className="game-rooms">
           <h1>rooms</h1>
         </div>
-        <Chat messages={tempmessages} />
+        <Chat messages={tempmessages} /> */}
       </div>
     );
   }

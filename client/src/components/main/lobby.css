@@ -1,14 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
+@import url('https://fonts.googleapis.com/css?family=Handlee&display=swap');
+
 html, body {
   height: 100%;
   width: 100%;
   position: fixed;
 }
 
-.lobby h1 {
-  border: 1px solid blue;
-}
 
-.lobby-scoreboard-div {
+/* .lobby-scoreboard-div {
   width: 100%;
   padding: 5%;
 }
@@ -41,6 +41,66 @@ html, body {
   font-size: 20px;
 }
 
-.lobby-page {
+.lobby-scoreboard-div {
+  width: 15%;
+} */
+
+.lobby {
   display: flex;
+  padding: 5% 10% 10% 5%;
+  height: 800px;
+}
+
+.game-rooms-div {
+  width: 68%;
+  margin-right: 2%;
+  box-shadow: 9px 5px 5px 1px rgb(121, 163, 184);
+}
+
+.lobby .chat {
+  width: 30%;
+  border: solid black;
+  border-width: 3px 4px 3px 5px;
+  border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+  transform: rotate(2deg);
+  border-bottom: none;
+  background: none;
+}
+
+.lobby .msg-container {
+  height: 95%;
+  padding: 20px;
+  padding-bottom: 0px;
+}
+
+.lobby .msg-list {
+  margin: 20px;
+  padding: 0px;
+  height: 98%;
+  margin: 0px;
+}
+
+input {
+  outline: none;
+}
+
+.lobby .chat-input-div {
+  border: solid black;
+  border-width: 3px 4px 3px 5px;
+  border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+  box-shadow: 9px 5px 5px 1px rgb(121, 163, 184);
+  background: white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.lobby .chat-input{
+  /* border-style: hidden; */
+  /* background: white; */
+  font-family: 'Handlee', cursive;
+}
+
+.lobby .user-icon, .lobby .msg-body {
+  font-family: 'Handlee', cursive;
+  width: fit-content;
 }
