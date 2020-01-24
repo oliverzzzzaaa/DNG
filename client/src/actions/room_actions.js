@@ -4,6 +4,7 @@ import * as APIRoomUtil from "../util/room";
 export const RECEIVE_ALL_ROOMS = "RECEIVE_ALL_ROOMS";
 export const RECEIVE_NEW_ROOM = "RECEIVE_NEW_ROOM";
 export const RECEIVE_LEAVE_ROOM = "RECEIVE_LEAVE_ROOM";
+export const RECEIVE_REMOVE_ROOM = "RECEIVE_REMOVE_ROOM";
 
 const receiveAllRooms = rooms => ({
   type: RECEIVE_ALL_ROOMS,
@@ -19,6 +20,15 @@ const receiveLeaveRoom = userId => ({
   type: RECEIVE_LEAVE_ROOM,
   userId
 });
+
+const removeRoom = id => ({
+  type: RECEIVE_REMOVE_ROOM,
+  id
+});
+
+export const receiveRemoveRoom = id => dispatch => {
+  dispatch(removeRoom(id));
+};
 
 export const receiveRooms = rooms => dispatch =>
   dispatch(receiveAllRooms(rooms));
