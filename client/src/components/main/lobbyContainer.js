@@ -4,7 +4,8 @@ import {
   receiveRooms,
   receiveRoom,
   createRoom,
-  joinRoom
+  joinRoom,
+  receiveRemoveRoom
 } from "./../../actions/room_actions";
 // import receiveRooms
 
@@ -25,7 +26,8 @@ const mapDispatchToProps = dispatch => ({
   receiveRooms: rooms => dispatch(receiveRooms(rooms)),
   receiveRoom: room => dispatch(receiveRoom(room)),
   createRoom: userData => dispatch(createRoom(userData)),
-  joinRoom: payload => dispatch(joinRoom(payload))
+  joinRoom: payload => dispatch(joinRoom(payload)),
+  removeRoom: id => dispatch(receiveRemoveRoom(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Lobby);
