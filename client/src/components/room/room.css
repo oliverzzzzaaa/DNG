@@ -37,3 +37,55 @@
     display: flex;
     justify-content: space-between;
 }
+
+.waiting-div .chat {
+    border: solid black;
+    border-width: 3px 4px 3px 5px;
+    border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+    transform: rotate(2deg);
+    border-bottom: none;
+    background: none;
+  }
+  
+  .waiting-div .msg-container {
+    height: 95%;
+    padding: 20px;
+    padding-bottom: 0px;
+    width: 100%;
+  }
+  
+  .waiting-div .msg-list {
+    margin: 20px;
+    padding: 0px;
+    height: 98%;
+    margin: 0px;
+  }
+  
+  input {
+    outline: none;
+  }
+  
+  .waiting-div .chat-input-div {
+    border: solid black;
+    border-width: 3px 4px 3px 5px;
+    border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+    box-shadow: 9px 5px 5px 1px rgb(121, 163, 184);
+    background: white;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .waiting-div .chat-input{
+    /* border-style: hidden; */
+    /* background: white; */
+    font-family: 'Handlee', cursive;
+  }
+  
+  .waiting-div .user-icon, .waiting-div .msg-body {
+    font-family: 'Handlee', cursive;
+    width: fit-content;
+  }
+
+  .waiting-div .input {
+      background: inherit;
+  }

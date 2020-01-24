@@ -11,6 +11,26 @@ const port = process.env.PORT || 5000;
 const UserManagement = require("./utils/userManagement");
 const Rooms = require("./utils/rooms");
 
+
+// room = {
+//   id: 1,
+//   ready: false,
+//   onGame: false,
+//   players: [
+//     {id: 1, name: 'oliver', image: 'abc'}
+//   ],
+//   gameState: {
+//     players: [
+//       {id: 1,
+//       score: 0,
+//       name: 'oliver',
+//       guessed: false
+//         }
+//     ]
+//   }
+// }
+
+
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log("Connected to MongoDB successfully"))
@@ -64,9 +84,16 @@ io.on("connection", socket => {
   socket.on("startGame", () => {
     const room = getRoomBySocketId(socket.id);
     room.onGame = true;
-    UserManagement.getConnectedSocket().forEach(socket => {
-      socket.emit("updateRoom", room);
-    });
+
+    room.players.forEach( player => {
+      UserManagement.getSocket(player.id.toString()).emit("updateRoom", room);
+    })
+    // UserManagement.getConnectedSocket().forEach(socket => {
+    //   userId = UserManagement.getUserId(socket.id)
+    //   if (room.players.includes(userId)) {
+    //     socket.emit("updateRoom", room);
+    //   }
+    // });
   });
 
   socket.on("login", payload => {

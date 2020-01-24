@@ -92,10 +92,15 @@
 .session-errors-ul {
   display: flex;
   flex-direction: column;
-}3
+}
 
 .session-errors-li {
   color: red;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 20px;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
 }
