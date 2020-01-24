@@ -71,8 +71,14 @@ io.on("connection", socket => {
 
   socket.on("login", payload => {
     UserManagement.login(payload.userId, socket);
+    const room = getRoomBySocketId(socket.id);
+    let roomId = null;
+    if (room) {
+      roomId = room.id;
+    }
     socket.emit("loggedIn", {
-      rooms: Rooms.getInstance().getRooms()
+      rooms: Rooms.getInstance().getRooms(),
+      roomId: roomId
     });
   });
 
