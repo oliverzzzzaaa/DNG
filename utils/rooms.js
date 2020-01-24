@@ -53,10 +53,7 @@ module.exports = class Rooms {
     if (room) {
       if (
         room.players.every(player => {
-          console.log(typeof player.id);
-          console.log(typeof user.id);
-
-          return player.id !== user.id;
+          return !player.id.equals(user.id);
         })
       ) {
         room.players.push(user);
@@ -73,7 +70,13 @@ module.exports = class Rooms {
       const room = this.rooms.get(roomId);
       let empty = false;
       if (room.onGame) {
-        if (room.players.length < 2) {
+        room.players = room.players.map(user => {
+          if (user.id.toString() === userId) {
+            user.connected = false;
+          }
+          return user;
+        });
+        if (room.players.every(player => !player.connected)) {
           this.rooms.delete(roomId);
           empty = true;
         }
