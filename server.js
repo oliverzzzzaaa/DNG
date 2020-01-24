@@ -44,17 +44,20 @@ io.on("connection", socket => {
   });
 
   socket.on("ready", () => {
-    const playerId = UserManagement.getUserId(id);
+    const playerId = UserManagement.getUserId(socket.id);
     const room = getRoomBySocketId(socket.id);
-    room.map(player => {
-      if (player.id === playerId) {
+    room.players.map(player => {
+      if (player.id.toString() === playerId) {
         player.ready = true;
       }
       return player;
     });
-    room.forEach(user => {
+    if (room.players.every(player => player.ready)) {
+      room.ready = true;
+    }
+    room.players.forEach(user => {
       //TODO: change gameState to real game state
-      UserManagement.getSocket(user.id).emit("gameState", { gameState: room });
+      UserManagement.getSocket(user.id.toString()).emit("updateRoom", room);
     });
   });
 
@@ -71,6 +74,7 @@ io.on("connection", socket => {
     })
   );
 
+  //{tpye: "reday" , payload: data}
   socket.on("message", data => {});
 
   socket.on("SOMEACTIONTYPE", () =>
@@ -92,21 +96,22 @@ io.on("connection", socket => {
   });
 
   socket.on("disconnect", () => {
-    const playerId = UserManagement.getUserId(socket.id);
-    const roomId = Rooms.getInstance().leave(playerId);
-    if (Rooms.getInstance().get(roomId)) {
-      UserManagement.getConnectedSocket().forEach(socket => {
-        socket.emit("updateRoom", {
-          id: roomId,
-          players: Rooms.getInstance().get(roomId)
-        });
-      });
-    } else {
-      UserManagement.getConnectedSocket().forEach(socket => {
-        socket.emit("removeRoom", {
-          id: roomId
-        });
-      });
+    const playerId = UserManagement.getUserId(socket.id.toString());
+    if (playerId) {
+      const roomInfo = Rooms.getInstance().leave(playerId.toString());
+      if (roomInfo) {
+        if (!roomInfo.isEmpty) {
+          UserManagement.getConnectedSocket().forEach(socket => {
+            socket.emit("updateRoom", Rooms.getInstance().get(roomInfo.id));
+          });
+        } else {
+          UserManagement.getConnectedSocket().forEach(socket => {
+            socket.emit("removeRoom", {
+              id: roomInfo.id
+            });
+          });
+        }
+      }
     }
     UserManagement.logout(socket.id);
     console.log("Client disconnected");
