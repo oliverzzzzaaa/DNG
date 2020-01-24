@@ -90,7 +90,7 @@ router.post(
     if (roomInfo) {
       if (roomInfo.isEmpty) {
         UserManagement.getConnectedSocket().forEach(socket => {
-          socket.emit("leaveRoom", { id: roomInfo.id });
+          socket.emit("removeRoom", { id: roomInfo.id });
         });
       } else {
         UserManagement.getConnectedSocket().forEach(socket => {

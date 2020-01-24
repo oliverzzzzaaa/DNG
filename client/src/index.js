@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentTime = Date.now() / 1000;
 
     if (decodedUser.exp < currentTime) {
-      store.dispatch(logout());
+      logout();
       window.location.href = "/login";
     }
   } else {

@@ -68,6 +68,6 @@ module.exports = class Rooms {
       }
       return { id: roomId, isEmpty: empty };
     }
-    return false;
+    return null;
   }
 };
