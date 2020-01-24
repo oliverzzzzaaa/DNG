@@ -16,6 +16,11 @@ class Lobby extends React.Component {
       this.props.receiveRooms(payload.rooms);
     });
 
+    //TODO: add leaveRoom
+    socket.on("leaveRoom", payload => {
+      this.props.removeRoom(payload.id);
+    });
+
     socket.emit("WELCOME", {});
     socket.emit("login", { userId: this.props.currentUser.id });
 

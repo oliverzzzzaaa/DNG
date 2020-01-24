@@ -1,15 +1,12 @@
 import React from "react";
 import { Switch } from "react-router-dom";
 import LobbyContainer from "./main/lobbyContainer";
-import ClientComponentExample from "./clientComponentExample";
-import Client2 from "./clientExample2";
-import HomePage from './home';
-import Room from "./room/room";
+import HomePage from "./home";
+import RoomContainer from "./room/roomContainer";
 import SignupForm from "./session/signup_form_container";
 import LoginForm from "./session/login_form_container";
 import { AuthRoute, ProtectedRoute } from "../util/route";
-import "./reset.css"
-
+import "./reset.css";
 
 const App = () => (
   <div>
@@ -18,7 +15,7 @@ const App = () => (
       <AuthRoute exact path="/login" component={LoginForm} />
       <AuthRoute exact path="/signup" component={SignupForm} />
       <ProtectedRoute exact path="/lobby" component={LobbyContainer} />
-      <ProtectedRoute exact path="/room/:id" component={Room} />
+      <ProtectedRoute exact path="/room/:id" component={RoomContainer} />
     </Switch>
   </div>
 );

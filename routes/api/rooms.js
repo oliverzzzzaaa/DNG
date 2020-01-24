@@ -8,8 +8,6 @@ router.post(
   "/create",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    const rooms = Rooms.getInstance();
-    const roomId = rooms.create();
     //TODO: change image back
     User.findById(req.body.id).then(
       user => {
@@ -17,17 +15,20 @@ router.post(
           errors.create = "Please log in!";
           return res.status(404).json(errors);
         }
+        const rooms = Rooms.getInstance();
+        const roomId = rooms.create();
         const player = {
           id: user._id,
           // image: req.body.image,
-          image: user.image,
+          image: user.image
+            ? user.image
+            : "http://calligraphyalphabet.org/wp-content/uploads/roman-calligraphy-alphabet-o.jpg",
           name: user.username,
           ready: false
         };
 
         rooms.join(roomId, player);
         const room = rooms.get(roomId);
-        console.log(room);
         UserManagement.getConnectedSocket().forEach(socket => {
           socket.emit("updateRoom", room);
         });
@@ -56,7 +57,9 @@ router.post(
         const player = {
           id: user._id,
           // image: req.body.image,
-          image: user.image,
+          image: user.image
+            ? user.image
+            : "http://calligraphyalphabet.org/wp-content/uploads/roman-calligraphy-alphabet-o.jpg",
           name: user.username,
           ready: false
         };
@@ -83,14 +86,19 @@ router.post(
   (req, res) => {
     const userId = req.body.id;
     const rooms = Rooms.getInstance();
-    const roomId = rooms.leave(userId);
-    if (roomId) {
-      UserManagement.getConnectedSocket().forEach(socket => {
-        socket.emit("leaveRoom", {
-          id: roomId,
-          players: rooms.get(roomId)
+    const roomInfo = rooms.leave(userId);
+    if (roomInfo) {
+      if (roomInfo.isEmpty) {
+        UserManagement.getConnectedSocket().forEach(socket => {
+          socket.emit("leaveRoom", { id: roomInfo.id });
         });
-      });
+      } else {
+        UserManagement.getConnectedSocket().forEach(socket => {
+          console.log(roomInfo.id);
+          console.log(rooms.get(roomInfo.id));
+          socket.emit("updateRoom", rooms.get(roomInfo.id));
+        });
+      }
       res.json({ status: "success" });
     } else {
       res.status(404).json({ msg: "Room does not exist!" });

@@ -1,62 +1,18 @@
 import React from "react";
 import Game from "../game/game";
 import Chat from "../game/chat/chat";
-import Waiting from "../game/waiting_lobby/waiting";
+import WaitingContainer from "../game/waitingLobby/waitingContainer";
 import "./room.css";
 
 export default class Room extends React.Component {
   constructor(props) {
     super(props);
-    //have ready in state?
     this.state = {
-      ready: true
+      ready: false
     };
   }
 
   render() {
-    const users = [
-      {
-        id: 1,
-        username: "Yin",
-        email: "yin@email.com",
-        password: "password",
-        image:
-          "http://calligraphyalphabet.org/wp-content/uploads/roman-calligraphy-alphabet-y.jpg",
-        score: 5,
-        date: Date.now
-      },
-      {
-        id: 2,
-        username: "Oliver",
-        email: "oliver@email.com",
-        password: "password",
-        image:
-          "http://calligraphyalphabet.org/wp-content/uploads/roman-calligraphy-alphabet-o.jpg",
-        score: 1,
-        date: Date.now
-      },
-      {
-        id: 3,
-        username: "Johnson",
-        email: "johnson@email.com",
-        password: "password",
-        image:
-          "https://images-na.ssl-images-amazon.com/images/I/61LhNj3htIL._SL1500_.jpg",
-        score: 3,
-        date: Date.now
-      },
-      {
-        id: 4,
-        username: "Guanyao",
-        email: "guanyao@email.com",
-        password: "password",
-        image:
-          "https://ih0.redbubble.net/image.713977306.0352/fpp,small,lustre,wall_texture,product,750x1000.u8.jpg",
-        score: 0,
-        date: Date.now
-      }
-    ];
-
     let tempmessages = [
       { sender: "player1", body: "now can work on css" },
       { sender: "player2", body: "message two" },
@@ -88,19 +44,23 @@ export default class Room extends React.Component {
     return (
       <div className="room-div container-fluid">
         <div className="game-or-waiting-div">
-          {this.state.ready ? <Game /> : (
-            <div className="waiting-div"> 
-              <Waiting messages={this.props.messages} users={users}/>
+          {this.state.ready ? (
+            <Game />
+          ) : (
+            <div className="waiting-div">
+              <WaitingContainer
+                messages={this.props.messages}
+                users={this.props.room ? this.props.room.players : []}
+              />
               <div className="room-chat-div">
-                <Chat messages={tempmessages}/>
+                <Chat messages={tempmessages} />
               </div>
-            </div>)}
+            </div>
+          )}
         </div>
       </div>
     );
   }
 }
-
-
 
 //Photo by Amy Shamblen on Unsplash

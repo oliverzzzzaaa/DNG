@@ -43,15 +43,17 @@ class LoginForm extends React.Component {
     }
 
     showErrors() {
-        return (
-            <ul className="splash-errors">
-                {Object.keys(this.state.errors).map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {this.state.errors[error]}
+        if (this.props.errors.message) {
+            return (
+                <ul className="session-errors-ul">
+                    <li className="session-errors-li">
+                        {Object.values(this.props.errors.response.data)[0]}
                     </li>
-                ))}
-            </ul>
-        );
+                </ul>
+            );
+        } else {
+            return null;
+        };
     }
 
     render() {
@@ -85,10 +87,7 @@ class LoginForm extends React.Component {
                             />
                         </label>
                     </div>
-
-                    <div className="session-errors">
-                        {this.showErrors()}
-                    </div>
+                    {this.showErrors()}
                     <div className='session-button'>
                         <button className='submit-button' onClick={this.handleLogin()}>Sign In</button>
                         <button className='submit-button' onClick={this.handleDemo()}>Guest</button>

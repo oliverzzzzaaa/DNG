@@ -44,11 +44,10 @@ module.exports = class Rooms {
   }
 
   join(roomId, user) {
-    console.log(typeof this.rooms);
     const room = this.rooms.get(roomId);
     if (room) {
       room.players.push(user);
-      this.map.set(user.id, roomId);
+      this.map.set(user.id.toString(), roomId);
       return true;
     }
     return false;
@@ -57,18 +56,17 @@ module.exports = class Rooms {
   leave(userId) {
     const roomId = this.map.get(userId);
     if (roomId) {
-      // this.rooms.set(
-      //   roomId,
-      //   this.rooms.get(roomId).filter(user => user.id !== userId)
-      // );
-      this.rooms.players = this.rooms.players.filter(
-        user => user.id !== userId
-      );
+      const players = this.rooms
+        .get(roomId)
+        .players.filter(user => user.id.toString() !== userId);
+      this.rooms.get(roomId).players = players;
       this.map.delete(userId);
+      let empty = false;
       if (this.rooms.get(roomId).players.length < 1) {
         this.rooms.delete(roomId);
+        empty = true;
       }
-      return roomId;
+      return { id: roomId, isEmpty: empty };
     }
     return false;
   }
