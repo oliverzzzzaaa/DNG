@@ -1,6 +1,5 @@
 import React from "react";
 import "./waiting.css";
-import Chat from "../chat/chat";
 import ProfileIcon from "../../profile/profile_icon";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -28,7 +27,7 @@ class Waiting extends React.Component {
   }
 
   start() {
-    alert("start game");
+    MySocket.getSocket().emit("startGame");
   }
 
   renderPlayers() {
