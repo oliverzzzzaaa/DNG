@@ -1,8 +1,6 @@
 import React from "react";
 import { Switch } from "react-router-dom";
 import LobbyContainer from "./main/lobbyContainer";
-import ClientComponentExample from "./clientComponentExample";
-import Client2 from "./clientExample2";
 import HomePage from './home';
 import Room from "./room/room";
 import SignupForm from "./session/signup_form_container";

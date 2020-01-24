@@ -32,16 +32,18 @@ class SignupForm extends  React.Component {
     }
 
     showErrors() {
-        return (
-            <ul className="session-errors-ul">
-                {Object.keys(this.state.errors).map((error, i) => (
-                    <li key={`error-${i}`} className="session-errors-li">
-                        {this.state.errors[error]}
+        if (this.props.errors) {
+            return (
+                <ul className="session-errors-ul">
+                    <li className="session-errors-li">
+                        {Object.values(this.props.errors)[0]}
                     </li>
-                ))}
-            </ul>
-        );
-    }
+                </ul>
+            );
+        } else {
+            return null
+        }
+    };
 
     render() {
         return(
@@ -82,9 +84,7 @@ class SignupForm extends  React.Component {
                                 placeholder="Password"
                             />
                         </label>
-                        <div className="session-errors">
-                            {this.showErrors()}
-                        </div>
+                        {this.showErrors()}
                         <div className='session-button'>
                             <button className='submit-button' onClick={this.handleSignup()}>Sign Up</button>
                         </div>
