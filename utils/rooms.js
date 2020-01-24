@@ -51,7 +51,16 @@ module.exports = class Rooms {
   join(roomId, user) {
     const room = this.rooms.get(roomId);
     if (room) {
-      room.players.push(user);
+      if (
+        room.players.every(player => {
+          console.log(typeof player.id);
+          console.log(typeof user.id);
+
+          return player.id !== user.id;
+        })
+      ) {
+        room.players.push(user);
+      }
       this.map.set(user.id.toString(), roomId);
       return true;
     }
@@ -61,15 +70,23 @@ module.exports = class Rooms {
   leave(userId) {
     const roomId = this.map.get(userId);
     if (roomId) {
-      const players = this.rooms
-        .get(roomId)
-        .players.filter(user => user.id.toString() !== userId);
-      this.rooms.get(roomId).players = players;
-      this.map.delete(userId);
+      const room = this.rooms.get(roomId);
       let empty = false;
-      if (this.rooms.get(roomId).players.length < 1) {
-        this.rooms.delete(roomId);
-        empty = true;
+      if (room.onGame) {
+        if (room.players.length < 2) {
+          this.rooms.delete(roomId);
+          empty = true;
+        }
+      } else {
+        const players = room.players.filter(
+          user => user.id.toString() !== userId
+        );
+        room.players = players;
+        this.map.delete(userId);
+        if (room.players.length < 1) {
+          this.rooms.delete(roomId);
+          empty = true;
+        }
       }
       return { id: roomId, isEmpty: empty };
     }

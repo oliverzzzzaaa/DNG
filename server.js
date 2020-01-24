@@ -61,6 +61,14 @@ io.on("connection", socket => {
     });
   });
 
+  socket.on("startGame", () => {
+    const room = getRoomBySocketId(socket.id);
+    room.onGame = true;
+    UserManagement.getConnectedSocket().forEach(socket => {
+      socket.emit("updateRoom", room);
+    });
+  });
+
   socket.on("login", payload => {
     UserManagement.login(payload.userId, socket);
     socket.emit("loggedIn", {
