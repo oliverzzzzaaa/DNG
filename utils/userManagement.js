@@ -35,7 +35,7 @@ module.exports = class UserManagement {
     if (this.loggedInUsers === undefined) {
       this.setup();
     }
-    this.connectedSockets.get(socketId);
+    return this.connectedSockets.get(socketId);
   }
 
   static getConnectedSocket() {

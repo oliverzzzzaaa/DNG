@@ -2,7 +2,6 @@ import React from "react";
 import "./lobby.css";
 import Chat from "../game/chat/chat";
 import MySocket from "../../socket";
-import ClientComponentExample from "../clientComponentExample";
 import GameRooms from "../game/game_rooms/game_rooms";
 
 class Lobby extends React.Component {
@@ -16,8 +15,7 @@ class Lobby extends React.Component {
       this.props.receiveRooms(payload.rooms);
     });
 
-    //TODO: add leaveRoom
-    socket.on("leaveRoom", payload => {
+    socket.on("removeRoom", payload => {
       this.props.removeRoom(payload.id);
     });
 
@@ -64,15 +62,15 @@ class Lobby extends React.Component {
         {/* <h1>Lobby</h1> */}
         {/* <div>{this.props.msg}</div> */}
         {/* <div className="lobby-page"> */}
-          {/* <div className="test">All loggedin users</div> */}
-          <GameRooms
+        {/* <div className="test">All loggedin users</div> */}
+        <GameRooms
           className="game-rooms"
-          currentUser={this.props.currentUser} 
-          rooms={this.props.rooms} 
-          createRoom={this.props.createRoom} 
+          currentUser={this.props.currentUser}
+          rooms={this.props.rooms}
+          createRoom={this.props.createRoom}
           joinRoom={this.props.joinRoom}
-          />
-          <Chat messages={tempmessages} />
+        />
+        <Chat messages={tempmessages} />
         {/* </div> */}
         {/* <div className="game-rooms">
           <h1>rooms</h1>

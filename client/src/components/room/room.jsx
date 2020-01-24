@@ -50,6 +50,7 @@ export default class Room extends React.Component {
             <div className="waiting-div">
               <WaitingContainer
                 messages={this.props.messages}
+                room={this.props.room}
                 users={this.props.room ? this.props.room.players : []}
               />
               <div className="room-chat-div">
