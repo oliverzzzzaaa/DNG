@@ -1,5 +1,5 @@
 module.exports = class Rooms {
-  // rooms;
+  rooms; // instance of Rooms class
 
   constructor() {
     this.rooms = new Map();
@@ -11,7 +11,7 @@ module.exports = class Rooms {
     if (this.rooms) {
       return this.rooms;
     }
-    return new Rooms();
+    return new Rooms(); // only run at the first time
   }
 
   get(id) {
@@ -73,3 +73,5 @@ module.exports = class Rooms {
     return false;
   }
 };
+
+
