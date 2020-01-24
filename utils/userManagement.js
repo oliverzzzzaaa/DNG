@@ -1,7 +1,7 @@
 module.exports = class UserManagement {
   
-  loggedInUsers;
-  connectedSockets;
+  // loggedInUsers;
+  // connectedSockets;
 
   static setup() {
     this.loggedInUsers = new Map();
