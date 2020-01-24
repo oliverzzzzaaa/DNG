@@ -47,14 +47,17 @@ io.on("connection", socket => {
     const playerId = UserManagement.getUserId(socket.id);
     const room = getRoomBySocketId(socket.id);
     room.players.map(player => {
-      if (player.id === playerId) {
+      if (player.id.toString() === playerId) {
         player.ready = true;
       }
       return player;
     });
+    if (room.players.every(player => player.ready)) {
+      room.ready = true;
+    }
     room.players.forEach(user => {
       //TODO: change gameState to real game state
-      UserManagement.getSocket(user.id).emit("gameState", { gameState: room });
+      UserManagement.getSocket(user.id.toString()).emit("updateRoom", room);
     });
   });
 
@@ -99,10 +102,7 @@ io.on("connection", socket => {
       if (roomInfo) {
         if (!roomInfo.isEmpty) {
           UserManagement.getConnectedSocket().forEach(socket => {
-            socket.emit("updateRoom", {
-              id: roomInfo.id,
-              players: Rooms.getInstance().get(roomInfo.id)
-            });
+            socket.emit("updateRoom", Rooms.getInstance().get(roomInfo.id));
           });
         } else {
           UserManagement.getConnectedSocket().forEach(socket => {

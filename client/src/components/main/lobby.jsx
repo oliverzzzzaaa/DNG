@@ -2,7 +2,6 @@ import React from "react";
 import "./lobby.css";
 import Chat from "../game/chat/chat";
 import MySocket from "../../socket";
-import ClientComponentExample from "../clientComponentExample";
 import GameRooms from "../game/game_rooms/game_rooms";
 
 class Lobby extends React.Component {

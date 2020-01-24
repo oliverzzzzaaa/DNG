@@ -64,6 +64,7 @@ router.post(
           ready: false
         };
         if (rooms.join(roomId, player)) {
+          rooms.get(roomId).ready = false;
           UserManagement.getConnectedSocket().forEach(socket => {
             socket.emit("updateRoom", rooms.get(roomId));
           });
@@ -93,10 +94,12 @@ router.post(
           socket.emit("removeRoom", { id: roomInfo.id });
         });
       } else {
+        const room = rooms.get(roomInfo.id);
+        if (room.players.every(player => player.ready)) {
+          room.ready = true;
+        }
         UserManagement.getConnectedSocket().forEach(socket => {
-          console.log(roomInfo.id);
-          console.log(rooms.get(roomInfo.id));
-          socket.emit("updateRoom", rooms.get(roomInfo.id));
+          socket.emit("updateRoom", room);
         });
       }
       res.json({ status: "success" });
