@@ -32,7 +32,7 @@ class MidRound extends React.Component {
         let modalHeader = null;
         if (this.props.isDrawer) {
             modalHeader = (
-                <Button onClick={this.savePicture}></Button>
+                <span className="save-picture">Save Picture!</span>
             )
         } else {
             modalHeader = (

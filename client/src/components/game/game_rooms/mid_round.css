@@ -40,21 +40,12 @@
     transform: rotate(-2deg);
     font-size: 20px;
     padding: 5px;
+    font-family: 'Indie Flower', cursive;
 }
 
 .rate-this-picture {
     font-size: 30px;
     
-}
-.save-picture {
-    cursor: pointer;
-    border: solid black;
-    border-width: 1px 1px 3px 3px;
-    border-radius:4% 95% 6% 95%/95% 4% 92% 5%;
-    transform: rotate(-2deg);
-    font-size: 20px;
-    padding: 5px;
-    font-family: 'Indie Flower', cursive;
 }
 
 /* .mid-round-modal {
@@ -64,4 +55,3 @@
     -webkit-transform: scale(0.9);
   
   } */
-
