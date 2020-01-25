@@ -24,7 +24,8 @@ router.post(
             ? user.image
             : "http://calligraphyalphabet.org/wp-content/uploads/roman-calligraphy-alphabet-o.jpg",
           name: user.username,
-          ready: false
+          ready: false,
+          connected: true
         };
 
         rooms.join(roomId, player);
@@ -61,7 +62,8 @@ router.post(
             ? user.image
             : "http://calligraphyalphabet.org/wp-content/uploads/roman-calligraphy-alphabet-o.jpg",
           name: user.username,
-          ready: false
+          ready: false,
+          connected: true
         };
         if (rooms.join(roomId, player)) {
           rooms.get(roomId).ready = false;
