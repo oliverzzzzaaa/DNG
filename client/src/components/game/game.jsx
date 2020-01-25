@@ -3,11 +3,18 @@ import CanvasContainer from "../game/canvas";
 import ScoreBoard from "../game/scoreboard/scoreboard";
 import Timer from "../game/timer/timer";
 import Chat from "./chat/chat";
+import MySocket from "../../socket";
 
 export default class Game extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  componentDidMount() {
+    const socket = MySocket.getSocket();
+    socket.emit("roundReady")
+  }
+
   render() {
     return (
       <div className="game-components-div">
