@@ -2,12 +2,8 @@ import React from "react";
 import "./lobby.css";
 import Chat from "../games/chat/chat";
 import MySocket from "../../socket";
-<<<<<<< HEAD
 import GameRooms from "../game/game_rooms/game_rooms";
 import MidRound from '../game/game_rooms/mid_round'
-=======
-import GameRooms from "../games/game_rooms/game_rooms";
->>>>>>> 4d838a3f0a66f7f8554e948394f9bd5b7be9bf1e
 
 class Lobby extends React.Component {
   constructor(props) {

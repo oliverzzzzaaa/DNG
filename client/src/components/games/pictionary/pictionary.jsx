@@ -1,18 +1,10 @@
 import React from "react";
-<<<<<<< HEAD:client/src/components/game/game.jsx
 import CanvasContainer from "../game/canvas";
 import ScoreBoard from "../game/scoreboard/scoreboard";
 import Timer from "../game/timer/timer";
 import Chat from "./chat/chat";
 import MySocket from "../../socket";
 import MidRound from "../game/game_rooms/mid_round"
-=======
-import CanvasContainer from "./canvas";
-import ScoreBoard from "./scoreboard/scoreboard";
-import Timer from "./timer/timer";
-import Chat from "../chat/chat";
-import MySocket from "../../../socket";
->>>>>>> 4d838a3f0a66f7f8554e948394f9bd5b7be9bf1e:client/src/components/games/pictionary/pictionary.jsx
 
 export default class Pictionary extends React.Component {
   constructor(props) {
