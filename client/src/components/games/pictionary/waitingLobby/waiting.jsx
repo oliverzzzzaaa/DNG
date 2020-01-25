@@ -1,10 +1,10 @@
 import React from "react";
 import "./waiting.css";
-import ProfileIcon from "../../profile/profile_icon";
+import ProfileIcon from "../../../profile/profile_icon";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { leaveRoom } from "../../../util/room";
-import MySocket from "../../../socket";
+import { leaveRoom } from "../../../../util/room";
+import MySocket from "../../../../socket";
 
 class Waiting extends React.Component {
   constructor(props) {
@@ -29,7 +29,7 @@ class Waiting extends React.Component {
   start() {
     MySocket.getSocket().emit("startGame", {
       game: "Pictionary"
-    })
+    });
   }
 
   renderPlayers() {
