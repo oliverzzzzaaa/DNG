@@ -1,4 +1,4 @@
-let easyWords = require("./dictionary.js")
+let easyWords = require("../../dictionary.js")
 
 // players = [
 //     {
