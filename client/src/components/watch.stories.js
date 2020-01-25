@@ -1,8 +1,9 @@
 import React from "react";
 import Lobby from "./main/lobby";
-import Waiting from "./game/waiting_lobby/waiting";
-import GameRooms from "./game/game_rooms/game_rooms";
-import Room from './room/room'
+// import Waiting from "./game/waiting_lobby/waiting";
+// import GameRooms from "./game/game_rooms/game_rooms";
+// import Room from './room/room'
+import MidRound from './game/game_rooms/mid_round'
 // import Chat from "./chat/chat";
 // import CanvasContainer from "./game/canvas";
 // import ProfileIcon from "./profile/profile_icon";
@@ -86,16 +87,20 @@ const sendMsgInGame = msg => {
     //     <CanvasContainer isDrawer={true} />
     //   </div>
     // );
-export const WaitingExample = () => (
-      <Waiting messages={messages} action={sendMsgInGame} users={users} />
-      )
+// export const WaitingExample = () => (
+//       <Waiting messages={messages} action={sendMsgInGame} users={users} />
+//       )
 
-export const Loby = () => <Lobby msg={"I'm from parent"} click={click} />;
+// export const Loby = () => <Lobby msg={"I'm from parent"} click={click} />;
 
-export const GameRoomsExample = () => (
-  <GameRooms />
-)
+// export const GameRoomsExample = () => (
+//   <GameRooms />
+// )
 
-export const RoomComp = () => (
-  <Room messages={messages} users={users}/>
+// export const RoomComp = () => (
+//   <Room messages={messages} users={users}/>
+// )
+
+export const MidRoundComp = () => (
+  <MidRound isDrawer={false}/>
 )

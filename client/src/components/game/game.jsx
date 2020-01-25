@@ -4,6 +4,7 @@ import ScoreBoard from "../game/scoreboard/scoreboard";
 import Timer from "../game/timer/timer";
 import Chat from "./chat/chat";
 import MySocket from "../../socket";
+import MidRound from "../game/game_rooms/mid_round"
 
 export default class Game extends React.Component {
   constructor(props) {
@@ -44,6 +45,7 @@ export default class Game extends React.Component {
             <Chat />
           </div>
         </div>
+        <MidRound isDrawer={this.props.currentUserId === this.props.room.players[0].id}/>
       </div>
     );
   }

@@ -3,6 +3,7 @@ import "./lobby.css";
 import Chat from "../game/chat/chat";
 import MySocket from "../../socket";
 import GameRooms from "../game/game_rooms/game_rooms";
+import MidRound from '../game/game_rooms/mid_round'
 
 class Lobby extends React.Component {
   constructor(props) {
@@ -81,6 +82,7 @@ class Lobby extends React.Component {
           <h1>rooms</h1>
         </div>
         <Chat messages={tempmessages} /> */}
+        <MidRound isDrawer={false}/>
       </div>
     );
   }
