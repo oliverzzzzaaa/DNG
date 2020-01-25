@@ -27,7 +27,9 @@ class Waiting extends React.Component {
   }
 
   start() {
-    MySocket.getSocket().emit("startGame");
+    MySocket.getSocket().emit("startGame", {
+      game: "Pictionary"
+    })
   }
 
   renderPlayers() {
