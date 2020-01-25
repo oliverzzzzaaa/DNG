@@ -1,18 +1,37 @@
 import React from "react";
-import CanvasContainer from "../game/canvas";
-import ScoreBoard from "../game/scoreboard/scoreboard";
-import Timer from "../game/timer/timer";
-import Chat from "./chat/chat";
-import MySocket from "../../socket";
+import CanvasContainer from "./canvas";
+import ScoreBoard from "./scoreboard/scoreboard";
+import Timer from "./timer/timer";
+import Chat from "../chat/chat";
+import MySocket from "../../../socket";
 
-export default class Game extends React.Component {
+export default class Pictionary extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {};
   }
 
   componentDidMount() {
-    const socket = MySocket.getSocket();
-    socket.emit("roundReady")
+    MySocket.getSocket().on("gameAction", payload => {
+      console.log("gameAction");
+      switch (payload.type) {
+        case "updateGameState":
+          this.setState(payload.state);
+          break;
+        default:
+          break;
+      }
+    });
+
+    MySocket.getSocket().emit("gameAction", {
+      game: "Pictionary",
+      type: "roundReady"
+    });
+  }
+
+  componentDidUpdate() {
+    console.log("(((((((((((((1)))))))))))))");
+    console.log(this.state);
   }
 
   render() {

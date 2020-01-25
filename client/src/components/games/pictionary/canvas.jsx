@@ -1,7 +1,7 @@
 import React from "react";
 import paper from "paper";
 import "./canvas.css";
-import MySocket from "../../socket";
+import MySocket from "../../../socket";
 
 export default class CanvasContainer extends React.Component {
   constructor(props) {

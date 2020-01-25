@@ -1,7 +1,7 @@
 import React from "react";
-import Game from "../game/game";
-import Chat from "../game/chat/chat";
-import WaitingContainer from "../game/waitingLobby/waitingContainer";
+import Pictionary from "../games/pictionary/pictionary";
+import Chat from "../games/chat/chat";
+import WaitingContainer from "../games/pictionary/waitingLobby/waitingContainer";
 import "./room.css";
 
 export default class Room extends React.Component {
@@ -43,7 +43,7 @@ export default class Room extends React.Component {
       return (
         <div className="game-or-waiting-div">
           {this.props.room.onGame ? (
-            <Game
+            <Pictionary
               currentUserId={this.props.currentUser.id}
               room={this.props.room}
             />

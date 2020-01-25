@@ -10,9 +10,7 @@ const passport = require("passport");
 const port = process.env.PORT || 5000;
 const UserManagement = require("./utils/userManagement");
 const Rooms = require("./utils/rooms");
-const Pictionary = require("./game");
-const GameManagement = require("./utils/gameManagement")
-
+const handleGameAction = require("./games/gameHandler");
 
 // room = {
 //   id: 1,
@@ -31,7 +29,6 @@ const GameManagement = require("./utils/gameManagement")
 //     ]
 //   }
 // }
-
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -57,17 +54,16 @@ io.on("connection", socket => {
   loggedInUsers.push(socket);
   console.log("New client connected");
 
-  socket.on("start", (data) => {
-    let game;
-    const room = getRoomBySocketId(socket.id);
-    if (data.game === "Pictionary") {
-      game = new Pictionary()
-    }
-    room.forEach(user => {
-      //TODO: change gameState to real game state
-      UserManagement.getSocket(user.id).emit("start", { gameState: room });
-    });
-  });
+  // socket.on("start", data => {
+  //   let game;
+  //   const room = getRoomBySocketId(socket.id);
+  //   if (data.game === "Pictionary") {
+  //     game = new Pictionary();
+  //   }
+  //   room.forEach(user => {
+  //     UserManagement.getSocket(user.id).emit("start", { gameState: room });
+  //   });
+  // });
 
   socket.on("ready", () => {
     const playerId = UserManagement.getUserId(socket.id);
@@ -82,70 +78,29 @@ io.on("connection", socket => {
       room.ready = true;
     }
     room.players.forEach(user => {
-      //TODO: change gameState to real game state
       UserManagement.getSocket(user.id.toString()).emit("updateRoom", room);
     });
   });
 
-  socket.on("startGame", (data) => {
+  // socket.on("startGame", data => {
+  //   const room = getRoomBySocketId(socket.id);
+  //   room.onGame = true;
+  //   if (data.game === "Pictionary") {
+  //     let game = new Pictionary(room.players);
+  //     GameManagement.set(room.id, game);
+  //     socket.emit("startReady");
+  //   }
+  // });
+
+  socket.on("startGame", data => {
     const room = getRoomBySocketId(socket.id);
     room.onGame = true;
-    if (data.game === "Pictionary") {
-      let game = new Pictionary(room.players)
-      GameManagement.set(room.id, game);
-      socket.emit("startReady")
-    }
+    handleGameAction(socket, { game: data.game, type: "create" });
   });
 
-  socket.on("roundReady", data => {
-    const room = getRoomBySocketId(socket.id)
-    const userId = UserManagement.getUserId(socket.id.toString())
-    const game = GameManagement.get(room.id)
-    game.players[userId].ready = true
-    //if user is connnected and ready
-    if (Object.keys(game.players).every( player => {
-      player.ready === true && room.players[player.id].connected
-    }
-      )) {
-      startRound(room, game)
-    }
-  })
-
-  let startRound = (room, game) => {
-    game.startRound()
-    //create new word and set currDrawer
-    updateRoom(room, game)
-    let timeoutId = setTimeout(() => endRound(room, game), game.time * 1000)
-
-  }
-
-  let endRound = (room, game) => {
-    game.currDrawer = null;
-    room.gameState = game.state()
-    room.players.forEach( player => {
-      UserManagement.getSocket(player.id.toString()).emit("updateRoom", room)
-    })
-  }
-
-  const updateRoom = (room, game)  => {
-    room.gameState = game.state()
-    room.players.forEach( player => {
-      UserManagement.getSocket(player.id.toString()).emit("updateRoom", room);
-    })
-  }
-
-  socket.on("roundReady", () => {
-    
-  })
-
-  // socket.on("gameAction", (data) => {
-  //   switch (data.type) {
-  //     case value:
-    
-  //     default:
-
-  //   }
-  // })
+  socket.on("gameAction", payload => {
+    handleGameAction(socket, payload);
+  });
 
   socket.on("login", payload => {
     UserManagement.login(payload.userId, socket);
