@@ -2,7 +2,8 @@ import React from "react";
 import "./lobby.css";
 import Chat from "../games/chat/chat";
 import MySocket from "../../socket";
-import GameRooms from "../games/game_rooms/game_rooms";
+import GameRooms from "../games/game_rooms/game_rooms"
+// import MidRound from '../game/game_rooms/mid_round'
 
 class Lobby extends React.Component {
   constructor(props) {
@@ -81,6 +82,7 @@ class Lobby extends React.Component {
           <h1>rooms</h1>
         </div>
         <Chat messages={tempmessages} /> */}
+        
       </div>
     );
   }
