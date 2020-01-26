@@ -1,15 +1,24 @@
 const Pictionary = require("./pictionary");
 
 function handleRoundReady(socket, lobby, params) {
-  // const playerId = UserManagement.getUserId(socket.id);
-  // const room = Rooms.getRoomByPlayer(playerId);
-  // const game = GameManagement.get(room.id);
-  // room.players.forEach(user => {
-  //   UserManagement.getSocket(user.id.toString()).emit("gameAction", {
-  //     type: "updateGameState",
-  //     state: game.state()
-  //   });
-  // });
+  const room = lobby.getRoomBySocket(socket);
+  let game;
+  if (room) {
+    game = room.game;
+  }
+  if (game && !game.onRound) {
+    game.readyPlayer(lobby.getUserId(socket));
+    if (game.isReady()) {
+      game.startRound();
+    }
+    lobby.emitRoomMessage(room.id, {
+      type: "updateGameState",
+      body: game.getState()
+    });
+    setTimeout(() => {
+      game.endRound();
+    }, 60000);
+  }
 }
 
 function handleCreate(socket, lobby) {
@@ -36,8 +45,25 @@ function handleGetState(socket, lobby) {
   }
 }
 
+function handlePathData(socket, lobby, data) {
+  const roomId = lobby.getRoomIdBySocket(socket);
+  lobby.emitRoomMessage(roomId, {
+    type: "pathData",
+    body: data
+  });
+}
+
+function handleClear(socket, lobby) {
+  const roomId = lobby.getRoomIdBySocket(socket);
+  lobby.emitRoomMessage(roomId, {
+    type: "clearDrawing"
+  });
+}
+
 module.exports = {
   roundReady: handleRoundReady,
   create: handleCreate,
-  getState: handleGetState
+  getState: handleGetState,
+  pathData: handlePathData,
+  clearDrawing: handleClear
 };
