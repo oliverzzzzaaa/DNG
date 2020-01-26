@@ -36,6 +36,14 @@ module.exports = class Pictionary {
     this.players[playerId].ready = true;
   }
 
+  guess(playerId, word) {
+    if (this.targetWord === word) {
+      this.players[playerId].guessed = true;
+      return true;
+    }
+    return false;
+  }
+
   isReady() {
     const players = Object.values(this.players);
     return players.every(player => player.ready);
@@ -43,6 +51,8 @@ module.exports = class Pictionary {
 
   startRound() {
     this.generateWord();
+    const players = Object.values(this.players);
+    players.forEach(player => (player.guessed = false));
     this.roundStartTime = Date.now();
     this.onRound = true;
   }

@@ -17,6 +17,10 @@ function handleRoundReady(socket, lobby, params) {
     });
     setTimeout(() => {
       game.endRound();
+      lobby.emitRoomMessage(room.id, {
+        type: "updateGameState",
+        body: game.getState()
+      });
     }, 60000);
   }
 }
@@ -60,10 +64,15 @@ function handleClear(socket, lobby) {
   });
 }
 
+function handleGuess(socket, lobby, payload) {
+  console.log(payload);
+}
+
 module.exports = {
   roundReady: handleRoundReady,
   create: handleCreate,
   getState: handleGetState,
   pathData: handlePathData,
-  clearDrawing: handleClear
+  clearDrawing: handleClear,
+  guess: handleGuess
 };
