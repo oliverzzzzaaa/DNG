@@ -13,23 +13,20 @@ export default class Pictionary extends React.Component {
   }
 
   componentDidMount() {
-    MySocket.getSocket().off("gameAction");
-    MySocket.getSocket().on("gameAction", payload => {
-      switch (payload.type) {
-        case "updateGameState":
-          this.setState(payload.state);
-          break;
-        default:
-          break;
-      }
+    const socket = MySocket.getSocket();
+    socket.off("updateGameState");
+
+    socket.on("updateGameState", state => {
+      console.log(state);
+      this.setState(state);
     });
 
-    MySocket.getSocket().emit("gameAction", {
+    socket.emit("gameAction", {
       game: "Pictionary",
       type: "roundReady"
     });
 
-    MySocket.getSocket().emit("gameAction", {
+    socket.emit("gameAction", {
       game: "Pictionary",
       type: "getState"
     });
@@ -57,6 +54,7 @@ export default class Pictionary extends React.Component {
             {/* TODO: change to this.props.currentUserId === currentDrawer */}
             <CanvasContainer
               isDrawer={
+                this.state.onRound &&
                 this.props.currentUserId === this.props.room.players[0].id
               }
             />

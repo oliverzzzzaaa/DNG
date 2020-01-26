@@ -16,6 +16,10 @@ class Lobby {
     this.connection.disconnect(socket);
   }
 
+  getUserId(socket) {
+    return this.connection.getUserId(socket);
+  }
+
   getRooms() {
     return Object.fromEntries(this.rooms);
   }

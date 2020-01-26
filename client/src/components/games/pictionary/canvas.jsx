@@ -26,20 +26,21 @@ export default class CanvasContainer extends React.Component {
     tool.onMouseDown = e => this.onMouseDown(e);
     tool.onMouseDrag = e => this.onMouseDrag(e);
     tool.onMouseUp = e => this.onMouseUp(e);
-    MySocket.getSocket().on("pathData", data => {
-      console.log("receiving drawing from others");
+
+    const socket = MySocket.getSocket();
+    socket.off("gameAction");
+    socket.on("pathData", data => {
       if (this.props.isDrawer !== true) {
         const path = new paper.Path();
         path.strokeColor = data.color;
         path.strokeWidth = data.width;
         path.strokeCap = "round";
         path.pathData = data.pathData;
-
         paper.view.draw();
       }
     });
-    MySocket.getSocket().on("clearDrawing", data => {
-      console.log("receiving drawing from others");
+
+    socket.on("clearDrawing", data => {
       if (this.props.isDrawer !== true) {
         this.clear();
       }
@@ -100,10 +101,14 @@ export default class CanvasContainer extends React.Component {
   }
 
   uploadDrawing() {
-    MySocket.getSocket().emit("pathData", {
-      pathData: this.path.pathData,
-      color: this.state.strokeColor,
-      width: this.state.strokeWidth
+    MySocket.getSocket().emit("gameAction", {
+      game: "Pictionary",
+      type: "pathData",
+      params: {
+        pathData: this.path.pathData,
+        color: this.state.strokeColor,
+        width: this.state.strokeWidth
+      }
     });
   }
 

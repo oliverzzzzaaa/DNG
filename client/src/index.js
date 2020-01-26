@@ -17,11 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     store = configureStore(preloadedState);
 
-    // const currentTime = Date.now() / 1000;
-    // if (decodedUser.exp < currentTime) {
-    //   logout();
-    //   window.location.href = "/login";
-    // }
+    const currentTime = Date.now() / 1000;
+    if (decodedUser.exp < currentTime) {
+      logout();
+      window.location.hash = "/";
+    }
   } else {
     store = configureStore({});
   }

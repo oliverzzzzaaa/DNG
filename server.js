@@ -57,16 +57,6 @@ io.on("connection", socket => {
     handleGameAction(socket, lobby, payload);
   });
 
-  socket.on("pathData", data => {
-    const roomId = lobby.getRoomIdBySocket(socket);
-    lobby.emitRoomMessage(roomId, { type: "pathData", body: data });
-  });
-
-  socket.on("clearDrawing", () => {
-    const roomId = lobby.getRoomIdBySocket(socket);
-    lobby.emitRoomMessage(roomId, { type: "clearDrawing" });
-  });
-
   socket.on("disconnect", () => {
     const roomInfo = lobby.disconnectFromRoom(socket);
     if (roomInfo) {
