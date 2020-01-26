@@ -5,8 +5,10 @@ export default class MySocket {
     if (MySocket.socket === undefined) {
       const endpoint = "http://localhost:5000";
       MySocket.socket = openSocket(endpoint);
+      if (userId) {
+        MySocket.socket.emit("login", { userId: userId });
+      }
     }
-    // MySocket.socket.emit("login", { userId:1 });
     return MySocket.socket;
   };
 }

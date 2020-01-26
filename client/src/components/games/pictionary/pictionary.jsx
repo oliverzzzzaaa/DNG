@@ -12,8 +12,8 @@ export default class Pictionary extends React.Component {
   }
 
   componentDidMount() {
+    MySocket.getSocket().off("gameAction");
     MySocket.getSocket().on("gameAction", payload => {
-      console.log("gameAction");
       switch (payload.type) {
         case "updateGameState":
           this.setState(payload.state);
@@ -26,6 +26,11 @@ export default class Pictionary extends React.Component {
     MySocket.getSocket().emit("gameAction", {
       game: "Pictionary",
       type: "roundReady"
+    });
+
+    MySocket.getSocket().emit("gameAction", {
+      game: "Pictionary",
+      type: "getState"
     });
   }
 
