@@ -1,12 +1,9 @@
 import React from "react";
-// import CanvasContainer from "../game/canvas";
-// import CanvasContainer from '../../game/canvas'
 import CanvasContainer from './canvas'
 import ScoreBoard from "./scoreboard/scoreboard";
 import Timer from "./timer/timer";
 import Chat from "../chat/chat";
 import MySocket from '../../../socket'
-// import MySocket from "../../socket";
 import MidRound from "../game_rooms/mid_round"
 
 export default class Pictionary extends React.Component {
