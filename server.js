@@ -8,27 +8,8 @@ const rooms = require("./routes/api/rooms");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const port = process.env.PORT || 5000;
-const UserManagement = require("./utils/userManagement");
-const Rooms = require("./utils/rooms");
 const handleGameAction = require("./games/gameHandler");
-
-// room = {
-//   id: 1,
-//   ready: false,
-//   onGame: false,
-//   players: [
-//     {id: 1, name: 'oliver', image: 'abc'}
-//   ],
-//   gameState: {
-//     players: [
-//       {id: 1,
-//       score: 0,
-//       name: 'oliver',
-//       guessed: false
-//         }
-//     ]
-//   }
-// }
+const lobby = require("./utils/lobby");
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -42,125 +23,60 @@ app.use(bodyParser.json());
 app.use("/", users);
 app.use("/rooms", rooms);
 
-const loggedInUsers = [];
-
-function getRoomBySocketId(id) {
-  const playerId = UserManagement.getUserId(id);
-  const rooms = Rooms.getInstance();
-  return rooms.getRoomByPlayer(playerId);
-}
-
 io.on("connection", socket => {
-  loggedInUsers.push(socket);
-  console.log("New client connected");
-
-  // socket.on("start", data => {
-  //   let game;
-  //   const room = getRoomBySocketId(socket.id);
-  //   if (data.game === "Pictionary") {
-  //     game = new Pictionary();
-  //   }
-  //   room.forEach(user => {
-  //     UserManagement.getSocket(user.id).emit("start", { gameState: room });
-  //   });
-  // });
-
-  socket.on("ready", () => {
-    const playerId = UserManagement.getUserId(socket.id);
-    const room = getRoomBySocketId(socket.id);
-    room.players.map(player => {
-      if (player.id.toString() === playerId) {
-        player.ready = true;
-      }
-      return player;
-    });
-    if (room.players.every(player => player.ready)) {
-      room.ready = true;
-    }
-    room.players.forEach(user => {
-      UserManagement.getSocket(user.id.toString()).emit("updateRoom", room);
-    });
-  });
-
-  // socket.on("startGame", data => {
-  //   const room = getRoomBySocketId(socket.id);
-  //   room.onGame = true;
-  //   if (data.game === "Pictionary") {
-  //     let game = new Pictionary(room.players);
-  //     GameManagement.set(room.id, game);
-  //     socket.emit("startReady");
-  //   }
-  // });
-
-  socket.on("startGame", data => {
-    const room = getRoomBySocketId(socket.id);
-    room.onGame = true;
-    handleGameAction(socket, { game: data.game, type: "create" });
-  });
-
-  socket.on("gameAction", payload => {
-    handleGameAction(socket, payload);
-  });
-
+  console.log("new client connected");
   socket.on("login", payload => {
-    UserManagement.login(payload.userId, socket);
-    const room = getRoomBySocketId(socket.id);
-    let roomId = null;
-    if (room) {
-      roomId = room.id;
-    }
-    socket.emit("loggedIn", {
-      rooms: Rooms.getInstance().getRooms(),
+    lobby.login(payload.userId, socket);
+  });
+
+  socket.on("getRooms", () => {
+    const roomId = lobby.getRoomIdBySocket(socket);
+    socket.emit("lobby", {
+      rooms: lobby.getRooms(),
       roomId: roomId
     });
   });
 
-  socket.on("WELCOME", () =>
-    socket.emit("WELCOME", {
-      msg: "Welcome, you are connecting to server now."
-    })
-  );
+  socket.on("ready", () => {
+    const room = lobby.getRoomBySocket(socket);
+    lobby.setUserReadyBySocket(socket);
+    lobby.emitRoomMessage(room.id, {
+      type: "updateRoom",
+      body: room.getInfo()
+    });
+  });
 
-  //{tpye: "reday" , payload: data}
-  socket.on("message", data => {});
+  socket.on("startGame", data => {
+    const room = lobby.getRoomBySocket(socket);
+    room.onGame = true;
+    handleGameAction(socket, lobby, { game: data.game, type: "create" });
+    lobby.emit("updateRoom", room.getInfo());
+  });
 
-  socket.on("SOMEACTIONTYPE", () =>
-    socket.emit("SOMERESPONSETYPE", {
-      msg: "If you getting this, that means server received your msg"
-    })
-  );
+  socket.on("gameAction", payload => {
+    handleGameAction(socket, lobby, payload);
+  });
 
   socket.on("pathData", data => {
-    loggedInUsers.forEach(sk => {
-      sk.emit("pathData", data);
-    });
+    const roomId = lobby.getRoomIdBySocket(socket);
+    lobby.emitRoomMessage(roomId, { type: "pathData", body: data });
   });
 
   socket.on("clearDrawing", () => {
-    loggedInUsers.forEach(sk => {
-      sk.emit("clearDrawing");
-    });
+    const roomId = lobby.getRoomIdBySocket(socket);
+    lobby.emitRoomMessage(roomId, { type: "clearDrawing" });
   });
 
   socket.on("disconnect", () => {
-    const playerId = UserManagement.getUserId(socket.id.toString());
-    if (playerId) {
-      const roomInfo = Rooms.getInstance().leave(playerId.toString());
-      if (roomInfo) {
-        if (!roomInfo.isEmpty) {
-          UserManagement.getConnectedSocket().forEach(socket => {
-            socket.emit("updateRoom", Rooms.getInstance().get(roomInfo.id));
-          });
-        } else {
-          UserManagement.getConnectedSocket().forEach(socket => {
-            socket.emit("removeRoom", {
-              id: roomInfo.id
-            });
-          });
-        }
+    const roomInfo = lobby.disconnectFromRoom(socket);
+    if (roomInfo) {
+      if (!roomInfo.isEmpty) {
+        lobby.emit("updateRoom", lobby.getRoom(roomInfo.id).getInfo());
+      } else {
+        lobby.emit("removeRoom", { id: roomInfo.id });
       }
     }
-    UserManagement.logout(socket.id);
+    lobby.logout(socket);
     console.log("Client disconnected");
   });
 });
