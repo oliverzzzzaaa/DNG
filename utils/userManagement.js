@@ -1,47 +1,38 @@
-module.exports = class UserManagement {
-  loggedInUsers;
-  connectedSockets;
-
-  static setup() {
+module.exports = class Connection {
+  constructor() {
     this.loggedInUsers = new Map();
     this.connectedSockets = new Map();
   }
 
-  static login(userId, socket) {
-    if (this.loggedInUsers === undefined) {
-      this.setup();
+  connect(userId, socket) {
+    if (typeof userId !== "string") {
+      userId = userId.toString();
     }
     this.loggedInUsers.set(userId, socket);
-    this.connectedSockets.set(socket.id, userId);
+
+    const socketId = socket.id.toString();
+    this.connectedSockets.set(socketId, userId);
   }
 
-  static logout(socketId) {
-    if (this.loggedInUsers === undefined) {
-      this.setup();
-    }
+  disconnect(socket) {
+    const socketId = socket.id.toString();
     const userId = this.connectedSockets.get(socketId);
     this.connectedSockets.delete(socketId);
     this.loggedInUsers.delete(userId);
   }
 
-  static getSocket(userId) {
-    if (this.loggedInUsers === undefined) {
-      this.setup();
+  getSocket(userId) {
+    if (typeof userId !== "string") {
+      userId = userId.toString();
     }
     return this.loggedInUsers.get(userId);
   }
 
-  static getUserId(socketId) {
-    if (this.loggedInUsers === undefined) {
-      this.setup();
-    }
-    return this.connectedSockets.get(socketId);
+  getUserId(socket) {
+    return this.connectedSockets.get(socket.id.toString());
   }
 
-  static getConnectedSocket() {
-    if (this.loggedInUsers === undefined) {
-      this.setup();
-    }
+  getConnectedSockets() {
     return Array.from(this.loggedInUsers.values());
   }
 };

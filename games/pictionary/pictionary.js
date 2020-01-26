@@ -1,17 +1,10 @@
 let easyWords = require("../../dictionary.js")
 
-// players = [
-//     {
-//         id: 1
-//     }
-// ]
-
-
 
 function Pictionary(players, difficulty = "easy") {
     this.players = {};
-    players.forEach(id => {
-       this.players[id] = {id: id, score: 0, guessed: false, ready: false}
+    players.forEach(player => {
+       this.players[player.id] = {id: player.id, score: 0, guessed: false, ready: false}
     })
     // this.players = players.map(id => ({id: id, score: 0, guessed: false}))
     // this.players = {
@@ -39,7 +32,7 @@ function Pictionary(players, difficulty = "easy") {
       
 }
 
-Pictionary.prototype.state = function(){
+Pictionary.prototype.getState = function(){
     return {
         players: this.players,
         currDrawer: this.currDrawer,

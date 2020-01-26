@@ -8,8 +8,13 @@ import NavBar from '../nav_bar/nav_bar_container';
 class Lobby extends React.Component {
 
   componentDidMount() {
-    const socket = MySocket.getSocket();
-    socket.on("loggedIn", payload => {
+    const socket = MySocket.getSocket(this.props.currentUser.id);
+
+    socket.off("lobby");
+    socket.off("removeRoom");
+    socket.off("updateRoom");
+
+    socket.on("lobby", payload => {
       this.props.receiveRooms(payload.rooms);
       if (payload.roomId) {
         const user = this.props.currentUser;
@@ -22,12 +27,11 @@ class Lobby extends React.Component {
       this.props.removeRoom(payload.id);
     });
 
-    socket.emit("WELCOME", {});
-    socket.emit("login", { userId: this.props.currentUser.id });
-
     socket.on("updateRoom", data => {
       this.props.receiveRoom(data);
     });
+
+    socket.emit("getRooms");
   }
 
   render() {

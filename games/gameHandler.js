@@ -1,9 +1,7 @@
-const UserManagement = require("../utils/userManagement");
-const Rooms = require("../utils/rooms");
-const GameManagement = require("../utils/gameManagement");
+const lobby = require("../utils/lobby");
 const pictionaryHandler = require("./pictionary/handler");
 
-function handleGameAction(socket, payload) {
+function handleGameAction(socket, lobby, payload) {
   let handler;
   switch (payload.game) {
     case "Pictionary":
@@ -12,13 +10,7 @@ function handleGameAction(socket, payload) {
     default:
       break;
   }
-  handler(
-    socket,
-    UserManagement,
-    Rooms.getInstance(),
-    GameManagement,
-    payload.params
-  );
+  handler(socket, lobby, payload.params);
 }
 
 module.exports = handleGameAction;

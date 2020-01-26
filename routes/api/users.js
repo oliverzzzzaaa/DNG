@@ -6,17 +6,11 @@ const User = require("../../models/User");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
-//passport.authenticate('jwt', {session: false})
 
 function signJwt(user, response) {
   const payload = { id: user.id };
-  jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, response);
+  jwt.sign(payload, keys.secretOrKey, { expiresIn: 36000 }, response);
 }
-
-// //TODO: change res structure
-// router.get("/", (req, res) =>
-//   res.json({ msg: "This is the users login page route" })
-// );
 
 router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);

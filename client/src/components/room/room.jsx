@@ -62,6 +62,7 @@ export default class Room extends React.Component {
         </div>
       );
     }
+    this.props.history.push("/lobby");
     return null;
   }
   render() {

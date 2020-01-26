@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const passport = require("passport");
-const Rooms = require("../../utils/rooms");
-const UserManagement = require("../../utils/userManagement");
 const User = require("../../models/User");
+const Player = require("../../utils/player");
+const lobby = require("../../utils/lobby");
 
 router.post(
   "/create",
@@ -15,25 +15,11 @@ router.post(
           errors.create = "Please log in!";
           return res.status(404).json(errors);
         }
-        const rooms = Rooms.getInstance();
-        const roomId = rooms.create();
-        const player = {
-          id: user._id,
-          // image: req.body.image,
-          image: user.image
-            ? user.image
-            : "http://calligraphyalphabet.org/wp-content/uploads/roman-calligraphy-alphabet-o.jpg",
-          name: user.username,
-          ready: false,
-          connected: true
-        };
-
-        rooms.join(roomId, player);
-        const room = rooms.get(roomId);
-        UserManagement.getConnectedSocket().forEach(socket => {
-          socket.emit("updateRoom", room);
-        });
-        res.json(room);
+        const player = new Player(user);
+        const room = lobby.createRoom();
+        lobby.joinRoom(room.id, player);
+        lobby.emit("updateRoom", room.getInfo());
+        res.json(room.getInfo());
       },
       err => {
         errors.database = "Unable to connect to server!";
@@ -48,29 +34,17 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const roomId = req.body.roomId;
-    const rooms = Rooms.getInstance();
     User.findById(req.body.id).then(
       user => {
         if (!user) {
           errors.join = "Please log in!";
           return res.status(404).json(errors);
         }
-        const player = {
-          id: user._id,
-          // image: req.body.image,
-          image: user.image
-            ? user.image
-            : "http://calligraphyalphabet.org/wp-content/uploads/roman-calligraphy-alphabet-o.jpg",
-          name: user.username,
-          ready: false,
-          connected: true
-        };
-        if (rooms.join(roomId, player)) {
-          rooms.get(roomId).ready = false;
-          UserManagement.getConnectedSocket().forEach(socket => {
-            socket.emit("updateRoom", rooms.get(roomId));
-          });
-          res.json(rooms.get(roomId));
+        const player = new Player(user);
+        if (lobby.joinRoom(roomId, player)) {
+          const room = lobby.getRoom(roomId);
+          lobby.emit("updateRoom", room.getInfo());
+          res.json(room.getInfo());
         } else {
           res.status(404).json({ msg: "Room does not exist!" });
         }
@@ -87,22 +61,13 @@ router.post(
   "/leave",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    const userId = req.body.id;
-    const rooms = Rooms.getInstance();
-    const roomInfo = rooms.leave(userId);
+    const roomInfo = lobby.leaveRoom(req.body.id);
     if (roomInfo) {
       if (roomInfo.isEmpty) {
-        UserManagement.getConnectedSocket().forEach(socket => {
-          socket.emit("removeRoom", { id: roomInfo.id });
-        });
+        lobby.emit("removeRoom", { id: roomInfo.id });
       } else {
-        const room = rooms.get(roomInfo.id);
-        if (room.players.every(player => player.ready)) {
-          room.ready = true;
-        }
-        UserManagement.getConnectedSocket().forEach(socket => {
-          socket.emit("updateRoom", room);
-        });
+        const room = lobby.getRoom(roomInfo.id);
+        lobby.emit("updateRoom", room.getInfo());
       }
       res.json({ status: "success" });
     } else {
