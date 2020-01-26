@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
+@import url('https://fonts.googleapis.com/css?family=Handlee&display=swap');
+
 .canvas-page {
   width: 100%;
   height: 100%;
+  display: flex;
 }
 
 .canvas-main {
@@ -29,7 +33,7 @@
   background-color: white;
   border-width: 5px 3px 3px 5px;
   border-radius:95% 4% 97% 5%/4% 94% 3% 95%;
-  border: 7px groove rgb(86, 207, 255);
+  border: solid rgb(86, 207, 255);
   box-shadow: 9px 11px 22px 1px rgb(51, 90, 110);
   -webkit-box-shadow: 9px 11px 15px 1px #344955; 
   margin: 5% 0 0 5%;
@@ -49,8 +53,7 @@
 	border-radius: 20px;
 	border:1px solid #0a0a0a;
 	color:#000000;
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 12px;
+	font-family: 'Indie Flower', cursive;
   font-weight: bold;
 	text-decoration:none;
   margin-right: 5px;
@@ -58,8 +61,6 @@
 
 .color-picker-btn {
   flex-direction: column;
-  margin-top: -123%;
-  margin-left: -8%;
   width: 5%;
 }
 
@@ -70,7 +71,7 @@
 	border-radius: 20px;
 	border:1px solid #0a0a0a;
 	color:#000000;
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-family: 'Indie Flower', cursive;
   font-size: 12px;
   font-weight: bold;
 	text-decoration:none;

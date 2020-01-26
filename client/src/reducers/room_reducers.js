@@ -1,7 +1,6 @@
 import {
   RECEIVE_ALL_ROOMS,
   RECEIVE_NEW_ROOM,
-  RECEIVE_LEAVE_ROOM,
   RECEIVE_REMOVE_ROOM
 } from "./../actions/room_actions";
 

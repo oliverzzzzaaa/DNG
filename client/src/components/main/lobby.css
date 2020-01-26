@@ -7,8 +7,7 @@ html, body {
   position: fixed;
 }
 
-
-/* .lobby-scoreboard-div {
+.lobby-scoreboard-div {
   width: 100%;
   padding: 5%;
 }
@@ -41,35 +40,42 @@ html, body {
   font-size: 20px;
 }
 
-.lobby-scoreboard-div {
-  width: 15%;
-} */
-
 .lobby {
   display: flex;
-  padding: 5% 10% 10% 5%;
-  height: 800px;
+  padding: 2%;
+  height: 100vh;
+  background-image: url('../images/pencil-round.jpg');
+  background-position: center;
+  background-size: cover;
+  flex-direction: row;
+}
+
+.lobby .nav-chat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .game-rooms-div {
   width: 68%;
   margin-right: 2%;
-  box-shadow: 9px 5px 5px 1px rgb(121, 163, 184);
+  box-shadow: 9px 11px 22px 1px rgb(51, 90, 110);
+  -webkit-box-shadow: 9px 11px 15px 1px #344955; 
 }
 
 .lobby .chat {
-  width: 30%;
+  height: 70vh;
+  width: 90%;
   border: solid black;
   border-width: 3px 4px 3px 5px;
   border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
-  transform: rotate(2deg);
+  background-color: rgb(252, 243, 243);
   border-bottom: none;
-  background: none;
 }
 
 .lobby .msg-container {
   height: 95%;
-  padding: 20px;
+  padding: 5px;
   padding-bottom: 0px;
 }
 
@@ -84,19 +90,7 @@ input {
   outline: none;
 }
 
-.lobby .chat-input-div {
-  border: solid black;
-  border-width: 3px 4px 3px 5px;
-  border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
-  box-shadow: 9px 5px 5px 1px rgb(121, 163, 184);
-  background: white;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
 .lobby .chat-input{
-  /* border-style: hidden; */
-  /* background: white; */
   font-family: 'Handlee', cursive;
 }
 

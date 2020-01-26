@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import MySocket from "../socket";
 
 class ClientComponentExample extends Component {
   constructor() {

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
+@import url('https://fonts.googleapis.com/css?family=Handlee&display=swap');
+
 .profile-icons-container {
     display: flex;
     flex-wrap: wrap;
