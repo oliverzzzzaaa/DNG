@@ -8,16 +8,16 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background-image: url('./images/pencil-round.jpg');
+  background-image: url('./images/diff-pen.jpg');
   background-position: center;
   background-repeat: none;
   background-size: cover;
 }
 
-.home-logo {
-  margin: 0 auto; 
+.home-logo img {
+  width: 35vw;
+  height: auto;
   align-self: center;
-  padding-top: 20px;
 }
 
 .carousels img {
@@ -38,7 +38,7 @@
   font-weight: bold;
   font-size: 20px;
   margin: 30px;
-  background-color: lightblue;
+  background-color: white;
   font-family: 'Indie Flower', cursive;
   border: solid black;
   border-width: 3px 4px 3px 5px;
@@ -48,7 +48,7 @@
 
 .home-login:hover {
   cursor: pointer;
-  background-color: pink;
+  background-color: gray;
   color: white;
 }
 
@@ -59,7 +59,7 @@
   font-size: 20px;
   margin: 0 auto;
   margin: 30px;
-  background-color: lightblue;
+  background-color: white;
   font-family: 'Indie Flower', cursive;
   border: solid black;
   border-width: 3px 4px 3px 5px;
@@ -69,6 +69,6 @@
 
 .home-signup:hover {
   cursor: pointer;
-  background-color: pink;
+  background-color: gray;
   color: white;
 }

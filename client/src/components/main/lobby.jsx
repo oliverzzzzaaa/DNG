@@ -2,7 +2,7 @@ import React from "react";
 import "./lobby.css";
 import Chat from "../games/chat/chat";
 import MySocket from "../../socket";
-import GameRooms from "../game/game_rooms/game_rooms";
+import GameRooms from "../games/game_rooms/game_rooms";
 import NavBar from '../nav_bar/nav_bar_container';
 
 class Lobby extends React.Component {
@@ -70,15 +70,17 @@ class Lobby extends React.Component {
         {/* <div>{this.props.msg}</div> */}
         {/* <div className="lobby-page"> */}
         {/* <div className="test">All loggedin users</div> */}
-        <NavBar/>
         <GameRooms
           className="game-rooms"
           currentUser={this.props.currentUser}
           rooms={this.props.rooms}
           createRoom={this.props.createRoom}
           joinRoom={this.props.joinRoom}
-        />
-        <Chat messages={tempmessages} />
+          />
+        <div className='nav-chat'>        
+          <NavBar/>
+          <Chat messages={tempmessages} />
+        </div>
         {/* </div> */}
         {/* <div className="game-rooms">
           <h1>rooms</h1>

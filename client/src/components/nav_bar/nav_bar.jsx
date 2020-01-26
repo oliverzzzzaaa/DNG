@@ -18,7 +18,7 @@ class NarBar extends React.Component {
         if (typeof currentUser === undefined) return null;
         return(
             <div className='nav-bar-main'>
-                <Link to="/" className="navbar-logo">Home Logo</Link>
+                <Link to="/" className="navbar-logo"><img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/logo.png" /></Link>
                 <button className='nav-bar-logout' onClick={this.handleLogout} >
                     Bye!
                 </button>

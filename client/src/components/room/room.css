@@ -12,7 +12,7 @@
   height: 100vh;
   justify-content: space-between;
   align-self: center;
-  background-image: url("../games/game_rooms/pawel-czerwinski-85GqudZu-BQ-unsplash.jpg");
+  background-image: url("../images/colored-pencils.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -33,8 +33,8 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 2%;
-  height: 100vh;
-  
+  height: 100%;
+  width: 100%;  
 }
 
 .waiting-and-chat {
@@ -43,19 +43,20 @@
 }
 
 .waiting-div .chat {
-  border: solid black;
+  border: solid pink;
   border-width: 3px 4px 3px 5px;
   border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
   transform: rotate(2deg);
   border-bottom: none;
   background: none;
   background-color: white;
+  height: 90vh;
+  width: auto;
   }
   
   .waiting-div .msg-container {
     height: 95%;
-    padding: 20px;
-    padding-bottom: 0px;
+    padding: 5px;
     width: 100%;
   }
   
@@ -71,19 +72,12 @@
   }
   
   .waiting-div .chat-input-div {
-    border: solid black;
     border-width: 3px 4px 3px 5px;
     border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
-    box-shadow: 9px 11px 22px 1px rgb(51, 90, 110);
-    -webkit-box-shadow: 9px 11px 15px 1px #344955; 
     background: white;
-    padding-left: 10px;
-    padding-right: 10px;
   }
   
   .waiting-div .chat-input{
-    /* border-style: hidden; */
-    /* background: white; */
     font-family: 'Handlee', cursive;
   }
   

@@ -3,29 +3,20 @@
 
 .waiting-room {
   display: flex;
-  height: 67%;
-  width: 67%;
+  height: 100%;
+  width: 100%;
   flex-direction: column;
 }
 
 .waiting-room-profiles {
-  /* width: 85%;
-    height: 85%; */
   width: 90vh;
   height: 90vh;
   display: flex;
   flex-direction: column;
-  margin-top: 4%;
-  margin-left: 10%;
-  /* padding-left: 8%; */
-  /* padding-right: 8%; */
-  /* border: 3px groove #0336FF; */
-  border-radius: 10px;
-  /* border: 7px groove #43677c; */
-  border-radius: 35px;
-  box-shadow: 9px 5px 5px 1px rgb(121, 163, 184);
-  /* -webkit-box-shadow: 9px 11px 22px 1px #344955;  */
-  /* background-color: lightpink; */
+  margin: 4%;
+  border: solid pink;
+  border-width: 3px 4px 3px 5px;
+  border-radius: 4% 90% 6% 90%/90% 4% 88% 5%;
   background-image: url("../../../images/balloons.jpg");
   background-size: cover;
 }
@@ -38,7 +29,6 @@
   padding: 5px 15px 5px 15px;
   background-color: lightblue;
   border-radius: 5px;
-  /* border: 3px solid lightblue; */
 }
 
 .ready-button-div {

@@ -44,7 +44,7 @@ class Waiting extends React.Component {
               this.props.room.onGame ? "" : "not"
             } on going!`}</p>
           </div>
-          <ProfileIcon users={this.props.room.players} />;
+          <ProfileIcon users={this.props.room.players} />
         </div>
       );
     }

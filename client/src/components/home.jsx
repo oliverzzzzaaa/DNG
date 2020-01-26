@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './home.css';
+import './images/logo.png'
 
 class HomePage extends React.Component {
     render() {
         return (
           <div className="home-main">
             <div className="home-logo">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV3cdmfEDITM8oDEZpA4iBp3B8zr_XxVMGsv_Cds4o5UjdVc5ZvQ&s" />
+              <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/logo.png" />
             </div>
             <div className="carousels">
               <Carousel>
