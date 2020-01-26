@@ -2,13 +2,10 @@ import React from "react";
 import "./lobby.css";
 import Chat from "../games/chat/chat";
 import MySocket from "../../socket";
-import GameRooms from "../games/game_rooms/game_rooms"
-// import MidRound from '../game/game_rooms/mid_round'
+import GameRooms from "../game/game_rooms/game_rooms";
+import NavBar from '../nav_bar/nav_bar_container';
 
 class Lobby extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     const socket = MySocket.getSocket(this.props.currentUser.id);
@@ -73,6 +70,7 @@ class Lobby extends React.Component {
         {/* <div>{this.props.msg}</div> */}
         {/* <div className="lobby-page"> */}
         {/* <div className="test">All loggedin users</div> */}
+        <NavBar/>
         <GameRooms
           className="game-rooms"
           currentUser={this.props.currentUser}
