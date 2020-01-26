@@ -7,11 +7,11 @@
   height: auto;
   display: flex;
   flex-direction: column;
+  border: solid rgb(86, 207, 255);
   border-width: 3px 4px 3px 5px;
   border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
   transform: rotate(2deg);
-  padding: 3%;
-  padding-bottom: 5%;
+  padding: 1%;
   background-color: rgb(252, 243, 243);
   box-shadow: 9px 11px 22px 1px rgb(51, 90, 110);
   -webkit-box-shadow: 9px 11px 15px 1px #344955; 
@@ -47,19 +47,20 @@
   box-sizing: border-box;
   height: 6%;
   position: relative;
-  border-top: 2px solid pink;
   background-color: inherit;
 }
 
-.chat-input {
+.chat .chat-input {
   width: 100%;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   height: 100%;
   font-size: 16px;
-  background-color: inherit;
-  border: none;
+  border: solid black; 
+  border-width: 3px 4px 3px 5px;
+  border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+  -webkit-box-shadow: 9px 11px 15px 1px #4985a8; 
 }
 
 .user-icon {

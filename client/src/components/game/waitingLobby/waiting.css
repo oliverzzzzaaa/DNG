@@ -7,22 +7,19 @@
 
 .waiting-room {
     display: flex;
-    height: 67%;
-    width: 67%;
+    height: 100%;
+    width: 100%;
     flex-direction: column;
 }
 
-.waiting-room-profiles {
-    width: 90vh;
+.waiting-room .waiting-room-profiles {
+    width: 90%;
     height: 90vh;
     display: flex;
     flex-direction: column;
     margin-top: 4%;
     margin-left: 10%;   
     border-radius: 10px;
-    border-radius: 35px;
-    box-shadow: 9px 11px 22px 1px rgb(51, 90, 110);
-    -webkit-box-shadow: 9px 11px 15px 1px #344955; 
     background-image: url("../../images/balloons.jpg"); 
     background-size: cover; 
 }

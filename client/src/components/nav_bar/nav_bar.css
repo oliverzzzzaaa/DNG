@@ -1,9 +1,21 @@
+.lobby .nav-bar-main {
+    display: flexbox;
+    flex-direction: row;
+}
+
 .nav-bar-main .nav-bar-logout {
     display: flex;
     border: solid black;
     border-width: 1px 1px 3px 3px;
     border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
     transform: rotate(-2deg);
-    margin-right: 10px;
+    margin-left: 50%;
     cursor: pointer;
+    justify-content: right;
+    align-self: end;
+}
+
+.nav-bar-main .navbar-logo img {
+    display: flex;
+    width: 150px;
 }
