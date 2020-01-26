@@ -47,29 +47,34 @@ html, body {
 
 .lobby {
   display: flex;
-  padding: 5% 10% 10% 5%;
-  height: 800px;
+  padding: 5%;
+  height: 100vh;
+  background-image: url('../images/diff-pen.jpg');
+  background-position: center;
+  background-size: cover;
 }
 
 .game-rooms-div {
   width: 68%;
   margin-right: 2%;
-  box-shadow: 9px 5px 5px 1px rgb(121, 163, 184);
+  box-shadow: 9px 11px 22px 1px rgb(51, 90, 110);
+  -webkit-box-shadow: 9px 11px 15px 1px #344955; 
 }
 
 .lobby .chat {
+  height: 85vh;
   width: 30%;
   border: solid black;
   border-width: 3px 4px 3px 5px;
   border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
-  transform: rotate(2deg);
   border-bottom: none;
-  background: none;
+  background-color: rgb(252, 243, 243);
+
 }
 
 .lobby .msg-container {
   height: 95%;
-  padding: 20px;
+  padding: 5px;
   padding-bottom: 0px;
 }
 
@@ -88,7 +93,8 @@ input {
   border: solid black;
   border-width: 3px 4px 3px 5px;
   border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
-  box-shadow: 9px 5px 5px 1px rgb(121, 163, 184);
+  box-shadow: 9px 11px 22px 1px rgb(51, 90, 110);
+  -webkit-box-shadow: 9px 11px 15px 1px #344955; 
   background: white;
   padding-left: 10px;
   padding-right: 10px;

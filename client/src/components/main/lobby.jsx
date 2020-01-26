@@ -3,6 +3,7 @@ import "./lobby.css";
 import Chat from "../games/chat/chat";
 import MySocket from "../../socket";
 import GameRooms from "../game/game_rooms/game_rooms";
+import NavBar from '../nav_bar/nav_bar_container';
 
 class Lobby extends React.Component {
 
@@ -65,6 +66,7 @@ class Lobby extends React.Component {
         {/* <div>{this.props.msg}</div> */}
         {/* <div className="lobby-page"> */}
         {/* <div className="test">All loggedin users</div> */}
+        <NavBar/>
         <GameRooms
           className="game-rooms"
           currentUser={this.props.currentUser}
