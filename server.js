@@ -1,4 +1,5 @@
-const app = require("express")();
+const express = require("express");
+const app = express();
 var http = require("http").createServer(app);
 const io = require("socket.io")(http);
 const mongoose = require("mongoose");
@@ -8,6 +9,7 @@ const rooms = require("./routes/api/rooms");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const port = process.env.PORT || 5000;
+const path = require("path");
 const handleGameAction = require("./games/gameHandler");
 const lobby = require("./utils/lobby");
 
@@ -70,5 +72,13 @@ io.on("connection", socket => {
     console.log("Client disconnected");
   });
 });
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+
+  app.get("*", (req, res) => {
+    path.resolve(__dirname, "client", "build", "index.html");
+  });
+}
 
 http.listen(port, () => console.log(`Listening on port ${port}`));
