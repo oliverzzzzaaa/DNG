@@ -30,7 +30,7 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use("/", users);
+app.use("/users", users);
 app.use("/rooms", rooms);
 
 io.on("connection", socket => {
