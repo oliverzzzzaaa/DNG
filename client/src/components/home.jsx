@@ -15,18 +15,31 @@ class HomePage extends React.Component {
             <div className="carousels">
               <Carousel>
                 <Carousel.Item>
-                  <img src="https://image.tmdb.org/t/p/w1280/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg" />
-                </Carousel.Item>
-
-                <Carousel.Item>
-                  <img src="https://image.tmdb.org/t/p/w1280/bfHlGMDq2RqRT1xmjq9NJSzfhCv.jpg" />
-                </Carousel.Item>
-
-                <Carousel.Item>
-                  <img src="https://image.tmdb.org/t/p/w1280/tgcrYiyG75iDcyk3en9NzZis0dh.jpg" />
+                  <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c1.png" />
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img src="https://image.tmdb.org/t/p/w1280/UVDWwC7Mpbis9U9WPqbRHmxSG1.jpg" />
+                  <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c2.png" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c3.png" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c4.png" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c5.png" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c6.png" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c7.png" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c8.png" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c9.png" />
                 </Carousel.Item>
               </Carousel>
             </div>
