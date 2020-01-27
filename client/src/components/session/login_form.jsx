@@ -31,11 +31,11 @@ class LoginForm extends React.Component {
     }
 
     handleDemo() {
-        let { email, password } = this.state;
-        let guest = {
+        this.state = {
             email: "guest_user@dng.com",
             password: "guestdng"
         };
+        let guest = this.state
         return(e) => {
             e.preventDefault();
             this.props.login(guest);
