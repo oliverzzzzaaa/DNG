@@ -1,15 +1,24 @@
 import React from "react";
-import CanvasContainer from './canvas'
+import CanvasContainer from "./canvas";
 import ScoreBoard from "./scoreboard/scoreboard";
 import Timer from "./timer/timer";
 import Chat from "../chat/chat";
-import MySocket from '../../../socket'
-import MidRound from "../game_rooms/mid_round"
+import MySocket from "../../../socket";
+import MidRound from "../game_rooms/mid_round";
 
 export default class Pictionary extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.guess = this.guess.bind(this);
+  }
+
+  guess(word) {
+    MySocket.getSocket().emit("gameAction", {
+      game: "Pictionary",
+      type: "guess",
+      params: word
+    });
   }
 
   componentDidMount() {
@@ -64,10 +73,12 @@ export default class Pictionary extends React.Component {
           <div className="lobby-scoreboard-div">
             <Timer />
             <ScoreBoard />
-            <Chat />
+            <Chat action={this.guess} />
           </div>
         </div>
-        <MidRound isDrawer={this.props.currentUserId === this.props.room.players[0].id}/>
+        <MidRound
+          isDrawer={this.props.currentUserId === this.props.room.players[0].id}
+        />
       </div>
     );
   }

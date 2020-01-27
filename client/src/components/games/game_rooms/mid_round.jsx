@@ -21,6 +21,8 @@ class MidRound extends React.Component {
     }
 
     savePicture() {
+        console.log(document.getElementById("pictionary-canvas"))
+        document.getElementById("mid-round-img").src = document.getElementById("pictionary-canvas").toDataURL()
         console.log("SAVED")
     }
 
@@ -29,10 +31,13 @@ class MidRound extends React.Component {
     }
 
     render() {
+        if (document.getElementById("pictionary-canvas")) {
+            document.getElementById("mid-round-img").src = document.getElementById("pictionary-canvas").toDataURL()
+        }
         let modalHeader = null;
         if (this.props.isDrawer) {
             modalHeader = (
-                <span className="save-picture">Save Picture!</span>
+                <span className="save-picture" onClick={this.savePicture}>Save Picture!</span>
             )
         } else {
             modalHeader = (
@@ -43,12 +48,10 @@ class MidRound extends React.Component {
         return (
             <div className="mid-round-modal">
                 {modalHeader}
-                <div>
-                    {/* {insert image here} */}
+                <div className="mid-round-img-div">
+                    <img src="" id="mid-round-img"/>
                 </div>
-                <span
-                    className="game-rooms-create-text"
-                    onClick={() => this.props.createRoom(this.props.currentUser)}>
+                <span className="game-rooms-create-text">
                     Ready
                 </span>
             </div>
