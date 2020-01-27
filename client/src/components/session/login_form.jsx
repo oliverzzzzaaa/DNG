@@ -47,7 +47,7 @@ class LoginForm extends React.Component {
             return (
                 <ul className="session-errors-ul">
                     <li className="session-errors-li">
-                        {Object.values(this.props.errors.response.data)[0]}
+                        {Object.values(this.props.errors.response.data)}
                     </li>
                 </ul>
             );
@@ -62,10 +62,7 @@ class LoginForm extends React.Component {
                 <div className="session-image">
                 </div>
                 <div className='session-left'>
-                    <h3>
-                        This will be the Logo div link back home page
-                    </h3> 
-                    
+                    <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/logo.png" />
                     <div className="session-input-fields">
                         <label>
                             Email:

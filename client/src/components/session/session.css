@@ -48,6 +48,12 @@
   align-items: center;
 }
 
+.session-left img {
+  align-items: center;
+  width: 100%;
+  margin-top: -30%;
+}
+
 .session-main h3 {
   margin-top: 10px;
   margin-bottom: 25px;
