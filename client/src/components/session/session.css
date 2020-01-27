@@ -1,37 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
+@import url('https://fonts.googleapis.com/css?family=Handlee&display=swap');
+
 .session-main {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0;
-    padding: 0;
-    border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: relative;
 }
 
 .session-image {
-    width: 50%;
-    position:fixed;
-    top:0;
-    bottom:0;
-    left:0;
-    background-position: 50%;
-    background-size: cover;
-    margin: 0;
-    padding: 0;
+  width: 50vw;
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  background-position: 50%;
+  background-size: cover;
+  background-image: url('https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/sesion.gif');
 }
 
 .session-left {
-    width: 50%;
-    position:fixed;
-    top:0;
-    bottom:0;
-    right:0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    align-items: center;
+  width: 50vw;
+  position:fixed;
+  top:0;
+  bottom:0;
+  right:0;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+	font-family: 'Indie Flower', cursive;
+  background-image: url('../images/pen.png');
 }
 
 .session-left ul {
@@ -45,57 +49,75 @@
   align-items: center;
 }
 
-.session-main h3 {
-  margin-top: 10px;
-  margin-bottom: 25px;
+.session-left img {
+  align-items: center;
+  width: 100%;
+  margin-top: -200px;
+  margin-bottom: -100px;
 }
+
 
 .session-main label {
   font-size: 13px;
-  font-weight: bold;
-  padding: 10px 0;
+  font-weight: bolder;
+  font-size: 15px;
+  margin-left: 5%;
 }
 
 .session-main input {
   margin: 10px 0;
-  width: 350px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 100%;
   height: 35px;
   box-sizing: border-box;
   border: 1px solid var(--shadow-1);
   border-radius: 4px;
-  padding: 10px 20px;
-  font-size: 13px;
+  color: white;
+  font-size: 15px;
   background: var(--shadow-1);
 }
 
+.session-input-fields {
+  width: 90%;
+  margin-top: -10%;
+}
+
 .session-main input:hover {
-  border: 1px solid lightgray;
+  border: 1px solid white;
 }
 
 .session-main .session-button {
   display: flex;
-  width: 412px;
   flex-direction: row;
-  justify-content: space-between;
+  width: 80%;
+  justify-content: space-evenly;
 }
 
 .session-main .submit-button {
-  margin-top: 40px;
-  padding: 17px 50px;
-  font-size: 12px;
-  font-weight: 700;
+  padding: 5px;
+  font-size: 20px;
   height: auto;
   width: auto;
-  background: yellow;
+  background: white;
+  border: solid black;
+  transform: rotate(2deg);
+  border-width: 3px 4px 3px 5px;
+  border-radius: 4% 90% 6% 90%/90% 4% 88% 5%;
 }
 
 .session-errors-ul {
   display: flex;
   flex-direction: column;
-}3
+}
 
 .session-errors-li {
   color: red;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Handlee', cursive;
   font-size: 20px;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
 }

@@ -1,20 +1,14 @@
 import React from "react";
 import "./waiting.css";
-import Chat from "../chat/chat";
 import ProfileIcon from "../../profile/profile_icon";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { leaveRoom } from "../../../util/room";
-import MySocket from "../../../socket";
 
 class Waiting extends React.Component {
   constructor(props) {
     super(props);
     this.leave = this.leave.bind(this);
-    this.ready = this.ready.bind(this);
-    this.renderPlayers = this.renderPlayers.bind(this);
-    this.renderReadyBtn = this.renderReadyBtn.bind(this);
-    this.start = this.start.bind(this);
   }
 
   leave() {
@@ -23,57 +17,11 @@ class Waiting extends React.Component {
     );
   }
 
-  ready() {
-    MySocket.getSocket().emit("ready");
-  }
-
-  start() {
-    alert("start game");
-  }
-
-  renderPlayers() {
-    if (this.props.room) {
-      return (
-        <div>
-          {/* TODO: delete this */}
-          <div className="delete this div">
-            <p>{`Players are ${
-              this.props.room.ready ? "" : "not"
-            } ready!  Game is ${
-              this.props.room.onGame ? "" : "not"
-            } on going!`}</p>
-          </div>
-          <ProfileIcon users={this.props.room.players} />;
-        </div>
-      );
-    }
-    return null;
-  }
-
-  renderReadyBtn() {
-    if (
-      this.props.room &&
-      this.props.room.ready &&
-      this.props.room.players[0].id === this.props.currentUserId
-    ) {
-      return (
-        <Button variant="warning outline-light" onClick={this.start}>
-          Start
-        </Button>
-      );
-    }
-    return (
-      <Button variant="warning outline-light" onClick={this.ready}>
-        Ready
-      </Button>
-    );
-  }
-
   render() {
     return (
       <div className="waiting-room">
         <div className="waiting-room-profiles">
-          {this.renderPlayers()}
+          <ProfileIcon users={this.props.users} />
           {/* <button className="waiting-room-ready2">Ready</button> */}
           {/* <button className="btn btn-info">Ready</button> */}
           <div className="ready-button-div">
@@ -84,7 +32,7 @@ class Waiting extends React.Component {
             >
               Leave
             </Button>
-            {this.renderReadyBtn()}
+            <Button variant="warning outline-light">Ready</Button>
           </div>
         </div>
         {/* <div className="waiting-room-ready-button">

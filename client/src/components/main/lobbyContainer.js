@@ -7,15 +7,6 @@ import {
   joinRoom,
   receiveRemoveRoom
 } from "./../../actions/room_actions";
-// import receiveRooms
-
-// delete this
-// function receiveRooms(rooms) {
-//   return {
-//     type: "HI",
-//     rooms
-//   };
-// }
 
 const mapStateToProps = state => ({
   currentUser: state.session.user,

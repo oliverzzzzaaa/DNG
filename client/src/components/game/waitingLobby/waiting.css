@@ -1,33 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
+@import url('https://fonts.googleapis.com/css?family=Handlee&display=swap');
+
 @media (max-width: 767px) {
 
 }
 
-
 .waiting-room {
     display: flex;
-    height: 67%;
-    width: 67%;
+    height: 100%;
+    width: 100%;
     flex-direction: column;
 }
 
-.waiting-room-profiles {
-    /* width: 85%;
-    height: 85%; */
-    width: 90vh;
+.waiting-room .waiting-room-profiles {
+    width: 90%;
     height: 90vh;
     display: flex;
     flex-direction: column;
     margin-top: 4%;
-    margin-left: 10%;    
-    /* padding-left: 8%; */
-    /* padding-right: 8%; */
-    /* border: 3px groove #0336FF; */
+    margin-left: 10%;   
     border-radius: 10px;
-    /* border: 7px groove #43677c; */
-    border-radius: 35px;
-    box-shadow: 9px 5px 5px 1px rgb(121, 163, 184);
-    /* -webkit-box-shadow: 9px 11px 22px 1px #344955;  */
-    /* background-color: lightpink; */
     background-image: url("../../images/balloons.jpg"); 
     background-size: cover; 
 }
@@ -41,7 +33,6 @@
     padding: 5px 15px 5px 15px;
     background-color: lightblue;
     border-radius: 5px;
-    /* border: 3px solid lightblue; */
 }
 
 .ready-button-div {

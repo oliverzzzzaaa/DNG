@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
+@import url('https://fonts.googleapis.com/css?family=Handlee&display=swap');
+
+.scoreboard-ul {
+    display: block;
+    padding: 10px;
+    margin: 0;
+}   
+.scoreboard-li {
+    list-style: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    justify-content: space-between;
+    font-size: 15px;
+}
+
+.scoreboard-name{
+    margin-right: 10px;
+}
+
+.scoreboard-div {
+    width: 30%;
+    display: flex;
+}

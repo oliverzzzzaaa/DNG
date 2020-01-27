@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
+@import url('https://fonts.googleapis.com/css?family=Handlee&display=swap');
+
+.chat {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  border: solid rgb(86, 207, 255);
+  border-width: 3px 4px 3px 5px;
+  border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+  transform: rotate(2deg);
+  padding: 1%;
+  background-color: rgb(252, 243, 243);
+  box-shadow: 9px 11px 22px 1px rgb(51, 90, 110);
+  -webkit-box-shadow: 9px 11px 15px 1px #344955; 
+}
+
+.msg-container {
+  height: 50vh;
+  width: auto;
+}
+
+.msg-list {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  max-height: 610px;
+}
+
+.msg-li {
+  display: flex;
+  padding-bottom: 7px;
+  font-size: 14px;
+}
+
+.msg-li > .user-icon {
+  padding-right: 10px;
+}
+
+.chat-input-div {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  box-sizing: border-box;
+  height: 6%;
+  position: relative;
+  background-color: inherit;
+}
+
+.chat .chat-input {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+  font-size: 16px;
+  border: solid black; 
+  border-width: 3px 4px 3px 5px;
+  border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+  -webkit-box-shadow: 9px 11px 15px 1px #4985a8; 
+}
+
+.user-icon {
+  width: 70px;
+  color: blue;
+  font-weight: bold;
+}
+
+.msg-body {
+  position: relative;
+  width: 20%vh;
+}

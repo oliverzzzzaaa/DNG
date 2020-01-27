@@ -1,18 +1,16 @@
 import React from "react";
-import Game from "../game/game";
-import Chat from "../game/chat/chat";
-import WaitingContainer from "../game/waitingLobby/waitingContainer";
+import Pictionary from "../games/pictionary/pictionary";
+import Chat from "../games/chat/chat";
+import WaitingContainer from "../games/pictionary/waitingLobby/waitingContainer";
 import "./room.css";
 
 export default class Room extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      ready: false
-    };
+    this.renderRoomContent = this.renderRoomContent.bind(this);
   }
 
-  render() {
+  renderRoomContent() {
     let tempmessages = [
       { sender: "player1", body: "now can work on css" },
       { sender: "player2", body: "message two" },
@@ -41,17 +39,20 @@ export default class Room extends React.Component {
       { sender: "player1", body: "message apple bottom jeans" },
       { sender: "player1", body: "message haha" }
     ];
-    return (
-      <div className="room-div container-fluid">
+    if (this.props.room) {
+      return (
         <div className="game-or-waiting-div">
-          {this.state.ready ? (
-            <Game />
+          {this.props.room.onGame ? (
+            <Pictionary
+              currentUserId={this.props.currentUser.id}
+              room={this.props.room}
+            />
           ) : (
             <div className="waiting-div">
               <WaitingContainer
                 messages={this.props.messages}
                 room={this.props.room}
-                users={this.props.room ? this.props.room.players : []}
+                users={this.props.room.players}
               />
               <div className="room-chat-div">
                 <Chat messages={tempmessages} />
@@ -59,7 +60,14 @@ export default class Room extends React.Component {
             </div>
           )}
         </div>
-      </div>
+      );
+    }
+    this.props.history.push("/lobby");
+    return null;
+  }
+  render() {
+    return (
+      <div className="room-div container-fluid">{this.renderRoomContent()}</div>
     );
   }
 }

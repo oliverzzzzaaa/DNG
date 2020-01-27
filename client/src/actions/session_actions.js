@@ -30,9 +30,10 @@ export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 
-export const logout = () => {
+export const logout = () => dispatch => {
   localStorage.removeItem("jwtToken");
   APIUtil.setAuthToken(false);
+  dispatch(logoutUser())
 };
 
 export const signup = user => dispatch =>

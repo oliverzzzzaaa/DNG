@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -31,11 +31,11 @@ class LoginForm extends React.Component {
     }
 
     handleDemo() {
-        let { email, password } = this.state;
-        let guest = {
+        this.state = {
             email: "guest_user@dng.com",
             password: "guestdng"
         };
+        let guest = this.state
         return(e) => {
             e.preventDefault();
             this.props.login(guest);
@@ -47,7 +47,7 @@ class LoginForm extends React.Component {
             return (
                 <ul className="session-errors-ul">
                     <li className="session-errors-li">
-                        {Object.values(this.props.errors.response.data)[0]}
+                        {Object.values(this.props.errors.response.data)}
                     </li>
                 </ul>
             );
@@ -62,10 +62,7 @@ class LoginForm extends React.Component {
                 <div className="session-image">
                 </div>
                 <div className='session-left'>
-                    <h3>
-                        This will be the Logo div link back home page
-                    </h3> 
-                    
+                    <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/logo.png" />
                     <div className="session-input-fields">
                         <label>
                             Email:

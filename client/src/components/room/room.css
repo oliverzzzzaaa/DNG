@@ -1,17 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
+@import url('https://fonts.googleapis.com/css?family=Handlee&display=swap');
+
 .game-or-waiting-div {
-    width: 100%;
-    padding: 0, 5%, 0, 5%;
+  width: 100%;
+  padding: 0, 5%, 0, 5%;
 }
 
 .room-div {
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    justify-content: space-between;
-    align-self: center;
-    background-image: url("../game/game_rooms/pawel-czerwinski-85GqudZu-BQ-unsplash.jpg");
-    background-size: cover;
-    background-position: center;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: space-between;
+  align-self: center;
+  background-image: url("../images/colored-pencils.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .game-or-waiting-div {
@@ -20,20 +23,69 @@
 
 .room-chat-div {
     width: 25%;
-    padding: 3% 5% 3% 0;
+    padding: 3% 1% 3% 0;
 }
 
 .waiting-leave {
     margin-right: 5px;
 }
 .waiting-div {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2%;
-    height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2%;
+  height: 100%;
+  width: 100%;  
 }
 
 .waiting-and-chat {
     display: flex;
     justify-content: space-between;
 }
+
+.waiting-div .chat {
+  border: solid pink;
+  border-width: 3px 4px 3px 5px;
+  border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+  transform: rotate(2deg);
+  border-bottom: none;
+  background: none;
+  background-color: white;
+  height: 90vh;
+  width: auto;
+  }
+  
+  .waiting-div .msg-container {
+    height: 95%;
+    padding: 5px;
+    width: 100%;
+  }
+  
+  .waiting-div .msg-list {
+    margin: 20px;
+    padding: 0px;
+    height: 98%;
+    margin: 0px;
+  }
+  
+  input {
+    outline: none;
+  }
+  
+  .waiting-div .chat-input-div {
+    border-width: 3px 4px 3px 5px;
+    border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+    background: white;
+  }
+  
+  .waiting-div .chat-input{
+    font-family: 'Handlee', cursive;
+  }
+  
+  .waiting-div .user-icon, .waiting-div .msg-body {
+    font-family: 'Handlee', cursive;
+    width: fit-content;
+  }
+
+  .waiting-div .input {
+      background: inherit;
+  }

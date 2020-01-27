@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import './session.css';
 
 class SignupForm extends  React.Component {
@@ -36,7 +36,7 @@ class SignupForm extends  React.Component {
             return (
                 <ul className="session-errors-ul">
                     <li className="session-errors-li">
-                        {Object.values(this.props.errors)[0]}
+                        {Object.values(this.props.errors)}
                     </li>
                 </ul>
             );
@@ -51,44 +51,40 @@ class SignupForm extends  React.Component {
                 <div className="session-image">
                 </div>
                 <div className='session-left'>
-                    <h3>
-                        This will be the Logo div link back home page
-                    </h3> 
-                    <form onSubmit={this.handleSignup}>
-                        <label>
-                            Username:
-                            <br/>
-                            <input type="text"
-                                value={this.state.username}
-                                onChange={this.update('username')}
-                                placeholder="Username"
-                            />
-                        </label>
+                    <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/logo.png" />
+                    <label>
+                        Username:
                         <br/>
-                        <label>
-                            Email:
-                            <br/>
-                            <input type="email"
-                                value={this.state.email}
-                                onChange={this.update('email')}
-                                placeholder="Email"
-                            />
-                        </label>
+                        <input type="text"
+                            value={this.state.username}
+                            onChange={this.update('username')}
+                            placeholder="Username"
+                        />
+                    </label>
+                    <br/>
+                    <label>
+                        Email:
                         <br/>
-                        <label>
-                            Password:
-                            <br/>
-                            <input type="password"
-                                value={this.state.password}
-                                onChange={this.update('password')}
-                                placeholder="Password"
-                            />
-                        </label>
-                        {this.showErrors()}
-                        <div className='session-button'>
-                            <button className='submit-button' onClick={this.handleSignup()}>Sign Up</button>
-                        </div>
-                    </form>
+                        <input type="email"
+                            value={this.state.email}
+                            onChange={this.update('email')}
+                            placeholder="Email"
+                        />
+                    </label>
+                    <br/>
+                    <label>
+                        Password:
+                        <br/>
+                        <input type="password"
+                            value={this.state.password}
+                            onChange={this.update('password')}
+                            placeholder="Password"
+                        />
+                    </label>
+                    {this.showErrors()}
+                    <div className='session-button'>
+                        <button className='submit-button' onClick={this.handleSignup()}>Sign Up</button>
+                    </div>
                 </div>
             </div>
         )

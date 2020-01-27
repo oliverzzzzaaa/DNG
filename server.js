@@ -8,8 +8,8 @@ const rooms = require("./routes/api/rooms");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const port = process.env.PORT || 5000;
-const UserManagement = require("./utils/userManagement");
-const Rooms = require("./utils/rooms");
+const handleGameAction = require("./games/gameHandler");
+const lobby = require("./utils/lobby");
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -23,97 +23,50 @@ app.use(bodyParser.json());
 app.use("/", users);
 app.use("/rooms", rooms);
 
-const loggedInUsers = [];
-
-function getRoomBySocketId(id) {
-  const playerId = UserManagement.getUserId(id);
-  const rooms = Rooms.getInstance();
-  return rooms.getRoomByPlayer(playerId);
-}
-
 io.on("connection", socket => {
-  loggedInUsers.push(socket);
-  console.log("New client connected");
+  console.log("new client connected");
+  socket.on("login", payload => {
+    lobby.login(payload.userId, socket);
+  });
 
-  socket.on("start", () => {
-    const room = getRoomBySocketId(socket.id);
-    room.forEach(user => {
-      //TODO: change gameState to real game state
-      UserManagement.getSocket(user.id).emit("start", { gameState: room });
+  socket.on("getRooms", () => {
+    const roomId = lobby.getRoomIdBySocket(socket);
+    socket.emit("lobby", {
+      rooms: lobby.getRooms(),
+      roomId: roomId
     });
   });
 
   socket.on("ready", () => {
-    const playerId = UserManagement.getUserId(socket.id);
-    const room = getRoomBySocketId(socket.id);
-    room.players.map(player => {
-      if (player.id.toString() === playerId) {
-        player.ready = true;
-      }
-      return player;
-    });
-    if (room.players.every(player => player.ready)) {
-      room.ready = true;
-    }
-    room.players.forEach(user => {
-      //TODO: change gameState to real game state
-      UserManagement.getSocket(user.id.toString()).emit("updateRoom", room);
+    const room = lobby.getRoomBySocket(socket);
+    lobby.setUserReadyBySocket(socket);
+    lobby.emitRoomMessage(room.id, {
+      type: "updateRoom",
+      body: room.getInfo()
     });
   });
 
-  socket.on("login", payload => {
-    UserManagement.login(payload.userId, socket);
-    socket.emit("loggedIn", {
-      rooms: Rooms.getInstance().getRooms()
-    });
+  socket.on("startGame", data => {
+    const room = lobby.getRoomBySocket(socket);
+    room.onGame = true;
+    handleGameAction(socket, lobby, { game: data.game, type: "create" });
+    lobby.emit("updateRoom", room.getInfo());
   });
 
-  socket.on("WELCOME", () =>
-    socket.emit("WELCOME", {
-      msg: "Welcome, you are connecting to server now."
-    })
-  );
-
-  //{tpye: "reday" , payload: data}
-  socket.on("message", data => {});
-
-  socket.on("SOMEACTIONTYPE", () =>
-    socket.emit("SOMERESPONSETYPE", {
-      msg: "If you getting this, that means server received your msg"
-    })
-  );
-
-  socket.on("pathData", data => {
-    loggedInUsers.forEach(sk => {
-      sk.emit("pathData", data);
-    });
-  });
-
-  socket.on("clearDrawing", () => {
-    loggedInUsers.forEach(sk => {
-      sk.emit("clearDrawing");
-    });
+  socket.on("gameAction", payload => {
+    handleGameAction(socket, lobby, payload);
   });
 
   socket.on("disconnect", () => {
-    const playerId = UserManagement.getUserId(socket.id.toString());
-    if (playerId) {
-      const roomInfo = Rooms.getInstance().leave(playerId.toString());
-      if (roomInfo) {
-        if (!roomInfo.isEmpty) {
-          UserManagement.getConnectedSocket().forEach(socket => {
-            socket.emit("updateRoom", Rooms.getInstance().get(roomInfo.id));
-          });
-        } else {
-          UserManagement.getConnectedSocket().forEach(socket => {
-            socket.emit("removeRoom", {
-              id: roomInfo.id
-            });
-          });
-        }
+    const roomInfo = lobby.disconnectFromRoom(socket);
+    if (roomInfo) {
+      if (!roomInfo.isEmpty) {
+        lobby.emit("updateRoom", lobby.getRoom(roomInfo.id).getInfo());
+      } else {
+        lobby.emit("removeRoom", { id: roomInfo.id });
       }
     }
-    UserManagement.logout(socket.id);
+    lobby.logout(socket);
     console.log("Client disconnected");
   });
 });
