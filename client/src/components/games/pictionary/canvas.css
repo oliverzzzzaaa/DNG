@@ -14,9 +14,9 @@
   height: 90vh;
 }
 
-.canvas-area{
-  width: 100%;
-  height: 100vh;
+#pictionary-canvas {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .scoreboard-chat{

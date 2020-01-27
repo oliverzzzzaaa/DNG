@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
 @import url('https://fonts.googleapis.com/css?family=Handlee&display=swap');
 
-html, body {
+.app-main {
   height: 100vh;
   width: 100vw;
   position: fixed;
