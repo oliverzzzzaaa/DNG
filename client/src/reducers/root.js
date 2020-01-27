@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
 import session from './session_reducer';
-import user from './user_reduer';
+import users from './user_reducer';
 import errors from './errors_reducer';
 import rooms from './room_reducers'
 
 const RootReducer = combineReducers({
   session,
-  user,
+  users,
   rooms,
   errors
 });

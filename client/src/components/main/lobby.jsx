@@ -3,6 +3,8 @@ import "./lobby.css";
 import Chat from "../game/chat/chat";
 import MySocket from "../../socket";
 import GameRooms from "../game/game_rooms/game_rooms";
+import { Link } from "react-router-dom"
+// import ProfileIconItem from "../profile/profile_icon_item"
 
 class Lobby extends React.Component {
   constructor(props) {
@@ -57,25 +59,28 @@ class Lobby extends React.Component {
       { sender: "player1", body: "message haha" }
     ];
     return (
-      <div className="lobby">
-        {/* <ClientComponentExample /> */}
-        {/* <h1>Lobby</h1> */}
-        {/* <div>{this.props.msg}</div> */}
-        {/* <div className="lobby-page"> */}
-        {/* <div className="test">All loggedin users</div> */}
-        <GameRooms
-          className="game-rooms"
-          currentUser={this.props.currentUser}
-          rooms={this.props.rooms}
-          createRoom={this.props.createRoom}
-          joinRoom={this.props.joinRoom}
-        />
-        <Chat messages={tempmessages} />
-        {/* </div> */}
-        {/* <div className="game-rooms">
+      <div>
+        <Link to={`/users/${this.props.currentUser.id}`}>User Icon</Link>
+        <div className="lobby">
+          {/* <ClientComponentExample /> */}
+          {/* <h1>Lobby</h1> */}
+          {/* <div>{this.props.msg}</div> */}
+          {/* <div className="lobby-page"> */}
+          {/* <div className="test">All loggedin users</div> */}
+          <GameRooms
+            className="game-rooms"
+            currentUser={this.props.currentUser}
+            rooms={this.props.rooms}
+            createRoom={this.props.createRoom}
+            joinRoom={this.props.joinRoom}
+          />
+          <Chat messages={tempmessages} />
+          {/* </div> */}
+          {/* <div className="game-rooms">
           <h1>rooms</h1>
         </div>
         <Chat messages={tempmessages} /> */}
+        </div>
       </div>
     );
   }

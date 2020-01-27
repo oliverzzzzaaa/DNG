@@ -14,9 +14,25 @@ function signJwt(user, response) {
 }
 
 // //TODO: change res structure
-// router.get("/", (req, res) =>
-//   res.json({ msg: "This is the users login page route" })
-// );
+router.post("/users/:id", (req, res) =>{
+  // console.log('!!!!!!!!!!!!')
+  // console.log(`${req.params.id}`)
+  // const id = req.params.id;
+  User.findById(req.params.id).then(user => {
+    // console.log(user)
+    if (!user) {
+      errors.user = "User doesn't exist";
+      return res.status(404).json(errors);
+    } else {
+      return res.status(200).json({
+        id: user.id,
+        username: user.username,
+        email: user.email
+      })
+    }
+  })
+  .catch(err => next(err));
+});
 
 router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
