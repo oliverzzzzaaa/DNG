@@ -66,6 +66,10 @@
   } */
 
 .mid-round-modal {
+  /* display: none; */
+}
+
+.hide {
   display: none;
 }
 

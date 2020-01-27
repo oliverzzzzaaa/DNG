@@ -8,7 +8,8 @@ module.exports = class Pictionary {
         id: user.id,
         score: 0,
         guessed: false,
-        ready: false
+        ready: false,
+        name: user.name
       };
     });
     this.numRounds = this.players.length * 2;
@@ -32,14 +33,19 @@ module.exports = class Pictionary {
   }
 
   readyPlayer(playerId) {
-    console.log(playerId);
     this.players[playerId].ready = true;
   }
 
   guess(playerId, word) {
-    if (this.targetWord === word) {
-      this.players[playerId].guessed = true;
-      return true;
+    if (this.players[playerId] && playerId !== this.currDrawer) {
+      if (this.targetWord === word) {
+        this.players[playerId].guessed = true;
+        this.players[playerId].score += 1;
+        if (this.shouldEndround()) {
+          this.endRound();
+        }
+        return true;
+      }
     }
     return false;
   }
@@ -49,7 +55,14 @@ module.exports = class Pictionary {
     return players.every(player => player.ready);
   }
 
-  startRound() {
+  shouldEndround() {
+    const players = Object.values(this.players);
+    return players.every(
+      player => player.id === this.currDrawer || player.guessed
+    );
+  }
+
+  startRound(time = 60000) {
     this.generateWord();
     const players = Object.values(this.players);
     players.forEach(player => (player.guessed = false));
@@ -69,7 +82,7 @@ module.exports = class Pictionary {
       currDrawer: this.currDrawer,
       targetWord: this.targetWord,
       currentRound: this.currentRound,
-      rumRounds: this.numRounds,
+      numRounds: this.numRounds,
       roundStartTime: this.roundStartTime,
       onRound: this.onRound
     };
