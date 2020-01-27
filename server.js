@@ -10,11 +10,20 @@ const passport = require("passport");
 const port = process.env.PORT || 5000;
 const handleGameAction = require("./games/gameHandler");
 const lobby = require("./utils/lobby");
+const path = require("path")
+
 
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  })
+}
 
 app.use(passport.initialize());
 require("./config/passport")(passport);
