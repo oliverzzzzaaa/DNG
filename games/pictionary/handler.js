@@ -66,6 +66,7 @@ function handleClear(socket, lobby) {
 
 function handleGuess(socket, lobby, payload) {
   console.log(payload);
+  
 }
 
 module.exports = {

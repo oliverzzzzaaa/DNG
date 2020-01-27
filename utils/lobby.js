@@ -10,6 +10,7 @@ class Lobby {
 
   login(userId, socket) {
     this.connection.connect(userId, socket);
+    console.log(this.connection);
   }
 
   logout(socket) {
