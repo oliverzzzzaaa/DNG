@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
 @import url('https://fonts.googleapis.com/css?family=Handlee&display=swap');
 
-html, body {
-  height: 100%;
-  width: 100%;
+.app-main {
+  height: 100vh;
+  width: 100vw;
   position: fixed;
 }
 
