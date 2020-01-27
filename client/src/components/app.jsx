@@ -9,7 +9,7 @@ import { AuthRoute, ProtectedRoute } from "../util/route";
 import "./reset.css";
 
 const App = () => (
-  <div>
+  <div className="app-main">
     <Switch>
       <AuthRoute exact path="/" component={HomePage} />
       <AuthRoute exact path="/login" component={LoginForm} />

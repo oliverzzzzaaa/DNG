@@ -18,7 +18,8 @@
 }
 
 .msg-container {
-  height: 40vh;
+  height: 50vh;
+  width: auto;
 }
 
 .msg-list {

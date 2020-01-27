@@ -36,7 +36,7 @@ class SignupForm extends  React.Component {
             return (
                 <ul className="session-errors-ul">
                     <li className="session-errors-li">
-                        {Object.values(this.props.errors)[0]}
+                        {Object.values(this.props.errors)}
                     </li>
                 </ul>
             );
@@ -51,9 +51,7 @@ class SignupForm extends  React.Component {
                 <div className="session-image">
                 </div>
                 <div className='session-left'>
-                    <h3>
-                        This will be the Logo div link back home page
-                    </h3> 
+                    <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/logo.png" />
                     <label>
                         Username:
                         <br/>

@@ -18,4 +18,5 @@
 .nav-bar-main .navbar-logo img {
     display: flex;
     width: 150px;
+    margin: -30px;
 }
