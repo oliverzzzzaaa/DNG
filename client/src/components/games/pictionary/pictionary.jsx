@@ -1,5 +1,5 @@
 import React from "react";
-import CanvasContainer from "./canvas";
+import CanvasContainer from './canvas'
 import ScoreBoard from "./scoreboard/scoreboard";
 import Timer from "./timer/timer";
 import Chat from "../chat/chat";
@@ -79,6 +79,7 @@ export default class Pictionary extends React.Component {
         <MidRound
           isDrawer={this.props.currentUserId === this.props.room.players[0].id}
         />
+
       </div>
     );
   }
