@@ -44,7 +44,7 @@ export default class Room extends React.Component {
         <div className="game-or-waiting-div">
           {this.props.room.onGame ? (
             <Pictionary
-              currentUserId={this.props.currentUser.id}
+              currentUser={this.props.currentUser}
               room={this.props.room}
             />
           ) : (

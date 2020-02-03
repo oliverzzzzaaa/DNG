@@ -3,10 +3,9 @@ import "./lobby.css";
 import Chat from "../games/chat/chat";
 import MySocket from "../../socket";
 import GameRooms from "../games/game_rooms/game_rooms";
-import NavBar from '../nav_bar/nav_bar_container';
+import NavBar from "../nav_bar/nav_bar_container";
 
 class Lobby extends React.Component {
-
   componentDidMount() {
     const socket = MySocket.getSocket(this.props.currentUser.id);
 
@@ -76,9 +75,9 @@ class Lobby extends React.Component {
           rooms={this.props.rooms}
           createRoom={this.props.createRoom}
           joinRoom={this.props.joinRoom}
-          />
-        <div className='nav-chat'>        
-          <NavBar/>
+        />
+        <div className="nav-chat">
+          <NavBar />
           <Chat messages={tempmessages} />
         </div>
         {/* </div> */}
@@ -86,7 +85,6 @@ class Lobby extends React.Component {
           <h1>rooms</h1>
         </div>
         <Chat messages={tempmessages} /> */}
-        
       </div>
     );
   }
