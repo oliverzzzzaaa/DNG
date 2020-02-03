@@ -164,7 +164,7 @@ export default class CanvasContainer extends React.Component {
             clear
           </button>
           <br />
-          <div>
+          <div className='clues' >
             clues right here!
           </div>
         </div>

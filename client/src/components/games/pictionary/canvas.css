@@ -80,3 +80,13 @@
   margin-right: 5px;
   align-self: center;
 }
+
+.clues {
+  border-radius: 35px;
+  background-color: white;
+  border-width: 5px 3px 3px 5px;
+  border-radius:95% 4% 97% 5%/4% 94% 3% 95%;
+  border: solid rgb(86, 207, 255);
+  box-shadow: 9px 11px 22px 1px rgb(51, 90, 110);
+  -webkit-box-shadow: 9px 11px 15px 1px #344955; 
+}
