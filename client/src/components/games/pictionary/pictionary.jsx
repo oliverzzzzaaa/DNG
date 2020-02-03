@@ -16,13 +16,14 @@ export default class Pictionary extends React.Component {
     this.renderTimer = this.renderTimer.bind(this);
     this.renderScoreBoard = this.renderScoreBoard.bind(this);
     this.renderMidRound = this.renderMidRound.bind(this);
+    this.renderTargetWord = this.renderTargetWord.bind(this);
   }
 
   guess(word) {
     MySocket.getSocket().emit("gameAction", {
       game: "Pictionary",
       type: "guess",
-      params: word
+      params: { sender: this.props.currentUser.name, word: word }
     });
   }
 
@@ -56,7 +57,7 @@ export default class Pictionary extends React.Component {
   }
 
   renderTimer() {
-    if (this.state.roundStartTime) {
+    if (this.state.onRound) {
       return (
         <Timer start={this.state.roundStartTime} stop={!this.state.onRound} />
       );
@@ -65,17 +66,28 @@ export default class Pictionary extends React.Component {
   }
 
   renderScoreBoard() {
-    console.log(this.state);
     if (this.state.players) {
       return <ScoreBoard players={this.state.players} />;
     }
+  }
+
+  renderTargetWord() {
+    if (this.props.currentUser.id === this.state.currDrawer) {
+      return (
+        <div className="target-word">
+          <h2>{this.state.targetWord}</h2>
+        </div>
+      );
+    }
+    return null;
   }
 
   renderMidRound() {
     if (
       this.state.onRound !== undefined &&
       this.state.onRound === false &&
-      Object.values(this.state.players).some(player => player.guessed)
+      (Object.values(this.state.players).some(player => player.guessed) ||
+        this.state.onMidRound)
     ) {
       return <MidRound />;
     }
@@ -88,6 +100,7 @@ export default class Pictionary extends React.Component {
       <div className="game-components-div">
         <div id="canvas-and-timer-div">
           <div className="canvas-container">
+            {this.renderTargetWord()}
             {/* <div className="canvas-button-container">
               <button onClick={() => this.setState({ isDrawer: true })} className='canvas-button'>
                 drawer
@@ -97,11 +110,11 @@ export default class Pictionary extends React.Component {
                 viewer
               </button>
             </div> */}
-            {/* TODO: change to this.props.currentUserId === currentDrawer */}
+
             <CanvasContainer
               isDrawer={
                 this.state.onRound &&
-                this.props.currentUserId === this.props.room.players[0].id
+                this.props.currentUser.id === this.state.currDrawer
               }
             />
           </div>
