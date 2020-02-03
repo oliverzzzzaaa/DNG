@@ -28,7 +28,7 @@ class Waiting extends React.Component {
             <Button
               variant="warning outline-light"
               className="waiting-leave"
-              onClick={this.leave}
+              onClick={this.leave} 
             >
               Leave
             </Button>

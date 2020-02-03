@@ -14,7 +14,8 @@ class ProfileIconItem extends React.Component{
                     />
                 </div>
                 <div className="profile-icon-username-container"> 
-                    <span className="profile-icon-username">{this.props.user.username}</span>
+                    <span className="profile-icon-username">{this.props.user.name}</span>
+                    {this.props.user.ready ? (<div className="check-or-x">&#x2714;</div>) : (<div className="check-or-x">&#x274C;</div>)}
                 </div>
             </div>
         )

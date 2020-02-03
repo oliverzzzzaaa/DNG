@@ -35,10 +35,10 @@ class Waiting extends React.Component {
   renderPlayers() {
     if (this.props.room) {
       return (
-        <div>
+        <div className="room-ready-state">
           {/* TODO: delete this */}
           <div className="delete-this-div">
-            <p className="testing">{`Players are ${
+            <p id="room-ready-state2">{`Players are ${
               this.props.room.ready ? "" : "not"
             } ready!  Game is ${
               this.props.room.onGame ? "" : "not"
