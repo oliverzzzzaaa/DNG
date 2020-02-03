@@ -44,3 +44,8 @@
     width: 30%;
     padding-right: 3%;
 }
+
+.waiting-room p {
+    text-align: center;
+    color: red;
+}
