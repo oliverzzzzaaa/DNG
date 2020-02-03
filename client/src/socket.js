@@ -4,6 +4,9 @@ export default class MySocket {
   static getSocket = userId => {
     if (MySocket.socket === undefined) {
       const port = process.env.PORT || 5000;
+      console.log("-----------------");
+      console.log(process.env.PORT);
+      console.log("-----------------");
       let endpoint = `http://localhost:5000`;
       if (process.env.NODE_ENV === "production") {
         endpoint = `http://${window.location.hostname}:${port}`;
