@@ -45,8 +45,11 @@ class Lobby {
   setUserReadyBySocket(socket) {
     const playerId = this.connection.getUserId(socket);
     const room = this.getRoomBySocket(socket);
-    room.setReady(playerId);
-    return room.isReady();
+    if (room) {
+      room.setReady(playerId);
+      return room.isReady();
+    }
+    return false;
   }
 
   emit(type, body) {
