@@ -19,6 +19,7 @@
   left:0;
   background-position: 50%;
   background-size: cover;
+  background-repeat: no-repeat;
   background-image: url('https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/sesion.gif');
 }
 

@@ -19,21 +19,21 @@
 
 .msg-container {
   height: 50vh;
+  overflow-y: scroll;
   width: auto;
 }
 
 .msg-list {
-  padding: 15px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
-  max-height: 610px;
+  height: auto;
 }
 
 .msg-li {
   display: flex;
   padding-bottom: 7px;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .msg-li > .user-icon {

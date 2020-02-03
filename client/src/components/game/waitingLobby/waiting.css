@@ -44,3 +44,7 @@
     width: 30%;
     padding-right: 3%;
 }
+
+.delete-this-div .testing p {
+    color: red;
+}

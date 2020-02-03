@@ -131,6 +131,7 @@ export default class CanvasContainer extends React.Component {
           >
             Black
           </button>
+          <br/>
           <button
             className="canvas-bottom-button"
             style={{ background: "red", color: "white" }}
@@ -138,18 +139,21 @@ export default class CanvasContainer extends React.Component {
           >
             Red
           </button>
+          <br />
           <button
             onClick={() => this.setStrokeWidth(2)}
             className="canvas-bottom-button"
           >
             thin
           </button>
+          <br />
           <button
             onClick={() => this.setStrokeWidth(10)}
             className="canvas-bottom-button"
           >
             thick
           </button>
+          <br />
           <button
             className="canvas-bottom-button"
             onClick={() => {
@@ -159,6 +163,10 @@ export default class CanvasContainer extends React.Component {
           >
             clear
           </button>
+          <br />
+          <div>
+            clues right here!
+          </div>
         </div>
       </div>
     );
