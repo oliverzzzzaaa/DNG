@@ -20,9 +20,7 @@ module.exports = class Room {
   }
 
   remove(userId) {
-    console.log(this.game);
     if (this.onGame && this.game && this.game.players[userId]) {
-      console.log("leave");
       this.players.forEach(player => {
         if (player.id === userId) {
           player.connected = false;
@@ -53,7 +51,7 @@ module.exports = class Room {
   }
 
   isReady() {
-    return this.players.every(user => user.ready);
+    return this.players.every(user => user.ready) && this.players.length >= 2;
   }
 
   setGame(game) {

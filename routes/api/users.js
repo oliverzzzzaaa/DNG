@@ -32,10 +32,10 @@ router.post("/login", (req, res) => {
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
         signJwt(user, (err, token) => {
-          //TODO: change res
           res.json({
             success: true,
-            token: "Bearer " + token
+            token: "Bearer " + token,
+            port: process.env.PORT || 5000
           });
           // res.json(user);
         });
