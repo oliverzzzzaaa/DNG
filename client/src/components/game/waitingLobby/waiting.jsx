@@ -36,8 +36,8 @@ class Waiting extends React.Component {
           </div>
         </div>
         {/* <div className="waiting-room-ready-button">
-                    <button>Ready</button>
-                </div> */}
+            <button>Ready</button>
+        </div> */}
       </div>
     );
   }
