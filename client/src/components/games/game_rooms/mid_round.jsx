@@ -21,7 +21,6 @@ class MidRound extends React.Component {
   }
 
   savePicture() {
-    console.log(document.getElementById("pictionary-canvas"));
     document.getElementById("mid-round-img").src = document
       .getElementById("pictionary-canvas")
       .toDataURL();
