@@ -4,9 +4,9 @@ export default class MySocket {
   static getSocket = userId => {
     if (MySocket.socket === undefined) {
       const port = process.env.PORT || 5000;
-      let endpoint = `http://localhost:${port}`;
+      let endpoint = `http://localhost:5000`;
       if (process.env.NODE_ENV === "production") {
-        endpoint = `https://pictionary4.herokuapp.com:${port}`;
+        endpoint = `${window.location.hostname}:${port}`;
       }
       MySocket.socket = openSocket(endpoint);
       if (userId) {
