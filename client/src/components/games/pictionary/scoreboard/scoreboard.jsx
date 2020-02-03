@@ -12,8 +12,6 @@ class ScoreBoard extends React.Component {
 
   sortByScore() {
     let players = Object.values(this.props.players);
-    // ^ temporary, future plan on passing users as a prop
-    // let players = Object.values(this.props.users)
     let compare = (a, b) => {
       let comparison = 0;
       if (a.score > b.score) {
@@ -27,7 +25,7 @@ class ScoreBoard extends React.Component {
   }
 
   addScore(id, amt = 1) {
-    let newUserInfo = this.state[id];
+    let newUserInfo = this.props.players[id];
     newUserInfo.score = newUserInfo.score + amt;
     this.setState({ [id]: newUserInfo });
   }
