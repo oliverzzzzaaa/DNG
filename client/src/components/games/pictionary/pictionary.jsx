@@ -1,5 +1,5 @@
 import React from "react";
-import CanvasContainer from './canvas'
+import CanvasContainer from "./canvas";
 import ScoreBoard from "./scoreboard/scoreboard";
 import Timer from "./timer/timer";
 import Chat from "../chat/chat";
@@ -9,8 +9,13 @@ import MidRound from "../game_rooms/mid_round";
 export default class Pictionary extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      messages: []
+    };
     this.guess = this.guess.bind(this);
+    this.renderTimer = this.renderTimer.bind(this);
+    this.renderScoreBoard = this.renderScoreBoard.bind(this);
+    this.renderMidRound = this.renderMidRound.bind(this);
   }
 
   guess(word) {
@@ -24,6 +29,15 @@ export default class Pictionary extends React.Component {
   componentDidMount() {
     const socket = MySocket.getSocket();
     socket.off("updateGameState");
+    socket.off("message");
+
+    socket.on("message", message =>
+      this.setState(preState => {
+        const msgs = preState.messages;
+        msgs.push(message);
+        return { messages: msgs };
+      })
+    );
 
     socket.on("updateGameState", state => {
       console.log(state);
@@ -41,9 +55,32 @@ export default class Pictionary extends React.Component {
     });
   }
 
-  componentDidUpdate() {
-    console.log("(((((((((((((1)))))))))))))");
+  renderTimer() {
+    if (this.state.roundStartTime) {
+      return (
+        <Timer start={this.state.roundStartTime} stop={!this.state.onRound} />
+      );
+    }
+    return null;
+  }
+
+  renderScoreBoard() {
     console.log(this.state);
+    if (this.state.players) {
+      return <ScoreBoard players={this.state.players} />;
+    }
+  }
+
+  renderMidRound() {
+    if (
+      this.state.onRound !== undefined &&
+      this.state.onRound === false &&
+      Object.values(this.state.players).some(player => player.guessed)
+    ) {
+      return <MidRound />;
+    }
+
+    return null;
   }
 
   render() {
@@ -71,15 +108,12 @@ export default class Pictionary extends React.Component {
         </div>
         <div className="scoreboard-chat">
           <div className="lobby-scoreboard-div">
-            <Timer />
-            <ScoreBoard />
-            <Chat action={this.guess} />
+            {this.renderTimer()}
+            {this.renderScoreBoard()}
+            <Chat action={this.guess} messages={this.state.messages} />
           </div>
         </div>
-        <MidRound
-          isDrawer={this.props.currentUserId === this.props.room.players[0].id}
-        />
-
+        {this.renderMidRound()}
       </div>
     );
   }

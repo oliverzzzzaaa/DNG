@@ -54,6 +54,9 @@ class Chat extends React.Component {
         this.props.action(e.currentTarget.value);
         //action should send the message to the server
       }
+      this.setState({
+        newMessage: ""
+      });
     }
   }
 
@@ -72,7 +75,7 @@ class Chat extends React.Component {
             onKeyDown={this.keyPress}
             onChange={this.handleChange}
             type="text"
-            value={this.state.message}
+            value={this.state.newMessage}
             className="chat-input"
           />
         </div>

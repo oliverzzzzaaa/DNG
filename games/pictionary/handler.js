@@ -1,5 +1,14 @@
 const Pictionary = require("./pictionary");
 
+let roundTimerId;
+function setRoundTimer(cb, time) {
+  roundTimerId = this.setTimeout(cb, time);
+}
+
+function clearRoundTimer() {
+  roundTimerId = this.clearTimeout(roundTimerId);
+}
+
 function handleRoundReady(socket, lobby, params) {
   const room = lobby.getRoomBySocket(socket);
   let game;
@@ -10,18 +19,21 @@ function handleRoundReady(socket, lobby, params) {
     game.readyPlayer(lobby.getUserId(socket));
     if (game.isReady()) {
       game.startRound();
+      setRoundTimer(() => {
+        game.endRound();
+        lobby.emitRoomMessage(room.id, {
+          type: "updateGameState",
+          body: game.getState()
+        });
+      }, 60000);
     }
+    lobby.emitRoomMessage(room.id, {
+      type: "clearDrawing"
+    });
     lobby.emitRoomMessage(room.id, {
       type: "updateGameState",
       body: game.getState()
     });
-    setTimeout(() => {
-      game.endRound();
-      lobby.emitRoomMessage(room.id, {
-        type: "updateGameState",
-        body: game.getState()
-      });
-    }, 60000);
   }
 }
 
@@ -64,9 +76,25 @@ function handleClear(socket, lobby) {
   });
 }
 
-function handleGuess(socket, lobby, payload) {
-  console.log(payload);
-  
+function handleGuess(socket, lobby, word) {
+  const room = lobby.getRoomBySocket(socket);
+  if (room && room.game) {
+    const game = room.game;
+    const playerId = lobby.getUserId(socket);
+    if (game.guess(playerId, word)) {
+      lobby.emitRoomMessage(room.id, {
+        type: "updateGameState",
+        body: room.game.getState()
+      });
+      if (!game.onRound && roundTimerId) {
+        clearRoundTimer();
+      }
+    }
+    lobby.emitRoomMessage(room.id, {
+      type: "message",
+      body: { sender: "add later", body: word }
+    });
+  }
 }
 
 module.exports = {
