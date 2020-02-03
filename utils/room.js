@@ -14,6 +14,15 @@ module.exports = class Room {
     });
   }
 
+  reset() {
+    this.players.forEach(user => {
+      user.ready = false;
+    });
+    this.ready = false;
+    this.onGame = false;
+    this.game = null;
+  }
+
   add(user) {
     this.players.push(user);
     this.ready = false;

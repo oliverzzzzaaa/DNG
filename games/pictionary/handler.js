@@ -15,25 +15,32 @@ function handleRoundReady(socket, lobby, params) {
   if (room) {
     game = room.game;
   }
-  if (game && !game.onRound) {
-    game.readyPlayer(lobby.getUserId(socket));
-    if (game.isReady()) {
-      game.startRound();
-      setRoundTimer(() => {
-        game.endRound();
-        lobby.emitRoomMessage(room.id, {
-          type: "updateGameState",
-          body: game.getState()
-        });
-      }, 60000);
+  if (game.isOver()) {
+    room.reset();
+    setTimeout(() => lobby.emit("updateRoom", room.getInfo()), 5000);
+  } else {
+    if (game && !game.onRound) {
+      game.readyPlayer(lobby.getUserId(socket));
+      if (game.isReady()) {
+        game.startRound();
+        setRoundTimer(() => {
+          game.endRound();
+          const state = game.getState();
+          state.onMidRound = true;
+          lobby.emitRoomMessage(room.id, {
+            type: "updateGameState",
+            body: state
+          });
+        }, 60000);
+      }
+      lobby.emitRoomMessage(room.id, {
+        type: "clearDrawing"
+      });
+      lobby.emitRoomMessage(room.id, {
+        type: "updateGameState",
+        body: game.getState()
+      });
     }
-    lobby.emitRoomMessage(room.id, {
-      type: "clearDrawing"
-    });
-    lobby.emitRoomMessage(room.id, {
-      type: "updateGameState",
-      body: game.getState()
-    });
   }
 }
 
@@ -76,12 +83,12 @@ function handleClear(socket, lobby) {
   });
 }
 
-function handleGuess(socket, lobby, word) {
+function handleGuess(socket, lobby, payload) {
   const room = lobby.getRoomBySocket(socket);
   if (room && room.game) {
     const game = room.game;
     const playerId = lobby.getUserId(socket);
-    if (game.guess(playerId, word)) {
+    if (game.guess(playerId, payload.word)) {
       lobby.emitRoomMessage(room.id, {
         type: "updateGameState",
         body: room.game.getState()
@@ -92,7 +99,7 @@ function handleGuess(socket, lobby, word) {
     }
     lobby.emitRoomMessage(room.id, {
       type: "message",
-      body: { sender: "add later", body: word }
+      body: { sender: payload.sender, body: payload.word }
     });
   }
 }

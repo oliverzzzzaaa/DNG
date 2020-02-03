@@ -12,14 +12,20 @@ module.exports = class Pictionary {
         name: user.name
       };
     });
-    this.numRounds = this.players.length * 2;
-    this.currDrawer = Object.values(this.players)[0].id;
+    this.numRounds = Object.keys(this.players).length * 2;
     this.currentRound = 0;
+    this.currDrawer = Object.values(this.players)[0].id;
     this.targetWord = "";
     this.usedWords = [];
     this.difficulty = difficulty;
     this.roundStartTime;
     this.onRound = false;
+  }
+
+  switchTurn() {
+    this.currDrawer = Object.values(this.players)[
+      this.currentRound % Object.keys(this.players).length
+    ].id;
   }
 
   generateWord() {
@@ -68,12 +74,18 @@ module.exports = class Pictionary {
     players.forEach(player => (player.guessed = false));
     this.roundStartTime = Date.now();
     this.onRound = true;
+    this.switchTurn();
   }
 
   endRound() {
     this.onRound = false;
     const players = Object.values(this.players);
     players.forEach(player => (player.ready = false));
+    this.currentRound++;
+  }
+
+  isOver() {
+    return this.currentRound === this.numRounds;
   }
 
   getState() {

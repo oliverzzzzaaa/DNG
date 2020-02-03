@@ -31,13 +31,13 @@ class Timer extends React.Component {
 
   tick() {
     if (this.state.seconds !== 0) {
-      const timeLeft = 60 - Math.floor((Date.now() - this.props.start) / 1000);
+      const timeLeft = 59 - Math.floor((Date.now() - this.props.start) / 1000);
       this.setState({
         seconds: timeLeft < 0 ? 0 : timeLeft
       });
     } else {
       clearInterval(this.intervalId);
-      alert("round over!");
+      // alert("round over!");
     }
   }
 

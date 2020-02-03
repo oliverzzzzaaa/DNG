@@ -9,7 +9,7 @@ const keys = require("../../config/keys_dev")
 // const keys = require("../../config/keys");
 
 function signJwt(user, response) {
-  const payload = { id: user.id };
+  const payload = { id: user.id, name: user.username };
   jwt.sign(payload, keys.secretOrKey, { expiresIn: 36000 }, response);
 }
 
@@ -34,10 +34,8 @@ router.post("/login", (req, res) => {
         signJwt(user, (err, token) => {
           res.json({
             success: true,
-            token: "Bearer " + token,
-            port: process.env.PORT || 5000
+            token: "Bearer " + token
           });
-          // res.json(user);
         });
       } else {
         errors.login = "Incorrect email or password";
@@ -71,12 +69,10 @@ router.post("/signup", (req, res) => {
             .save()
             .then(user =>
               signJwt(user, (err, token) => {
-                //TODO: change res
                 res.json({
                   success: true,
                   token: "Bearer " + token
                 });
-                // res.json(user);
               })
             )
             .catch(err => res.json({ msg: "failure" }));
