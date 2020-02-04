@@ -1,22 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
+
 .lobby .nav-bar-main {
     display: flexbox;
     flex-direction: row;
 }
 
-.nav-bar-main .nav-bar-logout {
+.disabled-link {
+    text-decoration: none;
+    pointer-events: none;
+    color: inherit;
+}
+
+.nav-bar-main .nav-bar-button {
     display: flex;
+    justify-content: center;
+}
+
+.nav-bar-main .nav-bar-logout {
     border: solid black;
     border-width: 1px 1px 3px 3px;
     border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
     transform: rotate(-2deg);
-    margin-left: 50%;
     cursor: pointer;
-    justify-content: right;
-    align-self: end;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 2%;
+    font-family: 'Indie Flower', cursive;
+    color: black;
+    font: bolder;
 }
+
+
 
 .nav-bar-main .navbar-logo img {
     display: flex;
     width: 150px;
-    margin: -30px;
+    margin: 0px;
 }

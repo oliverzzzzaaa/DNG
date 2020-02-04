@@ -19,9 +19,14 @@ class NarBar extends React.Component {
         return(
             <div className='nav-bar-main'>
                 <Link to="/" className="navbar-logo"><img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/logo.png" /></Link>
-                <button className='nav-bar-logout' onClick={this.handleLogout} >
-                    Bye!
-                </button>
+                    <div className='nav-bar-button'>
+                        <button className='nav-bar-logout'>
+                            <Link to={`/users/${this.props.currentUserId}`} className='disabled-link'>Profile!</Link>
+                        </button>
+                        <button className='nav-bar-logout' onClick={this.handleLogout} >
+                            Bye!
+                        </button>
+                    </div>
             </div>
         )
     }
