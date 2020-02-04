@@ -71,5 +71,3 @@ export default class Room extends React.Component {
     );
   }
 }
-
-//Photo by Amy Shamblen on Unsplash
