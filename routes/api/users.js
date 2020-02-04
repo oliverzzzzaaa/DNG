@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../../models/User");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
-const keys = require("../../config/keys_dev")
+const keys = require("../../config/keys_dev");
 // const keys = require("../../config/keys");
 
 function signJwt(user, response) {

@@ -96,7 +96,6 @@ export default class CanvasContainer extends React.Component {
       // Select the path, so we can see its segments:
       this.path.fullySelected = false;
       this.uploadDrawing();
-      console.log(paper.project.activeLayer);
     }
   }
 
