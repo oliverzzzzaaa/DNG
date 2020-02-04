@@ -10,7 +10,6 @@ class Lobby {
 
   login(userId, socket) {
     this.connection.connect(userId, socket);
-    console.log(this.connection);
   }
 
   logout(socket) {
@@ -46,8 +45,11 @@ class Lobby {
   setUserReadyBySocket(socket) {
     const playerId = this.connection.getUserId(socket);
     const room = this.getRoomBySocket(socket);
-    room.setReady(playerId);
-    return room.isReady();
+    if (room) {
+      room.setReady(playerId);
+      return room.isReady();
+    }
+    return false;
   }
 
   emit(type, body) {
@@ -93,7 +95,7 @@ class Lobby {
     const roomId = this.map.get(userId);
     if (roomId) {
       const room = this.rooms.get(roomId);
-      if (room.remove(userId)) {
+      if (room && room.remove(userId)) {
         this.map.delete(userId);
       }
       const hasPlayer = room.hasConnectedPlayer();

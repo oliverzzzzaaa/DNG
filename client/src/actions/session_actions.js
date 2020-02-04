@@ -33,7 +33,7 @@ export const clearErrors = () => ({
 export const logout = () => dispatch => {
   localStorage.removeItem("jwtToken");
   APIUtil.setAuthToken(false);
-  dispatch(logoutUser())
+  dispatch(logoutUser());
 };
 
 export const signup = user => dispatch =>
@@ -45,12 +45,11 @@ export const signup = user => dispatch =>
 export const login = user => dispatch =>
   APIUtil.login(user)
     .then(res => {
-      const { token } = res.data;
+      const { token, name } = res.data;
       localStorage.setItem("jwtToken", token);
       APIUtil.setAuthToken(token);
       const decoded = jwt_decode(token);
       dispatch(receiveCurrentUser(decoded));
-      // dispatch(receiveCurrentUser(res.data));
       window.location.hash = "/lobby";
     })
     .catch(err => {

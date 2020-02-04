@@ -5,10 +5,11 @@ const bcrypt = require("bcryptjs");
 const User = require("../../models/User");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
-const keys = require("../../config/keys");
+const keys = require("../../config/keys_dev")
+// const keys = require("../../config/keys");
 
 function signJwt(user, response) {
-  const payload = { id: user.id };
+  const payload = { id: user.id, name: user.username };
   jwt.sign(payload, keys.secretOrKey, { expiresIn: 36000 }, response);
 }
 
@@ -52,12 +53,10 @@ router.post("/login", (req, res) => {
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
         signJwt(user, (err, token) => {
-          //TODO: change res
           res.json({
             success: true,
             token: "Bearer " + token
           });
-          // res.json(user);
         });
       } else {
         errors.login = "Incorrect email or password";
@@ -91,12 +90,10 @@ router.post("/signup", (req, res) => {
             .save()
             .then(user =>
               signJwt(user, (err, token) => {
-                //TODO: change res
                 res.json({
                   success: true,
                   token: "Bearer " + token
                 });
-                // res.json(user);
               })
             )
             .catch(err => res.json({ msg: "failure" }));
