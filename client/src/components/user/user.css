@@ -87,33 +87,39 @@
 }
 
 .tabcontent-container {
-    height: 93%;
-    display: flex;
+    height: 88%;
+    /* display: flex; */
     padding: 15px;
+    margin-top: 5%;
     overflow: scroll;
+    border:solid 7px #41403E;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
 }
 
 .tabcontent {
     display: none;
-    /* font-family: 'Handlee', cursive; */
+    font-family: 'Handlee', cursive;
+    /* overflow: scroll; */
 }
 
 #games {
+    /* display: block; */
     flex-direction: column;
     width: 100%;
+    align-items: center;
+    /* overflow: scroll; */
 }
 
-#games span {
-    /* list-style-type: none; */
-    margin-bottom: 10px;
+#games .game-history {
+    margin-top: 10px;
     border: 3px solid #333333;
     border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
     width: 100%;
-    height: 80px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
 #drawings {
@@ -126,6 +132,40 @@
 #drawings .history-pics {
     height: 45%;
     width: 45%;
-    border: 1px solid black;
     margin: 2.5%;
+    border-radius: 40px;
+    box-shadow: 5px 5px 15px 1px rgba(0,0,0,0.25), -5px -5px 15px -5px rgba(0,0,0,0.22);
+    cursor: pointer;
+    transition: 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+#drawings .history-pics:hover {
+    transform: scale(1.05, 1.05);
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.25), 
+    -5px -5px 15px 5px rgba(0,0,0,0.22);
+}
+
+
+.arrow-left {
+	position: absolute;
+	width: 3vmin;
+	height: 3vmin;
+	background: transparent;
+	border-top: 1vmin solid black;
+	border-right: 1vmin solid black;
+	/* box-shadow: 0 0 0 lightgray; */
+	transition: all 200ms ease;
+	
+    left: 10%;
+    top: 10%;
+    transform: translate3d(0,-50%,0) rotate(-135deg);
+}
+
+.arrow-left:hover {
+	border-color: orange;
+	box-shadow: 0.5vmin -0.5vmin 0 black;
+}
+
