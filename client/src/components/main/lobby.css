@@ -54,6 +54,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 20%;
 }
 
 .game-rooms-div {
@@ -81,7 +82,7 @@
 
 .lobby .msg-list {
   margin: 20px;
-  padding: 0px;
+  padding: 5px;
   height: 98%;
   margin: 0px;
 }

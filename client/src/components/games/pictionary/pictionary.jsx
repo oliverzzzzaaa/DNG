@@ -126,8 +126,8 @@ export default class Pictionary extends React.Component {
             <Chat action={this.guess} messages={this.state.messages} />
           </div>
         </div>
-        {this.renderMidRound()}
-      </div>
+          {this.renderMidRound()}
+        </div>
     );
   }
 }

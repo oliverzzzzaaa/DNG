@@ -2,10 +2,13 @@ import NarBar from './nav_bar';
 import { logout } from "../../actions/session_actions";
 import { connect } from "react-redux";
 
-const mSTP = state => ({
-    loggedIn: state.session.isAuthenticated,
-    currentUser: state.session.users
-});
+const mSTP = state => {
+    console.log(state.session.user.id)
+    return ({
+        loggedIn: state.session.isAuthenticated,
+        currentUserId: state.session.user.id,
+    })
+};
 
 const mDTP = dispatch => ({
     logout: () => dispatch(logout())
