@@ -10,6 +10,9 @@ module.exports = class Room {
   hasPlayer(user) {
     if (this.players.length === 0) return false;
     return this.players.some(player => {
+      if (player.id === user.id) {
+        player.connected = true;
+      }
       return player.id === user.id;
     });
   }
