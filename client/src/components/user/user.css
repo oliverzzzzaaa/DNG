@@ -1,13 +1,16 @@
+@import url("https://fonts.googleapis.com/css?family=Patrick+Hand");
+
 .user-profile-page {
     display: flex;
     height: 700px;
-    padding: 10%;
+    padding: 5% 5% 5% 0;
 }
 
 .user-profile-container {
     width: 50%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .user-profile-icon {
@@ -25,11 +28,104 @@
     object-fit: cover;
 }
 
-#user-history, #user-drawings {
-    display: none;
-    border: 1px solid black;
+.user-profile-username {
+    font-family: 'Handlee', cursive;
+    font-size: 50px;
 }
 
-.show {
+.user-profile-edit {
+    width: 30%;
+}
+
+/* .user-profile-edit-button {
+    font-family: 'Handlee', cursive;
+} */
+
+.tab {
+    width: 50%;
+    /* background-color: #f1f1f1; */
+}
+
+.tablinks-container {
     display: flex;
+    justify-content: space-around;
+    height: 7%;
+}
+
+.tablinks, .user-profile-edit-button {
+    background: #FFF;
+    display: block;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: 2px solid #000;
+}
+
+.tablinks-container a:hover, .user-profile-edit:hover {
+    box-shadow: 0 2px 0 #000, 0 2px 0px 2px #f03755;
+}
+
+.tablinks-container a:active, .user-profile-edit:active {
+    top: 4px;
+    padding-bottom: 0px;
+    box-shadow: 0 1px 0 #000;
+}
+
+.tablinks-container a, .user-profile-edit {
+    cursor: pointer;
+    position: relative;
+    float: left;
+    font: normal 22px/25px "Patrick Hand", sans-serif;
+    margin-right: 10px;
+    text-transform: uppercase;
+    color: #000;
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    box-shadow: 0 2px 0 #000;
+    transition: padding 0.1s, box-shadow 0.1s, top 0.1s;
+    background-image: url('data:image/gif;base64,R0lGODlhBAAEAIABAAAAAAAAACH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5NUY1OENCRDdDMDYxMUUyOTEzMEE1MEM5QzM0NDVBMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5NUY1OENCRTdDMDYxMUUyOTEzMEE1MEM5QzM0NDVBMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjk1RjU4Q0JCN0MwNjExRTI5MTMwQTUwQzlDMzQ0NUEzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjk1RjU4Q0JDN0MwNjExRTI5MTMwQTUwQzlDMzQ0NUEzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAQAAAQAsAAAAAAQABAAAAgYEEpdoeQUAOw==');
+}
+
+.tabcontent-container {
+    height: 93%;
+    display: flex;
+    padding: 15px;
+    overflow: scroll;
+}
+
+.tabcontent {
+    display: none;
+    /* font-family: 'Handlee', cursive; */
+}
+
+#games {
+    flex-direction: column;
+    width: 100%;
+}
+
+#games span {
+    /* list-style-type: none; */
+    margin-bottom: 10px;
+    border: 3px solid #333333;
+    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#drawings {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+}
+
+#drawings .history-pics {
+    height: 45%;
+    width: 45%;
+    border: 1px solid black;
+    margin: 2.5%;
 }

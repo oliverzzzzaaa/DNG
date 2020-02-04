@@ -2,14 +2,14 @@
   "name": "pictionary",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "server": "nodemon app.js",
+    "app": "nodemon app.js",
     "build": "npm install && npm install --prefix client",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm start\" \"npm run client\"",
     "storybook": "npm run storybook --prefix client"
   },
   "keywords": [],

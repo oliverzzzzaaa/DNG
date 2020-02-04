@@ -4,6 +4,7 @@ import Chat from "../games/chat/chat";
 import MySocket from "../../socket";
 import GameRooms from "../games/game_rooms/game_rooms";
 import NavBar from '../nav_bar/nav_bar_container';
+import { Link } from "react-router-dom";
 
 class Lobby extends React.Component {
 
@@ -70,6 +71,7 @@ class Lobby extends React.Component {
         {/* <div>{this.props.msg}</div> */}
         {/* <div className="lobby-page"> */}
         {/* <div className="test">All loggedin users</div> */}
+        <Link to={`/users/${this.props.currentUser.id}`}>User</Link>
         <GameRooms
           className="game-rooms"
           currentUser={this.props.currentUser}
