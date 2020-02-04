@@ -60,10 +60,18 @@ io.on("connection", socket => {
     });
   });
 
+  // socket.on('difficulty', () => {
+  //   const room = lobby.getRoomBySocket(socket);
+  //   lobby.emitRoomMessage(room.id, {
+  //     type: "updateRoom",
+  //     body: room.getInfo()
+  //   });
+  // });
+
   socket.on("startGame", data => {
     const room = lobby.getRoomBySocket(socket);
     room.onGame = true;
-    handleGameAction(socket, lobby, { game: data.game, type: "create" });
+    handleGameAction(socket, lobby, { game: data.game, type: "create", params: [data.difficulty]});
     lobby.emit("updateRoom", room.getInfo());
   });
 
