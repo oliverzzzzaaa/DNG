@@ -13,11 +13,12 @@
   display: flex;
   flex-direction: column;
   margin: 4%;
-  border: solid pink;
+  border: solid black;
   border-width: 3px 4px 3px 5px;
   border-radius: 4% 90% 6% 90%/90% 4% 88% 5%;
-  background-image: url("../../../images/balloons.jpg");
-  background-size: cover;
+  /* background-image: url("../../../images/balloons.jpg"); */
+  /* background-size: cover; */
+  background-color: white;
 }
 
 .waiting-room-ready2 {
