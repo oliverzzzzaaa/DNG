@@ -53,7 +53,7 @@ router.post("/signup", (req, res) => {
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
       errors.email = "Email already exists";
-      return res.status(400).json(errors);
+      return res.status(404).json(errors);
     } else {
       const newUser = new User({
         username: req.body.username,
@@ -75,7 +75,10 @@ router.post("/signup", (req, res) => {
                 });
               })
             )
-            .catch(err => res.json({ msg: "failure" }));
+            .catch(err => { 
+              errors.internal = "Sign up is not available now, Please try later!"
+              res.status(404).json(errors);
+           });
         });
       });
     }
