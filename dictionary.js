@@ -158,4 +158,4 @@ const hardWords = [
     {word: "shelter", clues: ["7 letters", "protection"]},
 ]
 
-module.exports = easyWords;
+module.exports = {easyWords, mediumWords, hardWords};
