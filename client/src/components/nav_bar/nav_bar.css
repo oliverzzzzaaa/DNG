@@ -7,7 +7,11 @@
 
 .disabled-link {
     text-decoration: none;
-    pointer-events: none;
+    color: inherit;
+}
+
+.disabled-link:hover{
+    text-decoration: none;
     color: inherit;
 }
 
