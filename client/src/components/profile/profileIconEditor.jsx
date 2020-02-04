@@ -7,7 +7,9 @@ export default class ProfileIconEditor extends React.Component {
     this.canvas = React.createRef();
     this.state = {
       color: "black",
-      strokeWidth: 1
+      strokeWidth: 1,
+      name: "place holder pass in from parent", // name: this.props.name,
+      image: "place holder pass in from parent" // image: this.props.image
     };
     this.onMouseUp = this.onMouseUp.bind(this);
     this.onMouseDown = this.onMouseDown.bind(this);
@@ -15,6 +17,7 @@ export default class ProfileIconEditor extends React.Component {
     this.changeColor = this.changeColor.bind(this);
     this.clear = this.clear.bind(this);
     this.updateChanges = this.updateChanges.bind(this);
+    this.changeName = this.changeName.bind(this);
   }
 
   componentDidMount() {
@@ -72,14 +75,22 @@ export default class ProfileIconEditor extends React.Component {
   }
 
   updateChanges() {
-    const data = { image: this.canvas.current.toDataURL() };
-
+    const data = {
+      username: this.state.name,
+      image: this.canvas.current.toDataURL()
+    };
+    console.log(data.username);
     alert("should fire a request with new info(data) to update user");
+  }
+
+  changeName(e) {
+    this.setState({ name: e.currentTarget.value });
   }
 
   render() {
     return (
       <div className="profile-editor">
+        <input type="text" value={this.state.name} onChange={this.changeName} />
         <input type="color" onChange={this.changeColor} />
         <button onClick={this.clear}>clear</button>
         <canvas className="profile-picture" ref={this.canvas}></canvas>
