@@ -13,6 +13,28 @@ function signJwt(user, response) {
   jwt.sign(payload, keys.secretOrKey, { expiresIn: 36000 }, response);
 }
 
+// //TODO: change res structure
+router.post("/profile/:id", (req, res) => {
+  // console.log('!!!!!!!!!!!!')
+  // console.log(`${req.params.id}`)
+  // const id = req.params.id;
+  User.findById(req.params.id)
+    .then(user => {
+      // console.log(user)
+      if (!user) {
+        errors.user = "User doesn't exist";
+        return res.status(400).json(errors);
+      } else {
+        return res.status(200).json({
+          id: user.id,
+          username: user.username,
+          email: user.email
+        });
+      }
+    })
+    .catch(err => next(err));
+});
+
 router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
 
