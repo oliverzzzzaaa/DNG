@@ -59,9 +59,10 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="session-main">
-        <div className="session-image"></div>
-        <div className="session-left">
+        <div className="session-image">
           <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/logo.png" />
+        </div>
+        <div className="session-left">
           <div className="session-input-fields">
             <label>
               Email:

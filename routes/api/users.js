@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../../models/User");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
-const keys = require("../../config/keys_dev")
+const keys = require("../../config/keys_dev");
 // const keys = require("../../config/keys");
 
 function signJwt(user, response) {
@@ -75,7 +75,7 @@ router.post("/signup", (req, res) => {
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
       errors.email = "Email already exists";
-      return res.status(400).json(errors);
+      return res.status(404).json(errors);
     } else {
       const newUser = new User({
         username: req.body.username,
