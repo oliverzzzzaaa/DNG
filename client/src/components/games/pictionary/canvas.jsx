@@ -153,7 +153,10 @@ export default class CanvasContainer extends React.Component {
             className="canvas-bottom-button"
             onClick={() => {
               this.clear();
-              MySocket.getSocket().emit("clearDrawing");
+              MySocket.getSocket().emit("gameAction", {
+                game: "Pictionary",
+                type: "clearDrawing"
+              });
             }}
           >
             clear

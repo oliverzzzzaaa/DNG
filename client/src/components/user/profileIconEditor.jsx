@@ -21,11 +21,23 @@ export default class ProfileIconEditor extends React.Component {
   }
 
   componentDidMount() {
+    this.canvas.current.width = 200;
+    this.canvas.current.height = 200;
     paper.setup(this.canvas.current);
     const tool = new paper.Tool();
     tool.onMouseDown = e => this.onMouseDown(e);
     tool.onMouseDrag = e => this.onMouseDrag(e);
     tool.onMouseUp = e => this.onMouseUp(e);
+    //TODO: change image src
+    const src = this.props.image
+      ? this.props.image
+      : "https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png";
+
+    const raster = new paper.Raster({
+      source: src,
+      position: paper.view.center
+    });
+    raster.scale(0.2);
   }
 
   setColor(color) {
@@ -81,6 +93,8 @@ export default class ProfileIconEditor extends React.Component {
     };
     console.log(data.username);
     alert("should fire a request with new info(data) to update user");
+    this.props.update(data);
+    this.props.close();
   }
 
   changeName(e) {
@@ -95,6 +109,7 @@ export default class ProfileIconEditor extends React.Component {
         <button onClick={this.clear}>clear</button>
         <canvas className="profile-picture" ref={this.canvas}></canvas>
         <button onClick={this.updateChanges}>UPDATE</button>
+        <button onClick={this.props.close}>Close</button>
       </div>
     );
   }

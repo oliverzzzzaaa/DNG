@@ -28,7 +28,8 @@ router.post("/profile/:id", (req, res) => {
         return res.status(200).json({
           id: user.id,
           username: user.username,
-          email: user.email
+          email: user.email,
+          image: user.image
         });
       }
     })
