@@ -54,6 +54,9 @@ export default class Pictionary extends React.Component {
       game: "Pictionary",
       type: "getState"
     });
+
+
+    
   }
 
   renderTimer() {

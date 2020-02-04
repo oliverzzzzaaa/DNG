@@ -14,6 +14,9 @@ class Waiting extends React.Component {
     this.renderPlayers = this.renderPlayers.bind(this);
     this.renderReadyBtn = this.renderReadyBtn.bind(this);
     this.start = this.start.bind(this);
+    this.state = {
+      difficulty: this.props.room.difficulty
+    }
   }
 
   leave() {
@@ -28,8 +31,32 @@ class Waiting extends React.Component {
 
   start() {
     MySocket.getSocket().emit("startGame", {
-      game: "Pictionary"
+      game: "Pictionary",
+      difficulty: this.state.difficulty
     });
+  }
+
+  changeDifficulty(diff) {
+    if (document.getElementsByClassName("waiting-buttons-selected").length > 0) {
+      document.getElementsByClassName("waiting-buttons-selected")[0].className = "waiting-buttons"
+    }
+    this.setState({difficulty: diff})
+    MySocket.getSocket().emit("gameAction", {
+      game: "Pictionary",
+      type: "setDifficulty",
+      params: {difficulty: diff}
+    });
+  }
+
+  componentDidMount() {
+    let diff = this.props.room.difficulty;
+    if (diff === 'easy') {
+      document.getElementById('easy-button').className = "waiting-buttons-selected"
+    } else if (diff === 'medium') {
+      document.getElementById('medium-button').className = "waiting-buttons-selected"
+    } else {
+      document.getElementById('hard-button').className = "waiting-buttons-selected"
+    }
   }
 
   renderPlayers() {
@@ -51,6 +78,26 @@ class Waiting extends React.Component {
     return null;
   }
 
+  renderDifficulties() {
+    if (this.props.room.players[0].id === this.props.currentUserId) {
+      return (
+        <div className="difficulty-div">
+            <div className="waiting-buttons" onClick={() => this.changeDifficulty('easy')} id="easy-button">Easy</div>
+            <div className="waiting-buttons" onClick={() => this.changeDifficulty('medium')} id="medium-button">Medium</div>
+            <div className="waiting-buttons" onClick={() => this.changeDifficulty('hard')} id="hard-button">Hard</div>
+        </div>
+      )
+    } else {
+      return (
+        <div className="difficulty-div">
+          <div className="waiting-buttons not-host" id="easy-button">Easy</div>
+          <div className="waiting-buttons not-host" id="medium-button">Medium</div>
+          <div className="waiting-buttons not-host" id="hard-button">Hard</div>
+        </div>
+      )
+    }
+  }
+
   renderReadyBtn() {
     if (
       this.props.room &&
@@ -58,39 +105,58 @@ class Waiting extends React.Component {
       this.props.room.players[0].id === this.props.currentUserId
     ) {
       return (
-        <Button variant="warning outline-light" onClick={this.start}>
+        <div className="waiting-buttons" onClick={this.start}>
           Start
-        </Button>
+        </div>
       );
     }
     return (
-      <Button variant="warning outline-light" onClick={this.ready}>
+      <div className="waiting-buttons" onClick={this.ready}>
         Ready
-      </Button>
+      </div>
     );
+  }
+
+  componentDidUpdate() {
+    if (this.props.room.difficulty === 'easy') {
+      document.getElementById('easy-button').className = "waiting-buttons-selected";
+      document.getElementById('medium-button').className = "waiting-buttons"
+      document.getElementById('hard-button').className = "waiting-buttons"
+    } else if (this.props.room.difficulty === 'medium') {
+      document.getElementById('easy-button').className = "waiting-buttons";
+      document.getElementById('medium-button').className = "waiting-buttons-selected"
+      document.getElementById('hard-button').className = "waiting-buttons"
+    } else {
+      document.getElementById('easy-button').className = "waiting-buttons";
+      document.getElementById('medium-button').className = "waiting-buttons"
+      document.getElementById('hard-button').className = "waiting-buttons-selected"
+    }
+
+    if (this.props.room.players[0].id !== this.props.currentUserId) {
+      document.getElementById('easy-button').classList.add('not-host')
+      document.getElementById('medium-button').classList.add('not-host')
+      document.getElementById('hard-button').classList.add('not-host')
+    }
   }
 
   render() {
     return (
       <div className="waiting-room">
         <div className="waiting-room-profiles">
+          <div className="waiting-header">
+            <span className="room-id-header">
+              Room ID: {this.props.room.id}
+            </span>
+            {this.renderDifficulties()}
+          </div>
           {this.renderPlayers()}
-          {/* <button className="waiting-room-ready2">Ready</button> */}
-          {/* <button className="btn btn-info">Ready</button> */}
           <div className="ready-button-div">
-            <Button
-              variant="warning outline-light"
-              className="waiting-leave"
-              onClick={this.leave}
-            >
+          <div className="waiting-buttons" onClick={this.leave}>
               Leave
-            </Button>
+            </div>
             {this.renderReadyBtn()}
           </div>
         </div>
-        {/* <div className="waiting-room-ready-button">
-                    <button>Ready</button>
-                </div> */}
       </div>
     );
   }
