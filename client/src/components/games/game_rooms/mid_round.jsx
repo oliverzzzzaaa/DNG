@@ -6,6 +6,7 @@ class MidRound extends React.Component {
   constructor(props) {
     super(props);
     this.savePicture = this.savePicture.bind(this);
+    this.timeoutId = null;
     this.state = {
       show: true
     };
@@ -20,6 +21,11 @@ class MidRound extends React.Component {
     this.setState({ show: true });
   }
 
+  continueInterval() {
+    console.log(document.getElementsByClassName('game-rooms-create-text')[0])
+    document.getElementsByClassName('game-rooms-create-text')[0].click()
+  }
+
   savePicture() {
     document.getElementById("mid-round-img").src = document
       .getElementById("pictionary-canvas")
@@ -32,14 +38,21 @@ class MidRound extends React.Component {
       game: "Pictionary",
       type: "roundReady"
     });
+    document.getElementsByClassName('game-rooms-create-text')[0].innerHTML = 'Waiting for other players'
   }
 
   componentDidMount() {
+    this.timeoutId = setTimeout( this.continueInterval, 10000)
     if (document.getElementById("pictionary-canvas")) {
       document.getElementById("mid-round-img").src = document
         .getElementById("pictionary-canvas")
         .toDataURL();
     }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timeoutId)
+    console.log('cleared')
   }
 
   render() {
