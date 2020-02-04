@@ -47,6 +47,7 @@ module.exports = class Pictionary {
       if (this.targetWord === word) {
         this.players[playerId].guessed = true;
         this.players[playerId].score += 1;
+        this.players[currDrawer].score += 1;
         if (this.shouldEndround()) {
           this.endRound();
         }

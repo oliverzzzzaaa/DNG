@@ -3,7 +3,7 @@ export default class MySocket {
   socket;
   static getSocket = userId => {
     if (MySocket.socket === undefined) {
-      MySocket.socket = io("http://localhost:5000");
+      MySocket.socket = io();
       if (userId) {
         MySocket.socket.emit("login", { userId: userId });
       }
