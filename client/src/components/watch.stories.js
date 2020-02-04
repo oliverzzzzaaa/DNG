@@ -7,7 +7,7 @@ import React from "react";
 // import Chat from "./chat/chat";
 // import CanvasContainer from "./game/canvas";
 // import ProfileIcon from "./profile/profile_icon";
-import ProfileIconEditor from "./profile/profileIconEditor";
+import ProfileIconEditor from "./user/profileIconEditor";
 
 export default {
   title: "Watch"

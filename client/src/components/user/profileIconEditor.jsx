@@ -7,7 +7,9 @@ export default class ProfileIconEditor extends React.Component {
     this.canvas = React.createRef();
     this.state = {
       color: "black",
-      strokeWidth: 1
+      strokeWidth: 1,
+      name: "place holder pass in from parent", // name: this.props.name,
+      image: "place holder pass in from parent" // image: this.props.image
     };
     this.onMouseUp = this.onMouseUp.bind(this);
     this.onMouseDown = this.onMouseDown.bind(this);
@@ -15,14 +17,27 @@ export default class ProfileIconEditor extends React.Component {
     this.changeColor = this.changeColor.bind(this);
     this.clear = this.clear.bind(this);
     this.updateChanges = this.updateChanges.bind(this);
+    this.changeName = this.changeName.bind(this);
   }
 
   componentDidMount() {
+    this.canvas.current.width = 200;
+    this.canvas.current.height = 200;
     paper.setup(this.canvas.current);
     const tool = new paper.Tool();
     tool.onMouseDown = e => this.onMouseDown(e);
     tool.onMouseDrag = e => this.onMouseDrag(e);
     tool.onMouseUp = e => this.onMouseUp(e);
+    //TODO: change image src
+    const src = this.props.image
+      ? this.props.image
+      : "https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png";
+
+    const raster = new paper.Raster({
+      source: src,
+      position: paper.view.center
+    });
+    raster.scale(0.2);
   }
 
   setColor(color) {
@@ -72,18 +87,29 @@ export default class ProfileIconEditor extends React.Component {
   }
 
   updateChanges() {
-    const data = { image: this.canvas.current.toDataURL() };
-
+    const data = {
+      username: this.state.name,
+      image: this.canvas.current.toDataURL()
+    };
+    console.log(data.username);
     alert("should fire a request with new info(data) to update user");
+    this.props.update(data);
+    this.props.close();
+  }
+
+  changeName(e) {
+    this.setState({ name: e.currentTarget.value });
   }
 
   render() {
     return (
       <div className="profile-editor">
+        <input type="text" value={this.state.name} onChange={this.changeName} />
         <input type="color" onChange={this.changeColor} />
         <button onClick={this.clear}>clear</button>
         <canvas className="profile-picture" ref={this.canvas}></canvas>
         <button onClick={this.updateChanges}>UPDATE</button>
+        <button onClick={this.props.close}>Close</button>
       </div>
     );
   }
