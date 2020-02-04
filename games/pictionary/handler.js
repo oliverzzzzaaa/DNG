@@ -15,7 +15,7 @@ function handleRoundReady(socket, lobby, params) {
   if (room) {
     game = room.game;
   }
-  if (game.isOver()) {
+  if (game && game.isOver()) {
     room.reset();
     setTimeout(() => lobby.emit("updateRoom", room.getInfo()), 5000);
   } else {
