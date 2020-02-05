@@ -45,7 +45,6 @@ module.exports = class Pictionary {
         wordbank = words.easyWords;
         break;
     }
-    console.log(this.wordbank);
     this.targetWord =
       wordbank[Math.floor(Math.random() * wordbank.length)].word;
     while (this.usedWords.includes(this.targetWord)) {

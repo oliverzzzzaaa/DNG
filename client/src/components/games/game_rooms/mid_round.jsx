@@ -34,7 +34,6 @@ class MidRound extends React.Component {
     document.getElementById("mid-round-img").src = document
       .getElementById("pictionary-canvas")
       .toDataURL();
-    console.log("SAVED");
   }
 
   ready() {
