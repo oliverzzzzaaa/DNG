@@ -47,14 +47,21 @@ io.on("connection", socket => {
   });
 
   socket.on("lobbyMessage", data => {
-    console.log(data);
     lobby.emit("lobbyMessage", data);
+  });
+
+  socket.on("roomMessage", data => {
+    const roomId = lobby.getRoomIdBySocket(socket);
+    lobby.emitRoomMessage(roomId, {
+      type: "roomMessage",
+      body: data
+    });
   });
 
   socket.on("ready", () => {
     const room = lobby.getRoomBySocket(socket);
     lobby.setUserReadyBySocket(socket);
-    console.log(room.getInfo())
+    console.log(room.getInfo());
     lobby.emitRoomMessage(room.id, {
       type: "updateRoom",
       body: room.getInfo()
@@ -72,7 +79,11 @@ io.on("connection", socket => {
   socket.on("startGame", data => {
     const room = lobby.getRoomBySocket(socket);
     room.onGame = true;
-    handleGameAction(socket, lobby, { game: data.game, type: "create", params: [data.difficulty]});
+    handleGameAction(socket, lobby, {
+      game: data.game,
+      type: "create",
+      params: [data.difficulty]
+    });
     lobby.emit("updateRoom", room.getInfo());
   });
 
