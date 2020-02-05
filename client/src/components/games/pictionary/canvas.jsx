@@ -28,14 +28,14 @@ export default class CanvasContainer extends React.Component {
     tool.onMouseDrag = e => this.onMouseDrag(e);
     tool.onMouseUp = e => this.onMouseUp(e);
 
-    const strocks = this.props.strocks;
-    if (strocks) {
-      strocks.forEach(strock => {
+    const strokes = this.props.strokes;
+    if (strokes) {
+      strokes.forEach(stroke => {
         const path = new paper.Path();
-        path.strokeColor = strock.color;
-        path.strokeWidth = strock.width;
+        path.strokeColor = stroke.color;
+        path.strokeWidth = stroke.width;
         path.strokeCap = "round";
-        path.pathData = strock.pathData;
+        path.pathData = stroke.pathData;
         paper.view.draw();
       });
     }

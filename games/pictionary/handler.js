@@ -72,7 +72,7 @@ function handlePathData(socket, lobby, data) {
   const room = lobby.getRoomBySocket(socket);
   if (room) {
     if (room.game) {
-      room.game.addStrocks(data);
+      room.game.addstrokes(data);
     }
     lobby.emitRoomMessage(room.id, {
       type: "pathData",
@@ -85,7 +85,7 @@ function handleClear(socket, lobby) {
   const room = lobby.getRoomBySocket(socket);
   if (room) {
     if (room.game) {
-      room.game.clearStrocks();
+      room.game.clearstrokes();
     }
     lobby.emitRoomMessage(room.id, {
       type: "clearDrawing"

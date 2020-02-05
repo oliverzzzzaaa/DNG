@@ -17,10 +17,12 @@ export const receiveUpdatedCurrentUser = user => ({
 });
 
 export const fetchUser = id => dispatch =>
-  APIUtil.fetchUser(id).then(user => dispatch(receiveUser(user)));
+  APIUtil.fetchUser(id).then(user => dispatch(receiveUser(user.data)));
 
 export const fetchUpdatedCurrentUser = id => dispatch =>
   APIUtil.fetchUser(id).then(user => dispatch(receiveCurrentUser(user.data)));
 
 export const updateProfile = (id, userInfo) => dispatch =>
-  APIUtil.updateProfile(id, userInfo).then(user => dispatch(receiveUser(user)));
+  APIUtil.updateProfile(id, userInfo).then(user =>
+    dispatch(receiveUser(user.data))
+  );

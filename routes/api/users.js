@@ -50,12 +50,17 @@ router.post(
           errors.user = "User doesn't exist";
           return res.status(400).json(errors);
         } else {
-          return res.status(200).json({
-            id: user.id,
-            username: user.username,
-            email: user.email,
-            image: user.image
-          });
+          return res.status(200).json(
+            Object.assign(
+              {
+                id: user.id,
+                username: user.username,
+                email: user.email,
+                image: user.image
+              },
+              newInfo
+            )
+          );
         }
       })
       .catch(err => {
