@@ -6,8 +6,8 @@ export default class ProfileIconEditor extends React.Component {
     super(props);
     this.canvas = React.createRef();
     this.state = {
-      color: "black",
-      strokeWidth: 1,
+      strokeColor: "black",
+      strokeWidth: 3,
       changeImage: false,
       name: this.props.name, // name: this.props.name,
       image: this.props.image // image: this.props.image
@@ -75,7 +75,7 @@ export default class ProfileIconEditor extends React.Component {
   }
 
   changeColor(e) {
-    this.setState({ color: e.target.value });
+    this.setState({ color: e.currentTarget.value });
   }
 
   updateChanges() {
@@ -85,7 +85,6 @@ export default class ProfileIconEditor extends React.Component {
     if (this.state.changeImage) {
       data.image = this.canvas.current.toDataURL();
     }
-    alert("should fire a request with new info(data) to update user");
     this.props.update(data);
     this.props.close();
   }

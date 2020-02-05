@@ -5,11 +5,8 @@ import ProfileIconEditor from "./profileIconEditor";
 class User extends React.Component {
   constructor(props) {
     super(props);
-    const user = this.props.user;
     this.state = {
-      showEditor: false,
-      username: user ? user.username : "",
-      image: user ? this.props.user.image : undefined
+      showEditor: false
     };
     this.renderEditor = this.renderEditor.bind(this);
     this.showEditor = this.showEditor.bind(this);
@@ -55,8 +52,8 @@ class User extends React.Component {
     if (this.state.showEditor) {
       return (
         <ProfileIconEditor
-          name={this.state.username}
-          image={this.state.image}
+          name={this.props.user.username}
+          image={this.props.user.image}
           close={this.closeEditor}
           update={this.updateInfo}
         />
@@ -71,7 +68,7 @@ class User extends React.Component {
     if (data.image) {
       newState.image = data.image;
     }
-    this.setState(newState);
+    alert("should fire a request with new info(data) to update user");
   }
 
   render() {
@@ -92,7 +89,9 @@ class User extends React.Component {
               }
             />
           </div>
-          <div className="user-profile-username">{this.state.username}</div>
+          <div className="user-profile-username">
+            {this.props.user.username}
+          </div>
           <div className="user-profile-edit" onClick={this.showEditor}>
             <span className="user-profile-edit-button">Edit Profile</span>
           </div>
