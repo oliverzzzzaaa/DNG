@@ -10,6 +10,7 @@
   align-items: center;
   text-align: center;
   background-image: url('./images/diff-pen.jpg');
+
   background-position: center;
   background-repeat: none;
   background-size: cover;
@@ -26,6 +27,7 @@
   height: 45vh;
   max-width: 90vw;
   padding: 0 20px 20px 20px;
+  /* border: 1px solid black; */
   /* margin-top: -5%; */
 
 }

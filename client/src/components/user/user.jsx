@@ -1,6 +1,7 @@
 import React from "react";
 import "./user.css";
 import ProfileIconEditor from "./profileIconEditor";
+import { Link } from "react-router-dom"
 
 class User extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class User extends React.Component {
     const user = this.props.user;
     this.state = {
       showEditor: false,
-      name: user ? user.username : "",
+      username: user ? user.username : "",
       image: user ? this.props.user.image : undefined
     };
     this.renderEditor = this.renderEditor.bind(this);
@@ -52,12 +53,11 @@ class User extends React.Component {
   }
 
   renderEditor() {
-    console.log(this.props.user);
     if (this.state.showEditor) {
       return (
         <ProfileIconEditor
-          name={this.props.user.name}
-          image={this.props.user.image}
+          name={this.state.username}
+          image={this.state.image}
           close={this.closeEditor}
           update={this.updateInfo}
         />
@@ -66,10 +66,13 @@ class User extends React.Component {
   }
 
   updateInfo(data) {
-    this.setState({
-      name: data.username,
-      image: data.image
-    });
+    const newState = {
+      username: data.username
+    };
+    if (data.image) {
+      newState.image = data.image;
+    }
+    this.setState(newState);
   }
 
   render() {
@@ -79,6 +82,9 @@ class User extends React.Component {
       <div className="user-profile-page">
         {this.renderEditor()}
         <div className="user-profile-container">
+          <div>
+            <Link to="/" class="arrow-left"></Link>
+          </div>
           <div className="user-profile-icon">
             <img
               className="user-profile-image"
@@ -119,21 +125,36 @@ class User extends React.Component {
 
           <div className="tabcontent-container">
             <div id="games" className="tabcontent">
-              <span>Game1 1st YIN JOHNSON OLIVER</span>
-              <span>Game2 3rd JOHNSON YIN OLIVER</span>
-              <span>Game3 4th OLIVER JOHNSON YIN</span>
-              <span>Game4 4th OLIVER JOHNSON YIN</span>
-              <span>Game5 4th OLIVER JOHNSON YIN</span>
-              <span>Game6 4th OLIVER JOHNSON YIN</span>
-              <span>Game7 4th OLIVER JOHNSON YIN</span>
-              <span>Game8 4th OLIVER JOHNSON YIN</span>
-              <span>Game9 4th OLIVER JOHNSON YIN</span>
-              <span>Game10 4th OLIVER JOHNSON YIN</span>
-              <span>Game11 4th OLIVER JOHNSON YIN</span>
-              <span>Game12 4th OLIVER JOHNSON YIN</span>
-              <span>Game13 4th OLIVER JOHNSON YIN</span>
-              <span>Game14 4th OLIVER JOHNSON YIN</span>
-              <span>Game15 4th OLIVER JOHNSON YIN</span>
+              <div className="game-history">
+                <span>Game1 1st YIN JOHNSON OLIVER</span>
+              </div>
+              <div className="game-history">
+                <span>Game2 3rd JOHNSON YIN OLIVER</span>
+              </div>
+              <div className="game-history">
+                <span>Game3 4th OLIVER JOHNSON YIN</span>
+              </div>
+              <div className="game-history">
+                <span>Game4 4th OLIVER JOHNSON YIN</span>
+              </div>
+              <div className="game-history">
+                <span>Game5 4th OLIVER JOHNSON YIN</span>
+              </div>
+              <div className="game-history">
+                <span>Game6 4th OLIVER JOHNSON YIN</span>
+              </div>
+              <div className="game-history">
+                <span>Game7 4th OLIVER JOHNSON YIN</span>
+              </div>
+              <div className="game-history">
+                <span>Game8 4th OLIVER JOHNSON YIN</span>
+              </div>
+              <div className="game-history">
+                <span>Game8 4th OLIVER JOHNSON YIN</span>
+              </div>
+              <div className="game-history">
+                <span>Game8 4th OLIVER JOHNSON YIN</span>
+              </div>
             </div>
 
             <div id="drawings" className="tabcontent">

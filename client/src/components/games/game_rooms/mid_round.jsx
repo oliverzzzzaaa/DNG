@@ -8,10 +8,12 @@ class MidRound extends React.Component {
     this.savePicture = this.savePicture.bind(this);
     this.timeoutId = null;
     this.time = 5;
+    this.nextRound = this.nextRound.bind(this)
     this.tick = this.tick.bind(this)
     this.state = {
       show: true,
-      time: this.time
+      time: this.time,
+      ready: false
     };
     this.ready = this.ready.bind(this);
   }
@@ -37,11 +39,12 @@ class MidRound extends React.Component {
   }
 
   ready() {
+    this.setState({ready: true})
     MySocket.getSocket().emit("gameAction", {
       game: "Pictionary",
       type: "roundReady"
     });
-    document.getElementsByClassName('game-rooms-create-text')[0].innerHTML = 'Waiting for other players'
+
   }
 
   componentDidMount() {
@@ -56,12 +59,31 @@ class MidRound extends React.Component {
 
   tick() {
     let newTime = this.state.time -=1
+    if (newTime < 0) {
+      newTime = 0;
+    }
     this.setState({time: newTime})
   }
 
   componentWillUnmount() {
     clearTimeout(this.timeoutId)
     clearInterval(this.intervalId)
+  }
+
+  nextRound() {
+    if (this.state.ready) {
+      return (
+        <div onClick={this.ready} className="game-rooms-create-text">
+          {`Waiting for other players....${this.state.time}`}
+        </div>
+      )
+    } else {
+      return (
+        <div onClick={this.ready} className="game-rooms-create-text">
+          {`Continue....${this.state.time}`}
+        </div>
+      )
+    }
   }
 
   render() {
@@ -71,9 +93,7 @@ class MidRound extends React.Component {
         <div className="mid-round-img-div">
           <img src="" id="mid-round-img" />
         </div>
-        <div onClick={this.ready} className="game-rooms-create-text">
-          {`Continue....${this.state.time}`}
-        </div>
+        {this.nextRound()}
       </div>
     );
   }

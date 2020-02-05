@@ -15,9 +15,10 @@ class Waiting extends React.Component {
     this.renderReadyBtn = this.renderReadyBtn.bind(this);
     this.start = this.start.bind(this);
     this.state = {
-      difficulty: this.props.room.difficulty
+      difficulty: "easy"
     }
   }
+
 
   leave() {
     leaveRoom(this.props.currentUserId).then(
@@ -49,13 +50,24 @@ class Waiting extends React.Component {
   }
 
   componentDidMount() {
-    let diff = this.props.room.difficulty;
+    const socket = MySocket.getSocket();
+    socket.off("setDifficulty");
+    socket.on("setDifficulty", difficulty => {
+      console.log(difficulty);
+
+      this.setState({
+        difficulty: difficulty
+      })
+    });
+
+    console.log(this.state.difficulty)
+    let diff = this.state.difficulty;
     if (diff === 'easy') {
-      document.getElementById('easy-button').className = "waiting-buttons-selected"
+      document.getElementById('easy-button').classList.add("waiting-buttons-selected")
     } else if (diff === 'medium') {
-      document.getElementById('medium-button').className = "waiting-buttons-selected"
+      document.getElementById('medium-button').classList.add("waiting-buttons-selected")
     } else {
-      document.getElementById('hard-button').className = "waiting-buttons-selected"
+      document.getElementById('hard-button').classList.add("waiting-buttons-selected")
     }
   }
 
@@ -118,11 +130,12 @@ class Waiting extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.room.difficulty === 'easy') {
+    console.log(this.state.difficulty)
+    if (this.state.difficulty === 'easy') {
       document.getElementById('easy-button').className = "waiting-buttons-selected";
       document.getElementById('medium-button').className = "waiting-buttons"
       document.getElementById('hard-button').className = "waiting-buttons"
-    } else if (this.props.room.difficulty === 'medium') {
+    } else if (this.state.difficulty === 'medium') {
       document.getElementById('easy-button').className = "waiting-buttons";
       document.getElementById('medium-button').className = "waiting-buttons-selected"
       document.getElementById('hard-button').className = "waiting-buttons"
