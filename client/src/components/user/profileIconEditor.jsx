@@ -8,8 +8,9 @@ export default class ProfileIconEditor extends React.Component {
     this.state = {
       color: "black",
       strokeWidth: 1,
-      name: "place holder pass in from parent", // name: this.props.name,
-      image: "place holder pass in from parent" // image: this.props.image
+      changeImage: false,
+      name: this.props.name, // name: this.props.name,
+      image: this.props.image // image: this.props.image
     };
     this.onMouseUp = this.onMouseUp.bind(this);
     this.onMouseDown = this.onMouseDown.bind(this);
@@ -18,6 +19,7 @@ export default class ProfileIconEditor extends React.Component {
     this.clear = this.clear.bind(this);
     this.updateChanges = this.updateChanges.bind(this);
     this.changeName = this.changeName.bind(this);
+    this.setImage = this.setImage.bind(this);
   }
 
   componentDidMount() {
@@ -28,16 +30,6 @@ export default class ProfileIconEditor extends React.Component {
     tool.onMouseDown = e => this.onMouseDown(e);
     tool.onMouseDrag = e => this.onMouseDrag(e);
     tool.onMouseUp = e => this.onMouseUp(e);
-    //TODO: change image src
-    const src = this.props.image
-      ? this.props.image
-      : "https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png";
-
-    const raster = new paper.Raster({
-      source: src,
-      position: paper.view.center
-    });
-    raster.scale(0.2);
   }
 
   setColor(color) {
@@ -88,10 +80,11 @@ export default class ProfileIconEditor extends React.Component {
 
   updateChanges() {
     const data = {
-      username: this.state.name,
-      image: this.canvas.current.toDataURL()
+      username: this.state.name
     };
-    console.log(data.username);
+    if (this.state.changeImage) {
+      data.image = this.canvas.current.toDataURL();
+    }
     alert("should fire a request with new info(data) to update user");
     this.props.update(data);
     this.props.close();
@@ -101,6 +94,14 @@ export default class ProfileIconEditor extends React.Component {
     this.setState({ name: e.currentTarget.value });
   }
 
+  setImage() {
+    this.setState(preState => {
+      return {
+        changeImage: !preState.changeImage
+      };
+    });
+  }
+
   render() {
     return (
       <div className="profile-editor">
@@ -108,6 +109,9 @@ export default class ProfileIconEditor extends React.Component {
         <input type="color" onChange={this.changeColor} />
         <button onClick={this.clear}>clear</button>
         <canvas className="profile-picture" ref={this.canvas}></canvas>
+        <button onClick={this.setImage}>
+          {this.state.changeImage ? "勾" : "圆"}
+        </button>
         <button onClick={this.updateChanges}>UPDATE</button>
         <button onClick={this.props.close}>Close</button>
       </div>
