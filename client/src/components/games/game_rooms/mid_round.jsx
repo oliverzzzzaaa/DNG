@@ -88,7 +88,7 @@ class MidRound extends React.Component {
   render() {
     return (
       <div className="mid-round-modal">
-        <span className="rate-this-picture">Rate this picture!</span>
+        <span className="rate-this-picture">{this.props.targetWord}!</span>
         <div className="mid-round-img-div">
           <img src="" id="mid-round-img" />
         </div>

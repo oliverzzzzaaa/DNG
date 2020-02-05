@@ -91,7 +91,7 @@ export default class Pictionary extends React.Component {
       (Object.values(this.state.players).some(player => player.guessed) ||
         this.state.onMidRound)
     ) {
-      return <MidRound />;
+      return <MidRound targetWord={this.state.targetWord}/>;
     }
 
     return null;
