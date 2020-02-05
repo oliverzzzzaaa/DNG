@@ -24,6 +24,8 @@ export default class Room extends React.Component {
         return { messages: msgs };
       });
     });
+
+    console.log(MySocket.getSocket().connected);
   }
 
   sendRoomMessage(msg) {
