@@ -32,6 +32,8 @@
 }
 
 .ready-button-div {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-self: center;
 }
@@ -39,4 +41,58 @@
 .chat-component-div {
   width: 30%;
   padding-right: 3%;
+}
+
+.waiting-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  font-size: 20px;
+}
+
+.difficulty-div {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  justify-content: space-evenly;
+  width: 30%;
+  padding-top: 10px;
+  /* background-color: red; */
+}
+
+.waiting-buttons {
+  cursor: pointer;
+  border: solid black;
+  border-width: 1px 1px 3px 3px;
+  border-radius:4% 95% 6% 95%/95% 4% 92% 5%;
+  transform: rotate(-2deg);
+  font-size: 20px;
+  padding: 5px;
+  font-family: 'Indie Flower', cursive;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.waiting-buttons-selected {
+  cursor: pointer;
+  border: solid black;
+  border-width: 1px 1px 3px 3px;
+  border-radius:4% 95% 6% 95%/95% 4% 92% 5%;
+  transform: rotate(-2deg);
+  font-size: 20px;
+  padding: 5px;
+  font-family: 'Indie Flower', cursive;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: lightgray;
+}
+
+.room-id-header {
+  font-family: 'Indie Flower', cursive;
+}
+
+.not-host {
+  cursor: not-allowed;
 }

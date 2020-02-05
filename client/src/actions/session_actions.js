@@ -37,10 +37,17 @@ export const logout = () => dispatch => {
 };
 
 export const signup = user => dispatch =>
-  APIUtil.signup(user).then(
-    res => dispatch(receiveUserSignIn(res.data.currentUser)),
-    err => dispatch(receiveErrors(err.response.data))
-  );
+  APIUtil.signup(user).then(res => {
+    const { token, name } = res.data;
+    localStorage.setItem("jwtToken", token);
+    APIUtil.setAuthToken(token);
+    const decoded = jwt_decode(token);
+    dispatch(receiveCurrentUser(decoded));
+    window.location.hash = "/lobby";
+  })
+  .catch(err => {
+    dispatch(receiveErrors(err.response.data));
+  });
 
 export const login = user => dispatch =>
   APIUtil.login(user)

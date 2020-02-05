@@ -4,7 +4,7 @@ import Chat from "../games/chat/chat";
 import MySocket from "../../socket";
 import GameRooms from "../games/game_rooms/game_rooms";
 import NavBar from '../nav_bar/nav_bar_container';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 class Lobby extends React.Component {
   constructor(props) {
@@ -61,12 +61,6 @@ class Lobby extends React.Component {
   render() {
     return (
       <div className="lobby">
-        {/* <ClientComponentExample /> */}
-        {/* <h1>Lobby</h1> */}
-        {/* <div>{this.props.msg}</div> */}
-        {/* <div className="lobby-page"> */}
-        {/* <div className="test">All loggedin users</div> */}
-        
         <GameRooms
           className="game-rooms"
           currentUser={this.props.currentUser}
@@ -76,16 +70,12 @@ class Lobby extends React.Component {
         />
         <div className="nav-chat">
           <NavBar />
+          {/* <Link to={`/users/${this.props.currentUser.id}`}>User</Link> */}
           <Chat
             messages={this.state.messages}
             action={this.sendPublicMessage}
           />
         </div>
-        {/* </div> */}
-        {/* <div className="game-rooms">
-          <h1>rooms</h1>
-        </div>
-        <Chat messages={tempmessages} /> */}
       </div>
     );
   }

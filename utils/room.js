@@ -5,6 +5,7 @@ module.exports = class Room {
     this.onGame = false;
     this.players = [];
     this.game = null;
+    this.difficulty = 'easy'
   }
 
   hasPlayer(user) {
@@ -30,6 +31,7 @@ module.exports = class Room {
     this.players.push(user);
     this.ready = false;
   }
+
 
   remove(userId) {
     if (this.onGame && this.game && this.game.players[userId]) {
@@ -75,7 +77,8 @@ module.exports = class Room {
       id: this.id,
       ready: this.ready,
       onGame: this.onGame,
-      players: this.players
+      players: this.players,
+      difficulty: this.difficulty
     };
   }
 };

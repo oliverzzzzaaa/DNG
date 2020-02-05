@@ -1,8 +1,21 @@
 import React from "react";
-import "./user.css"
-import { Link } from "react-router-dom";
+import "./user.css";
+import ProfileIconEditor from "./profileIconEditor";
 
 class User extends React.Component {
+  constructor(props) {
+    super(props);
+    const user = this.props.user;
+    this.state = {
+      showEditor: false,
+      name: user ? user.username : "",
+      image: user ? this.props.user.image : undefined
+    };
+    this.renderEditor = this.renderEditor.bind(this);
+    this.showEditor = this.showEditor.bind(this);
+    this.closeEditor = this.closeEditor.bind(this);
+    this.updateInfo = this.updateInfo.bind(this);
+  }
 
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.userId);
@@ -14,7 +27,7 @@ class User extends React.Component {
 
   open(event, type) {
     let i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName('tabcontent');
+    tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
       tabcontent[i].style.display = "none";
     }
@@ -26,11 +39,45 @@ class User extends React.Component {
     event.currentTarget.className += " active";
   }
 
+  showEditor() {
+    this.setState({
+      showEditor: true
+    });
+  }
+
+  closeEditor() {
+    this.setState({
+      showEditor: false
+    });
+  }
+
+  renderEditor() {
+    console.log(this.props.user);
+    if (this.state.showEditor) {
+      return (
+        <ProfileIconEditor
+          name={this.props.user.name}
+          image={this.props.user.image}
+          close={this.closeEditor}
+          update={this.updateInfo}
+        />
+      );
+    }
+  }
+
+  updateInfo(data) {
+    this.setState({
+      name: data.username,
+      image: data.image
+    });
+  }
+
   render() {
     if (!this.props.user) return null;
-    
+
     return (
       <div className="user-profile-page">
+        {this.renderEditor()}
         <div className="user-profile-container">
           <div>
             <Link to="/" class="arrow-left"></Link>
@@ -38,14 +85,16 @@ class User extends React.Component {
           <div className="user-profile-icon">
             <img
               className="user-profile-image"
-              src="https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png"
-              alt=""
+              //TODO: change src
+              src={
+                this.state.image
+                  ? this.state.image
+                  : "https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png"
+              }
             />
           </div>
-          <div className="user-profile-username">
-            {this.props.user.username}
-          </div>
-          <div className="user-profile-edit">
+          <div className="user-profile-username">{this.state.username}</div>
+          <div className="user-profile-edit" onClick={this.showEditor}>
             <span className="user-profile-edit-button">Edit Profile</span>
           </div>
         </div>
@@ -121,6 +170,6 @@ class User extends React.Component {
       </div>
     );
   }
-};
+}
 
 export default User;
