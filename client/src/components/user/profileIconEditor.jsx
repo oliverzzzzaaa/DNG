@@ -75,7 +75,7 @@ export default class ProfileIconEditor extends React.Component {
   }
 
   changeColor(e) {
-    this.setState({ color: e.currentTarget.value });
+    this.setState({ strokeColor: e.currentTarget.value });
   }
 
   updateChanges() {
