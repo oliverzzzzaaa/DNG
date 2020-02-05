@@ -153,9 +153,6 @@ export default class CanvasContainer extends React.Component {
   }
 
   render() {
-
-    console.log(this.props.players)
-
     return (
       <div className="canvas-page">
         <div className="canvas-main">
