@@ -18,6 +18,7 @@ export default class CanvasContainer extends React.Component {
     this.setStrokeWidth = this.setStrokeWidth.bind(this);
     this.uploadDrawing = this.uploadDrawing.bind(this);
     this.clear = this.clear.bind(this);
+    this.renderColorpicker = this.renderColorpicker.bind(this);
   }
 
   componentDidMount() {
@@ -112,7 +113,7 @@ export default class CanvasContainer extends React.Component {
   }
 
   renderColorpicker() {
-    if (this.props.players.id === this.state.currDrawer) {
+    if (this.props.isDrawer === true) {
       return (
         <div className="color-picker-btn">
           <input className="canvas-bottom-button"
@@ -153,7 +154,7 @@ export default class CanvasContainer extends React.Component {
 
   render() {
 
-    console.log(this.props.players.id)
+    console.log(this.props.players)
 
     return (
       <div className="canvas-page">
@@ -161,6 +162,7 @@ export default class CanvasContainer extends React.Component {
           {`you are the ${this.props.isDrawer ? "drawer" : "viewer"}!`}
           <canvas className="canvas-area" id="pictionary-canvas" />
         </div>
+          {this.renderColorpicker()}
           <div className='clues' >
             clues right here!
           </div>

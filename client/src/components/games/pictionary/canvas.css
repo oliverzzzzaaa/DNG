@@ -61,6 +61,7 @@
 
 .color-picker-btn {
   display: flex;
+  position: absolute;
   justify-content: space-evenly;
   flex-direction: column;
   min-width: 150px;
