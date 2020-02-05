@@ -12,7 +12,8 @@
   border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
   transform: rotate(2deg);
   padding: 1%;
-  background-color: rgb(252, 243, 243);
+  /* background-color: rgb(252, 243, 243); */
+  background-color: white;
   box-shadow: 9px 11px 22px 1px rgb(51, 90, 110);
   -webkit-box-shadow: 9px 11px 15px 1px #344955; 
 }
