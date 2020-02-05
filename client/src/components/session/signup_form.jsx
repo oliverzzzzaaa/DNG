@@ -88,11 +88,6 @@ class SignupForm extends  React.Component {
                             <button className='submit-button' onClick={this.handleSignup}>Sign Up</button>
                         </div>
                     </div>
-                    <div className='github'>
-                        <a href="https://github.com/oliverzzzzaaa/DNG" target='_blank'>
-                            <img src='https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/github.png' />
-                        </a>
-                    </div>
                 </div>
             </div>
         )

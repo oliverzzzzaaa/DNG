@@ -23,12 +23,6 @@
   background-image: url('https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/sesion.gif');
 }
 
-.session-left .github img {
-  margin-top: 50%;
-  max-width: 10vw;
-  max-height: 10vh;
-}
-
 .session-left {
   width: 50vw;
   position: fixed;
@@ -98,7 +92,7 @@
 .session-main .session-button {
   display: flex;
   flex-direction: row;
-  width: 80%;
+  width: 100%;
   justify-content: space-evenly;
 }
 
@@ -112,6 +106,7 @@
   transform: rotate(2deg);
   border-width: 3px 4px 3px 5px;
   border-radius: 4% 90% 6% 90%/90% 4% 88% 5%;
+  /* margin: 5%; */
 }
 
 .session-errors-ul {
