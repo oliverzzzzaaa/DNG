@@ -15,7 +15,9 @@ class Waiting extends React.Component {
     this.renderReadyBtn = this.renderReadyBtn.bind(this);
     this.start = this.start.bind(this);
     this.state = {
-      difficulty: "easy"
+      difficulty: this.props.room.config.difficulty
+        ? this.props.room.config.difficulty
+        : "easy"
     };
   }
 

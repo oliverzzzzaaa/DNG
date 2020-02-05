@@ -116,10 +116,13 @@ function handleGuess(socket, lobby, payload) {
 
 function handleSetDifficulty(socket, lobby, payload) {
   const room = lobby.getRoomBySocket(socket);
-  lobby.emitRoomMessage(room.id, {
-    type: "setDifficulty",
-    body: payload.difficulty
-  });
+  if (room) {
+    room.config.difficulty = payload.difficulty;
+    lobby.emitRoomMessage(room.id, {
+      type: "setDifficulty",
+      body: payload.difficulty
+    });
+  }
 }
 
 module.exports = {
