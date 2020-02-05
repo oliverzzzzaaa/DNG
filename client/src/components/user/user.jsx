@@ -7,7 +7,9 @@ class User extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showEditor: false
+      showEditor: false,
+      image: undefined,
+      username: undefined
     };
     this.renderEditor = this.renderEditor.bind(this);
     this.showEditor = this.showEditor.bind(this);
@@ -23,6 +25,13 @@ class User extends React.Component {
     document.getElementById("defaultOpen").click();
     //TODO: change this
     // this.props.fetchUser(this.props.match.params.userId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      image: nextProps.user.image,
+      username: nextProps.user.username
+    });
   }
 
   open(event, type) {
@@ -55,8 +64,8 @@ class User extends React.Component {
     if (this.state.showEditor) {
       return (
         <ProfileIconEditor
-          name={this.props.user.username}
-          image={this.props.user.image}
+          name={this.state.username}
+          image={this.state.image}
           close={this.closeEditor}
           update={this.updateInfo}
         />
@@ -89,15 +98,13 @@ class User extends React.Component {
               className="user-profile-image"
               src={
                 //TODO: change default image src
-                this.props.user.image
-                  ? this.props.user.image
+                this.state.image
+                  ? this.state.image
                   : "https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png"
               }
             />
           </div>
-          <div className="user-profile-username">
-            {this.props.user.username}
-          </div>
+          <div className="user-profile-username">{this.state.username}</div>
           <div className="user-profile-edit" onClick={this.showEditor}>
             <span className="user-profile-edit-button">Edit Profile</span>
           </div>
