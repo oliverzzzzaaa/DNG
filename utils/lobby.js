@@ -61,9 +61,15 @@ class Lobby {
   emitRoomMessage(roomId, message) {
     const room = this.rooms.get(roomId);
     if (room) {
-      room.players.forEach(player => {
-        this.connection.getSocket(player.id).emit(message.type, message.body);
-      });
+      // room.players.forEach(player => {
+      //   this.connection.getSocket(player.id).emit(message.type, message.body);
+      // });
+      for (let i = 0; i < room.players.length; i++) {
+        const socket = this.connection.getSocket(room.players[i].id);
+        if (socket) {
+          socket.emit(message.type, message.body);
+        }
+      }
     }
   }
 
