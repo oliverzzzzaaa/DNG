@@ -19,7 +19,8 @@
   left: 0;
   background-position: 50%;
   background-size: cover;
-  background-image: url("https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/sesion.gif");
+  background-repeat: no-repeat;
+  background-image: url('https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/sesion.gif');
 }
 
 .session-left {
@@ -32,7 +33,6 @@
   margin: 0;
   padding: 0;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   font-family: "Indie Flower", cursive;
   background-image: url("../images/pen.png");
@@ -49,11 +49,11 @@
   align-items: center;
 }
 
-.session-left img {
-  align-items: center;
-  width: 100%;
-  margin-top: -200px;
-  margin-bottom: -100px;
+.session-logo img {
+  display: flex;
+  justify-content: center;
+  width: 40vw;
+  cursor: pointer;
 }
 
 .session-main label {
@@ -79,7 +79,9 @@
 
 .session-input-fields {
   width: 90%;
-  margin-top: -10%;
+  margin: 2%;
+  padding: 5px;
+  justify-content: center;
 }
 
 .session-main input:hover {

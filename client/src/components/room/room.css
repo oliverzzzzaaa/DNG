@@ -43,7 +43,7 @@
 }
 
 .waiting-div .chat {
-  border: solid pink;
+  border: solid black;
   border-width: 3px 4px 3px 5px;
   border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
   transform: rotate(2deg);

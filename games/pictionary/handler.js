@@ -44,9 +44,9 @@ function handleRoundReady(socket, lobby, params) {
   }
 }
 
-function handleCreate(socket, lobby) {
+function handleCreate(socket, lobby, params) {
   const room = lobby.getRoomBySocket(socket);
-  const game = new Pictionary(room.players);
+  const game = new Pictionary(room.players, params[0]);
   room.setGame(game);
   lobby.emitRoomMessage(room.id, {
     type: "updateGameState",
@@ -104,11 +104,18 @@ function handleGuess(socket, lobby, payload) {
   }
 }
 
+function handleSetDifficulty(socket, lobby, payload){
+  const room = lobby.getRoomBySocket(socket);
+  console.log(payload);
+  lobby.emitRoomMessage(room.id, {type: "setDifficulty", body: payload.difficulty});
+}
+
 module.exports = {
   roundReady: handleRoundReady,
   create: handleCreate,
   getState: handleGetState,
   pathData: handlePathData,
   clearDrawing: handleClear,
-  guess: handleGuess
+  guess: handleGuess,
+  setDifficulty: handleSetDifficulty
 };

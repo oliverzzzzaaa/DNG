@@ -31,6 +31,7 @@ module.exports = class Room {
     this.ready = false;
   }
 
+
   remove(userId) {
     if (this.onGame && this.game && this.game.players[userId]) {
       this.players.forEach(player => {

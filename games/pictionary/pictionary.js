@@ -1,4 +1,4 @@
-let easyWords = require("../../dictionary.js");
+let words = require("../../dictionary.js");
 
 module.exports = class Pictionary {
   constructor(users, difficulty = "easy") {
@@ -29,11 +29,28 @@ module.exports = class Pictionary {
   }
 
   generateWord() {
+
+    let wordbank = null;
+    switch (this.difficulty) {
+      case 'easy':
+        wordbank = words.easyWords;
+        break;
+      case 'medium':
+        wordbank = words.mediumWords;
+        break;
+      case 'hard':
+        wordbank = words.hardWords;
+        break;
+      default:
+        wordbank = words.easyWords;
+        break;
+    }
+    console.log(this.wordbank)
     this.targetWord =
-      easyWords[Math.floor(Math.random() * easyWords.length)].word;
+      wordbank[Math.floor(Math.random() * wordbank.length)].word;
     while (this.usedWords.includes(this.targetWord)) {
       this.targetWord = this.targetWord =
-        easyWords[Math.floor(Math.random() * easyWords.length)].word;
+        wordbank[Math.floor(Math.random() * wordbank.length)].word;
     }
     this.usedWords.push(this.targetWord);
   }
@@ -47,7 +64,7 @@ module.exports = class Pictionary {
       if (this.targetWord === word) {
         this.players[playerId].guessed = true;
         this.players[playerId].score += 1;
-        this.players[currDrawer].score += 1;
+        this.players[this.currDrawer].score += 1;
         if (this.shouldEndround()) {
           this.endRound();
         }

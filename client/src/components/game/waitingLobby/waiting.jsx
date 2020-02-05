@@ -5,6 +5,9 @@ import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { leaveRoom } from "../../../util/room";
 
+
+//not being used version
+
 class Waiting extends React.Component {
   constructor(props) {
     super(props);
@@ -25,6 +28,9 @@ class Waiting extends React.Component {
           {/* <button className="waiting-room-ready2">Ready</button> */}
           {/* <button className="btn btn-info">Ready</button> */}
           <div className="ready-button-div">
+            <div className="waiting-buttons">
+              Leave
+            </div>
             <Button
               variant="warning outline-light"
               className="waiting-leave"
@@ -36,8 +42,8 @@ class Waiting extends React.Component {
           </div>
         </div>
         {/* <div className="waiting-room-ready-button">
-                    <button>Ready</button>
-                </div> */}
+            <button>Ready</button>
+        </div> */}
       </div>
     );
   }

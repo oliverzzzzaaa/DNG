@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -59,10 +59,13 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="session-main">
-        <div className="session-image">
-          <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/logo.png" />
-        </div>
+        <div className="session-image"></div>
         <div className="session-left">
+          <div className='session-logo'>
+            <Link to='/'>
+              <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/logo.png" />
+            </Link>
+          </div>
           <div className="session-input-fields">
             <label>
               Email:

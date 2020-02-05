@@ -98,7 +98,10 @@ router.post("/signup", (req, res) => {
                 });
               })
             )
-            .catch(err => res.json({ msg: "failure" }));
+            .catch(err => { 
+              errors.internal = "Sign up is not available now, Please try later!"
+              res.status(404).json(errors);
+           });
         });
       });
     }
