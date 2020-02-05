@@ -104,16 +104,6 @@ export default class Pictionary extends React.Component {
         <div id="canvas-and-timer-div">
           <div className="canvas-container">
             {this.renderTargetWord()}
-            {/* <div className="canvas-button-container">
-              <button onClick={() => this.setState({ isDrawer: true })} className='canvas-button'>
-                drawer
-              </button>
-              <button
-                onClick={() => this.setState({ isDrawer: false })} className='canvas-button'>
-                viewer
-              </button>
-            </div> */}
-
             <CanvasContainer
               isDrawer={
                 this.state.onRound &&
