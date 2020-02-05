@@ -1,6 +1,7 @@
 import React from "react";
 import "./user.css";
 import ProfileIconEditor from "./profileIconEditor";
+import { Link } from "react-router-dom"
 
 class User extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class User extends React.Component {
     const user = this.props.user;
     this.state = {
       showEditor: false,
-      name: user ? user.username : "",
+      username: user ? user.username : "",
       image: user ? this.props.user.image : undefined
     };
     this.renderEditor = this.renderEditor.bind(this);
