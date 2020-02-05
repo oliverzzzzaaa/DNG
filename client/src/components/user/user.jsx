@@ -8,7 +8,7 @@ class User extends React.Component {
     const user = this.props.user;
     this.state = {
       showEditor: false,
-      name: user ? user.username : "",
+      username: user ? user.username : "",
       image: user ? this.props.user.image : undefined
     };
     this.renderEditor = this.renderEditor.bind(this);
@@ -52,12 +52,11 @@ class User extends React.Component {
   }
 
   renderEditor() {
-    console.log(this.props.user);
     if (this.state.showEditor) {
       return (
         <ProfileIconEditor
-          name={this.props.user.name}
-          image={this.props.user.image}
+          name={this.state.username}
+          image={this.state.image}
           close={this.closeEditor}
           update={this.updateInfo}
         />
@@ -66,10 +65,13 @@ class User extends React.Component {
   }
 
   updateInfo(data) {
-    this.setState({
-      name: data.username,
-      image: data.image
-    });
+    const newState = {
+      username: data.username
+    };
+    if (data.image) {
+      newState.image = data.image;
+    }
+    this.setState(newState);
   }
 
   render() {
