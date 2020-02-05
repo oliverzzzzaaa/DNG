@@ -36,7 +36,8 @@
   border: solid rgb(86, 207, 255);
   box-shadow: 9px 11px 22px 1px rgb(51, 90, 110);
   -webkit-box-shadow: 9px 11px 15px 1px #344955; 
-  margin: 5% 0 0 5%;
+  /* margin: 5% 0 0 5%; */
+  flex-direction: column;
 }
 
 .canvas-button-container {
@@ -90,4 +91,27 @@
   border: solid rgb(86, 207, 255);
   box-shadow: 9px 11px 22px 1px rgb(51, 90, 110);
   -webkit-box-shadow: 9px 11px 15px 1px #344955; 
+}
+
+.target-word {
+  align-self: center;
+  padding-bottom: 10px;
+  font-size: 24px;
+  font-family: 'Indie Flower', cursive;
+  border-radius: 35px;
+  background-color: white;
+  border-width: 5px 3px 3px 5px;
+  /* border-radius:10% 4% 97% 5%/4% 94% 3% 95%; */
+  border-radius:4% 95% 6% 95%/95% 4% 92% 5%;
+  border: solid rgb(86, 207, 255);
+  /* box-shadow: 9px 11px 22px 1px rgb(51, 90, 110); */
+  /* -webkit-box-shadow: 9px 11px 15px 1px #344955;  */
+  text-align: center;
+  padding: 10px;
+}
+
+.canvas-and-word {
+  display: flex;
+  flex-direction: column;
+  margin: 4% 0 0 5%;
 }

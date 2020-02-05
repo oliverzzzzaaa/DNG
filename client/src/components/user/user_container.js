@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import User from "./user";
-import { fetchUser } from "../../actions/user_actions";
+import { fetchUser, updateProfile } from "../../actions/user_actions";
 
 const mSP = (state, ownProps) => ({
     currentUser: state.session.user,
@@ -8,7 +8,8 @@ const mSP = (state, ownProps) => ({
 });
 
 const mDP = dispatch => ({
-    fetchUser: user => dispatch(fetchUser(user))
+    fetchUser: user => dispatch(fetchUser(user)),
+    updateProfile: (id, user) => dispatch(updateProfile(id, user))
 });
 
 export default connect(mSP, mDP)(User);
