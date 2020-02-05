@@ -60,7 +60,7 @@ module.exports = class Pictionary {
 
   guess(playerId, word) {
     if (this.players[playerId] && playerId !== this.currDrawer) {
-      if (this.targetWord === word) {
+      if (this.targetWord.toLowerCase() === word.toLowerCase()) {
         this.players[playerId].guessed = true;
         this.players[playerId].score += 1;
         this.players[this.currDrawer].score += 1;
