@@ -106,7 +106,6 @@ function handleGuess(socket, lobby, payload) {
 
 function handleSetDifficulty(socket, lobby, payload){
   const room = lobby.getRoomBySocket(socket);
-  console.log(payload);
   lobby.emitRoomMessage(room.id, {type: "setDifficulty", body: payload.difficulty});
 }
 

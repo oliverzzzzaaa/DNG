@@ -24,8 +24,6 @@ export default class Room extends React.Component {
         return { messages: msgs };
       });
     });
-
-    console.log(MySocket.getSocket().connected);
   }
 
   sendRoomMessage(msg) {
@@ -62,7 +60,7 @@ export default class Room extends React.Component {
         </div>
       );
     }
-    return null;
+    window.location.hash = "/lobby"
   }
   render() {
     return (
