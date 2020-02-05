@@ -47,7 +47,6 @@ Pictionary.prototype.setEndRound = function(cb) {
 
 
 Pictionary.prototype.endRound = function() {
-    console.log("Round is over!")
     clearTimeout(this.timeoutId)
     this.timeoutId = null;
     if(this.callBackBetweenRounds){

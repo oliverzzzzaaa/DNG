@@ -3,6 +3,7 @@ export default class MySocket {
   socket;
   static getSocket = userId => {
     if (MySocket.socket === undefined) {
+      console.log("connecting");
       MySocket.socket = io();
       if (userId) {
         MySocket.socket.emit("login", { userId: userId });

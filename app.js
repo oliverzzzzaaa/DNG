@@ -61,7 +61,6 @@ io.on("connection", socket => {
   socket.on("ready", () => {
     const room = lobby.getRoomBySocket(socket);
     lobby.setUserReadyBySocket(socket);
-    console.log(room.getInfo());
     lobby.emitRoomMessage(room.id, {
       type: "updateRoom",
       body: room.getInfo()
