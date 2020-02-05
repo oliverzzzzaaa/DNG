@@ -21,6 +21,8 @@ class User extends React.Component {
 
   componentDidUpdate() {
     document.getElementById("defaultOpen").click();
+    //TODO: change this
+    this.props.fetchUser(this.props.match.params.userId);
   }
 
   open(event, type) {
@@ -61,8 +63,6 @@ class User extends React.Component {
       );
     }
   }
-
-  
 
   updateInfo(data) {
     const newState = {
