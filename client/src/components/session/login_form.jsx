@@ -35,7 +35,7 @@ class LoginForm extends React.Component {
       email: "guest_user@dng.com",
       password: "guestdng"
     };
-    let guest = this.state;
+    let guest = this.setState;
     return e => {
       e.preventDefault();
       this.props.login(guest);
@@ -91,10 +91,10 @@ class LoginForm extends React.Component {
           </div>
           {this.showErrors()}
           <div className="session-button">
-            <button className="submit-button" onClick={this.handleLogin()}>
+            <button className="submit-button" onClick={this.handleLogin}>
               Sign In
             </button>
-            <button className="submit-button" onClick={this.handleDemo()}>
+            <button className="submit-button" onClick={this.handleDemo}>
               Guest
             </button>
           </div>

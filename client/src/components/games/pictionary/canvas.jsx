@@ -18,6 +18,7 @@ export default class CanvasContainer extends React.Component {
     this.setStrokeWidth = this.setStrokeWidth.bind(this);
     this.uploadDrawing = this.uploadDrawing.bind(this);
     this.clear = this.clear.bind(this);
+    this.renderColorpicker = this.renderColorpicker.bind(this);
   }
 
   componentDidMount() {
@@ -47,9 +48,9 @@ export default class CanvasContainer extends React.Component {
     });
   }
 
-  setColor(color) {
+  setColor(e) {
     this.setState({
-      strokeColor: color
+      strokeColor: e.currentTarget.value
     });
   }
 
@@ -111,33 +112,15 @@ export default class CanvasContainer extends React.Component {
     });
   }
 
-  render() {
-    return (
-      <div className="canvas-page">
-        <div className="canvas-main">
-          {`you are the ${this.props.isDrawer ? "drawer" : "viewer"}!`}
-          <canvas className="canvas-area" id="pictionary-canvas" />
-        </div>
+  renderColorpicker() {
+    if (this.props.isDrawer === true) {
+      return (
         <div className="color-picker-btn">
-          {
-            //TODO: this is just an example, needed change later
-          }
-          <br style={{ color: "black" }} />
-          <button
-            className="canvas-bottom-button"
-            style={{ background: "black", color: "white" }}
-            onClick={() => this.setColor("black")}
-          >
-            Black
-          </button>
-          <br/>
-          <button
-            className="canvas-bottom-button"
-            style={{ background: "red", color: "white" }}
-            onClick={() => this.setColor("red")}
-          >
-            Red
-          </button>
+          <input className="canvas-bottom-button"
+            type="color"
+            value={this.state.strokeColor}
+            onChange={this.setColor}
+          />
           <br />
           <button
             onClick={() => this.setStrokeWidth(2)}
@@ -160,17 +143,30 @@ export default class CanvasContainer extends React.Component {
               MySocket.getSocket().emit("gameAction", {
                 game: "Pictionary",
                 type: "clearDrawing"
-              });
-            }}
-          >
+              })}}>
             clear
           </button>
-          <br />
+        </div>
+      );
+    }
+    return null;
+  }
+
+  render() {
+
+    console.log(this.props.players)
+
+    return (
+      <div className="canvas-page">
+        <div className="canvas-main">
+          {`you are the ${this.props.isDrawer ? "drawer" : "viewer"}!`}
+          <canvas className="canvas-area" id="pictionary-canvas" />
+        </div>
+          {this.renderColorpicker()}
           <div className='clues' >
             clues right here!
           </div>
         </div>
-      </div>
     );
   }
 }

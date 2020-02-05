@@ -3,7 +3,6 @@ import { logout } from "../../actions/session_actions";
 import { connect } from "react-redux";
 
 const mSTP = state => {
-    console.log(state.session.user.id)
     return ({
         loggedIn: state.session.isAuthenticated,
         currentUserId: state.session.user.id,

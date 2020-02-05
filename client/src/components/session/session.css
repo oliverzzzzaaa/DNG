@@ -35,7 +35,8 @@
   flex-direction: column;
   align-items: center;
   font-family: "Indie Flower", cursive;
-  background-image: url("../images/pen.png");
+  /* background-image: url("../images/pen.png"); */
+  background-color: white;
 }
 
 .session-left ul {
@@ -72,7 +73,7 @@
   box-sizing: border-box;
   border: 1px solid var(--shadow-1);
   border-radius: 4px;
-  color: white;
+  color: black;
   font-size: 15px;
   background: var(--shadow-1);
 }
@@ -80,12 +81,13 @@
 .session-input-fields {
   width: 90%;
   margin: 2%;
+  margin-top: -10%;
   padding: 5px;
   justify-content: center;
 }
 
 .session-main input:hover {
-  border: 1px solid white;
+  border: 1px solid black;
 }
 
 .session-main .session-button {
