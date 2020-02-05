@@ -3,10 +3,15 @@ import User from "./user";
 import { fetchUser, updateProfile } from "../../actions/user_actions";
 
 const mSP = (state, ownProps) => {
-  return {
-    currentUser: state.session.user,
-    user: Object.assign({}, state.users[ownProps.match.params.userId])
-  };
+  const user = state.users[ownProps.match.params.userId];
+  if (user) {
+    return {
+      userId: user.id,
+      image: user.image,
+      username: user.username
+    };
+  }
+  return {};
 };
 
 const mDP = dispatch => ({

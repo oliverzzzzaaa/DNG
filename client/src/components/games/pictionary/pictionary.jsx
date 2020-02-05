@@ -96,14 +96,14 @@ export default class Pictionary extends React.Component {
   }
 
   renderCanvas() {
-    if (this.state.strocks) {
+    if (this.state.strokes) {
       return (
         <CanvasContainer
           isDrawer={
             this.state.onRound &&
             this.props.currentUser.id === this.state.currDrawer
           }
-          strocks={this.state.strocks}
+          strokes={this.state.strokes}
         />
       );
     }

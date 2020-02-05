@@ -20,7 +20,7 @@ module.exports = class Pictionary {
     this.difficulty = difficulty;
     this.roundStartTime;
     this.onRound = false;
-    this.strocks = [];
+    this.strokes = [];
   }
 
   switchTurn() {
@@ -100,19 +100,19 @@ module.exports = class Pictionary {
     const players = Object.values(this.players);
     players.forEach(player => (player.ready = false));
     this.currentRound++;
-    this.clearStrocks();
+    this.clearstrokes();
   }
 
   isOver() {
     return this.currentRound === this.numRounds;
   }
 
-  addStrocks(strock) {
-    this.strocks.push(strock);
+  addstrokes(stroke) {
+    this.strokes.push(stroke);
   }
 
-  clearStrocks() {
-    this.strocks = [];
+  clearstrokes() {
+    this.strokes = [];
   }
 
   getState() {
@@ -124,7 +124,7 @@ module.exports = class Pictionary {
       numRounds: this.numRounds,
       roundStartTime: this.roundStartTime,
       onRound: this.onRound,
-      strocks: this.strocks
+      strokes: this.strokes
     };
   }
 };
