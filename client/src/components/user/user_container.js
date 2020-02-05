@@ -9,7 +9,7 @@ const mSP = (state, ownProps) => ({
 
 const mDP = dispatch => ({
     fetchUser: user => dispatch(fetchUser(user)),
-    updateProfile: user => dispatch(updateProfile(id, user))
+    updateProfile: (id, user) => dispatch(updateProfile(id, user))
 });
 
 export default connect(mSP, mDP)(User);
