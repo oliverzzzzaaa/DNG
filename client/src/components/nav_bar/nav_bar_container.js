@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 const mSTP = state => ({
     loggedIn: state.session.isAuthenticated,
-    currentUser: state.session.users
+    currentUser: state.session.user
 });
 
 const mDTP = dispatch => ({

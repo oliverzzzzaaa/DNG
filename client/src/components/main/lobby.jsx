@@ -66,7 +66,7 @@ class Lobby extends React.Component {
         {/* <div>{this.props.msg}</div> */}
         {/* <div className="lobby-page"> */}
         {/* <div className="test">All loggedin users</div> */}
-        <Link to={`/users/${this.props.currentUser.id}`}>User</Link>
+        
         <GameRooms
           className="game-rooms"
           currentUser={this.props.currentUser}
