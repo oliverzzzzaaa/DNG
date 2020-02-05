@@ -17,6 +17,7 @@ export default class Pictionary extends React.Component {
     this.renderScoreBoard = this.renderScoreBoard.bind(this);
     this.renderMidRound = this.renderMidRound.bind(this);
     this.renderTargetWord = this.renderTargetWord.bind(this);
+    this.renderCanvas = this.renderCanvas.bind(this);
   }
 
   guess(word) {
@@ -53,9 +54,6 @@ export default class Pictionary extends React.Component {
       game: "Pictionary",
       type: "getState"
     });
-
-
-    
   }
 
   renderTimer() {
@@ -97,12 +95,27 @@ export default class Pictionary extends React.Component {
     return null;
   }
 
+  renderCanvas() {
+    if (this.state.strocks) {
+      return (
+        <CanvasContainer
+          isDrawer={
+            this.state.onRound &&
+            this.props.currentUser.id === this.state.currDrawer
+          }
+          strocks={this.state.strocks}
+        />
+      );
+    }
+    return null;
+  }
+
   render() {
     return (
       <div className="game-components-div">
         <div id="canvas-and-timer-div">
           <div className="canvas-and-word">
-          {this.renderTargetWord()}
+            {this.renderTargetWord()}
             <div className="canvas-container">
               {/* <div className="canvas-button-container">
                 <button onClick={() => this.setState({ isDrawer: true })} className='canvas-button'>
@@ -114,12 +127,7 @@ export default class Pictionary extends React.Component {
                 </button>
               </div> */}
 
-              <CanvasContainer
-                isDrawer={
-                  this.state.onRound &&
-                  this.props.currentUser.id === this.state.currDrawer
-                }
-              />
+              {this.renderCanvas()}
             </div>
           </div>
         </div>
@@ -130,8 +138,8 @@ export default class Pictionary extends React.Component {
             <Chat action={this.guess} messages={this.state.messages} />
           </div>
         </div>
-          {this.renderMidRound()}
-        </div>
+        {this.renderMidRound()}
+      </div>
     );
   }
 }

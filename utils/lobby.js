@@ -61,9 +61,15 @@ class Lobby {
   emitRoomMessage(roomId, message) {
     const room = this.rooms.get(roomId);
     if (room) {
-      room.players.forEach(player => {
-        this.connection.getSocket(player.id).emit(message.type, message.body);
-      });
+      // room.players.forEach(player => {
+      //   this.connection.getSocket(player.id).emit(message.type, message.body);
+      // });
+      for (let i = 0; i < room.players.length; i++) {
+        const socket = this.connection.getSocket(room.players[i].id);
+        if (socket) {
+          socket.emit(message.type, message.body);
+        }
+      }
     }
   }
 
@@ -95,14 +101,16 @@ class Lobby {
     const roomId = this.map.get(userId);
     if (roomId) {
       const room = this.rooms.get(roomId);
-      if (room && room.remove(userId)) {
-        this.map.delete(userId);
+      if (room) {
+        if (room.remove(userId)) {
+          this.map.delete(userId);
+        }
+        const hasPlayer = room.hasConnectedPlayer();
+        if (!hasPlayer) {
+          this.rooms.delete(roomId);
+        }
+        return { id: roomId, isEmpty: !hasPlayer };
       }
-      const hasPlayer = room.hasConnectedPlayer();
-      if (!hasPlayer) {
-        this.rooms.delete(roomId);
-      }
-      return { id: roomId, isEmpty: !hasPlayer };
     }
     return null;
   }

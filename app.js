@@ -60,11 +60,13 @@ io.on("connection", socket => {
 
   socket.on("ready", () => {
     const room = lobby.getRoomBySocket(socket);
-    lobby.setUserReadyBySocket(socket);
-    lobby.emitRoomMessage(room.id, {
-      type: "updateRoom",
-      body: room.getInfo()
-    });
+    if (room) {
+      lobby.setUserReadyBySocket(socket);
+      lobby.emitRoomMessage(room.id, {
+        type: "updateRoom",
+        body: room.getInfo()
+      });
+    }
   });
 
   // socket.on('difficulty', () => {

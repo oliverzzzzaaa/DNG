@@ -60,7 +60,7 @@ export default class Room extends React.Component {
         </div>
       );
     }
-    return null;
+    window.location.hash = "/lobby"
   }
   render() {
     return (
