@@ -41,7 +41,6 @@ export default class Pictionary extends React.Component {
     );
 
     socket.on("updateGameState", state => {
-      console.log(state);
       this.setState(state);
     });
 

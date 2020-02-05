@@ -27,7 +27,6 @@ class MidRound extends React.Component {
   }
 
   continueInterval() {
-    console.log(document.getElementsByClassName('game-rooms-create-text')[0])
     document.getElementsByClassName('game-rooms-create-text')[0].click()
   }
 

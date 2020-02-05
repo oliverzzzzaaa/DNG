@@ -22,24 +22,20 @@ class LoginForm extends React.Component {
     return e => this.setState({ [field]: e.currentTarget.value });
   }
 
-  handleLogin() {
+  handleLogin(e) {
     let { email, password } = this.state;
-    return e => {
-      e.preventDefault();
-      this.props.login({ email, password });
-    };
+    e.preventDefault();
+    this.props.login({ email, password });
   }
 
-  handleDemo() {
+  handleDemo(e) {
     this.state = {
       email: "guest_user@dng.com",
       password: "guestdng"
     };
-    let guest = this.setState;
-    return e => {
-      e.preventDefault();
-      this.props.login(guest);
-    };
+    let guest = this.state;
+    e.preventDefault();
+    this.props.login(guest);
   }
 
   showErrors() {
@@ -61,8 +57,8 @@ class LoginForm extends React.Component {
       <div className="session-main">
         <div className="session-image"></div>
         <div className="session-left">
-          <div className='session-logo'>
-            <Link to='/'>
+          <div className="session-logo">
+            <Link to="/">
               <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/logo.png" />
             </Link>
           </div>

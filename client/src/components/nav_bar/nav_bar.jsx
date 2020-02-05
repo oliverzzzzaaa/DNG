@@ -14,7 +14,6 @@ class NarBar extends React.Component {
 
 
     render(){
-        console.log(this.props.currentUser)
         if (typeof currentUser === undefined) return null;
         return(
             <div className='nav-bar-main'>
