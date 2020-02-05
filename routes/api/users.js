@@ -36,6 +36,35 @@ router.post("/profile/:id", (req, res) => {
     .catch(err => next(err));
 });
 
+router.post(
+  "/update/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const newInfo = { username: req.body.username };
+    if (req.body.image) {
+      newInfo.image = req.body.image;
+    }
+    User.findOneAndUpdate({ _id: req.params.id }, newInfo)
+      .then(user => {
+        if (!user) {
+          errors.user = "User doesn't exist";
+          return res.status(400).json(errors);
+        } else {
+          return res.status(200).json({
+            id: user.id,
+            username: user.username,
+            email: user.email,
+            image: user.image
+          });
+        }
+      })
+      .catch(err => {
+        errors.internal = "Unable to update now!";
+        res.status(404).json(errors);
+      });
+  }
+);
+
 router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
 
@@ -98,10 +127,11 @@ router.post("/signup", (req, res) => {
                 });
               })
             )
-            .catch(err => { 
-              errors.internal = "Sign up is not available now, Please try later!"
+            .catch(err => {
+              errors.internal =
+                "Sign up is not available now, Please try later!";
               res.status(404).json(errors);
-           });
+            });
         });
       });
     }

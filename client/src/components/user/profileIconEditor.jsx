@@ -55,7 +55,7 @@ export default class ProfileIconEditor extends React.Component {
       this.path.selected = false;
     }
     this.path = new paper.Path();
-    this.path.strokeColor = this.state.color;
+    this.path.strokeColor = this.state.strokeColor;
     this.path.strokeWidth = this.state.strokeWidth;
     this.path.strokeCap = "round";
 
