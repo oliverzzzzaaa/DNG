@@ -50,7 +50,7 @@ class SignupForm extends  React.Component {
                 <div className='session-left'>
                     <div className='session-logo'>
                         <Link to='/'>
-                            <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/logo.png" />
+                            <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/logo_reduced.png" />
                         </Link>
                     </div>
                     <div className="session-input-fields">
@@ -87,6 +87,11 @@ class SignupForm extends  React.Component {
                         <div className='session-button'>
                             <button className='submit-button' onClick={this.handleSignup}>Sign Up</button>
                         </div>
+                    </div>
+                    <div className='github'>
+                        <a href="https://github.com/oliverzzzzaaa/DNG" target='_blank'>
+                            <img src='https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/github.png' />
+                        </a>
                     </div>
                 </div>
             </div>
