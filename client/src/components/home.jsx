@@ -43,12 +43,8 @@ class HomePage extends React.Component {
               </Carousel>
             </div>
             <div className="home-button">
-              <Link to="/login">
-                <button className="home-login">Log In</button>
-              </Link>
-              <Link to="/signup">
-                <button className="home-signup">Sign Up</button>
-              </Link>
+              <Link to="/login"><button className="home-login">Log In</button></Link>
+              <Link to="/signup"><button className="home-signup">Sign Up</button></Link>
             </div>
           </div>
         );
