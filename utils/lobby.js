@@ -101,14 +101,16 @@ class Lobby {
     const roomId = this.map.get(userId);
     if (roomId) {
       const room = this.rooms.get(roomId);
-      if (room && room.remove(userId)) {
-        this.map.delete(userId);
+      if (room) {
+        if (room.remove(userId)) {
+          this.map.delete(userId);
+        }
+        const hasPlayer = room.hasConnectedPlayer();
+        if (!hasPlayer) {
+          this.rooms.delete(roomId);
+        }
+        return { id: roomId, isEmpty: !hasPlayer };
       }
-      const hasPlayer = room.hasConnectedPlayer();
-      if (!hasPlayer) {
-        this.rooms.delete(roomId);
-      }
-      return { id: roomId, isEmpty: !hasPlayer };
     }
     return null;
   }

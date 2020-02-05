@@ -28,6 +28,18 @@ export default class CanvasContainer extends React.Component {
     tool.onMouseDrag = e => this.onMouseDrag(e);
     tool.onMouseUp = e => this.onMouseUp(e);
 
+    const strocks = this.props.strocks;
+    if (strocks) {
+      strocks.forEach(strock => {
+        const path = new paper.Path();
+        path.strokeColor = strock.color;
+        path.strokeWidth = strock.width;
+        path.strokeCap = "round";
+        path.pathData = strock.pathData;
+        paper.view.draw();
+      });
+    }
+
     const socket = MySocket.getSocket();
     socket.off("gameAction");
     socket.on("pathData", data => {
@@ -116,7 +128,8 @@ export default class CanvasContainer extends React.Component {
     if (this.props.isDrawer === true) {
       return (
         <div className="color-picker-btn">
-          <input className="canvas-bottom-button"
+          <input
+            className="canvas-bottom-button"
             type="color"
             value={this.state.strokeColor}
             onChange={this.setColor}
@@ -143,7 +156,9 @@ export default class CanvasContainer extends React.Component {
               MySocket.getSocket().emit("gameAction", {
                 game: "Pictionary",
                 type: "clearDrawing"
-              })}}>
+              });
+            }}
+          >
             clear
           </button>
         </div>
@@ -159,11 +174,9 @@ export default class CanvasContainer extends React.Component {
           {`you are the ${this.props.isDrawer ? "drawer" : "viewer"}!`}
           <canvas className="canvas-area" id="pictionary-canvas" />
         </div>
-          {this.renderColorpicker()}
-          <div className='clues' >
-            clues right here!
-          </div>
-        </div>
+        {this.renderColorpicker()}
+        <div className="clues">clues right here!</div>
+      </div>
     );
   }
 }
