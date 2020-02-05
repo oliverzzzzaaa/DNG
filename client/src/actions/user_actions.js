@@ -28,11 +28,5 @@ export const fetchUpdatedCurrentUser = (id) => dispatch => (
 
 export const updateProfile = (id, userInfo) => dispatch => (
     APIUtil.updateProfile(id, userInfo)
-        .then(res => {
-            const { token } = res.data;
-            localStorage.setItem('jwtToken', token);
-            setAuthToken(token);
-            const decoded = jwt_decode(token);
-            dispatch(receiveCurrentUser(decoded));
-        })
+        .then(user => (dispatch(receiveUser(user))))
 );
