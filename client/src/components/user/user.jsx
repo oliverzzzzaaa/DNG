@@ -1,7 +1,7 @@
 import React from "react";
 import "./user.css";
 import ProfileIconEditor from "./profileIconEditor";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 class User extends React.Component {
   constructor(props) {
@@ -62,6 +62,8 @@ class User extends React.Component {
     }
   }
 
+  
+
   updateInfo(data) {
     const newState = {
       username: data.username
@@ -85,15 +87,17 @@ class User extends React.Component {
           <div className="user-profile-icon">
             <img
               className="user-profile-image"
-              //TODO: change src
               src={
-                this.state.image
-                  ? this.state.image
+                //TODO: change default image src
+                this.props.user.image
+                  ? this.props.user.image
                   : "https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png"
               }
             />
           </div>
-          <div className="user-profile-username">{this.props.user.username}</div>
+          <div className="user-profile-username">
+            {this.props.user.username}
+          </div>
           <div className="user-profile-edit" onClick={this.showEditor}>
             <span className="user-profile-edit-button">Edit Profile</span>
           </div>
