@@ -97,6 +97,68 @@ router.post("/login", (req, res) => {
   });
 });
 
+function generateUser(){
+  const randID = Math.floor((Math.random() * 100000))
+  const email = `guest${randID}@dng.com`
+  return User.findOne({email: email}).then(user => {
+    if(user){
+      return generateUser();
+    }
+    return {email:email, username:`guest${randID}`,  password: "guestdng"};
+  }).catch(err => console.log(err))
+}
+
+router.post("/demouser", (req, res) => {
+  // let randID = Math.floor((Math.random() * 100000))
+  // let email = `guest${randID}@dng.com`
+  // let isValidEmail = false; 
+  // while(!isValidEmail){
+  //   console.log("demo")
+  //   User.findOne({email: email}).then(user => {
+  //     console.log(user)
+  //     if(!user){
+  //       isValidEmail = true;
+  //       console.log(email);
+  //     }else{
+  //       console.log(user)
+  //       randID = Math.floor((Math.random() * 100000))
+  //       email = `guest${randID}@dng.com`
+  //     }
+  //   }).catch(err => console.log("ha"))
+  // }
+  // while (User.findOne({email: email})) {
+  //   console.log(email)
+  //   randID = Math.random() * 100000
+  //   email = `guest${randID}@dng.com`
+  // }
+  generateUser().then(user=>{
+    const newUser = new User(user)
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(newUser.password, salt, (err, hash) => {
+        if (err) throw err;
+        newUser.password = hash;
+        newUser
+          .save()
+          .then(user =>
+            signJwt(user, (err, token) => {
+              res.json({
+                success: true,
+                token: "Bearer " + token
+              });
+            })
+          )
+          .catch(err => {
+            errors.internal =
+              "Oops there has been an error with demo user";
+            res.status(404).json(errors);
+          });
+      });
+    });
+  })
+
+})
+
+
 router.post("/signup", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
   if (!isValid) {
