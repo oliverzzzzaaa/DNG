@@ -5,13 +5,14 @@
     display: block;
     padding: 10px;
     margin: 0;
+    font-family: 'Indie Flower', cursive;
 }   
 .scoreboard-li {
     list-style: none;
     padding-top: 5px;
     padding-bottom: 5px;
     justify-content: space-between;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .scoreboard-name{
@@ -21,4 +22,10 @@
 .scoreboard-div {
     width: 30%;
     display: flex;
+}
+
+.scoreboard-score {
+    margin-top: 5px;
+    display: flex;
+    justify-content: flex-end;
 }

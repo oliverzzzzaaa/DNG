@@ -1,10 +1,14 @@
 @media (max-width: 767px) {
 }
 
+.room-ready-state {
+  height: 80%;
+}
+
 .waiting-room {
   display: flex;
   height: 100%;
-  width: 100%;
+  width: 70%;
   flex-direction: column;
 }
 
@@ -101,12 +105,15 @@
 
 .profile-icon-div {
   width: 50%;
+  height: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 15px;
 }
 
 .delete-this-div {
   width: 100px;
   margin-left: 20px;
+  font-family: 'Indie Flower', cursive;
 }

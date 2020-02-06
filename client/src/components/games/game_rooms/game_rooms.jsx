@@ -24,6 +24,20 @@ class GameRooms extends React.Component {
       <div className="game-rooms-div">
         <div className="lobby-title">
           <h1>Lobby</h1>
+          <div className="game-rooms-buttons">
+            <div className="game-rooms-create-button">
+              <span
+                className="game-rooms-create-text"
+                onClick={() => this.props.createRoom(this.props.currentUser)}
+              >
+                Create
+              </span>
+            </div>
+            <JoinModal
+              join={this.props.joinRoom}
+              user={Object.assign({}, this.props.currentUser)}
+            />
+          </div>
         </div>
         <div className="game-rooms-container">
           {this.props.rooms.map((room, idx) => (

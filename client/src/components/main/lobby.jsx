@@ -60,21 +60,23 @@ class Lobby extends React.Component {
 
   render() {
     return (
-      <div className="lobby">
-        <GameRooms
-          className="game-rooms"
-          currentUser={this.props.currentUser}
-          rooms={this.props.rooms}
-          createRoom={this.props.createRoom}
-          joinRoom={this.props.joinRoom}
-        />
-        <div className="nav-chat">
-          <NavBar />
-          {/* <Link to={`/users/${this.props.currentUser.id}`}>User</Link> */}
-          <Chat
-            messages={this.state.messages}
-            action={this.sendPublicMessage}
+      <div className="lobby-page">
+        <NavBar />
+        <div className="lobby">
+          <GameRooms
+            className="game-rooms"
+            currentUser={this.props.currentUser}
+            rooms={this.props.rooms}
+            createRoom={this.props.createRoom}
+            joinRoom={this.props.joinRoom}
           />
+          <div className="nav-chat">
+            {/* <Link to={`/users/${this.props.currentUser.id}`}>User</Link> */}
+            <Chat
+              messages={this.state.messages}
+              action={this.sendPublicMessage}
+            />
+          </div>
         </div>
       </div>
     );

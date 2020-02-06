@@ -24,7 +24,7 @@ Technologies Used:
   + Node.js
   + Socket.io
   + Paper.js
-  + AWS S3
+  + AWS S3 (for images)
   + HTML Canvas
   + Heroku
   
@@ -45,6 +45,13 @@ Technologies Used:
       We had a fun time learning how to integrate HTML Canvas, Paper.js (to track mouse movements) and Socket.io
       to emit and receive each user's actions. In addition, resizing some pre-built libraries reqiured a little more
       investigating. 
+  + Draw your own profile picture!
+
+      We reused the paper.js and html canvas to allow users to draw their own profile picture. It is a small but fun
+      feature we decided to include so everyone can share a "great" drawing. We currently store the image as base64 data
+      in JavaScript, and convert it back on the front end to save space. In the future, we plan on moving all drawings
+      to our AWS S3 bucket.
+
   + Live Score and Chat Updates:
   
       When a message is submitted to the chat, the server has to check if the messages matches the target word.
@@ -70,6 +77,6 @@ Screenshot:
 
 
 Features to Add:
-  + AWS S3 for saved images
+  + AWS S3 for drawings
   + Adding additional games to our lobby
 
