@@ -84,7 +84,6 @@ class User extends React.Component {
 
   render() {
     if (!this.props.userId) return null;
-
     return (
       <div className="user-profile-page">
         {this.renderEditor()}
