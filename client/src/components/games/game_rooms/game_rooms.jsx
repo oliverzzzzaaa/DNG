@@ -4,6 +4,20 @@ import "./game_rooms.css";
 import JoinModal from "./modal";
 
 class GameRooms extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      canCreateRoom: true
+    };
+    this.createRoom = this.createRoom.bind(this);
+  }
+
+  createRoom() {
+    if (this.state.canCreateRoom) {
+      this.props.createRoom(this.props.currentUser);
+    }
+  }
+
   render() {
     // const rooms = Object.values(this.props.rooms);
     return (
@@ -26,7 +40,12 @@ class GameRooms extends React.Component {
           <div className="game-rooms-create-button">
             <span
               className="game-rooms-create-text"
-              onClick={() => this.props.createRoom(this.props.currentUser)}
+              onClick={() => {
+                this.createRoom();
+                this.setState({
+                  canCreateRoom: false
+                });
+              }}
             >
               Create
             </span>
