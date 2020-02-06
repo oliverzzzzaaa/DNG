@@ -60,7 +60,7 @@ class LoginForm extends React.Component {
     return (
       <div className="session-main">
         <div className="session-image"></div>
-        <div className="session-left">
+        <div className="session-right">
           <div className="session-logo">
             <Link to="/">
               <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/logo_reduced.png" />

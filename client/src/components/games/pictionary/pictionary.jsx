@@ -57,14 +57,12 @@ export default class Pictionary extends React.Component {
           }
         }
       }
-      console.log(connectedPlayer);
 
       if (connectedPlayer < 2) {
         this.setState({ canLeave: true });
       } else {
         this.setState({ canLeave: false });
       }
-      console.log(this.state.canLeave);
     });
 
     socket.emit("gameAction", {
