@@ -55,7 +55,9 @@ module.exports = class Pictionary {
   }
 
   readyPlayer(playerId) {
-    this.players[playerId].ready = true;
+    if (this.players[playerId]) {
+      this.players[playerId].ready = true;
+    }
   }
 
   guess(playerId, word) {

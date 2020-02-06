@@ -12,22 +12,10 @@ class Chat extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  // componentDidMount() {
-  //   if (document.getElementsByClassName("msg-list")[0]) {
-  //     if (document.getElementsByClassName("msg-list")[0].lastChild) {
-  //       document
-  //         .getElementsByClassName("msg-list")[0]
-  //         .lastChild.scrollIntoView({ behavior: "smooth" });
-  //     }
-  //   }
-  // }
-  // componentDidUpdate() {
-  //   if (document.getElementsByClassName("msg-list")[0].lastChild) {
-  //     document
-  //       .getElementsByClassName("msg-list")[0]
-  //       .lastChild.scrollIntoView({ behavior: "smooth" });
-  //   }
-  // }
+  componentDidUpdate() {
+    const msgBox = document.getElementById("msg-container");
+    msgBox.scrollTop = msgBox.scrollHeight;
+  }
 
   renderMessages() {
     if (this.props.messages) {
@@ -69,7 +57,9 @@ class Chat extends React.Component {
   render() {
     return (
       <div className="chat">
-        <div className="msg-container">{this.renderMessages()}</div>
+        <div id="msg-container" className="msg-container">
+          {this.renderMessages()}
+        </div>
         <div className="chat-input-div">
           <input
             onKeyDown={this.keyPress}
