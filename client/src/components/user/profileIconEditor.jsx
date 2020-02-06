@@ -65,7 +65,6 @@ export default class ProfileIconEditor extends React.Component {
   }
 
   onMouseDrag(event) {
-    console.log('mouse')
     this.path.add(event.point);
   }
 
@@ -126,24 +125,27 @@ export default class ProfileIconEditor extends React.Component {
         <div className="profile-canvas-container">
           <div className="canvas-editor-container">
             <label>
-              Color Switcher
+              Color palette
               <input type="color" onChange={this.changeColor} />
             </label>
 
-            <button onClick={this.clear}>clear canvas</button>
-            <label>
-              check this box if you want to update profile picture
-              {/* <button onClick={this.setImage}>
-              {this.state.changeImage ? "勾" : `圆`}
-            </button> */}
+            <button onClick={this.clear}>clear picture</button>
+
+            <div id="profile-checkbox">
               <input type="checkbox" onChange={this.setImage} />
-            </label>
+              <label>check to confirm picture update</label>
+            </div>
           </div>
 
-          <canvas className="profile-picture" ref={this.canvas}></canvas>
+          <div>
+            <label>Draw your profile picture</label>
+            <canvas className="profile-picture" ref={this.canvas}></canvas>
+          </div>
         </div>
 
-        <button onClick={this.updateChanges}>UPDATE</button>
+        <div className="update-button">
+          <button onClick={this.updateChanges}>UPDATE</button>
+        </div>
       </div>
     );
   }
