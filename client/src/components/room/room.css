@@ -69,7 +69,6 @@
     height: 95%;
     margin: 0px;
     justify-self: flex-end;
-    overflow-y: auto;
   }
   
   input {

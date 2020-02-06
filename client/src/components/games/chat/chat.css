@@ -63,6 +63,7 @@
   border-width: 3px 4px 3px 5px;
   border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
   -webkit-box-shadow: 9px 11px 15px 1px #4985a8; 
+  padding-left: 5px;
 }
 
 .user-icon {
