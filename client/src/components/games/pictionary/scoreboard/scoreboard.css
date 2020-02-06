@@ -23,3 +23,9 @@
     width: 30%;
     display: flex;
 }
+
+.scoreboard-score {
+    margin-top: 5px;
+    display: flex;
+    justify-content: flex-end;
+}

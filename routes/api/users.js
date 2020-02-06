@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../../models/User");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
+const defaultImage = require("../../utils/defaultImage");
 const keys = require("../../config/keys_dev");
 // const keys = require("../../config/keys");
 
@@ -97,21 +98,28 @@ router.post("/login", (req, res) => {
   });
 });
 
-function generateUser(){
-  const randID = Math.floor((Math.random() * 100000))
-  const email = `guest${randID}@dng.com`
-  return User.findOne({email: email}).then(user => {
-    if(user){
-      return generateUser();
-    }
-    return {email:email, username:`guest${randID}`,  password: "guestdng"};
-  }).catch(err => console.log(err))
+function generateUser() {
+  const randID = Math.floor(Math.random() * 100000);
+  const email = `guest${randID}@dng.com`;
+  return User.findOne({ email: email })
+    .then(user => {
+      if (user) {
+        return generateUser();
+      }
+      return {
+        email: email,
+        username: `guest${randID}`,
+        password: "guestdng",
+        image: defaultImage
+      };
+    })
+    .catch(err => console.log(err));
 }
 
 router.post("/demouser", (req, res) => {
   // let randID = Math.floor((Math.random() * 100000))
   // let email = `guest${randID}@dng.com`
-  // let isValidEmail = false; 
+  // let isValidEmail = false;
   // while(!isValidEmail){
   //   console.log("demo")
   //   User.findOne({email: email}).then(user => {
@@ -131,8 +139,8 @@ router.post("/demouser", (req, res) => {
   //   randID = Math.random() * 100000
   //   email = `guest${randID}@dng.com`
   // }
-  generateUser().then(user=>{
-    const newUser = new User(user)
+  generateUser().then(user => {
+    const newUser = new User(user);
     bcrypt.genSalt(10, (err, salt) => {
       bcrypt.hash(newUser.password, salt, (err, hash) => {
         if (err) throw err;
@@ -148,16 +156,13 @@ router.post("/demouser", (req, res) => {
             })
           )
           .catch(err => {
-            errors.internal =
-              "Oops there has been an error with demo user";
+            errors.internal = "Oops there has been an error with demo user";
             res.status(404).json(errors);
           });
       });
     });
-  })
-
-})
-
+  });
+});
 
 router.post("/signup", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);

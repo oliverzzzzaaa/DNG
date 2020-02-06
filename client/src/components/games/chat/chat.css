@@ -16,6 +16,7 @@
   background-color: white;
   box-shadow: 9px 11px 22px 1px rgb(51, 90, 110);
   -webkit-box-shadow: 9px 11px 15px 1px #344955; 
+  font-family: 'Indie Flower', cursive;
 }
 
 .msg-container {

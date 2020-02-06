@@ -30,6 +30,11 @@ export default class ProfileIconEditor extends React.Component {
     tool.onMouseDown = e => this.onMouseDown(e);
     tool.onMouseDrag = e => this.onMouseDrag(e);
     tool.onMouseUp = e => this.onMouseUp(e);
+    const raster = new paper.Raster({
+      source: this.state.image,
+      position: paper.view.center
+    });
+    raster.scale(0.5);
   }
 
   setColor(color) {

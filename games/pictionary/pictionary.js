@@ -9,7 +9,8 @@ module.exports = class Pictionary {
         score: 0,
         guessed: false,
         ready: false,
-        name: user.name
+        name: user.name,
+        connected: user.connected
       };
     });
     this.numRounds = Object.keys(this.players).length * 2;
@@ -63,9 +64,11 @@ module.exports = class Pictionary {
   guess(playerId, word) {
     if (this.players[playerId] && playerId !== this.currDrawer) {
       if (this.targetWord.toLowerCase() === word.toLowerCase()) {
+        if (!this.players[playerId].guessed) {
+          this.players[playerId].score += 1;
+          this.players[this.currDrawer].score += 1;
+        }
         this.players[playerId].guessed = true;
-        this.players[playerId].score += 1;
-        this.players[this.currDrawer].score += 1;
         if (this.shouldEndround()) {
           this.endRound();
         }
@@ -77,7 +80,7 @@ module.exports = class Pictionary {
 
   isReady() {
     const players = Object.values(this.players);
-    return players.every(player => player.ready);
+    return players.every(player => !player.connected.status || player.ready);
   }
 
   shouldEndround() {

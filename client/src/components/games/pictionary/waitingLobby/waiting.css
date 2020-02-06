@@ -109,9 +109,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 15px;
 }
 
 .delete-this-div {
   width: 100px;
   margin-left: 20px;
+  font-family: 'Indie Flower', cursive;
 }
