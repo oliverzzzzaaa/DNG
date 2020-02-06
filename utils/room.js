@@ -12,7 +12,7 @@ module.exports = class Room {
     if (this.players.length === 0) return false;
     return this.players.some(player => {
       if (player.id === user.id) {
-        player.connected = true;
+        player.connected.status = true;
       }
       return player.id === user.id;
     });
@@ -36,7 +36,7 @@ module.exports = class Room {
     if (this.onGame && this.game && this.game.players[userId]) {
       this.players.forEach(player => {
         if (player.id === userId) {
-          player.connected = false;
+          player.connected.status = false;
         }
       });
       return false;
@@ -49,7 +49,7 @@ module.exports = class Room {
 
   hasConnectedPlayer() {
     if (this.players.length === 0) return false;
-    return this.players.some(player => player.connected);
+    return this.players.some(player => player.connected.status);
   }
 
   setReady(userId) {
