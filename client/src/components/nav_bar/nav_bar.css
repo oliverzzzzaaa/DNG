@@ -1,8 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
 
-.lobby .nav-bar-main {
-    display: flexbox;
-    flex-direction: row;
+.nav-bar-main {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 5%;
+    padding-top: 2%;
+    /* height: 20vh; */
+    /* flex-direction: row; */
+    /* justify-content: space-between; */
+}
+
+.nav-bar-container {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
 }
 
 .disabled-link {
@@ -17,7 +28,8 @@
 
 .nav-bar-main .nav-bar-button {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .nav-bar-main .nav-bar-logout {
@@ -38,6 +50,6 @@
 
 .nav-bar-main .navbar-logo img {
     display: flex;
-    width: 150px;
+    width: 100px;
     margin: 0px;
 }
