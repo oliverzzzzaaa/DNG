@@ -20,7 +20,6 @@ class User extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log(nextProps);
     return (
       nextProps.username !== this.props.username ||
       nextProps.image !== this.props.image ||

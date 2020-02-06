@@ -45,7 +45,6 @@ module.exports = class Pictionary {
         wordbank = words.easyWords;
         break;
     }
-    console.log(this.wordbank);
     this.targetWord =
       wordbank[Math.floor(Math.random() * wordbank.length)].word;
     while (this.usedWords.includes(this.targetWord)) {
@@ -61,7 +60,7 @@ module.exports = class Pictionary {
 
   guess(playerId, word) {
     if (this.players[playerId] && playerId !== this.currDrawer) {
-      if (this.targetWord === word) {
+      if (this.targetWord.toLowerCase() === word.toLowerCase()) {
         this.players[playerId].guessed = true;
         this.players[playerId].score += 1;
         this.players[this.currDrawer].score += 1;
