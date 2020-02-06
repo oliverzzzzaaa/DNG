@@ -38,6 +38,20 @@ export const logout = () => dispatch => {
   dispatch(logoutUser());
 };
 
+export const demoUser = () => dispatch => 
+  APIUtil.demoUser()
+    .then(res => {
+      const { token, name } = res.data;
+      localStorage.setItem("jwtToken", token);
+      APIUtil.setAuthToken(token);
+      const decoded = jwt_decode(token);
+      dispatch(receiveCurrentUser(decoded));
+      window.location.hash = "/lobby";
+    })
+    .catch(err => {
+      dispatch(receiveErrors(err.response.data));
+    });
+
 export const signup = user => dispatch =>
   APIUtil.signup(user)
     .then(res => {
