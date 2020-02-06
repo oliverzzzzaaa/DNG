@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import LobbyContainer from "./main/lobbyContainer";
 import HomePage from "./home";
 import RoomContainer from "./room/roomContainer";
-import UserContainer from "./user/user_container"
+import UserContainer from "./user/user_container";
 import SignupForm from "./session/signup_form_container";
 import LoginForm from "./session/login_form_container";
 import { AuthRoute, ProtectedRoute } from "../util/route";
@@ -17,7 +17,7 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignupForm} />
       <ProtectedRoute exact path="/lobby" component={LobbyContainer} />
       <ProtectedRoute exact path="/room/:id" component={RoomContainer} />
-      <Route exact path="/users/:userId" component={UserContainer} />
+      <ProtectedRoute exact path="/users/:userId" component={UserContainer} />
     </Switch>
   </div>
 );

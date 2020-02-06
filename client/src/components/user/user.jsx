@@ -1,7 +1,7 @@
 import React from "react";
 import "./user.css";
 import ProfileIconEditor from "./profileIconEditor";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 class User extends React.Component {
   constructor(props) {
@@ -19,8 +19,18 @@ class User extends React.Component {
     this.props.fetchUser(this.props.match.params.userId);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      nextProps.username !== this.props.username ||
+      nextProps.image !== this.props.image ||
+      nextState.showEditor !== this.state.showEditor
+    );
+  }
+
   componentDidUpdate() {
     document.getElementById("defaultOpen").click();
+    //TODO: change this
+    // this.props.fetchUser(this.props.match.params.userId);
   }
 
   open(event, type) {
@@ -53,8 +63,8 @@ class User extends React.Component {
     if (this.state.showEditor) {
       return (
         <ProfileIconEditor
-          name={this.props.user.username}
-          image={this.props.user.image}
+          name={this.props.username}
+          image={this.props.image}
           close={this.closeEditor}
           update={this.updateInfo}
         />
@@ -69,11 +79,11 @@ class User extends React.Component {
     if (data.image) {
       newState.image = data.image;
     }
-    this.props.updateProfile(this.props.user.id, data);
+    this.props.updateProfile(this.props.userId, data);
   }
 
   render() {
-    if (!this.props.user) return null;
+    if (!this.props.userId) return null;
 
     return (
       <div className="user-profile-page">
@@ -85,15 +95,15 @@ class User extends React.Component {
           <div className="user-profile-icon">
             <img
               className="user-profile-image"
-              //TODO: change src
               src={
-                this.state.image
-                  ? this.state.image
+                //TODO: change default image src
+                this.props.image
+                  ? this.props.image
                   : "https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png"
               }
             />
           </div>
-          <div className="user-profile-username">{this.props.user.username}</div>
+          <div className="user-profile-username">{this.props.username}</div>
           <div className="user-profile-edit" onClick={this.showEditor}>
             <span className="user-profile-edit-button">Edit Profile</span>
           </div>

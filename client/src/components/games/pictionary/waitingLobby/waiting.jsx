@@ -15,8 +15,10 @@ class Waiting extends React.Component {
     this.renderReadyBtn = this.renderReadyBtn.bind(this);
     this.start = this.start.bind(this);
     this.state = {
-      difficulty: this.props.room.difficulty
-    }
+      difficulty: this.props.room.config.difficulty
+        ? this.props.room.config.difficulty
+        : "easy"
+    };
   }
 
   leave() {
@@ -37,25 +39,42 @@ class Waiting extends React.Component {
   }
 
   changeDifficulty(diff) {
-    if (document.getElementsByClassName("waiting-buttons-selected").length > 0) {
-      document.getElementsByClassName("waiting-buttons-selected")[0].className = "waiting-buttons"
+    if (
+      document.getElementsByClassName("waiting-buttons-selected").length > 0
+    ) {
+      document.getElementsByClassName("waiting-buttons-selected")[0].className =
+        "waiting-buttons";
     }
-    this.setState({difficulty: diff})
+    this.setState({ difficulty: diff });
     MySocket.getSocket().emit("gameAction", {
       game: "Pictionary",
       type: "setDifficulty",
-      params: {difficulty: diff}
+      params: { difficulty: diff }
     });
   }
 
   componentDidMount() {
-    let diff = this.props.room.difficulty;
-    if (diff === 'easy') {
-      document.getElementById('easy-button').className = "waiting-buttons-selected"
-    } else if (diff === 'medium') {
-      document.getElementById('medium-button').className = "waiting-buttons-selected"
+    const socket = MySocket.getSocket();
+    socket.off("setDifficulty");
+    socket.on("setDifficulty", difficulty => {
+      this.setState({
+        difficulty: difficulty
+      });
+    });
+
+    let diff = this.state.difficulty;
+    if (diff === "easy") {
+      document
+        .getElementById("easy-button")
+        .classList.add("waiting-buttons-selected");
+    } else if (diff === "medium") {
+      document
+        .getElementById("medium-button")
+        .classList.add("waiting-buttons-selected");
     } else {
-      document.getElementById('hard-button').className = "waiting-buttons-selected"
+      document
+        .getElementById("hard-button")
+        .classList.add("waiting-buttons-selected");
     }
   }
 
@@ -82,19 +101,43 @@ class Waiting extends React.Component {
     if (this.props.room.players[0].id === this.props.currentUserId) {
       return (
         <div className="difficulty-div">
-            <div className="waiting-buttons" onClick={() => this.changeDifficulty('easy')} id="easy-button">Easy</div>
-            <div className="waiting-buttons" onClick={() => this.changeDifficulty('medium')} id="medium-button">Medium</div>
-            <div className="waiting-buttons" onClick={() => this.changeDifficulty('hard')} id="hard-button">Hard</div>
+          <div
+            className="waiting-buttons"
+            onClick={() => this.changeDifficulty("easy")}
+            id="easy-button"
+          >
+            Easy
+          </div>
+          <div
+            className="waiting-buttons"
+            onClick={() => this.changeDifficulty("medium")}
+            id="medium-button"
+          >
+            Medium
+          </div>
+          <div
+            className="waiting-buttons"
+            onClick={() => this.changeDifficulty("hard")}
+            id="hard-button"
+          >
+            Hard
+          </div>
         </div>
-      )
+      );
     } else {
       return (
         <div className="difficulty-div">
-          <div className="waiting-buttons not-host" id="easy-button">Easy</div>
-          <div className="waiting-buttons not-host" id="medium-button">Medium</div>
-          <div className="waiting-buttons not-host" id="hard-button">Hard</div>
+          <div className="waiting-buttons not-host" id="easy-button">
+            Easy
+          </div>
+          <div className="waiting-buttons not-host" id="medium-button">
+            Medium
+          </div>
+          <div className="waiting-buttons not-host" id="hard-button">
+            Hard
+          </div>
         </div>
-      )
+      );
     }
   }
 
@@ -118,24 +161,27 @@ class Waiting extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.room.difficulty === 'easy') {
-      document.getElementById('easy-button').className = "waiting-buttons-selected";
-      document.getElementById('medium-button').className = "waiting-buttons"
-      document.getElementById('hard-button').className = "waiting-buttons"
-    } else if (this.props.room.difficulty === 'medium') {
-      document.getElementById('easy-button').className = "waiting-buttons";
-      document.getElementById('medium-button').className = "waiting-buttons-selected"
-      document.getElementById('hard-button').className = "waiting-buttons"
+    if (this.state.difficulty === "easy") {
+      document.getElementById("easy-button").className =
+        "waiting-buttons-selected";
+      document.getElementById("medium-button").className = "waiting-buttons";
+      document.getElementById("hard-button").className = "waiting-buttons";
+    } else if (this.state.difficulty === "medium") {
+      document.getElementById("easy-button").className = "waiting-buttons";
+      document.getElementById("medium-button").className =
+        "waiting-buttons-selected";
+      document.getElementById("hard-button").className = "waiting-buttons";
     } else {
-      document.getElementById('easy-button').className = "waiting-buttons";
-      document.getElementById('medium-button').className = "waiting-buttons"
-      document.getElementById('hard-button').className = "waiting-buttons-selected"
+      document.getElementById("easy-button").className = "waiting-buttons";
+      document.getElementById("medium-button").className = "waiting-buttons";
+      document.getElementById("hard-button").className =
+        "waiting-buttons-selected";
     }
 
     if (this.props.room.players[0].id !== this.props.currentUserId) {
-      document.getElementById('easy-button').classList.add('not-host')
-      document.getElementById('medium-button').classList.add('not-host')
-      document.getElementById('hard-button').classList.add('not-host')
+      document.getElementById("easy-button").classList.add("not-host");
+      document.getElementById("medium-button").classList.add("not-host");
+      document.getElementById("hard-button").classList.add("not-host");
     }
   }
 
@@ -151,7 +197,7 @@ class Waiting extends React.Component {
           </div>
           {this.renderPlayers()}
           <div className="ready-button-div">
-          <div className="waiting-buttons" onClick={this.leave}>
+            <div className="waiting-buttons" onClick={this.leave}>
               Leave
             </div>
             {this.renderReadyBtn()}

@@ -13,14 +13,9 @@ function signJwt(user, response) {
   jwt.sign(payload, keys.secretOrKey, { expiresIn: 36000 }, response);
 }
 
-// //TODO: change res structure
 router.post("/profile/:id", (req, res) => {
-  // console.log('!!!!!!!!!!!!')
-  // console.log(`${req.params.id}`)
-  // const id = req.params.id;
   User.findById(req.params.id)
     .then(user => {
-      // console.log(user)
       if (!user) {
         errors.user = "User doesn't exist";
         return res.status(400).json(errors);
@@ -35,6 +30,40 @@ router.post("/profile/:id", (req, res) => {
     })
     .catch(err => next(err));
 });
+
+router.post(
+  "/update/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const newInfo = { username: req.body.username };
+    if (req.body.image) {
+      newInfo.image = req.body.image;
+    }
+    User.findOneAndUpdate({ _id: req.params.id }, newInfo)
+      .then(user => {
+        if (!user) {
+          errors.user = "User doesn't exist";
+          return res.status(400).json(errors);
+        } else {
+          return res.status(200).json(
+            Object.assign(
+              {
+                id: user.id,
+                username: user.username,
+                email: user.email,
+                image: user.image
+              },
+              newInfo
+            )
+          );
+        }
+      })
+      .catch(err => {
+        errors.internal = "Unable to update now!";
+        res.status(404).json(errors);
+      });
+  }
+);
 
 router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
@@ -68,6 +97,68 @@ router.post("/login", (req, res) => {
   });
 });
 
+function generateUser(){
+  const randID = Math.floor((Math.random() * 100000))
+  const email = `guest${randID}@dng.com`
+  return User.findOne({email: email}).then(user => {
+    if(user){
+      return generateUser();
+    }
+    return {email:email, username:`guest${randID}`,  password: "guestdng"};
+  }).catch(err => console.log(err))
+}
+
+router.post("/demouser", (req, res) => {
+  // let randID = Math.floor((Math.random() * 100000))
+  // let email = `guest${randID}@dng.com`
+  // let isValidEmail = false; 
+  // while(!isValidEmail){
+  //   console.log("demo")
+  //   User.findOne({email: email}).then(user => {
+  //     console.log(user)
+  //     if(!user){
+  //       isValidEmail = true;
+  //       console.log(email);
+  //     }else{
+  //       console.log(user)
+  //       randID = Math.floor((Math.random() * 100000))
+  //       email = `guest${randID}@dng.com`
+  //     }
+  //   }).catch(err => console.log("ha"))
+  // }
+  // while (User.findOne({email: email})) {
+  //   console.log(email)
+  //   randID = Math.random() * 100000
+  //   email = `guest${randID}@dng.com`
+  // }
+  generateUser().then(user=>{
+    const newUser = new User(user)
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(newUser.password, salt, (err, hash) => {
+        if (err) throw err;
+        newUser.password = hash;
+        newUser
+          .save()
+          .then(user =>
+            signJwt(user, (err, token) => {
+              res.json({
+                success: true,
+                token: "Bearer " + token
+              });
+            })
+          )
+          .catch(err => {
+            errors.internal =
+              "Oops there has been an error with demo user";
+            res.status(404).json(errors);
+          });
+      });
+    });
+  })
+
+})
+
+
 router.post("/signup", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
   if (!isValid) {
@@ -98,10 +189,11 @@ router.post("/signup", (req, res) => {
                 });
               })
             )
-            .catch(err => { 
-              errors.internal = "Sign up is not available now, Please try later!"
+            .catch(err => {
+              errors.internal =
+                "Sign up is not available now, Please try later!";
               res.status(404).json(errors);
-           });
+            });
         });
       });
     }

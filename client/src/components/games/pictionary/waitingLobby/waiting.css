@@ -96,3 +96,10 @@
 .not-host {
   cursor: not-allowed;
 }
+
+.profile-icon-div {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

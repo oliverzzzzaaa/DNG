@@ -35,7 +35,7 @@
   flex-direction: column;
   align-items: center;
   font-family: "Indie Flower", cursive;
-  background-image: url("../images/pen.png");
+  background-color: white;
 }
 
 .session-left ul {
@@ -52,7 +52,7 @@
 .session-logo img {
   display: flex;
   justify-content: center;
-  width: 40vw;
+  width: 25vw;
   cursor: pointer;
 }
 
@@ -72,7 +72,7 @@
   box-sizing: border-box;
   border: 1px solid var(--shadow-1);
   border-radius: 4px;
-  color: white;
+  color: black;
   font-size: 15px;
   background: var(--shadow-1);
 }
@@ -80,18 +80,19 @@
 .session-input-fields {
   width: 90%;
   margin: 2%;
+  margin-top: -10%;
   padding: 5px;
   justify-content: center;
 }
 
 .session-main input:hover {
-  border: 1px solid white;
+  border: 1px solid black;
 }
 
 .session-main .session-button {
   display: flex;
   flex-direction: row;
-  width: 80%;
+  width: 100%;
   justify-content: space-evenly;
 }
 
@@ -105,6 +106,7 @@
   transform: rotate(2deg);
   border-width: 3px 4px 3px 5px;
   border-radius: 4% 90% 6% 90%/90% 4% 88% 5%;
+  /* margin: 5%; */
 }
 
 .session-errors-ul {

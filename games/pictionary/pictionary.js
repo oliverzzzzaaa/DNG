@@ -20,6 +20,7 @@ module.exports = class Pictionary {
     this.difficulty = difficulty;
     this.roundStartTime;
     this.onRound = false;
+    this.strokes = [];
   }
 
   switchTurn() {
@@ -29,23 +30,21 @@ module.exports = class Pictionary {
   }
 
   generateWord() {
-
     let wordbank = null;
     switch (this.difficulty) {
-      case 'easy':
+      case "easy":
         wordbank = words.easyWords;
         break;
-      case 'medium':
+      case "medium":
         wordbank = words.mediumWords;
         break;
-      case 'hard':
+      case "hard":
         wordbank = words.hardWords;
         break;
       default:
         wordbank = words.easyWords;
         break;
     }
-    console.log(this.wordbank)
     this.targetWord =
       wordbank[Math.floor(Math.random() * wordbank.length)].word;
     while (this.usedWords.includes(this.targetWord)) {
@@ -61,7 +60,7 @@ module.exports = class Pictionary {
 
   guess(playerId, word) {
     if (this.players[playerId] && playerId !== this.currDrawer) {
-      if (this.targetWord === word) {
+      if (this.targetWord.toLowerCase() === word.toLowerCase()) {
         this.players[playerId].guessed = true;
         this.players[playerId].score += 1;
         this.players[this.currDrawer].score += 1;
@@ -100,10 +99,19 @@ module.exports = class Pictionary {
     const players = Object.values(this.players);
     players.forEach(player => (player.ready = false));
     this.currentRound++;
+    this.clearstrokes();
   }
 
   isOver() {
     return this.currentRound === this.numRounds;
+  }
+
+  addstrokes(stroke) {
+    this.strokes.push(stroke);
+  }
+
+  clearstrokes() {
+    this.strokes = [];
   }
 
   getState() {
@@ -114,7 +122,8 @@ module.exports = class Pictionary {
       currentRound: this.currentRound,
       numRounds: this.numRounds,
       roundStartTime: this.roundStartTime,
-      onRound: this.onRound
+      onRound: this.onRound,
+      strokes: this.strokes
     };
   }
 };

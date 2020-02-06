@@ -17,19 +17,15 @@
 }
 
 .home-logo img {
-  width: 35vw;
+  width: 20vw;
   height: auto;
   align-self: center;
-  margin-top: -5%;
 }
 
 .carousels img {
   height: 45vh;
   max-width: 90vw;
   padding: 0 20px 20px 20px;
-  /* border: 1px solid black; */
-  /* margin-top: -5%; */
-
 }
 
 .home-button {

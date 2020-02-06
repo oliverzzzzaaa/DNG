@@ -69,18 +69,28 @@ function handleGetState(socket, lobby) {
 }
 
 function handlePathData(socket, lobby, data) {
-  const roomId = lobby.getRoomIdBySocket(socket);
-  lobby.emitRoomMessage(roomId, {
-    type: "pathData",
-    body: data
-  });
+  const room = lobby.getRoomBySocket(socket);
+  if (room) {
+    if (room.game) {
+      room.game.addstrokes(data);
+    }
+    lobby.emitRoomMessage(room.id, {
+      type: "pathData",
+      body: data
+    });
+  }
 }
 
 function handleClear(socket, lobby) {
-  const roomId = lobby.getRoomIdBySocket(socket);
-  lobby.emitRoomMessage(roomId, {
-    type: "clearDrawing"
-  });
+  const room = lobby.getRoomBySocket(socket);
+  if (room) {
+    if (room.game) {
+      room.game.clearstrokes();
+    }
+    lobby.emitRoomMessage(room.id, {
+      type: "clearDrawing"
+    });
+  }
 }
 
 function handleGuess(socket, lobby, payload) {
@@ -104,11 +114,15 @@ function handleGuess(socket, lobby, payload) {
   }
 }
 
-function handleSetDifficulty(socket, lobby, payload){
+function handleSetDifficulty(socket, lobby, payload) {
   const room = lobby.getRoomBySocket(socket);
-  const roomInfo = room.getInfo();
-  roomInfo.difficulty = payload.difficulty;
-  lobby.emit("updateRoom", roomInfo);
+  if (room) {
+    room.config.difficulty = payload.difficulty;
+    lobby.emitRoomMessage(room.id, {
+      type: "setDifficulty",
+      body: payload.difficulty
+    });
+  }
 }
 
 module.exports = {

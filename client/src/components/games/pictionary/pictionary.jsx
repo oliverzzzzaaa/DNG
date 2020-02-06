@@ -17,6 +17,7 @@ export default class Pictionary extends React.Component {
     this.renderScoreBoard = this.renderScoreBoard.bind(this);
     this.renderMidRound = this.renderMidRound.bind(this);
     this.renderTargetWord = this.renderTargetWord.bind(this);
+    this.renderCanvas = this.renderCanvas.bind(this);
   }
 
   guess(word) {
@@ -41,7 +42,6 @@ export default class Pictionary extends React.Component {
     );
 
     socket.on("updateGameState", state => {
-      console.log(state);
       this.setState(state);
     });
 
@@ -54,9 +54,6 @@ export default class Pictionary extends React.Component {
       game: "Pictionary",
       type: "getState"
     });
-
-
-    
   }
 
   renderTimer() {
@@ -92,9 +89,24 @@ export default class Pictionary extends React.Component {
       (Object.values(this.state.players).some(player => player.guessed) ||
         this.state.onMidRound)
     ) {
-      return <MidRound />;
+      return <MidRound targetWord={this.state.targetWord}/>;
     }
 
+    return null;
+  }
+
+  renderCanvas() {
+    if (this.state.strokes) {
+      return (
+        <CanvasContainer
+          isDrawer={
+            this.state.onRound &&
+            this.props.currentUser.id === this.state.currDrawer
+          }
+          strokes={this.state.strokes}
+        />
+      );
+    }
     return null;
   }
 
@@ -102,24 +114,21 @@ export default class Pictionary extends React.Component {
     return (
       <div className="game-components-div">
         <div id="canvas-and-timer-div">
-          <div className="canvas-container">
+          <div className="canvas-and-word">
             {this.renderTargetWord()}
-            {/* <div className="canvas-button-container">
-              <button onClick={() => this.setState({ isDrawer: true })} className='canvas-button'>
-                drawer
-              </button>
-              <button
-                onClick={() => this.setState({ isDrawer: false })} className='canvas-button'>
-                viewer
-              </button>
-            </div> */}
+            <div className="canvas-container">
+              {/* <div className="canvas-button-container">
+                <button onClick={() => this.setState({ isDrawer: true })} className='canvas-button'>
+                  drawer
+                </button>
+                <button
+                  onClick={() => this.setState({ isDrawer: false })} className='canvas-button'>
+                  viewer
+                </button>
+              </div> */}
 
-            <CanvasContainer
-              isDrawer={
-                this.state.onRound &&
-                this.props.currentUser.id === this.state.currDrawer
-              }
-            />
+              {this.renderCanvas()}
+            </div>
           </div>
         </div>
         <div className="scoreboard-chat">
@@ -129,8 +138,8 @@ export default class Pictionary extends React.Component {
             <Chat action={this.guess} messages={this.state.messages} />
           </div>
         </div>
-          {this.renderMidRound()}
-        </div>
+        {this.renderMidRound()}
+      </div>
     );
   }
 }

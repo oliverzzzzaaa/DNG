@@ -18,6 +18,7 @@ export default class CanvasContainer extends React.Component {
     this.setStrokeWidth = this.setStrokeWidth.bind(this);
     this.uploadDrawing = this.uploadDrawing.bind(this);
     this.clear = this.clear.bind(this);
+    this.renderColorpicker = this.renderColorpicker.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +27,18 @@ export default class CanvasContainer extends React.Component {
     tool.onMouseDown = e => this.onMouseDown(e);
     tool.onMouseDrag = e => this.onMouseDrag(e);
     tool.onMouseUp = e => this.onMouseUp(e);
+
+    const strokes = this.props.strokes;
+    if (strokes) {
+      strokes.forEach(stroke => {
+        const path = new paper.Path();
+        path.strokeColor = stroke.color;
+        path.strokeWidth = stroke.width;
+        path.strokeCap = "round";
+        path.pathData = stroke.pathData;
+        paper.view.draw();
+      });
+    }
 
     const socket = MySocket.getSocket();
     socket.off("gameAction");
@@ -47,9 +60,9 @@ export default class CanvasContainer extends React.Component {
     });
   }
 
-  setColor(color) {
+  setColor(e) {
     this.setState({
-      strokeColor: color
+      strokeColor: e.currentTarget.value
     });
   }
 
@@ -111,33 +124,16 @@ export default class CanvasContainer extends React.Component {
     });
   }
 
-  render() {
-    return (
-      <div className="canvas-page">
-        <div className="canvas-main">
-          {`you are the ${this.props.isDrawer ? "drawer" : "viewer"}!`}
-          <canvas className="canvas-area" id="pictionary-canvas" />
-        </div>
+  renderColorpicker() {
+    if (this.props.isDrawer === true) {
+      return (
         <div className="color-picker-btn">
-          {
-            //TODO: this is just an example, needed change later
-          }
-          <br style={{ color: "black" }} />
-          <button
+          <input
             className="canvas-bottom-button"
-            style={{ background: "black", color: "white" }}
-            onClick={() => this.setColor("black")}
-          >
-            Black
-          </button>
-          <br/>
-          <button
-            className="canvas-bottom-button"
-            style={{ background: "red", color: "white" }}
-            onClick={() => this.setColor("red")}
-          >
-            Red
-          </button>
+            type="color"
+            value={this.state.strokeColor}
+            onChange={this.setColor}
+          />
           <br />
           <button
             onClick={() => this.setStrokeWidth(2)}
@@ -165,11 +161,21 @@ export default class CanvasContainer extends React.Component {
           >
             clear
           </button>
-          <br />
-          <div className='clues' >
-            clues right here!
-          </div>
         </div>
+      );
+    }
+    return null;
+  }
+
+  render() {
+    return (
+      <div className="canvas-page">
+        <div className="canvas-main">
+          {`you are the ${this.props.isDrawer ? "drawer" : "viewer"}!`}
+          <canvas className="canvas-area" id="pictionary-canvas" />
+        </div>
+        {this.renderColorpicker()}
+        <div className="clues">clues right here!</div>
       </div>
     );
   }

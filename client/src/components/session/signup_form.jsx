@@ -50,7 +50,7 @@ class SignupForm extends  React.Component {
                 <div className='session-left'>
                     <div className='session-logo'>
                         <Link to='/'>
-                            <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/logo.png" />
+                            <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/logo_reduced.png" />
                         </Link>
                     </div>
                     <div className="session-input-fields">
