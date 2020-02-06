@@ -42,6 +42,9 @@ export default class CanvasContainer extends React.Component {
 
     const socket = MySocket.getSocket();
     socket.off("gameAction");
+    socket.off("pathData");
+    socket.off("clearDrawing");
+
     socket.on("pathData", data => {
       if (this.props.isDrawer !== true) {
         const path = new paper.Path();

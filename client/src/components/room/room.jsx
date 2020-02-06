@@ -39,7 +39,8 @@ export default class Room extends React.Component {
         <div className="game-or-waiting-div">
           {this.props.room.onGame ? (
             <Pictionary
-              currentUser={this.props.currentUser}
+              currentUserId={this.props.currentUser.id}
+              currentUserName={this.props.currentUser.name}
               room={this.props.room}
             />
           ) : (
@@ -60,7 +61,7 @@ export default class Room extends React.Component {
         </div>
       );
     }
-    window.location.hash = "/lobby"
+    window.location.hash = "/lobby";
   }
   render() {
     return (

@@ -5,6 +5,7 @@ import Timer from "./timer/timer";
 import Chat from "../chat/chat";
 import MySocket from "../../../socket";
 import MidRound from "../game_rooms/mid_round";
+import { leaveRoom } from "../../../util/room";
 
 export default class Pictionary extends React.Component {
   constructor(props) {
@@ -18,13 +19,15 @@ export default class Pictionary extends React.Component {
     this.renderMidRound = this.renderMidRound.bind(this);
     this.renderTargetWord = this.renderTargetWord.bind(this);
     this.renderCanvas = this.renderCanvas.bind(this);
+    this.renderLeaveBtn = this.renderLeaveBtn.bind(this);
+    this.leave = this.leave.bind(this);
   }
 
   guess(word) {
     MySocket.getSocket().emit("gameAction", {
       game: "Pictionary",
       type: "guess",
-      params: { sender: this.props.currentUser.name, word: word }
+      params: { sender: this.props.currentUserName, word: word }
     });
   }
 
@@ -72,7 +75,7 @@ export default class Pictionary extends React.Component {
   }
 
   renderTargetWord() {
-    if (this.props.currentUser.id === this.state.currDrawer) {
+    if (this.props.currentUserId === this.state.currDrawer) {
       return (
         <div className="target-word">
           <h2>{this.state.targetWord}</h2>
@@ -82,6 +85,25 @@ export default class Pictionary extends React.Component {
     return null;
   }
 
+  leave() {
+    leaveRoom(this.props.currentUserId).then(
+      () => (window.location.hash = "/lobby")
+    );
+  }
+
+  renderLeaveBtn() {
+    if (
+      this.state.players &&
+      Object.values(this.state.players).some(
+        player => player.id === this.props.currentUserId
+      )
+    ) {
+      return null;
+    }
+    //TODO: add css to leave btn
+    return <button onClick={this.leave}>LEAVE (need to add styling)</button>;
+  }
+
   renderMidRound() {
     if (
       this.state.onRound !== undefined &&
@@ -89,7 +111,17 @@ export default class Pictionary extends React.Component {
       (Object.values(this.state.players).some(player => player.guessed) ||
         this.state.onMidRound)
     ) {
-      return <MidRound targetWord={this.state.targetWord}/>;
+      let isPlayer = false;
+      if (
+        Object.values(this.state.players).some(
+          player => player.id === this.props.currentUserId
+        )
+      ) {
+        isPlayer = true;
+      }
+      return (
+        <MidRound targetWord={this.state.targetWord} isPlayer={isPlayer} />
+      );
     }
 
     return null;
@@ -101,7 +133,7 @@ export default class Pictionary extends React.Component {
         <CanvasContainer
           isDrawer={
             this.state.onRound &&
-            this.props.currentUser.id === this.state.currDrawer
+            this.props.currentUserId === this.state.currDrawer
           }
           strokes={this.state.strokes}
         />
@@ -114,6 +146,8 @@ export default class Pictionary extends React.Component {
     return (
       <div className="game-components-div">
         <div id="canvas-and-timer-div">
+          {//TODO: move leave button to a better position
+          this.renderLeaveBtn()}
           <div className="canvas-and-word">
             {this.renderTargetWord()}
             <div className="canvas-container">
