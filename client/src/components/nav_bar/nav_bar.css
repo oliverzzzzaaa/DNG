@@ -50,6 +50,7 @@
 
 .nav-bar-main .navbar-logo img {
     display: flex;
-    width: 100px;
-    margin: 0px;
+    /* width: 100px; */
+    /* margin: 0px; */
+    height: 100px;
 }
