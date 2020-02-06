@@ -97,6 +97,7 @@ function handleGuess(socket, lobby, payload) {
   const room = lobby.getRoomBySocket(socket);
   if (room && room.game) {
     const game = room.game;
+    let word = payload.word;
     const playerId = lobby.getUserId(socket);
     if (game.guess(playerId, payload.word)) {
       lobby.emitRoomMessage(room.id, {
@@ -106,10 +107,11 @@ function handleGuess(socket, lobby, payload) {
       if (!game.onRound && roundTimerId) {
         clearRoundTimer();
       }
+      word = "*****";
     }
     lobby.emitRoomMessage(room.id, {
       type: "message",
-      body: { sender: payload.sender, body: payload.word }
+      body: { sender: payload.sender, body: word }
     });
   }
 }
