@@ -26,9 +26,9 @@ class MidRound extends React.Component {
     this.setState({ show: true });
   }
 
-  continueInterval() {
-    document.getElementsByClassName("game-rooms-create-text")[0].click();
-  }
+  // continueInterval() {
+  //   document.getElementsByClassName("game-rooms-create-text")[0].click();
+  // }
 
   savePicture() {
     document.getElementById("mid-round-img").src = document
@@ -37,17 +37,15 @@ class MidRound extends React.Component {
   }
 
   ready() {
-    if (this.props.isPlayer) {
-      this.setState({ ready: true });
-      MySocket.getSocket().emit("gameAction", {
-        game: "Pictionary",
-        type: "roundReady"
-      });
-    }
+    this.setState({ ready: true });
+    MySocket.getSocket().emit("gameAction", {
+      game: "Pictionary",
+      type: "roundReady"
+    });
   }
 
   componentDidMount() {
-    this.timeoutId = setTimeout(this.continueInterval, this.time * 1000);
+    this.timeoutId = setTimeout(this.ready, 6000);
     if (document.getElementById("pictionary-canvas")) {
       document.getElementById("mid-round-img").src = document
         .getElementById("pictionary-canvas")

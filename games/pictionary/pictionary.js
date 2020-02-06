@@ -9,7 +9,8 @@ module.exports = class Pictionary {
         score: 0,
         guessed: false,
         ready: false,
-        name: user.name
+        name: user.name,
+        connected: user.connected
       };
     });
     this.numRounds = Object.keys(this.players).length * 2;
@@ -77,7 +78,7 @@ module.exports = class Pictionary {
 
   isReady() {
     const players = Object.values(this.players);
-    return players.every(player => player.ready);
+    return players.every(player => !player.connected.status || player.ready);
   }
 
   shouldEndround() {

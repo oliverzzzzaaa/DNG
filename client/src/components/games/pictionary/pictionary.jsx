@@ -11,7 +11,8 @@ export default class Pictionary extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      messages: []
+      messages: [],
+      canLeave: false
     };
     this.guess = this.guess.bind(this);
     this.renderTimer = this.renderTimer.bind(this);
@@ -46,6 +47,24 @@ export default class Pictionary extends React.Component {
 
     socket.on("updateGameState", state => {
       this.setState(state);
+      const players = Object.values(state.players);
+      let connectedPlayer = 2;
+      if (players) {
+        connectedPlayer = 0;
+        for (let i = 0; i < players.length; i++) {
+          if (players[i].connected.status) {
+            connectedPlayer++;
+          }
+        }
+      }
+      console.log(connectedPlayer);
+
+      if (connectedPlayer < 2) {
+        this.setState({ canLeave: true });
+      } else {
+        this.setState({ canLeave: false });
+      }
+      console.log(this.state.canLeave);
     });
 
     socket.emit("gameAction", {
@@ -92,11 +111,23 @@ export default class Pictionary extends React.Component {
   }
 
   renderLeaveBtn() {
+    const players = this.state.players;
+
+    // let connectedPlayer = 0;
+    // if (players) {
+    //   for (let i = 0; i < players.length; i++) {
+    //     if (players[i].connected.status) {
+    //       connectedPlayer++;
+    //     }
+    //   }
+    // }
+
     if (
-      this.state.players &&
-      Object.values(this.state.players).some(
+      players &&
+      Object.values(players).some(
         player => player.id === this.props.currentUserId
-      )
+      ) &&
+      !this.state.canLeave
     ) {
       return null;
     }
