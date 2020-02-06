@@ -39,22 +39,23 @@ export default class JoinModal extends React.Component {
   render() {
     return (
       <div className="join-room-btn">
-        
-        <span 
-        className="join-room-text"
-        onClick={this.handleShow}>Join</span>
-        
+        <span className="join-room-text" onClick={this.handleShow}>
+          Join
+        </span>
 
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Join a room</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <input
-              type="text"
-              value={this.state.roomId}
-              onChange={this.updateRoomId}
-            />
+            <label>
+              Enter Room Id:
+              <input
+                type="text"
+                value={this.state.roomId}
+                onChange={this.updateRoomId}
+              />
+            </label>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handleClose}>

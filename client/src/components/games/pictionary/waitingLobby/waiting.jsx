@@ -84,11 +84,12 @@ class Waiting extends React.Component {
         <div className="room-ready-state">
           {/* TODO: delete this */}
           <div className="delete-this-div">
-            <p id="room-ready-state2">{`Players are ${
+            {/* <p id="room-ready-state2">{`Players are ${
               this.props.room.ready ? "" : "not"
             } ready!  Game is ${
               this.props.room.onGame ? "" : "not"
-            } on going!`}</p>
+            } on going!`}</p> */}
+            <p>Minimum number of player: 2</p>
           </div>
           <ProfileIcon users={this.props.room.players} />
         </div>
