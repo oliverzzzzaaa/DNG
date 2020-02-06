@@ -9,8 +9,8 @@ class ProfileIcon extends React.Component {
     return (
       <div className="profile-icons-container">
         {this.props.users.map(user => (
-          <div className="profile-icon-div">
-            <ProfileIconItem user={user} key={user.id} />
+          <div className="profile-icon-div" key={user.id}>
+            <ProfileIconItem user={user} />
           </div>
         ))}
       </div>
