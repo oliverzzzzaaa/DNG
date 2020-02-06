@@ -64,9 +64,11 @@ module.exports = class Pictionary {
   guess(playerId, word) {
     if (this.players[playerId] && playerId !== this.currDrawer) {
       if (this.targetWord.toLowerCase() === word.toLowerCase()) {
+        if (!this.players[playerId].guessed) {
+          this.players[playerId].score += 1;
+          this.players[this.currDrawer].score += 1;
+        }
         this.players[playerId].guessed = true;
-        this.players[playerId].score += 1;
-        this.players[this.currDrawer].score += 1;
         if (this.shouldEndround()) {
           this.endRound();
         }

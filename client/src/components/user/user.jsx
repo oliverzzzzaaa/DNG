@@ -98,8 +98,6 @@ class User extends React.Component {
               src={
                 //TODO: change default image src
                 this.props.image
-                  ? this.props.image
-                  : "https://www.pinclipart.com/picdir/middle/355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.png"
               }
             />
           </div>
