@@ -36,6 +36,8 @@
   flex-direction: row;
   justify-content: center;
   align-self: center;
+  position: absolute;
+  bottom: 10%;
 }
 
 .chat-component-div {
@@ -66,11 +68,11 @@
   cursor: pointer;
   border: solid black;
   border-width: 1px 1px 3px 3px;
-  border-radius:4% 95% 6% 95%/95% 4% 92% 5%;
+  border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
   transform: rotate(-2deg);
   font-size: 20px;
   padding: 5px;
-  font-family: 'Indie Flower', cursive;
+  font-family: "Indie Flower", cursive;
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -79,18 +81,18 @@
   cursor: pointer;
   border: solid black;
   border-width: 1px 1px 3px 3px;
-  border-radius:4% 95% 6% 95%/95% 4% 92% 5%;
+  border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
   transform: rotate(-2deg);
   font-size: 20px;
   padding: 5px;
-  font-family: 'Indie Flower', cursive;
+  font-family: "Indie Flower", cursive;
   margin-left: 10px;
   margin-right: 10px;
   background-color: lightgray;
 }
 
 .room-id-header {
-  font-family: 'Indie Flower', cursive;
+  font-family: "Indie Flower", cursive;
 }
 
 .not-host {
