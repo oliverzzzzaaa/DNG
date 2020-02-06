@@ -175,7 +175,7 @@ export default class CanvasContainer extends React.Component {
           <canvas className="canvas-area" id="pictionary-canvas" />
         </div>
         {this.renderColorpicker()}
-        <div className="clues">clues right here!</div>
+        {/* <div className="clues">clues right here!</div> */}
       </div>
     );
   }
