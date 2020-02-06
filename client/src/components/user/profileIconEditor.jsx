@@ -23,8 +23,8 @@ export default class ProfileIconEditor extends React.Component {
   }
 
   componentDidMount() {
-    this.canvas.current.width = 200;
-    this.canvas.current.height = 200;
+    this.canvas.current.width = 250;
+    this.canvas.current.height = 250;
     paper.setup(this.canvas.current);
     const tool = new paper.Tool();
     tool.onMouseDown = e => this.onMouseDown(e);
@@ -50,12 +50,13 @@ export default class ProfileIconEditor extends React.Component {
   }
 
   onMouseDown(e) {
+    // alert('mouse')
     // If we produced a path before, deselect it:
     if (this.path) {
       this.path.selected = false;
     }
     this.path = new paper.Path();
-    this.path.strokeColor = this.state.color;
+    this.path.strokeColor = this.state.strokeColor;
     this.path.strokeWidth = this.state.strokeWidth;
     this.path.strokeCap = "round";
 
@@ -64,6 +65,7 @@ export default class ProfileIconEditor extends React.Component {
   }
 
   onMouseDrag(event) {
+    console.log('mouse')
     this.path.add(event.point);
   }
 
@@ -75,7 +77,7 @@ export default class ProfileIconEditor extends React.Component {
   }
 
   changeColor(e) {
-    this.setState({ color: e.currentTarget.value });
+    this.setState({ strokeColor: e.currentTarget.value });
   }
 
   updateChanges() {
@@ -104,15 +106,44 @@ export default class ProfileIconEditor extends React.Component {
   render() {
     return (
       <div className="profile-editor">
-        <input type="text" value={this.state.name} onChange={this.changeName} />
-        <input type="color" onChange={this.changeColor} />
-        <button onClick={this.clear}>clear</button>
-        <canvas className="profile-picture" ref={this.canvas}></canvas>
-        <button onClick={this.setImage}>
-          {this.state.changeImage ? "勾" : "圆"}
-        </button>
+        <div className="username-editor">
+          <label>
+            Username
+            <input
+              type="text"
+              value={this.state.name}
+              onChange={this.changeName}
+            />
+          </label>
+
+          <div onClick={this.props.close} className="close-container">
+            <div className="leftright"></div>
+            <div className="rightleft"></div>
+            <label className="close">close</label>
+          </div>
+        </div>
+
+        <div className="profile-canvas-container">
+          <div className="canvas-editor-container">
+            <label>
+              Color Switcher
+              <input type="color" onChange={this.changeColor} />
+            </label>
+
+            <button onClick={this.clear}>clear canvas</button>
+            <label>
+              check this box if you want to update profile picture
+              {/* <button onClick={this.setImage}>
+              {this.state.changeImage ? "勾" : `圆`}
+            </button> */}
+              <input type="checkbox" onChange={this.setImage} />
+            </label>
+          </div>
+
+          <canvas className="profile-picture" ref={this.canvas}></canvas>
+        </div>
+
         <button onClick={this.updateChanges}>UPDATE</button>
-        <button onClick={this.props.close}>Close</button>
       </div>
     );
   }
