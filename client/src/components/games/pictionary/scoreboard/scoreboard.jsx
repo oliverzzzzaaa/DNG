@@ -37,12 +37,7 @@ class ScoreBoard extends React.Component {
         return (
           <li className="scoreboard-li" key={user.id}>
             <div className="scoreboard-user-icon">
-              <span
-                className="scordboard-name"
-                onClick={() => this.addScore(user.id)}
-              >
-                {user.name}
-              </span>
+              <span className="scordboard-name">{user.name}</span>
             </div>
             <div className="scoreboard-score">{user.score}</div>
             {/* <span>{(user.guessed === true ? "GOT IT" : null)}</span> */}
