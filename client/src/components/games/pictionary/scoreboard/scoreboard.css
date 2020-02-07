@@ -20,8 +20,9 @@
 }
 
 .scoreboard-div {
-    width: 30%;
+    width: 10%;
     display: flex;
+    margin-bottom: 5%;
 }
 
 .scoreboard-score {

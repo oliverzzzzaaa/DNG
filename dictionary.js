@@ -236,8 +236,8 @@ const mediumWords = [
     { word: "soccer", clues: ['6 letters', 'A sport']},
     { word: "base", clues: ['4 letters', 'First, second, third']},
     { word: "saw", clues: ['3 letters', 'carpenters tool']},
-    { word: "tulip", clues: ['5 letters', 'A type of flower, famous in Netherlands']},
     { word: "skirt", clues: ['5 letters', 'article of clothing']},
+    { word: "zoo", clues: ["3 letters", "animals!"]},
     { word: "t-shirt", clues: ['6 letters', 'article of clothing']},
 ]
 
@@ -247,7 +247,7 @@ const hardWords = [
     {word: "rhythm", clues: ["6 letters", "music!"]},
     {word: "log-in", clues: ["5 letters", "username and password"]},
     {word: "lunar rover", clues: ["2 words", "drone on the moon"]},
-    {word: "zoo", clues: ["3 letters", "animals!"]},
+    { word: "tulip", clues: ['5 letters', 'A type of flower, famous in Netherlands']},
     {word: "lung", clues: ["4 letters", "body part"]},
     {word: "Internet", clues: ["8 letters", "You're using it right now!"]},
     {word: "synchronized swimming", clues: ["2 words", "aquatic olympic sport"]},
