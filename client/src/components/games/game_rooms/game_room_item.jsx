@@ -3,10 +3,11 @@ import "./game_room_item.css";
 
 class GameRoomItem extends React.Component {
   render() {
-    const user = this.props.currentUser;
+    const user = Object.assign({}, this.props.currentUser);
     user.roomId = this.props.room.id;
     return (
       <div>
+        <p>{user.roomId}</p>
         {this.props.room.onGame ? "ongoing" : "waiting"}
         <div
           className="game-room-div"
