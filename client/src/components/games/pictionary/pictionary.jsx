@@ -156,6 +156,7 @@ export default class Pictionary extends React.Component {
           }  
           strokes={this.state.strokes}
           players={Object.values(this.state.players)}
+          currDrawer={this.state.currDrawer}
         />
       );
     }
