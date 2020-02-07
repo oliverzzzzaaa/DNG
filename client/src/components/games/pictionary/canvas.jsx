@@ -19,24 +19,29 @@ export default class CanvasContainer extends React.Component {
     this.uploadDrawing = this.uploadDrawing.bind(this);
     this.clear = this.clear.bind(this);
     this.renderColorpicker = this.renderColorpicker.bind(this);
+    this.tool = null;
+    this.paper = new paper.PaperScope();
   }
 
   componentDidMount() {
-    paper.setup(document.getElementById("pictionary-canvas"));
-    const tool = new paper.Tool();
-    tool.onMouseDown = e => this.onMouseDown(e);
-    tool.onMouseDrag = e => this.onMouseDrag(e);
-    tool.onMouseUp = e => this.onMouseUp(e);
+    this.paper.setup(document.getElementById("pictionary-canvas"));
+    this.tool = new this.paper.Tool();
+    this.tool.onMouseDown = this.onMouseDown;
+    this.tool.onMouseDrag = this.onMouseDrag;
+    this.tool.onMouseUp = this.onMouseUp;
 
     const strokes = this.props.strokes;
     if (strokes) {
+      if (this.path) {
+        this.path.selected = false;
+      }
       strokes.forEach(stroke => {
-        const path = new paper.Path();
-        path.strokeColor = stroke.color;
-        path.strokeWidth = stroke.width;
-        path.strokeCap = "round";
-        path.pathData = stroke.pathData;
-        paper.view.draw();
+        this.path = new this.paper.Path();
+        this.path.strokeColor = stroke.color;
+        this.path.strokeWidth = stroke.width;
+        this.path.strokeCap = "round";
+        this.path.pathData = stroke.pathData;
+        this.paper.view.draw();
       });
     }
 
@@ -46,22 +51,29 @@ export default class CanvasContainer extends React.Component {
     socket.off("clearDrawing");
 
     socket.on("pathData", data => {
-      if (this.props.isDrawer !== true) {
-        const path = new paper.Path();
-        path.strokeColor = data.color;
-        path.strokeWidth = data.width;
-        path.strokeCap = "round";
-        path.pathData = data.pathData;
-        paper.view.draw();
+      if (!this.props.isDrawer) {
+        if (this.path) {
+          this.path.selected = false;
+        }
+        this.path = new this.paper.Path();
+        this.path.strokeColor = data.color;
+        this.path.strokeWidth = data.width;
+        this.path.strokeCap = "round";
+        this.path.pathData = data.pathData;
+        this.paper.view.draw();
       }
     });
 
     socket.on("clearDrawing", data => {
-      if (this.props.isDrawer !== true) {
+      if (!this.props.isDrawer) {
         this.clear();
       }
     });
   }
+
+  // componentWillUnmount() {
+  //   paper.remove();
+  // }
 
   setColor(e) {
     this.setState({
@@ -76,8 +88,8 @@ export default class CanvasContainer extends React.Component {
   }
 
   clear() {
-    paper.project.activeLayer.removeChildren();
-    paper.view.draw();
+    this.paper.project.activeLayer.removeChildren();
+    this.paper.view.draw();
   }
 
   onMouseDown(e) {
@@ -86,7 +98,7 @@ export default class CanvasContainer extends React.Component {
       if (this.path) {
         this.path.selected = false;
       }
-      this.path = new paper.Path();
+      this.path = new this.paper.Path();
       this.path.strokeColor = this.state.strokeColor;
       this.path.strokeWidth = this.state.strokeWidth;
       this.path.strokeCap = "round";
@@ -128,7 +140,7 @@ export default class CanvasContainer extends React.Component {
   }
 
   renderColorpicker() {
-    if (this.props.isDrawer === true) {
+    if (this.props.isDrawer) {
       return (
         <div className="color-picker-btn">
           <input
