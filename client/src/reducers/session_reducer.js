@@ -21,6 +21,9 @@ export default function (state = initialState, action) {
                 isAuthenticated: false,
                 user: undefined
             };
+        case RECEIVE_NEW_NAME:
+            nextState.name = action.name;
+            return nextState;
         default:
             return state;
     }

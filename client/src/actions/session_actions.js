@@ -18,6 +18,11 @@ export const receiveUserSignIn = currentUser => ({
   currentUser
 });
 
+export const receiveNewName = name => ({
+  type: RECEIVE_NEW_NAME,
+  name
+})
+
 export const receiveErrors = errors => ({
   type: RECEIVE_SESSION_ERRORS,
   errors
@@ -30,6 +35,10 @@ export const logoutUser = () => ({
 export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
+
+export const newName = (name) => dispatch => {
+  dispatch(receiveNewName(name))
+}
 
 export const logout = () => dispatch => {
   localStorage.removeItem("jwtToken");
