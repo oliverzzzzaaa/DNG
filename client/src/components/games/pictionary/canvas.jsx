@@ -20,6 +20,7 @@ export default class CanvasContainer extends React.Component {
     this.clear = this.clear.bind(this);
     this.renderColorpicker = this.renderColorpicker.bind(this);
     this.useEraser = this.useEraser.bind(this);
+    this.drawerName = this.drawerName.bind(this);
   }
 
   componentDidMount() {
@@ -185,14 +186,23 @@ export default class CanvasContainer extends React.Component {
     return null;
   }
 
+  drawerName() {
+    const players = Object.values(this.props.players);
+    for (let i = 0; i < players.length; i++) {
+      if (players[i].id === this.props.currDrawer) {
+        return players[i].name;
+      };
+    };
+  };
+
+
   render() {
-    console.log(this.props.players.id)
     return (
       <div className="canvas-page">
         <div className="canvas-main">
           <canvas className="canvas-area" id="pictionary-canvas" />
         </div>
-        {/* <span className="drawer-viewer">{`${this.props.isDrawer ? "drawer" : "viewer"} is the !`}</span> */}
+        <span className="drawer-viewer">{`${this.drawerName()} is the drawer!`}</span>
         {this.renderColorpicker()}
         {/* <div className="clues">clues right here!</div> */}
       </div>
