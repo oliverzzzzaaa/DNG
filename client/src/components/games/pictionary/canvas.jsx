@@ -2,13 +2,15 @@ import React from "react";
 import paper from "paper";
 import "./canvas.css";
 import MySocket from "../../../socket";
+import Instructions from "../game_rooms/instructions_modal"
 
 export default class CanvasContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       strokeColor: "black",
-      strokeWidth: 1
+      strokeWidth: 1,
+      instructions: false
     };
     this.path = null;
     this.onMouseUp = this.onMouseUp.bind(this);
@@ -19,10 +21,15 @@ export default class CanvasContainer extends React.Component {
     this.uploadDrawing = this.uploadDrawing.bind(this);
     this.clear = this.clear.bind(this);
     this.renderColorpicker = this.renderColorpicker.bind(this);
+<<<<<<< HEAD
     this.tool = null;
     this.paper = new paper.PaperScope();
     this.useEraser = this.useEraser.bind(this);
     this.drawerName = this.drawerName.bind(this);
+=======
+    this.showInstructions = this.showInstructions.bind(this);
+    this.hideInstructions = this.hideInstructions.bind(this);
+>>>>>>> added instructions
   }
 
   componentDidMount() {
@@ -198,6 +205,7 @@ export default class CanvasContainer extends React.Component {
     return null;
   }
 
+<<<<<<< HEAD
   drawerName() {
     const players = Object.values(this.props.players);
     for (let i = 0; i < players.length; i++) {
@@ -207,10 +215,31 @@ export default class CanvasContainer extends React.Component {
     };
   };
 
+=======
+  showInstructions() {
+    if (this.state.instructions) {
+      this.setState({instructions: false})
+    } else {
+      this.setState({instructions: true})
+    }
+  }
+
+  hideInstructions() {
+    this.setState({instructions: false})
+  }
+>>>>>>> added instructions
 
   render() {
     return (
       <div className="canvas-page">
+<<<<<<< HEAD
+=======
+        <div onClick={this.showInstructions} className="instructions-button">Instructions</div>
+        <span className="drawer-viewer">{`you are the ${
+          this.props.isDrawer ? "drawer" : "viewer"
+        }!`}</span>
+        {this.state.instructions ? <Instructions hideInstructions={this.hideInstructions}/> : null}
+>>>>>>> added instructions
         <div className="canvas-main">
           <canvas className="canvas-area" id="pictionary-canvas" />
         </div>
