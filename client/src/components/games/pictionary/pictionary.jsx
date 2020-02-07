@@ -120,7 +120,7 @@ export default class Pictionary extends React.Component {
     ) {
       return null;
     }
-    return <button onClick={this.leave}>LEAVE (need to add styling)</button>;
+    return <div className="observer-leave" onClick={this.leave}><span className="observer-leave-button">LEAVE</span></div>;
   }
 
   renderMidRound() {

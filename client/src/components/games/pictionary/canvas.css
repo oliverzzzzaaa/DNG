@@ -128,6 +128,33 @@
   margin: 4% 0 0 5%;
 }
 
+.observer-leave {
+  position: absolute;
+  bottom: 20px;
+  border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
+  border: solid black;
+  background: white;
+  font-family: 'Indie Flower', cursive;
+  font-size: 25px;
+  display: flex;
+  height: 50px;
+  width: 100px;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-shadow: 9px 11px 15px 1px #344955; 
+  cursor: pointer;
+}
+
+.observer-leave:hover {
+  -webkit-box-shadow: 0 2px 0 2px #f03755, 9px 11px 15px 1px #344955; 
+}
+
+.observer-leave:active {
+  bottom: 16px;
+  left: 20px;
+  -webkit-box-shadow: none;
+}
+
 .instructions-button {
   font-family: 'Indie Flower', cursive;
   background: #FFF;
