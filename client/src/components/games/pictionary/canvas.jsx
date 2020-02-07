@@ -21,15 +21,12 @@ export default class CanvasContainer extends React.Component {
     this.uploadDrawing = this.uploadDrawing.bind(this);
     this.clear = this.clear.bind(this);
     this.renderColorpicker = this.renderColorpicker.bind(this);
-<<<<<<< HEAD
     this.tool = null;
     this.paper = new paper.PaperScope();
     this.useEraser = this.useEraser.bind(this);
     this.drawerName = this.drawerName.bind(this);
-=======
     this.showInstructions = this.showInstructions.bind(this);
     this.hideInstructions = this.hideInstructions.bind(this);
->>>>>>> added instructions
   }
 
   componentDidMount() {
@@ -205,7 +202,6 @@ export default class CanvasContainer extends React.Component {
     return null;
   }
 
-<<<<<<< HEAD
   drawerName() {
     const players = Object.values(this.props.players);
     for (let i = 0; i < players.length; i++) {
@@ -215,7 +211,6 @@ export default class CanvasContainer extends React.Component {
     };
   };
 
-=======
   showInstructions() {
     if (this.state.instructions) {
       this.setState({instructions: false})
@@ -227,23 +222,19 @@ export default class CanvasContainer extends React.Component {
   hideInstructions() {
     this.setState({instructions: false})
   }
->>>>>>> added instructions
 
   render() {
     return (
       <div className="canvas-page">
-<<<<<<< HEAD
-=======
         <div onClick={this.showInstructions} className="instructions-button">Instructions</div>
-        <span className="drawer-viewer">{`you are the ${
+        {/* <span className="drawer-viewer">{`you are the ${
           this.props.isDrawer ? "drawer" : "viewer"
-        }!`}</span>
-        {this.state.instructions ? <Instructions hideInstructions={this.hideInstructions}/> : null}
->>>>>>> added instructions
+        }!`}</span> */}
         <div className="canvas-main">
           <canvas className="canvas-area" id="pictionary-canvas" />
         </div>
         <span className="drawer-viewer">{`${this.drawerName()} is the drawer!`}</span>
+        {this.state.instructions ? <Instructions hideInstructions={this.hideInstructions}/> : null}
         {this.renderColorpicker()}
         {/* <div className="clues">clues right here!</div> */}
       </div>
