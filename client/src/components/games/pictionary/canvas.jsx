@@ -19,6 +19,8 @@ export default class CanvasContainer extends React.Component {
     this.uploadDrawing = this.uploadDrawing.bind(this);
     this.clear = this.clear.bind(this);
     this.renderColorpicker = this.renderColorpicker.bind(this);
+    this.tool = null;
+    this.paper = new paper.PaperScope();
     this.useEraser = this.useEraser.bind(this);
     this.drawerName = this.drawerName.bind(this);
   }
