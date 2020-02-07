@@ -53,7 +53,7 @@ class GameRooms extends React.Component {
             />
           ))}
         </div>
-        <div className="game-rooms-buttons">
+        {/* <div className="game-rooms-buttons">
           <div className="game-rooms-create-button">
             <span
               className="game-rooms-create-text"
@@ -71,7 +71,7 @@ class GameRooms extends React.Component {
             join={this.props.joinRoom}
             user={Object.assign({}, this.props.currentUser)}
           />
-        </div>
+        </div> */}
       </div>
     );
   }
