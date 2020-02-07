@@ -79,10 +79,6 @@ export default class CanvasContainer extends React.Component {
     });
   }
 
-  // componentWillUnmount() {
-  //   paper.remove();
-  // }
-
   setColor(e) {
     this.setState({
       strokeColor: e.currentTarget.value
