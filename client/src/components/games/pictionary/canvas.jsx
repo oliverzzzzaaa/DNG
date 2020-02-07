@@ -19,6 +19,7 @@ export default class CanvasContainer extends React.Component {
     this.uploadDrawing = this.uploadDrawing.bind(this);
     this.clear = this.clear.bind(this);
     this.renderColorpicker = this.renderColorpicker.bind(this);
+    this.useEraser = this.useEraser.bind(this);
   }
 
   componentDidMount() {
@@ -71,6 +72,13 @@ export default class CanvasContainer extends React.Component {
 
   setStrokeWidth(n) {
     this.setState({
+      strokeWidth: n
+    });
+  }
+
+  useEraser(n) {
+    this.setState({
+      strokeColor: 'white',
       strokeWidth: n
     });
   }
@@ -139,17 +147,24 @@ export default class CanvasContainer extends React.Component {
           />
           <br />
           <button
+            onClick={() => this.useEraser(20)}
+            className="canvas-bottom-button"
+          >
+            Eraser
+          </button>
+          <br />
+          <button
             onClick={() => this.setStrokeWidth(2)}
             className="canvas-bottom-button"
           >
-            thin
+            Thin
           </button>
           <br />
           <button
             onClick={() => this.setStrokeWidth(10)}
             className="canvas-bottom-button"
           >
-            thick
+            Thick
           </button>
           <br />
           <button
@@ -162,7 +177,7 @@ export default class CanvasContainer extends React.Component {
               });
             }}
           >
-            clear
+            Clear
           </button>
         </div>
       );
@@ -171,14 +186,13 @@ export default class CanvasContainer extends React.Component {
   }
 
   render() {
+    console.log(this.props.players.id)
     return (
       <div className="canvas-page">
-        <span className="drawer-viewer">{`you are the ${
-          this.props.isDrawer ? "drawer" : "viewer"
-        }!`}</span>
         <div className="canvas-main">
           <canvas className="canvas-area" id="pictionary-canvas" />
         </div>
+        {/* <span className="drawer-viewer">{`${this.props.isDrawer ? "drawer" : "viewer"} is the !`}</span> */}
         {this.renderColorpicker()}
         {/* <div className="clues">clues right here!</div> */}
       </div>
