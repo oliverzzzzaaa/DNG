@@ -233,7 +233,7 @@ export default class CanvasContainer extends React.Component {
         <div className="canvas-main">
           <canvas className="canvas-area" id="pictionary-canvas" />
         </div>
-        <span className="drawer-viewer">{`${this.drawerName()} is the drawer!`}</span>
+        <span className="drawer-viewer">{`${this.drawerName()} is drawing!`}</span>
         {this.state.instructions ? <Instructions hideInstructions={this.hideInstructions}/> : null}
         {this.renderColorpicker()}
         {/* <div className="clues">clues right here!</div> */}
