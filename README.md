@@ -27,6 +27,7 @@ Technologies Used:
   + AWS S3 (for images)
   + HTML Canvas
   + Heroku
+  + Bootstrap 
   
   We used the MERN stack (MongoDB as database, Express for routing, React.js for front-end, Node.js for back-end). 
   Also used were Paper.js and HTML Canvas for drawings, Bootstrap for some buttons and carousels, 
@@ -77,6 +78,6 @@ Screenshot:
 
 
 Features to Add:
-  + AWS S3 for drawings
+  + Store drawings in AWS S3 
   + Adding additional games to our lobby
 
