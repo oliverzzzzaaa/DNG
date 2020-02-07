@@ -47,6 +47,7 @@ export default class Pictionary extends React.Component {
 
     socket.on("updateGameState", state => {
       this.setState(state);
+
       const players = Object.values(state.players);
       let connectedPlayer = 2;
       if (players) {
@@ -163,7 +164,7 @@ export default class Pictionary extends React.Component {
           isDrawer={
             this.state.onRound &&
             this.props.currentUserId === this.state.currDrawer
-          }
+          }  
           strokes={this.state.strokes}
         />
       );
@@ -175,14 +176,10 @@ export default class Pictionary extends React.Component {
     return (
       <div className="game-components-div">
         <div id="canvas-and-timer-div">
-          <div className='return-lobby'>
-            {this.renderLeaveBtn()}
-          </div>
+          <div className="return-lobby">{this.renderLeaveBtn()}</div>
           <div className="canvas-and-word">
             {this.renderTargetWord()}
-            <div className="canvas-container">
-              {this.renderCanvas()}
-            </div>
+            <div className="canvas-container">{this.renderCanvas()}</div>
           </div>
         </div>
         <div className="scoreboard-chat">

@@ -20,19 +20,20 @@ export default class ProfileIconEditor extends React.Component {
     this.updateChanges = this.updateChanges.bind(this);
     this.changeName = this.changeName.bind(this);
     this.setImage = this.setImage.bind(this);
+    this.paper = new paper.PaperScope();
   }
 
   componentDidMount() {
     this.canvas.current.width = 250;
     this.canvas.current.height = 250;
-    paper.setup(this.canvas.current);
-    const tool = new paper.Tool();
+    this.paper.setup(this.canvas.current);
+    const tool = new this.paper.Tool();
     tool.onMouseDown = e => this.onMouseDown(e);
     tool.onMouseDrag = e => this.onMouseDrag(e);
     tool.onMouseUp = e => this.onMouseUp(e);
-    const raster = new paper.Raster({
+    const raster = new this.paper.Raster({
       source: this.state.image,
-      position: paper.view.center
+      position: this.paper.view.center
     });
     raster.scale(0.5);
   }
@@ -50,8 +51,8 @@ export default class ProfileIconEditor extends React.Component {
   }
 
   clear() {
-    paper.project.activeLayer.removeChildren();
-    paper.view.draw();
+    this.paperpaper.project.activeLayer.removeChildren();
+    this.paperpaper.view.draw();
   }
 
   onMouseDown(e) {
@@ -60,7 +61,7 @@ export default class ProfileIconEditor extends React.Component {
     if (this.path) {
       this.path.selected = false;
     }
-    this.path = new paper.Path();
+    this.path = new this.paper.Path();
     this.path.strokeColor = this.state.strokeColor;
     this.path.strokeWidth = this.state.strokeWidth;
     this.path.strokeCap = "round";
