@@ -158,3 +158,17 @@
 /* .observer-leave-button {
   margin: 20px;
 } */
+.instructions-button {
+  font-family: 'Indie Flower', cursive;
+  background: #FFF;
+  display: block;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 2px solid #000;
+  height: 5%;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  left: 51%;
+  font-size: 20px;
+}

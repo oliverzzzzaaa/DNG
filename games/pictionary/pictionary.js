@@ -22,6 +22,8 @@ module.exports = class Pictionary {
     this.roundStartTime;
     this.onRound = false;
     this.strokes = [];
+    this.nextPoint = Object.values(this.players).length
+    this.maxPoints = Object.values(this.players).length
   }
 
   switchTurn() {
@@ -65,8 +67,9 @@ module.exports = class Pictionary {
     if (this.players[playerId] && playerId !== this.currDrawer) {
       if (this.targetWord.toLowerCase() === word.toLowerCase()) {
         if (!this.players[playerId].guessed) {
-          this.players[playerId].score += 1;
-          this.players[this.currDrawer].score += 1;
+          this.players[playerId].score += this.nextPoint;
+          this.players[this.currDrawer].score += this.maxPoints;
+          this.nextPoint -=1;
         }
         this.players[playerId].guessed = true;
         if (this.shouldEndround()) {
@@ -101,6 +104,7 @@ module.exports = class Pictionary {
 
   endRound() {
     this.onRound = false;
+    this.nextPoint = this.maxPoints;
     const players = Object.values(this.players);
     players.forEach(player => (player.ready = false));
     this.currentRound++;
