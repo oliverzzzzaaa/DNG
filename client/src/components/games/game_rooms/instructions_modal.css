@@ -1,0 +1,63 @@
+.instructions-modal {
+    position: absolute;
+    border: 5px solid black;
+    top: 18%;
+    height: 50%;
+    width: 50%;
+    left: 25%;
+    border-width: 3px 4px 3px 5px;
+    border-radius: 95% 4% 92% 5%/4% 95% 6% 95%;
+    padding-right: 2.5%;
+    padding-left: 2%;
+    padding-top: 1.5%;
+    transform: rotate(2deg);
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    background: white;
+}
+
+.instruction-header {
+    display: flex;
+    flex-direction: row;
+    /* margin-top: 5%; */
+    margin-bottom: 5%;  
+    width: 90%;
+    justify-content: center;
+}
+
+.instructions-X {
+    display: flex;
+    justify-self: flex-end;
+    align-self: flex-end;
+    color: black;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: right;
+    font-size: 20px;
+}
+
+.instruction-header h1 {
+    align-self: center;
+    justify-self: center;
+    font-size: 24px;
+}
+
+.instructions-text {
+    width: 70%;
+    height: 50%;
+    /* background-color: pink; */
+    font-size: 20px;
+    line-height: 1.5rem;
+    font-family: 'Indie Flower', cursive;
+}
+
+.instructions-text h2 {
+    font-weight: 900;
+    font-size: 22px;
+}
+
+.instructions-text h3 {
+    font-size: 20px;
+}
+

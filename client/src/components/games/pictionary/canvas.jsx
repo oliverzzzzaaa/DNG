@@ -2,13 +2,15 @@ import React from "react";
 import paper from "paper";
 import "./canvas.css";
 import MySocket from "../../../socket";
+import Instructions from "../game_rooms/instructions_modal"
 
 export default class CanvasContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       strokeColor: "black",
-      strokeWidth: 1
+      strokeWidth: 1,
+      instructions: false
     };
     this.path = null;
     this.onMouseUp = this.onMouseUp.bind(this);
@@ -23,6 +25,8 @@ export default class CanvasContainer extends React.Component {
     this.paper = new paper.PaperScope();
     this.useEraser = this.useEraser.bind(this);
     this.drawerName = this.drawerName.bind(this);
+    this.showInstructions = this.showInstructions.bind(this);
+    this.hideInstructions = this.hideInstructions.bind(this);
   }
 
   componentDidMount() {
@@ -207,14 +211,30 @@ export default class CanvasContainer extends React.Component {
     };
   };
 
+  showInstructions() {
+    if (this.state.instructions) {
+      this.setState({instructions: false})
+    } else {
+      this.setState({instructions: true})
+    }
+  }
+
+  hideInstructions() {
+    this.setState({instructions: false})
+  }
 
   render() {
     return (
       <div className="canvas-page">
+        <div onClick={this.showInstructions} className="instructions-button">Instructions</div>
+        {/* <span className="drawer-viewer">{`you are the ${
+          this.props.isDrawer ? "drawer" : "viewer"
+        }!`}</span> */}
         <div className="canvas-main">
           <canvas className="canvas-area" id="pictionary-canvas" />
         </div>
         <span className="drawer-viewer">{`${this.drawerName()} is the drawer!`}</span>
+        {this.state.instructions ? <Instructions hideInstructions={this.hideInstructions}/> : null}
         {this.renderColorpicker()}
         {/* <div className="clues">clues right here!</div> */}
       </div>
