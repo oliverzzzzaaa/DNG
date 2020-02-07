@@ -38,11 +38,6 @@ class SignupForm extends  React.Component {
         tool.onMouseUp = e => this.onMouseUp(e);
     }
 
-    setColor(color) {
-        this.setState({
-            strokeColor: color
-        });
-    }
 
     setStrokeWidth(n) {
         this.setState({
