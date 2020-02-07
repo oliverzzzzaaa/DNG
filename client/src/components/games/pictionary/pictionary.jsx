@@ -111,16 +111,6 @@ export default class Pictionary extends React.Component {
 
   renderLeaveBtn() {
     const players = this.state.players;
-
-    // let connectedPlayer = 0;
-    // if (players) {
-    //   for (let i = 0; i < players.length; i++) {
-    //     if (players[i].connected.status) {
-    //       connectedPlayer++;
-    //     }
-    //   }
-    // }
-
     if (
       players &&
       Object.values(players).some(
@@ -130,7 +120,6 @@ export default class Pictionary extends React.Component {
     ) {
       return null;
     }
-    //TODO: add css to leave btn
     return <button onClick={this.leave}>LEAVE (need to add styling)</button>;
   }
 
@@ -166,6 +155,7 @@ export default class Pictionary extends React.Component {
             this.props.currentUserId === this.state.currDrawer
           }  
           strokes={this.state.strokes}
+          players={Object.values(this.state.players)}
         />
       );
     }
