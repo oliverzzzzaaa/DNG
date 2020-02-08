@@ -2,7 +2,7 @@ import React from "react";
 import paper from "paper";
 import "./canvas.css";
 import MySocket from "../../../socket";
-import Instructions from "../game_rooms/instructions_modal"
+import Instructions from "../game_rooms/instructions_modal";
 
 export default class CanvasContainer extends React.Component {
   constructor(props) {
@@ -10,7 +10,8 @@ export default class CanvasContainer extends React.Component {
     this.state = {
       strokeColor: "black",
       strokeWidth: 1,
-      instructions: false
+      instructions: false,
+      isEraser: false
     };
     this.path = null;
     this.onMouseUp = this.onMouseUp.bind(this);
@@ -27,6 +28,7 @@ export default class CanvasContainer extends React.Component {
     this.drawerName = this.drawerName.bind(this);
     this.showInstructions = this.showInstructions.bind(this);
     this.hideInstructions = this.hideInstructions.bind(this);
+    this.usePen = this.usePen.bind(this);
   }
 
   componentDidMount() {
@@ -93,10 +95,15 @@ export default class CanvasContainer extends React.Component {
     });
   }
 
-  useEraser(n) {
+  useEraser() {
     this.setState({
-      strokeColor: 'white',
-      strokeWidth: n
+      isEraser: true
+    });
+  }
+
+  usePen() {
+    this.setState({
+      isEraser: false
     });
   }
 
@@ -112,8 +119,10 @@ export default class CanvasContainer extends React.Component {
         this.path.selected = false;
       }
       this.path = new this.paper.Path();
-      this.path.strokeColor = this.state.strokeColor;
-      this.path.strokeWidth = this.state.strokeWidth;
+      this.path.strokeColor = this.state.isEraser
+        ? "white"
+        : this.state.strokeColor;
+      this.path.strokeWidth = this.state.isEraser ? 20 : this.state.strokeWidth;
       this.path.strokeCap = "round";
 
       // Select the path, so we can see its segment points:
@@ -146,8 +155,8 @@ export default class CanvasContainer extends React.Component {
       type: "pathData",
       params: {
         pathData: this.path.pathData,
-        color: this.state.strokeColor,
-        width: this.state.strokeWidth
+        color: this.state.isEraser ? "white" : this.state.strokeColor,
+        width: this.state.isEraser ? 20 : this.state.strokeWidth
       }
     });
   }
@@ -164,8 +173,19 @@ export default class CanvasContainer extends React.Component {
           />
           <br />
           <button
-            onClick={() => this.useEraser(20)}
-            className="canvas-bottom-button"
+            onClick={this.usePen}
+            className={`canvas-bottom-button ${
+              !this.state.isEraser ? "selected" : ""
+            }`}
+          >
+            Pen
+          </button>
+          <br />
+          <button
+            onClick={this.useEraser}
+            className={`canvas-bottom-button ${
+              this.state.isEraser ? "selected" : ""
+            }`}
           >
             Eraser
           </button>
@@ -207,26 +227,28 @@ export default class CanvasContainer extends React.Component {
     for (let i = 0; i < players.length; i++) {
       if (players[i].id === this.props.currDrawer) {
         return players[i].name;
-      };
-    };
-  };
+      }
+    }
+  }
 
   showInstructions() {
     if (this.state.instructions) {
-      this.setState({instructions: false})
+      this.setState({ instructions: false });
     } else {
-      this.setState({instructions: true})
+      this.setState({ instructions: true });
     }
   }
 
   hideInstructions() {
-    this.setState({instructions: false})
+    this.setState({ instructions: false });
   }
 
   render() {
     return (
       <div className="canvas-page">
-        <div onClick={this.showInstructions} className="instructions-button">Instructions</div>
+        <div onClick={this.showInstructions} className="instructions-button">
+          Instructions
+        </div>
         {/* <span className="drawer-viewer">{`you are the ${
           this.props.isDrawer ? "drawer" : "viewer"
         }!`}</span> */}
@@ -234,7 +256,9 @@ export default class CanvasContainer extends React.Component {
           <canvas className="canvas-area" id="pictionary-canvas" />
         </div>
         <span className="drawer-viewer">{`${this.drawerName()} is the drawer!`}</span>
-        {this.state.instructions ? <Instructions hideInstructions={this.hideInstructions}/> : null}
+        {this.state.instructions ? (
+          <Instructions hideInstructions={this.hideInstructions} />
+        ) : null}
         {this.renderColorpicker()}
         {/* <div className="clues">clues right here!</div> */}
       </div>
