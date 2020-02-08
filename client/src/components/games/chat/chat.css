@@ -9,7 +9,7 @@
   flex-direction: column;
   border: solid black;
   border-width: 3px 4px 3px 5px;
-  border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+  border-radius:95% 4% 10% 5%/4% 95% 4% 95%;
   transform: rotate(2deg);
   padding: 10px;
   /* background-color: rgb(252, 243, 243); */
@@ -20,7 +20,7 @@
 }
 
 .msg-container {
-  height: 50vh;
+  height: 70vh;
   overflow-y: scroll;
   width: auto;
   padding: 0px 10px;

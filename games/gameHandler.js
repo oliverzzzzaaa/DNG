@@ -8,7 +8,7 @@ function handleGameAction(socket, lobby, payload) {
       handler = pictionaryHandler[payload.type];
       break;
     default:
-      break;
+      break;  
   }
   handler(socket, lobby, payload.params);
 }

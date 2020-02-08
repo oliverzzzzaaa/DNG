@@ -24,7 +24,7 @@ export default class CanvasContainer extends React.Component {
     this.renderColorpicker = this.renderColorpicker.bind(this);
     this.tool = null;
     this.paper = new paper.PaperScope();
-    this.useEraser = this.useEraser.bind(this);
+    // this.useEraser = this.useEraser.bind(this);
     this.drawerName = this.drawerName.bind(this);
     this.showInstructions = this.showInstructions.bind(this);
     this.hideInstructions = this.hideInstructions.bind(this);
@@ -188,7 +188,7 @@ export default class CanvasContainer extends React.Component {
             }`}
           >
             Eraser
-          </button>
+          </button> */}
           <br />
           <button
             onClick={() => this.setStrokeWidth(2)}

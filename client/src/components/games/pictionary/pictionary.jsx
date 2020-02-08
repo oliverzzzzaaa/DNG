@@ -120,7 +120,7 @@ export default class Pictionary extends React.Component {
     ) {
       return null;
     }
-    return <button onClick={this.leave}>LEAVE (need to add styling)</button>;
+    return <div className="observer-leave" onClick={this.leave}><span className="observer-leave-button">LEAVE</span></div>;
   }
 
   renderMidRound() {
@@ -168,6 +168,7 @@ export default class Pictionary extends React.Component {
       <div className="game-components-div">
         <div id="canvas-and-timer-div">
           <div className="return-lobby">{this.renderLeaveBtn()}</div>
+          {this.renderScoreBoard()}
           <div className="canvas-and-word">
             {this.renderTargetWord()}
             <div className="canvas-container">{this.renderCanvas()}</div>
@@ -176,7 +177,7 @@ export default class Pictionary extends React.Component {
         <div className="scoreboard-chat">
           <div className="lobby-scoreboard-div">
             {this.renderTimer()}
-            {this.renderScoreBoard()}
+            {/* {this.renderScoreBoard()} */}
             <Chat action={this.guess} messages={this.state.messages} />
           </div>
         </div>
