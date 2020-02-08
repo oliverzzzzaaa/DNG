@@ -1,6 +1,6 @@
 import * as APIUtil from "../util/user";
 import jwt_decode from "jwt-decode";
-import { receiveCurrentUser } from "./session_actions";
+import { receiveCurrentUser, receiveNewName } from "./session_actions";
 import { setAuthToken } from "../util/session";
 
 export const RECEIVE_USER = "RECEIVE_USER";
@@ -23,6 +23,8 @@ export const fetchUpdatedCurrentUser = id => dispatch =>
   APIUtil.fetchUser(id).then(user => dispatch(receiveCurrentUser(user.data)));
 
 export const updateProfile = (id, userInfo) => dispatch =>
-  APIUtil.updateProfile(id, userInfo).then(user =>
-    dispatch(receiveUser(user.data))
+  APIUtil.updateProfile(id, userInfo).then(user => {
+    dispatch(receiveUser(user.data));
+    dispatch(receiveNewName(user.data.username))
+  }
   );

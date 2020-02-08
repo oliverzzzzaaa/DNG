@@ -80,6 +80,7 @@ class User extends React.Component {
       newState.image = data.image;
     }
     this.props.updateProfile(this.props.userId, data);
+    this.props.newName(data.name)
   }
 
   render() {
