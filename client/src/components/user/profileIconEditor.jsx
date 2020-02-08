@@ -51,8 +51,8 @@ export default class ProfileIconEditor extends React.Component {
   }
 
   clear() {
-    this.paperpaper.project.activeLayer.removeChildren();
-    this.paperpaper.view.draw();
+    this.paper.project.activeLayer.removeChildren();
+    this.paper.view.draw();
   }
 
   onMouseDown(e) {
