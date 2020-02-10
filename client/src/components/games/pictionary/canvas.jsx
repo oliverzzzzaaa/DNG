@@ -184,7 +184,7 @@ export default class CanvasContainer extends React.Component {
             }`}
           >
             Eraser
-          </button> */}
+          </button>
           <br />
           <button
             onClick={() => this.setStrokeWidth(2)}
