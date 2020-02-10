@@ -29,6 +29,7 @@ export default class CanvasContainer extends React.Component {
     this.showInstructions = this.showInstructions.bind(this);
     this.hideInstructions = this.hideInstructions.bind(this);
     this.usePen = this.usePen.bind(this);
+    this.renderEraserButton = this.renderEraserButton.bind(this)
   }
 
   componentDidMount() {
@@ -157,6 +158,28 @@ export default class CanvasContainer extends React.Component {
     });
   }
 
+  renderEraserButton() {
+    if (this.state.isEraser) {
+      return (
+        <button
+            onClick={this.usePen}
+            className={`canvas-bottom-button`}
+          >
+            Pen
+          </button>
+      )
+    } else {
+      return(
+        <button
+              onClick={this.useEraser}
+              className={`canvas-bottom-button`}
+            >
+              Eraser
+            </button>
+      )
+    }
+  }
+
   renderColorpicker() {
     if (this.props.isDrawer) {
       return (
@@ -168,7 +191,8 @@ export default class CanvasContainer extends React.Component {
             onChange={this.setColor}
           />
           <br />
-          <button
+          {this.renderEraserButton()}
+          {/* <button
             onClick={this.usePen}
             className={`canvas-bottom-button ${
               !this.state.isEraser ? "selected" : ""
@@ -184,7 +208,7 @@ export default class CanvasContainer extends React.Component {
             }`}
           >
             Eraser
-          </button>
+          </button> */}
           <br />
           <button
             onClick={() => this.setStrokeWidth(2)}
