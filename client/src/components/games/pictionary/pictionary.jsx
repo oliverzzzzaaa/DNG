@@ -22,6 +22,7 @@ export default class Pictionary extends React.Component {
     this.renderCanvas = this.renderCanvas.bind(this);
     this.renderLeaveBtn = this.renderLeaveBtn.bind(this);
     this.leave = this.leave.bind(this);
+    this.returnToWaitingRoom = this.returnToWaitingRoom.bind(this);
   }
 
   guess(word) {
@@ -109,18 +110,37 @@ export default class Pictionary extends React.Component {
     );
   }
 
+  returnToWaitingRoom() {
+    MySocket.getSocket().emit("gameAction", {
+      game: "Pictionary",
+      type: "endGame"
+    });
+  }
+
   renderLeaveBtn() {
     const players = this.state.players;
     if (
       players &&
       Object.values(players).some(
         player => player.id === this.props.currentUserId
-      ) &&
-      !this.state.canLeave
+      )
     ) {
+      if (this.state.canLeave) {
+        return (
+          <div className="observer-leave" onClick={this.returnToWaitingRoom}>
+            <span className="observer-leave-button">
+              Return to Waiting Room
+            </span>
+          </div>
+        );
+      }
       return null;
     }
-    return <div className="observer-leave" onClick={this.leave}><span className="observer-leave-button">LEAVE</span></div>;
+    return (
+      <div className="observer-leave" onClick={this.leave}>
+        <span className="observer-leave-button">LEAVE</span>
+      </div>
+    );
   }
 
   renderMidRound() {
@@ -153,7 +173,7 @@ export default class Pictionary extends React.Component {
           isDrawer={
             this.state.onRound &&
             this.props.currentUserId === this.state.currDrawer
-          }  
+          }
           strokes={this.state.strokes}
           players={Object.values(this.state.players)}
           currDrawer={this.state.currDrawer}

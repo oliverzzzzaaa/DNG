@@ -16,20 +16,28 @@ module.exports = class Pictionary {
     this.numRounds = Object.keys(this.players).length * 2;
     this.currentRound = 0;
     this.currDrawer = Object.values(this.players)[0].id;
+    this.currDrawerIdx = 0;
     this.targetWord = "";
     this.usedWords = [];
     this.difficulty = difficulty;
     this.roundStartTime;
     this.onRound = false;
     this.strokes = [];
-    this.nextPoint = Object.values(this.players).length
-    this.maxPoints = Object.values(this.players).length
+    this.nextPoint = Object.values(this.players).length;
+    this.maxPoints = Object.values(this.players).length;
   }
 
   switchTurn() {
-    this.currDrawer = Object.values(this.players)[
-      this.currentRound % Object.keys(this.players).length
-    ].id;
+    const players = Object.values(this.players);
+    this.currDrawer = players[0].id;
+    for (let i = 0; i < players.length; i++) {
+      const nextPlayerIdx = (this.currDrawerIdx + i) % players.length;
+      if (players[nextPlayerIdx].connected.status) {
+        this.currDrawerIdx = nextPlayerIdx;
+        this.currDrawer = players[nextPlayerIdx].id;
+        break;
+      }
+    }
   }
 
   generateWord() {
@@ -108,6 +116,7 @@ module.exports = class Pictionary {
     const players = Object.values(this.players);
     players.forEach(player => (player.ready = false));
     this.currentRound++;
+    this.currDrawerIdx++;
     this.clearstrokes();
   }
 
