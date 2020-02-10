@@ -59,6 +59,19 @@ function handleCreate(socket, lobby, params) {
   });
 }
 
+function handleEndGame(socket, lobby) {
+  const room = lobby.getRoomBySocket(socket);
+  if (room) {
+    room.reset();
+    room.players.forEach(player => {
+      if (player.connected.status === false) {
+        lobby.leaveRoom(player.id);
+      }
+    });
+    lobby.emit("updateRoom", room.getInfo());
+  }
+}
+
 function handleGetState(socket, lobby) {
   const room = lobby.getRoomBySocket(socket);
   if (room) {
@@ -139,5 +152,6 @@ module.exports = {
   pathData: handlePathData,
   clearDrawing: handleClear,
   guess: handleGuess,
-  setDifficulty: handleSetDifficulty
+  setDifficulty: handleSetDifficulty,
+  endGame: handleEndGame
 };
