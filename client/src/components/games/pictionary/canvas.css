@@ -169,3 +169,7 @@
   left: 51%;
   font-size: 20px;
 }
+
+.instructions-button:hover {
+  -webkit-box-shadow: 0 2px 0 2px #f03755, 9px 11px 15px 1px #344955; 
+}

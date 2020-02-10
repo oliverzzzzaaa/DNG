@@ -28,8 +28,9 @@ class GameRooms extends React.Component {
             <div className="game-rooms-create-button">
               <span
                 className="game-rooms-create-text"
-                onClick={() => {
+                onClick={(e) => {
                   this.createRoom();
+                  e.currentTarget.className = "game-rooms-create-text-selected"
                   this.setState({ canCreateRoom: false });
                 }}
               >

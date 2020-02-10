@@ -19,7 +19,7 @@ export default class JoinModal extends React.Component {
     this.setState({ show: false, roomId: "" });
   }
 
-  handleShow() {
+  handleShow(e) {
     this.setState({ show: true });
   }
 

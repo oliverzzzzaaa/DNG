@@ -138,7 +138,7 @@ export default class ProfileIconEditor extends React.Component {
             <button onClick={this.clear}>clear picture</button>
 
             <div id="profile-checkbox">
-              <input type="checkbox" onChange={this.setImage} />
+              <input type="checkbox" onChange={this.setImage} className="confirm-profile-checkbox"/>
               <label>check to confirm picture update</label>
             </div>
           </div>
