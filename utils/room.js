@@ -52,6 +52,15 @@ module.exports = class Room {
     return this.players.some(player => player.connected.status);
   }
 
+  setUnready(userId) {
+    this.players.forEach((user, idx) => {
+      if (user.id === userId) {
+        this.players[idx].ready = false;
+      }
+    })
+    this.ready = false;
+  }
+
   setReady(userId) {
     this.players.forEach((user, idx) => {
       if (user.id === userId) {

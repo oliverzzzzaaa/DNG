@@ -51,7 +51,7 @@ class LoginForm extends React.Component {
     return (
       <div className="session-main">
         <div className="session-left">
-          <h1>Pictures drew by our users!</h1>
+          <h1>Pictures drawn by our users!</h1>
           <div className="carousels">
             <Carousel>
               <Carousel.Item>

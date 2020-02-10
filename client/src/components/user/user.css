@@ -64,6 +64,10 @@
     box-shadow: 0 2px 0 #000, 0 2px 0px 2px #f03755;
 }
 
+.tablinks-container-selected a {
+    box-shadow: 0 2px 0 #000, 0 2px 0px 2px #f03755;
+}
+
 .tablinks-container a:active, .user-profile-edit:active {
     top: 4px;
     padding-bottom: 0px;
@@ -330,10 +334,17 @@
     transform: scale(2);
     margin-right: 15px;
 }
+#profile-checkbox input[type="checkbox"]:hover {
+    border: 5px solid orange;
+}
 
 .update-button {
     display: flex;
     justify-content: flex-end;
     padding: 0px 20px;
     margin-bottom: 20px;
+}
+
+.active {
+    box-shadow: 0 2px 0 #000, 0 2px 0px 2px #f03755;
 }
