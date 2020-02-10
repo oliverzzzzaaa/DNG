@@ -52,4 +52,15 @@
     font-family: 'Indie Flower', cursive;
     color: black;
 }
+.join-room-text:hover {
+    background-color: lightgray;
+}
+
+.game-rooms-create-text:hover {
+    background-color: lightgray;
+}
+
+.game-rooms-create-text-selected {
+    cursor: wait;
+}
 

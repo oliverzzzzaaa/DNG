@@ -46,6 +46,10 @@
     font: bolder;
 }
 
+.nav-bar-logout:hover {
+    background-color: lightgray;
+}
+
 
 
 .nav-bar-main .navbar-logo img {

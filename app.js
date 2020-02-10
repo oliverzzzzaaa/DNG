@@ -69,6 +69,17 @@ io.on("connection", socket => {
     }
   });
 
+  socket.on("unready", () => {
+    const room = lobby.getRoomBySocket(socket);
+    if (room) {
+      lobby.setUserUnReadyBySocket(socket);
+      lobby.emitRoomMessage(room.id, {
+        type: "updateRoom",
+        body: room.getInfo()
+      });
+    }
+  })
+
   // socket.on('difficulty', () => {
   //   const room = lobby.getRoomBySocket(socket);
   //   lobby.emitRoomMessage(room.id, {

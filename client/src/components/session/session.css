@@ -8,6 +8,9 @@
   padding: 0;
   border: 0;
   position: relative;
+  background-image: url('../images/login.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .session-left {
@@ -23,15 +26,30 @@
   margin: 0;
   padding: 0;
   font-family: "Indie Flower", cursive;
-  background-color: white;
 }
 
 .session-canvas {
   margin: 5%;
 }
 
+.session-left .carousels {
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 20%;
+  margin-bottom: 10%;
+}
+
+.session-left .carousels img {
+  height: 45vh;
+  max-width: 90vw;
+  padding: 0 20px 20px 20px;
+}
+
 .session-left .session-canvas canvas {
   border: solid black;
+  background-color: white;
 }
 
 .session-left h1 {
@@ -57,12 +75,11 @@
   top: 0;
   bottom: 0;
   right: 0;
-  margin: 0;
+  margin: 5%;
   padding: 0;
   flex-direction: column;
   align-items: center;
   font-family: "Indie Flower", cursive;
-  background-color: white;
 }
 
 .session-right ul {
@@ -72,21 +89,20 @@
 .session-right ul li {
   display: flex;
   padding: 15px 0;
-  font-size: 13px;
+  font-size: 15px;
   align-items: center;
 }
 
 .session-logo img {
   display: flex;
   justify-content: center;
-  width: 25vw;
+  width: 20vw;
   cursor: pointer;
 }
 
 .session-right label {
-  font-size: 13px;
   font-weight: bolder;
-  font-size: 15px;
+  font-size: 20px;
   margin-left: 5%;
 }
 
@@ -112,7 +128,7 @@
   justify-content: center;
 }
 
-.session-main input:hover {
+.session-main input {
   border: 1px solid black;
 }
 
@@ -133,7 +149,6 @@
   transform: rotate(2deg);
   border-width: 3px 4px 3px 5px;
   border-radius: 4% 90% 6% 90%/90% 4% 88% 5%;
-  /* margin: 5%; */
 }
 
 .session-errors-ul {
@@ -150,4 +165,8 @@
 #root {
   height: 100%;
   width: 100%;
+}
+
+.submit-button:hover {
+  background-color: lightgray;
 }

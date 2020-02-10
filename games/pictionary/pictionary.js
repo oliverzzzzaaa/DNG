@@ -76,8 +76,8 @@ module.exports = class Pictionary {
       if (this.targetWord.toLowerCase() === word.toLowerCase()) {
         if (!this.players[playerId].guessed) {
           this.players[playerId].score += this.nextPoint;
-          this.players[this.currDrawer].score += this.maxPoints;
-          this.nextPoint -= 1;
+          this.players[this.currDrawer].score += this.nextPoint;
+          this.nextPoint -=1;
         }
         this.players[playerId].guessed = true;
         if (this.shouldEndround()) {

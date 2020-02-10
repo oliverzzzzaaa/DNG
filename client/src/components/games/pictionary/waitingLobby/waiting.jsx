@@ -14,6 +14,7 @@ class Waiting extends React.Component {
     this.renderPlayers = this.renderPlayers.bind(this);
     this.renderReadyBtn = this.renderReadyBtn.bind(this);
     this.start = this.start.bind(this);
+    this.unready = this.unready.bind(this)
     this.state = {
       difficulty: this.props.room.config.difficulty
         ? this.props.room.config.difficulty
@@ -21,15 +22,26 @@ class Waiting extends React.Component {
     };
   }
 
-  leave() {
+  leave(e) {
+    e.currentTarget.className = ("waiting-buttons-selected");
     leaveRoom(this.props.currentUserId).then(
       () => (window.location.hash = "/lobby")
     );
   }
-
-  ready() {
+  
+  ready(e) {
+    // e.currentTarget.innerHTML = "Ready &#x2714";
+    // e.currentTarget.innerHTML = "Unready";
+    // e.currentTarget.onclick = null;
+    // e.currentTarget.onclick = this.unready
+    // console.dir(e.currentTarget)
     MySocket.getSocket().emit("ready");
   }
+  
+  unready() {
+    MySocket.getSocket().emit("unready");
+  }
+
 
   start() {
     MySocket.getSocket().emit("startGame", {
@@ -143,10 +155,11 @@ class Waiting extends React.Component {
   }
 
   renderReadyBtn() {
+    const room = this.props.room;
     if (
-      this.props.room &&
-      this.props.room.ready &&
-      this.props.room.players[0].id === this.props.currentUserId
+     room &&
+     room.ready &&
+     room.players[0].id === this.props.currentUserId
     ) {
       return (
         <div className="waiting-buttons" onClick={this.start}>
@@ -154,8 +167,26 @@ class Waiting extends React.Component {
         </div>
       );
     }
+
+    let currentPlayer;
+    if(room){
+      for (let i = 0; i < room.players.length; i++) {
+        if(room.players[i].id === this.props.currentUserId){
+          currentPlayer = room.players[i];
+          break;
+        }
+        
+      }
+      if(currentPlayer && currentPlayer.ready){
+        return (
+          <div className="waiting-buttons" onClick={this.unready} id="ready-waiting-button">
+            Unready
+          </div>
+        );
+      }
+    }
     return (
-      <div className="waiting-buttons" onClick={this.ready}>
+      <div className="waiting-buttons" onClick={this.ready} id="ready-waiting-button">
         Ready
       </div>
     );
