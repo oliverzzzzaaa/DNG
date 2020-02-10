@@ -117,7 +117,9 @@ class LoginForm extends React.Component {
               />
             </label>
           </div>
+          <br />
           {this.showErrors()}
+          <br />
           <div className="session-button">
             <button className="submit-button" onClick={this.handleLogin}>
               Sign In
