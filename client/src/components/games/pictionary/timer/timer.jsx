@@ -6,7 +6,7 @@ class Timer extends React.Component {
     this.tick = this.tick.bind(this);
     // this.startTimer = this.startTimer.bind(this);
     this.state = {
-      seconds: 60
+      seconds: 95
     };
     this.intervalId = null;
   }
@@ -31,7 +31,7 @@ class Timer extends React.Component {
 
   tick() {
     if (this.state.seconds !== 0) {
-      const timeLeft = 59 - Math.floor((Date.now() - this.props.start) / 1000);
+      const timeLeft = 94 - Math.floor((Date.now() - this.props.start) / 1000);
       this.setState({
         seconds: timeLeft < 0 ? 0 : timeLeft
       });

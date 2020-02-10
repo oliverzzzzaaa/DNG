@@ -17,6 +17,11 @@ function handleRoundReady(socket, lobby, params) {
   }
   if (game && game.isOver()) {
     room.reset();
+    room.players.forEach(player => {
+      if (player.connected.status === false) {
+        lobby.leaveRoom(player.id);
+      }
+    });
     setTimeout(() => lobby.emit("updateRoom", room.getInfo()), 5000);
   } else {
     if (game && !game.onRound) {
@@ -31,7 +36,7 @@ function handleRoundReady(socket, lobby, params) {
             type: "updateGameState",
             body: state
           });
-        }, 60000);
+        }, 95000);
       }
       lobby.emitRoomMessage(room.id, {
         type: "clearDrawing"
