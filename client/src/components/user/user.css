@@ -345,6 +345,6 @@
     margin-bottom: 20px;
 }
 
-.active {
+.tablinks-container .active {
     box-shadow: 0 2px 0 #000, 0 2px 0px 2px #f03755;
 }
