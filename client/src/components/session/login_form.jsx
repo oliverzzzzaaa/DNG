@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
+import Carousel from 'react-bootstrap/Carousel'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -12,35 +13,25 @@ class LoginForm extends React.Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
     this.showErrors = this.showErrors.bind(this);
-  }
+  };
 
   componentWillUnmount() {
     this.props.clearErrors();
-  }
+  };
 
   update(field) {
     return e => this.setState({ [field]: e.currentTarget.value });
-  }
+  };
 
   handleLogin(e) {
     let { email, password } = this.state;
     e.preventDefault();
     this.props.login({ email, password });
-  }
-
-  // handleDemo(e) {
-  //   this.state = {
-  //     email: "guest_user@dng.com",
-  //     password: "guestdng"
-  //   };
-  //   let guest = this.state;
-  //   e.preventDefault();
-  //   this.props.login(guest);
-  // }
+  };
 
   handleDemo(e) {
     this.props.demoUser();
-  }
+  };
 
   showErrors() {
     if (this.props.errors.message) {
@@ -53,13 +44,50 @@ class LoginForm extends React.Component {
       );
     } else {
       return null;
-    }
-  }
+    };
+  };
 
   render() {
     return (
       <div className="session-main">
-        <div className="session-image"></div>
+        <div className="session-left">
+          <h1>Pictures drew by our users!</h1>
+          <div className="carousels">
+            <Carousel>
+              <Carousel.Item>
+                <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c1.png" />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c2.png" />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c3.png" />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c4.png" />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c5.png" />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c6.png" />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c7.png" />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c8.png" />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c9.png" />
+              </Carousel.Item>
+            </Carousel>
+          </div>
+          <div className="session-button">
+            <Link to="/signup"><button className="submit-button">Interested? Sign Up Here!</button></Link>
+          </div>
+        </div>
+
         <div className="session-right">
           <div className="session-logo">
             <Link to="/">
@@ -101,7 +129,7 @@ class LoginForm extends React.Component {
         </div>
       </div>
     );
-  }
-}
+  };
+};
 
 export default withRouter(LoginForm);

@@ -117,28 +117,6 @@ function generateUser() {
 }
 
 router.post("/demouser", (req, res) => {
-  // let randID = Math.floor((Math.random() * 100000))
-  // let email = `guest${randID}@dng.com`
-  // let isValidEmail = false;
-  // while(!isValidEmail){
-  //   console.log("demo")
-  //   User.findOne({email: email}).then(user => {
-  //     console.log(user)
-  //     if(!user){
-  //       isValidEmail = true;
-  //       console.log(email);
-  //     }else{
-  //       console.log(user)
-  //       randID = Math.floor((Math.random() * 100000))
-  //       email = `guest${randID}@dng.com`
-  //     }
-  //   }).catch(err => console.log("ha"))
-  // }
-  // while (User.findOne({email: email})) {
-  //   console.log(email)
-  //   randID = Math.random() * 100000
-  //   email = `guest${randID}@dng.com`
-  // }
   generateUser().then(user => {
     const newUser = new User(user);
     bcrypt.genSalt(10, (err, salt) => {
