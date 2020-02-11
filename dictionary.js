@@ -482,4 +482,7 @@ function changeLetters(str) {
     return str.replace(/[a-zA-Z]/g, "-")
 };
 
+//Profile drawings bottom margin, draw your own profile picture
+//Add a quesiton mark button to explain how to get into the game
+
 module.exports = { easyWords, mediumWords, hardWords, changeLetters};
