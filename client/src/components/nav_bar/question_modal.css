@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
+
 .question-modal {
     position: absolute;
     border: 5px solid black;
@@ -7,18 +9,86 @@
     left: 25%;
     border-width: 3px 4px 3px 5px;
     border-radius: 95% 4% 92% 5%/4% 95% 6% 95%;
-    transform: rotate(2deg);
+    transform: rotate(-1deg);
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     background: white;
     z-index: 10;
-  }
+    font-family: 'Indie Flower', cursive;
+}
 
-  .question-header span {
-      cursor: pointer;
-  }
-  .question-header span:hover {
-      border: 3px solid blue;
-  }
+.question-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.question-header h1 {
+    font-weight: bolder;
+    font-size: 22px;
+}
+
+.close-button{
+    margin-right: -5px;
+}
+
+.close-button .leftright{
+    height: 4px;
+    width: 20px;
+    position: absolute;
+    margin-top: 14px;
+    background-color: black;
+    border-radius: 2px;
+    transform: rotate(45deg);
+    transition: all .3s ease-in;
+}
+
+.close-button:hover .leftright{
+    transform: rotate(-45deg);
+    background-color: red;
+}
+
+.close-button .rightleft{
+    height: 4px;
+    width: 20px;
+    margin-top: 14px;
+    background-color: black;
+    border-radius: 2px;
+    transform: rotate(-45deg);
+    transition: all .3s ease-in;
+}
+
+.close-button:hover .rightleft{
+    transform: rotate(45deg);
+    background-color: red;
+}
+
+.close-button label{
+    color: black;
+    font-family: Helvetica, Arial, sans-serif; 
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all .3s ease-in;
+    opacity: 0;
+}
+
+.close-button:hover label{
+    opacity: 1;
+}
+
+.close-button .close{
+    margin: 20px 0 0 0;
+}
+
+.question-header span {
+    cursor: pointer;
+}
+
+.question-footer h1 {
+    font-weight: bolder;
+    font-size: 22px;
+}
