@@ -20,7 +20,6 @@ class NarBar extends React.Component {
 
     showQuestion() {
       this.setState({questionModal: true})
-      console.log("SHOW")
     }
 
     hideQuestion() {

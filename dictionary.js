@@ -479,7 +479,8 @@ const hardWords = [
 ]
 
 function changeLetters(str) {
-    return str.replace(/[a-zA-Z]/g, "-")
+    return str.replace(/[a-zA-Z]/g, "-") // O(n)
+    // return str.split('').map(l => l === ' ' ? ' ' : '-').join(''); O(n)
 };
 
 //Profile drawings bottom margin, draw your own profile picture
