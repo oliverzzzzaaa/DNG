@@ -5,9 +5,9 @@ class QuestionModal extends React.Component {
     constructor(props) {
         super(props)
     }
-
+    
     render() {
-        return(
+        return( 
             <div className="question-modal">
                 <div className="question-header">
                     <h1>DrawIt!</h1>
