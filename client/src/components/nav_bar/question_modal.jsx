@@ -31,12 +31,13 @@ class QuestionModal extends React.Component {
             </h2>
             <br />
             <h2>Once all players are ready, the host can start the game!</h2>
-          </div>
-          <div className="question-footer">
+            <br/>
             <h2>
               You can also change your profile picture or name in the PROFILE
               section
             </h2>
+          </div>
+          <div className="question-footer">
             <br />
             <h1>Have fun!</h1>
           </div>
