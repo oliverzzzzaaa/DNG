@@ -20,9 +20,8 @@
   border: solid black;
   border-width: 3px 4px 3px 5px;
   border-radius: 4% 90% 6% 90%/90% 4% 88% 5%;
-  /* background-image: url("../../../images/balloons.jpg"); */
-  /* background-size: cover; */
   background-color: white;
+  min-height: 600px;
 }
 
 .waiting-room-ready2 {
@@ -115,5 +114,5 @@
 .delete-this-div {
   width: 100px;
   margin-left: 20px;
-  font-family: 'Indie Flower', cursive;
+  font-family: "Indie Flower", cursive;
 }

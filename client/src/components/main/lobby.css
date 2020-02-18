@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
-@import url('https://fonts.googleapis.com/css?family=Handlee&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower&display=swa");
+@import url("https://fonts.googleapis.com/css?family=Handlee&display=swap");
 
 .app-main {
   height: 100vh;
   width: 100vw;
   position: fixed;
+  min-width: 850px;
 }
 
 .lobby-scoreboard-div {
@@ -43,13 +44,15 @@
   align-items: center;
   height: 50px;
   width: 50px;
-  font-family: 'Handlee', cursive;
+  font-family: "Handlee", cursive;
 }
 
 .lobby-page {
-  background-image: url('../images/pencil-round.jpg');
+  background-image: url("../images/pencil-round.jpg");
   background-position: center;
   background-size: cover;
+  position: relative;
+  min-width: 850px;
 }
 
 .lobby {
@@ -71,7 +74,7 @@
   width: 68%;
   margin-right: 2%;
   box-shadow: 9px 11px 22px 1px rgb(51, 90, 110);
-  -webkit-box-shadow: 9px 11px 15px 1px #344955; 
+  -webkit-box-shadow: 9px 11px 15px 1px #344955;
 }
 
 .lobby .chat {
@@ -79,7 +82,7 @@
   width: 90%;
   border: solid black;
   border-width: 3px 4px 3px 5px;
-  border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+  border-radius: 95% 4% 92% 5%/4% 95% 6% 95%;
   /* background-color: rgb(252, 243, 243); */
   background-color: white;
   border-bottom: none;
@@ -102,11 +105,12 @@ input {
   outline: none;
 }
 
-.lobby .chat-input{
-  font-family: 'Handlee', cursive;
+.lobby .chat-input {
+  font-family: "Handlee", cursive;
 }
 
-.lobby .user-icon, .lobby .msg-body {
-  font-family: 'Handlee', cursive;
+.lobby .user-icon,
+.lobby .msg-body {
+  font-family: "Handlee", cursive;
   width: fit-content;
 }

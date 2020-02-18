@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
-@import url('https://fonts.googleapis.com/css?family=Handlee&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower&display=swa");
+@import url("https://fonts.googleapis.com/css?family=Handlee&display=swap");
 
 .chat {
   position: relative;
@@ -9,14 +9,15 @@
   flex-direction: column;
   border: solid black;
   border-width: 3px 4px 3px 5px;
-  border-radius:95% 4% 10% 5%/4% 95% 4% 95%;
+  border-radius: 95% 4% 10% 5%/4% 95% 4% 95%;
   transform: rotate(2deg);
   padding: 10px;
   /* background-color: rgb(252, 243, 243); */
   background-color: white;
   box-shadow: 9px 11px 22px 1px rgb(51, 90, 110);
-  -webkit-box-shadow: 9px 11px 15px 1px #344955; 
-  font-family: 'Indie Flower', cursive;
+  -webkit-box-shadow: 9px 11px 15px 1px #344955;
+  font-family: "Indie Flower", cursive;
+  min-width: 200px;
 }
 
 .msg-container {
@@ -63,9 +64,9 @@
   box-sizing: border-box;
   height: 100%;
   font-size: 16px;
-  border: solid black; 
+  border: solid black;
   border-width: 3px 4px 3px 5px;
-  border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+  border-radius: 95% 4% 92% 5%/4% 95% 6% 95%;
   /* -webkit-box-shadow: 9px 11px 15px 1px #4985a8;  */
 }
 
