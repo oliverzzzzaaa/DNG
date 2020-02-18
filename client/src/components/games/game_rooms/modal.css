@@ -58,3 +58,7 @@
     background-color: white !important;
     color: black !important;
 }
+
+.btn:hover {
+    background-color: lightgray !important;
+}
