@@ -1,12 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
 
 .modal-content {
-    position: absolute;
     border: 5px solid black !important;
-    top: 20%;
-    height: 50%;
-    width: 50%;
-    left: 25%;
     border-width: 3px 4px 3px 5px !important;
     border-radius: 95% 4% 92% 5%/4% 95% 6% 95% !important;
     transform: rotate(3deg);
@@ -17,10 +12,8 @@
     background: white;
     z-index: 10;
     font-family: 'Indie Flower', cursive;
-}
-
-.modal-content {
-    border: none;
+    margin: 25px;
+    overflow: scroll;   
 }
 
 .modal-body input {
