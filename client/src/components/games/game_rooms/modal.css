@@ -1,60 +1,55 @@
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower&display=swa");
 
 .modal-content {
-    position: absolute;
-    border: 5px solid black !important;
-    top: 20%;
-    height: 50%;
-    width: 50%;
-    left: 25%;
-    border-width: 3px 4px 3px 5px !important;
-    border-radius: 95% 4% 92% 5%/4% 95% 6% 95% !important;
-    transform: rotate(3deg);
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-evenly !important;
-    align-items: center !important;
-    background: white;
-    z-index: 10;
-    font-family: 'Indie Flower', cursive;
+  border: 5px solid black !important;
+  border-width: 3px 4px 3px 5px !important;
+  border-radius: 95% 4% 92% 5%/4% 95% 6% 95% !important;
+  transform: rotate(3deg);
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-evenly !important;
+  align-items: center !important;
+  background: white;
+  z-index: 10;
+  font-family: "Indie Flower", cursive;
 }
 
 .modal-content {
-    border: none;
+  border: none;
 }
 
 .modal-body input {
-    width: 100%;
-    padding: 0px 10px;
-    margin: 0;
-    box-sizing: border-box;
-    height: 100%;
-    font-size: 16px;
-    border: solid black; 
-    border-width: 3px 4px 3px 5px;
-    border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+  width: 100%;
+  padding: 0px 10px;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+  font-size: 16px;
+  border: solid black;
+  border-width: 3px 4px 3px 5px;
+  border-radius: 95% 4% 92% 5%/4% 95% 6% 95%;
 }
 
 .modal-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 90%;
-    border: none !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  border: none !important;
 }
 
 .modal-footer {
-    border: none !important;
+  border: none !important;
 }
 
 .btn {
-    display: flex !important;
-    border: solid black !important;
-    border-width: 1px 1px 3px 3px !important;
-    border-radius:4% 95% 6% 95%/95% 4% 92% 5% !important;
-    transform: rotate(-2deg) !important;
-    margin-right: 10px !important;
-    cursor: pointer;
-    background-color: white !important;
-    color: black !important;
+  display: flex !important;
+  border: solid black !important;
+  border-width: 1px 1px 3px 3px !important;
+  border-radius: 4% 95% 6% 95%/95% 4% 92% 5% !important;
+  transform: rotate(-2deg) !important;
+  margin-right: 10px !important;
+  cursor: pointer;
+  background-color: white !important;
+  color: black !important;
 }
