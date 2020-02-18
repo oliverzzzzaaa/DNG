@@ -46,9 +46,6 @@
   font-family: 'Handlee', cursive;
 }
 
-
-
-
 .lobby-page {
   background-image: url('../images/pencil-round.jpg');
   background-position: center;
@@ -59,7 +56,6 @@
   display: flex;
   padding: 2%;
   height: 100vh;
-  
   flex-direction: row;
 }
 
