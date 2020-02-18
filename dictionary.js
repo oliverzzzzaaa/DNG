@@ -479,7 +479,11 @@ const hardWords = [
 ]
 
 function changeLetters(str) {
-    return str.replace(/[a-zA-Z]/g, "-")
+    return str.replace(/[a-zA-Z]/g, "-") // O(n)
+    // return str.split('').map(l => l === ' ' ? ' ' : '-').join(''); O(n)
 };
+
+//Profile drawings bottom margin, draw your own profile picture
+//Add a quesiton mark button to explain how to get into the game
 
 module.exports = { easyWords, mediumWords, hardWords, changeLetters};

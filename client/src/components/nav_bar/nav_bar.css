@@ -5,9 +5,6 @@
     justify-content: flex-end;
     padding-right: 5%;
     padding-top: 2%;
-    /* height: 20vh; */
-    /* flex-direction: row; */
-    /* justify-content: space-between; */
 }
 
 .nav-bar-container {
@@ -54,7 +51,25 @@
 
 .nav-bar-main .navbar-logo img {
     display: flex;
-    /* width: 100px; */
-    /* margin: 0px; */
     height: 100px;
+}
+
+.question-modal-button {
+    border: 3px solid black;
+    width: 6%;
+    height: 40%;
+    border-radius: 100%;
+    cursor: pointer;;
+    font-family: 'Indie Flower', cursive;
+    color: black;
+    font: bolder;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding-top: 1.5%;
+    align-self: center;
+}
+
+.question-modal-button:hover {
+    background-color: lightgray;
 }
