@@ -1,5 +1,6 @@
 import React from 'react'
 import ScoreBoard from '../pictionary/scoreboard/scoreboard'
+import './end_game.css'
 
 class EndGame extends React.Component {
     constructor(props) {
@@ -15,3 +16,5 @@ class EndGame extends React.Component {
         )
     }
 }
+
+export default EndGame;

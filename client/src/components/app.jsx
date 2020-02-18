@@ -16,6 +16,7 @@ const App = () => (
       <ProtectedRoute exact path="/lobby" component={LobbyContainer} />
       <ProtectedRoute exact path="/room/:id" component={RoomContainer} />
       <ProtectedRoute exact path="/users/:userId" component={UserContainer} />
+
     </Switch>
   </div>
 );
