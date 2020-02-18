@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
+import './modal.css';
 
 export default class JoinModal extends React.Component {
   constructor(props) {
