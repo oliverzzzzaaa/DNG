@@ -3,6 +3,8 @@ import "./user.css";
 import ProfileIconEditor from "./profileIconEditor";
 import { Link } from "react-router-dom";
 
+const COMINGSOON = "Coming soon";
+
 class User extends React.Component {
   constructor(props) {
     super(props);
@@ -80,7 +82,7 @@ class User extends React.Component {
       newState.image = data.image;
     }
     this.props.updateProfile(this.props.userId, data);
-    this.props.newName(data.name)
+    this.props.newName(data.name);
   }
 
   render() {
@@ -131,46 +133,31 @@ class User extends React.Component {
           <div className="tabcontent-container">
             <div id="games" className="tabcontent">
               <div className="game-history">
-                <span>Game1 1st YIN JOHNSON OLIVER</span>
+                <span>{COMINGSOON}</span>
               </div>
               <div className="game-history">
-                <span>Game2 3rd JOHNSON YIN OLIVER</span>
+                <span>{COMINGSOON}</span>
               </div>
               <div className="game-history">
-                <span>Game3 4th OLIVER JOHNSON YIN</span>
+                <span>{COMINGSOON}</span>
               </div>
               <div className="game-history">
-                <span>Game4 4th OLIVER JOHNSON YIN</span>
+                <span>{COMINGSOON}</span>
               </div>
               <div className="game-history">
-                <span>Game5 4th OLIVER JOHNSON YIN</span>
-              </div>
-              <div className="game-history">
-                <span>Game6 4th OLIVER JOHNSON YIN</span>
-              </div>
-              <div className="game-history">
-                <span>Game7 4th OLIVER JOHNSON YIN</span>
-              </div>
-              <div className="game-history">
-                <span>Game8 4th OLIVER JOHNSON YIN</span>
-              </div>
-              <div className="game-history">
-                <span>Game8 4th OLIVER JOHNSON YIN</span>
-              </div>
-              <div className="game-history">
-                <span>Game8 4th OLIVER JOHNSON YIN</span>
+                <span>{COMINGSOON}</span>
               </div>
             </div>
 
             <div id="drawings" className="tabcontent">
               <div className="history-pics">
-                <span>Drawing1</span>
+                <span>{COMINGSOON}</span>
               </div>
               <div className="history-pics">
-                <span>Drawing2</span>
+                <span>{COMINGSOON}</span>
               </div>
               <div className="history-pics">
-                <span>Drawing3</span>
+                <span>{COMINGSOON}</span>
               </div>
             </div>
           </div>
