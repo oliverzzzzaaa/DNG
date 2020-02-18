@@ -15,8 +15,9 @@
   align-items: center;
   background: white;
   z-index: 10;
+  padding: 10px;
   font-family: "Indie Flower", cursive;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
 .question-modal > div {
@@ -27,12 +28,12 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 90%;
+  /* width: 90%; */
 }
 
 .question-header h1 {
   font-weight: bolder;
-  font-size: 22px;
+  font-size: 24px;
 }
 
 .close-button {
@@ -94,5 +95,9 @@
 
 .question-footer h1 {
   font-weight: bolder;
-  font-size: 22px;
+  font-size: 24px;
+}
+
+.question-modal h2 {
+  font-size: 18px;
 }

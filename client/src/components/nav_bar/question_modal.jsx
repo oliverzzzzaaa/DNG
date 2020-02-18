@@ -9,7 +9,6 @@ class QuestionModal extends React.Component {
   render() {
     return (
       <div className="question-modal">
-        <div>
           <div className="question-header">
             <h1>DrawIt!</h1>
             <span onClick={this.props.hideQuestion} className="close-button">
@@ -41,7 +40,6 @@ class QuestionModal extends React.Component {
             <br />
             <h1>Have fun!</h1>
           </div>
-        </div>
       </div>
     );
   }
