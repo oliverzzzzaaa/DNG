@@ -20,7 +20,6 @@
 .instruction-header {
     display: flex;
     flex-direction: row;
-    /* margin-top: 5%; */
     margin-bottom: 5%;  
     width: 90%;
     justify-content: center;
