@@ -1,10 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Indie+Flower&display=swa");
 
 .question-modal {
+  position: absolute;
   border: 5px solid black;
+  display: flex;
+  top: 20%;
+  height: 50%;
+  width: 50%;
+  left: 25%;
   border-width: 3px 4px 3px 5px;
   border-radius: 95% 4% 92% 5%/4% 95% 6% 95%;
-  transform: rotate(-2deg);
+  transform: rotate(-1deg);
   flex-direction: column;
   align-items: center;
   background: white;
