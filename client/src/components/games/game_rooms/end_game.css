@@ -1,0 +1,10 @@
+.end-game-div {
+    position: absolute;
+    height: 80%;
+    width: 80%;
+    top: 10%;
+    left: 10%;
+    background-color: white;
+    z-index: 5;
+    border: 1px solid black;
+}
