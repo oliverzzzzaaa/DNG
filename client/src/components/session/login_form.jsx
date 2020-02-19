@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
-import Carousel from 'react-bootstrap/Carousel'
+import Carousel from "react-bootstrap/Carousel";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -13,25 +13,25 @@ class LoginForm extends React.Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
     this.showErrors = this.showErrors.bind(this);
-  };
+  }
 
   componentWillUnmount() {
     this.props.clearErrors();
-  };
+  }
 
   update(field) {
     return e => this.setState({ [field]: e.currentTarget.value });
-  };
+  }
 
   handleLogin(e) {
     let { email, password } = this.state;
     e.preventDefault();
     this.props.login({ email, password });
-  };
+  }
 
   handleDemo(e) {
     this.props.demoUser();
-  };
+  }
 
   showErrors() {
     if (this.props.errors.message) {
@@ -44,8 +44,8 @@ class LoginForm extends React.Component {
       );
     } else {
       return null;
-    };
-  };
+    }
+  }
 
   render() {
     return (
@@ -55,7 +55,7 @@ class LoginForm extends React.Component {
           <div className="carousels">
             <Carousel>
               <Carousel.Item>
-                <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c1.png" />
+                <img src="https://pictionary-images.s3-us-west-1.amazonaws.com/userId3.png" />
               </Carousel.Item>
               <Carousel.Item>
                 <img src="https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/c2.png" />
@@ -84,7 +84,11 @@ class LoginForm extends React.Component {
             </Carousel>
           </div>
           <div className="session-button">
-            <Link to="/signup"><button className="submit-button">Interested? Sign Up Here!</button></Link>
+            <Link to="/signup">
+              <button className="submit-button">
+                Interested? Sign Up Here!
+              </button>
+            </Link>
           </div>
         </div>
 
@@ -131,7 +135,7 @@ class LoginForm extends React.Component {
         </div>
       </div>
     );
-  };
-};
+  }
+}
 
 export default withRouter(LoginForm);

@@ -5,13 +5,27 @@ const bcrypt = require("bcryptjs");
 const User = require("../../models/User");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
-const defaultImage = require("../../utils/defaultImage");
-const keys = require("../../config/keys_dev");
-// const keys = require("../../config/keys");
+const uploadImage = require("../../utils/s3Api");
+let keys;
+
+if (process.env.NODE_ENV === "production") {
+  keys = require("../../config/keys_prod");
+} else {
+  keys = require("../../config/keys");
+}
 
 function signJwt(user, response) {
   const payload = { id: user.id, name: user.username };
   jwt.sign(payload, keys.secretOrKey, { expiresIn: 36000 }, response);
+}
+
+function saveImage(userId, imageDataUrl) {
+  const imageInfo = { image: imageDataUrl };
+  User.findOneAndUpdate({ _id: userId }, imageInfo, {
+    upsert: true,
+    new: true,
+    runValidators: true
+  }).then(() => console.log("update image success"));
 }
 
 router.post("/profile/:id", (req, res) => {
@@ -36,11 +50,15 @@ router.post(
   "/update/:id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    const newInfo = { username: req.body.username };
     if (req.body.image) {
-      newInfo.image = req.body.image;
+      uploadImage(req.params.id, req.body.image, saveImage);
     }
-    User.findOneAndUpdate({ _id: req.params.id }, newInfo)
+    const newInfo = { username: req.body.username };
+    User.findOneAndUpdate({ _id: req.params.id }, newInfo, {
+      upsert: true,
+      new: true,
+      runValidators: true
+    })
       .then(user => {
         if (!user) {
           errors.user = "User doesn't exist";
@@ -50,7 +68,6 @@ router.post(
             Object.assign(
               {
                 id: user.id,
-                username: user.username,
                 email: user.email,
                 image: user.image
               },
@@ -110,7 +127,8 @@ function generateUser() {
         email: email,
         username: `guest${randID}`,
         password: "guestdng",
-        image: defaultImage
+        image:
+          "https://pictionary-images.s3-us-west-1.amazonaws.com/userId3.png"
       };
     })
     .catch(err => console.log(err));
@@ -160,18 +178,24 @@ router.post("/signup", (req, res) => {
       });
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
-          if (err) throw err;
+          if (err) {
+            errors.internal =
+              "Sign up is not available now, Please try later!!";
+            res.status(404).json(errors);
+            throw err;
+          }
           newUser.password = hash;
           newUser
             .save()
-            .then(user =>
+            .then(user => {
               signJwt(user, (err, token) => {
                 res.json({
                   success: true,
                   token: "Bearer " + token
                 });
-              })
-            )
+              });
+              uploadImage(user._id.toString(), req.body.image, saveImage);
+            })
             .catch(err => {
               errors.internal =
                 "Sign up is not available now, Please try later!";

@@ -9,8 +9,8 @@ export default class ProfileIconEditor extends React.Component {
       strokeColor: "black",
       strokeWidth: 3,
       changeImage: false,
-      name: this.props.name, // name: this.props.name,
-      image: this.props.image // image: this.props.image
+      name: this.props.name,
+      image: this.props.image
     };
     this.onMouseUp = this.onMouseUp.bind(this);
     this.onMouseDown = this.onMouseDown.bind(this);
@@ -32,6 +32,7 @@ export default class ProfileIconEditor extends React.Component {
     tool.onMouseDrag = e => this.onMouseDrag(e);
     tool.onMouseUp = e => this.onMouseUp(e);
     const raster = new this.paper.Raster({
+      crossOrigin: "*",
       source: this.state.image,
       position: this.paper.view.center
     });
@@ -138,7 +139,11 @@ export default class ProfileIconEditor extends React.Component {
             <button onClick={this.clear}>clear picture</button>
 
             <div id="profile-checkbox">
-              <input type="checkbox" onChange={this.setImage} className="confirm-profile-checkbox"/>
+              <input
+                type="checkbox"
+                onChange={this.setImage}
+                className="confirm-profile-checkbox"
+              />
               <label>check to confirm picture update</label>
             </div>
           </div>

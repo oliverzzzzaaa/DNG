@@ -23,8 +23,8 @@ export const fetchUpdatedCurrentUser = id => dispatch =>
   APIUtil.fetchUser(id).then(user => dispatch(receiveCurrentUser(user.data)));
 
 export const updateProfile = (id, userInfo) => dispatch =>
-  APIUtil.updateProfile(id, userInfo).then(user => {
-    dispatch(receiveUser(user.data));
-    dispatch(receiveNewName(user.data.username))
-  }
-  );
+  APIUtil.updateProfile(id, userInfo).then(res => {
+    const newUser = Object.assign(res.data, userInfo);
+    dispatch(receiveUser(newUser));
+    dispatch(receiveNewName(res.data.username));
+  });
