@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower&display=swa");
 
 .modal-content {
     border: 5px solid black !important;
@@ -15,27 +15,27 @@
 }
 
 .modal-body input {
-    width: 100%;
-    padding: 0px 10px;
-    margin: 0;
-    box-sizing: border-box;
-    height: 100%;
-    font-size: 16px;
-    border: solid black; 
-    border-width: 3px 4px 3px 5px;
-    border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+  width: 100%;
+  padding: 0px 10px;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+  font-size: 16px;
+  border: solid black;
+  border-width: 3px 4px 3px 5px;
+  border-radius: 95% 4% 92% 5%/4% 95% 6% 95%;
 }
 
 .modal-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 90%;
-    border: none !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  border: none !important;
 }
 
 .modal-footer {
-    border: none !important;
+  border: none !important;
 }
 
 .btn {

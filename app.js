@@ -3,7 +3,6 @@ const app = express();
 var http = require("http").createServer(app);
 const io = require("socket.io")(http);
 const mongoose = require("mongoose");
-const db = require("./config/keys").mongoURI;
 const users = require("./routes/api/users");
 const rooms = require("./routes/api/rooms");
 const bodyParser = require("body-parser");
@@ -12,18 +11,25 @@ const port = process.env.PORT || 5000;
 const path = require("path");
 const handleGameAction = require("./games/gameHandler");
 const lobby = require("./utils/lobby");
-
-mongoose
-  .connect(db, { useNewUrlParser: true })
-  .then(() => console.log("Connected to MongoDB successfully"))
-  .catch(err => console.log(err));
-
+let db;
 if (process.env.NODE_ENV === "production") {
+  db = require("./config/keys_prod").mongoURI;
   app.use(express.static("client/build"));
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
+} else {
+  db = require("./config/keys").mongoURI;
 }
+
+mongoose
+  .connect(db, {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+  })
+  .then(() => console.log("Connected to MongoDB successfully"))
+  .catch(err => console.log(err));
 
 app.use(passport.initialize());
 require("./config/passport")(passport);
@@ -78,7 +84,7 @@ io.on("connection", socket => {
         body: room.getInfo()
       });
     }
-  })
+  });
 
   // socket.on('difficulty', () => {
   //   const room = lobby.getRoomBySocket(socket);
