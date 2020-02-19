@@ -3,6 +3,7 @@
 .question-modal {
   position: absolute;
   border: 5px solid black;
+  display: flex;
   top: 20%;
   height: 50%;
   width: 50%;
@@ -11,16 +12,16 @@
   border-radius: 95% 4% 92% 5%/4% 95% 6% 95%;
   transform: rotate(-1deg);
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
   background: white;
   z-index: 10;
+  padding: 10px;
   font-family: "Indie Flower", cursive;
   overflow: scroll;
 }
 
 .question-modal > div {
-  margin: 25px;
+  margin: 3%;
 }
 
 .question-header {
@@ -28,11 +29,13 @@
   flex-direction: row;
   justify-content: space-between;
   width: 90%;
+  text-align: center;
+  margin: auto;
 }
 
 .question-header h1 {
   font-weight: bolder;
-  font-size: 22px;
+  font-size: 24px;
 }
 
 .close-button {
@@ -94,5 +97,9 @@
 
 .question-footer h1 {
   font-weight: bolder;
-  font-size: 22px;
+  font-size: 24px;
+}
+
+.question-modal h2 {
+  font-size: 18px;
 }
