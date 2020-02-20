@@ -108,7 +108,7 @@
   margin: 0px;
 }
 
-input {
+.chat input {
   outline: none;
   min-height: 30px;
 }
