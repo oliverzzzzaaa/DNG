@@ -5,18 +5,17 @@
   border: solid black;
   border-width: 3px 4px 3px 5px;
   border-radius: 95% 4% 10% 5%/4% 95% 4% 95%;
-  transform: rotate(2deg);
+  transform: rotate(1deg);
   padding: 10px;
   background-color: white;
   box-shadow: 9px 11px 22px 1px rgb(51, 90, 110);
   -webkit-box-shadow: 9px 11px 15px 1px #344955;
   font-family: "Indie Flower", cursive;
-  min-width: 200px;
+  width: 200px;
   height: 600px;
 }
 
 .msg-container {
-  width: auto;
   padding: 0px 10px;
   margin-top: 15px;
   overflow-y: auto;
