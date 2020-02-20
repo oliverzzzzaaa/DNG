@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
-@import url('https://fonts.googleapis.com/css?family=Handlee&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower&display=swa");
+@import url("https://fonts.googleapis.com/css?family=Handlee&display=swap");
 
 .game-or-waiting-div {
   width: 100%;
@@ -37,63 +37,61 @@
   justify-content: space-between;
   margin-bottom: 2%;
   height: 100%;
-  width: 100%;  
+  width: 100%;
 }
 
 .waiting-and-chat {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .waiting-div .chat {
   border: solid black;
   border-width: 3px 4px 3px 5px;
-  border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
-  transform: rotate(2deg);
   border-bottom: none;
   background: none;
   background-color: white;
   height: 90vh;
   width: auto;
   min-height: 600px;
-  }
-  
-  .waiting-div .msg-container {
-    height: 95%;
-    padding: 5px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
 }
-  
-  .waiting-div .msg-list {
-    margin: 20px;
-    padding: 0px;
-    height: 95%;
-    margin: 0px;
-    justify-self: flex-end;
-  }
-  
-  input {
-    outline: none;
-  }
-  
-  .waiting-div .chat-input-div {
-    border-width: 3px 4px 3px 5px;
-    border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
-    background: white;
-  }
-  
-  .waiting-div .chat-input{
-    font-family: 'Handlee', cursive;
-  }
-  
-  .waiting-div .user-icon, .waiting-div .msg-body {
-    font-family: 'Handlee', cursive;
-    width: fit-content;
-  }
 
-  .waiting-div .input {
-      background: inherit;
-  }
+.waiting-div .msg-container {
+  height: 92%;
+  padding: 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.waiting-div .msg-list {
+  margin: 20px;
+  padding: 0px;
+  height: 95%;
+  margin: 0px;
+  justify-self: flex-end;
+}
+
+input {
+  outline: none;
+}
+
+.waiting-div .chat-input-div {
+  border-width: 3px 4px 3px 5px;
+  border-radius: 95% 4% 92% 5%/4% 95% 6% 95%;
+  background: white;
+}
+
+.waiting-div .chat-input {
+  font-family: "Handlee", cursive;
+}
+
+.waiting-div .user-icon,
+.waiting-div .msg-body {
+  font-family: "Handlee", cursive;
+  width: fit-content;
+}
+
+.waiting-div .input {
+  background: inherit;
+}
