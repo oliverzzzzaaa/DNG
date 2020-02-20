@@ -3,6 +3,7 @@ import paper from "paper";
 import "./canvas.css";
 import MySocket from "../../../socket";
 import Instructions from "../game_rooms/instructions_modal";
+import ColorPicker from "../tools/colorPicker";
 
 export default class CanvasContainer extends React.Component {
   constructor(props) {
@@ -29,7 +30,7 @@ export default class CanvasContainer extends React.Component {
     this.showInstructions = this.showInstructions.bind(this);
     this.hideInstructions = this.hideInstructions.bind(this);
     this.usePen = this.usePen.bind(this);
-    this.renderEraserButton = this.renderEraserButton.bind(this)
+    this.renderEraserButton = this.renderEraserButton.bind(this);
   }
 
   componentDidMount() {
@@ -80,9 +81,9 @@ export default class CanvasContainer extends React.Component {
     });
   }
 
-  setColor(e) {
+  setColor(color) {
     this.setState({
-      strokeColor: e.currentTarget.value
+      strokeColor: color
     });
   }
 
@@ -161,22 +162,16 @@ export default class CanvasContainer extends React.Component {
   renderEraserButton() {
     if (this.state.isEraser) {
       return (
-        <button
-            onClick={this.usePen}
-            className={`canvas-bottom-button`}
-          >
-            Pen
-          </button>
-      )
+        <button onClick={this.usePen} className={`canvas-bottom-button`}>
+          Pen
+        </button>
+      );
     } else {
-      return(
-        <button
-              onClick={this.useEraser}
-              className={`canvas-bottom-button`}
-            >
-              Eraser
-            </button>
-      )
+      return (
+        <button onClick={this.useEraser} className={`canvas-bottom-button`}>
+          Eraser
+        </button>
+      );
     }
   }
 
@@ -184,31 +179,10 @@ export default class CanvasContainer extends React.Component {
     if (this.props.isDrawer) {
       return (
         <div className="color-picker-btn">
-          <input
-            className="canvas-bottom-button"
-            type="color"
-            value={this.state.strokeColor}
-            onChange={this.setColor}
-          />
+          <ColorPicker selectColor={this.setColor} />
+
           <br />
           {this.renderEraserButton()}
-          {/* <button
-            onClick={this.usePen}
-            className={`canvas-bottom-button ${
-              !this.state.isEraser ? "selected" : ""
-            }`}
-          >
-            Pen
-          </button>
-          <br />
-          <button
-            onClick={this.useEraser}
-            className={`canvas-bottom-button ${
-              this.state.isEraser ? "selected" : ""
-            }`}
-          >
-            Eraser
-          </button> */}
           <br />
           <button
             onClick={() => this.setStrokeWidth(2)}

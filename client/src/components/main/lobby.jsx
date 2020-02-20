@@ -3,8 +3,7 @@ import "./lobby.css";
 import Chat from "../games/chat/chat";
 import MySocket from "../../socket";
 import GameRooms from "../games/game_rooms/game_rooms";
-import NavBar from '../nav_bar/nav_bar_container';
-import { Link } from 'react-router-dom';
+import NavBar from "../nav_bar/nav_bar_container";
 
 class Lobby extends React.Component {
   constructor(props) {

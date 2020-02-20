@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swa');
-@import url('https://fonts.googleapis.com/css?family=Handlee&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower&display=swa");
+@import url("https://fonts.googleapis.com/css?family=Handlee&display=swap");
 
 .canvas-page {
   width: 800px;
@@ -11,7 +11,7 @@
 .drawer-viewer {
   position: absolute;
   top: 10px;
-  font-family: 'Indie Flower', cursive;
+  font-family: "Indie Flower", cursive;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 25px;
@@ -29,7 +29,7 @@
   height: 600px !important;
 }
 
-.scoreboard-chat{
+.scoreboard-chat {
   display: block;
   flex-direction: column;
   width: 25vw;
@@ -45,7 +45,7 @@
   /* border-radius:95% 4% 97% 5%/4% 94% 3% 95%; */
   border: solid black;
   /* box-shadow: 9px 11px 22px 1px rgb(51, 90, 110); */
-  -webkit-box-shadow: 9px 11px 15px 1px #344955; 
+  -webkit-box-shadow: 9px 11px 15px 1px #344955;
   /* margin: 5% 0 0 5%; */
   flex-direction: column;
 }
@@ -58,39 +58,37 @@
 }
 
 .canvas-button {
-	box-shadow: 3px 4px 0px 0px #bdbdbd;
-	background:linear-gradient(to bottom, #ffffff 5%, #FF80F4 100%);
-	background-color:#ffffff;
-	border-radius: 20px;
-	border:1px solid #0a0a0a;
-	color:#000000;
-	font-family: 'Indie Flower', cursive;
+  box-shadow: 3px 4px 0px 0px #bdbdbd;
+  background: linear-gradient(to bottom, #ffffff 5%, #ff80f4 100%);
+  background-color: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #0a0a0a;
+  color: #000000;
+  font-family: "Indie Flower", cursive;
   font-weight: bold;
-	text-decoration:none;
+  text-decoration: none;
   margin-right: 5px;
 }
 
 .color-picker-btn {
   display: flex;
   position: absolute;
-  justify-content: space-evenly;
-  flex-direction: column;
   min-width: 150px;
-  top: 150px;
-  left: 10%;
+  top: 50px;
+  left: 90px;
 }
 
 .canvas-bottom-button {
   box-shadow: 3px 4px 0px 0px #bdbdbd;
-	background:linear-gradient(to bottom, #ffffff 5%, #FF80F4 100%);
-	background-color:#ffffff;
-	border-radius: 20px;
-	border:1px solid #0a0a0a;
-	color:#000000;
-	font-family: 'Indie Flower', cursive;
+  background: linear-gradient(to bottom, #ffffff 5%, #ff80f4 100%);
+  background-color: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #0a0a0a;
+  color: #000000;
+  font-family: "Indie Flower", cursive;
   font-size: 12px;
   font-weight: bold;
-	text-decoration:none;
+  text-decoration: none;
   margin-right: 5px;
   align-self: center;
 }
@@ -99,22 +97,22 @@
   border-radius: 35px;
   background-color: white;
   border-width: 5px 3px 3px 5px;
-  border-radius:95% 4% 97% 5%/4% 94% 3% 95%;
+  border-radius: 95% 4% 97% 5%/4% 94% 3% 95%;
   border: solid rgb(86, 207, 255);
   box-shadow: 9px 11px 22px 1px rgb(51, 90, 110);
-  -webkit-box-shadow: 9px 11px 15px 1px #344955; 
+  -webkit-box-shadow: 9px 11px 15px 1px #344955;
 }
 
 .target-word {
   align-self: center;
   padding-bottom: 10px;
   font-size: 24px;
-  font-family: 'Indie Flower', cursive;
+  font-family: "Indie Flower", cursive;
   border-radius: 35px;
   background-color: white;
   border-width: 5px 3px 3px 5px;
   /* border-radius:10% 4% 97% 5%/4% 94% 3% 95%; */
-  border-radius:4% 95% 6% 95%/95% 4% 92% 5%;
+  border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
   border: solid black;
   /* box-shadow: 9px 11px 22px 1px rgb(51, 90, 110); */
   /* -webkit-box-shadow: 9px 11px 15px 1px #344955;  */
@@ -134,19 +132,19 @@
   border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
   border: solid black;
   background: white;
-  font-family: 'Indie Flower', cursive;
+  font-family: "Indie Flower", cursive;
   font-size: 25px;
   display: flex;
   height: 50px;
   width: 100px;
   justify-content: center;
   align-items: center;
-  -webkit-box-shadow: 9px 11px 15px 1px #344955; 
+  -webkit-box-shadow: 9px 11px 15px 1px #344955;
   cursor: pointer;
 }
 
 .observer-leave:hover {
-  -webkit-box-shadow: 0 2px 0 2px #f03755, 9px 11px 15px 1px #344955; 
+  -webkit-box-shadow: 0 2px 0 2px #f03755, 9px 11px 15px 1px #344955;
 }
 
 .observer-leave:active {
@@ -156,8 +154,8 @@
 }
 
 .instructions-button {
-  font-family: 'Indie Flower', cursive;
-  background: #FFF;
+  font-family: "Indie Flower", cursive;
+  background: #fff;
   display: block;
   padding: 5px 15px;
   border-radius: 5px;
@@ -171,5 +169,5 @@
 }
 
 .instructions-button:hover {
-  -webkit-box-shadow: 0 2px 0 2px #f03755, 9px 11px 15px 1px #344955; 
+  -webkit-box-shadow: 0 2px 0 2px #f03755, 9px 11px 15px 1px #344955;
 }
