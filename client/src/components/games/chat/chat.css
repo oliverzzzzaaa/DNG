@@ -19,7 +19,7 @@
   width: auto;
   padding: 0px 10px;
   margin-top: 15px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .chat .msg-container {
