@@ -1,40 +1,39 @@
 @import url("https://fonts.googleapis.com/css?family=Patrick+Hand");
 
 .user-profile-page {
-    display: flex;
-    height: 700px;
-    padding: 5% 5% 5% 0;
+  display: flex;
+  height: 700px;
+  padding: 5% 5% 5% 0;
 }
 
 .user-profile-container {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .user-profile-icon {
-    display: flex;
-    height: 33%;
-    width: 33%;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  height: 200px;
+  width: 200px;
+  justify-content: center;
+  align-items: center;
 }
 
 .user-profile-image {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .user-profile-username {
-    font-family: 'Handlee', cursive;
-    font-size: 50px;
+  font-family: "Handlee", cursive;
+  font-size: 50px;
 }
 
 .user-profile-edit {
-    width: 30%;
+  width: 30%;
 }
 
 /* .user-profile-edit-button {
@@ -42,158 +41,162 @@
 } */
 
 .tab {
-    width: 50%;
-    /* background-color: #f1f1f1; */
+  width: 50%;
+  /* background-color: #f1f1f1; */
 }
 
 .tablinks-container {
-    display: flex;
-    justify-content: space-around;
-    height: 7%;
+  display: flex;
+  justify-content: space-around;
+  height: 7%;
 }
 
-.tablinks, .user-profile-edit-button {
-    background: #FFF;
-    display: block;
-    padding: 5px 15px;
-    border-radius: 5px;
-    border: 2px solid #000;
+.tablinks,
+.user-profile-edit-button {
+  background: #fff;
+  display: block;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 2px solid #000;
 }
 
-.tablinks-container a:hover, .user-profile-edit:hover {
-    box-shadow: 0 2px 0 #000, 0 2px 0px 2px #f03755;
+.tablinks-container a:hover,
+.user-profile-edit:hover {
+  box-shadow: 0 2px 0 #000, 0 2px 0px 2px #f03755;
 }
 
 .tablinks-container-selected a {
-    box-shadow: 0 2px 0 #000, 0 2px 0px 2px #f03755;
+  box-shadow: 0 2px 0 #000, 0 2px 0px 2px #f03755;
 }
 
-.tablinks-container a:active, .user-profile-edit:active {
-    top: 4px;
-    padding-bottom: 0px;
-    box-shadow: 0 1px 0 #000000;
+.tablinks-container a:active,
+.user-profile-edit:active {
+  top: 4px;
+  padding-bottom: 0px;
+  box-shadow: 0 1px 0 #000000;
 }
 
-.tablinks-container a, .user-profile-edit {
-    cursor: pointer;
-    /* position: relative; */
-    float: left;
-    font: normal 22px/25px "Patrick Hand", sans-serif;
-    margin-right: 10px;
-    text-transform: uppercase;
-    color: #000;
-    text-decoration: none;
-    padding-bottom: 3px;
-    border-radius: 5px;
-    box-shadow: 0 2px 0 #000;
-    transition: padding 0.1s, box-shadow 0.1s, top 0.1s;
-    background-image: url('data:image/gif;base64,R0lGODlhBAAEAIABAAAAAAAAACH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5NUY1OENCRDdDMDYxMUUyOTEzMEE1MEM5QzM0NDVBMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5NUY1OENCRTdDMDYxMUUyOTEzMEE1MEM5QzM0NDVBMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjk1RjU4Q0JCN0MwNjExRTI5MTMwQTUwQzlDMzQ0NUEzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjk1RjU4Q0JDN0MwNjExRTI5MTMwQTUwQzlDMzQ0NUEzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAQAAAQAsAAAAAAQABAAAAgYEEpdoeQUAOw==');
+.tablinks-container a,
+.user-profile-edit {
+  cursor: pointer;
+  /* position: relative; */
+  float: left;
+  font: normal 22px/25px "Patrick Hand", sans-serif;
+  margin-right: 10px;
+  text-transform: uppercase;
+  color: #000;
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 0 #000;
+  transition: padding 0.1s, box-shadow 0.1s, top 0.1s;
+  background-image: url("data:image/gif;base64,R0lGODlhBAAEAIABAAAAAAAAACH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5NUY1OENCRDdDMDYxMUUyOTEzMEE1MEM5QzM0NDVBMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5NUY1OENCRTdDMDYxMUUyOTEzMEE1MEM5QzM0NDVBMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjk1RjU4Q0JCN0MwNjExRTI5MTMwQTUwQzlDMzQ0NUEzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjk1RjU4Q0JDN0MwNjExRTI5MTMwQTUwQzlDMzQ0NUEzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAQAAAQAsAAAAAAQABAAAAgYEEpdoeQUAOw==");
 }
 
 .tabcontent-container {
-    height: 88%;
-    /* display: flex; */
-    padding: 15px;
-    margin-top: 5%;
-    overflow: scroll;
-    border:solid 7px #41403E;
-    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
-    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  height: 88%;
+  /* display: flex; */
+  padding: 15px;
+  margin-top: 5%;
+  overflow: scroll;
+  border: solid 7px #41403e;
+  box-shadow: 20px 38px 34px -26px hsla(0, 0%, 0%, 0.2);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
 }
 
 .tabcontent {
-    display: none;
-    font-family: 'Handlee', cursive;
-    /* overflow: scroll; */
+  display: none;
+  font-family: "Handlee", cursive;
+  /* overflow: scroll; */
 }
 
 #games {
-    /* display: block; */
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    /* overflow: scroll; */
+  /* display: block; */
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  /* overflow: scroll; */
 }
 
 #games .game-history {
-    margin-top: 10px;
-    border: 3px solid #333333;
-    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
-    width: 100%;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin-top: 10px;
+  border: 3px solid #333333;
+  border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #drawings {
-    display: flex;
-    flex-wrap: wrap;
-    height: 100%;
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
 }
 
 #drawings .history-pics {
-    height: 45%;
-    width: 45%;
-    margin: 2.5%;
-    border-radius: 40px;
-    box-shadow: 5px 5px 15px 1px rgba(0,0,0,0.25), -5px -5px 15px -5px rgba(0,0,0,0.22);
-    cursor: pointer;
-    transition: 0.4s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 45%;
+  width: 45%;
+  margin: 2.5%;
+  border-radius: 40px;
+  box-shadow: 5px 5px 15px 1px rgba(0, 0, 0, 0.25),
+    -5px -5px 15px -5px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  transition: 0.4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #drawings .history-pics:hover {
-    transform: scale(1.05, 1.05);
-    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.25), 
-    -5px -5px 15px 5px rgba(0,0,0,0.22);
+  transform: scale(1.05, 1.05);
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.25),
+    -5px -5px 15px 5px rgba(0, 0, 0, 0.22);
 }
 
-
 .arrow-left {
-	position: absolute;
-	width: 3vmin;
-	height: 3vmin;
-	background: transparent;
-	border-top: 1vmin solid black;
-	border-right: 1vmin solid black;
-	/* box-shadow: 0 0 0 lightgray; */
-	transition: all 200ms ease;
-	
-    left: 10%;
-    top: 10%;
-    transform: translate3d(0,-50%,0) rotate(-135deg);
+  position: absolute;
+  width: 3vmin;
+  height: 3vmin;
+  background: transparent;
+  border-top: 1vmin solid black;
+  border-right: 1vmin solid black;
+  /* box-shadow: 0 0 0 lightgray; */
+  transition: all 200ms ease;
+
+  left: 10%;
+  top: 10%;
+  transform: translate3d(0, -50%, 0) rotate(-135deg);
 }
 
 .arrow-left:hover {
-	border-color: orange;
-	box-shadow: 0.5vmin -0.5vmin 0 black;
+  border-color: orange;
+  box-shadow: 0.5vmin -0.5vmin 0 black;
 }
 
 .profile-editor {
-    position: absolute;
-    background: white;
-    border-radius: 5%;
-    box-shadow: 10px 10px rgba(0,0,0,.25);
-    transition: all .4s ease;
-    z-index: 10;
-    top: 10%;
-    left: 20%;
-    width: 60%;
-    /* height: 60%; */
-    display: flex;
-    flex-direction: column;
+  position: absolute;
+  background: white;
+  border-radius: 5%;
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.4s ease;
+  z-index: 10;
+  top: 10%;
+  left: 20%;
+  width: 60%;
+  /* height: 60%; */
+  display: flex;
+  flex-direction: column;
 }
 
 .profile-editor .username-editor {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    width: 100%;
-    height: 20%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  width: 100%;
+  height: 20%;
 }
 
 .profile-editor .username-editor input {
@@ -202,27 +205,31 @@
   border: none;
   padding: 10px 0;
   border-bottom: solid 1px lightgrey;
-  transition: all 0.3s cubic-bezier(.64,.09,.08,1);
-  background: linear-gradient(to bottom, rgba(255,255,255,0) 96%, #5264AE 4%);
+  transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 96%,
+    #5264ae 4%
+  );
   background-position: -200px 0;
   background-size: 200px 100%;
   background-repeat: no-repeat;
-  font-family: 'Handlee', cursive;
+  font-family: "Handlee", cursive;
 }
 
-.profile-editor .username-editor input:focus{
-    box-shadow: none;
-    outline: none;
-    background-position: 0 0;
+.profile-editor .username-editor input:focus {
+  box-shadow: none;
+  outline: none;
+  background-position: 0 0;
 }
 
-.profile-editor .username-editor .close-container{
+.profile-editor .username-editor .close-container {
   width: 30px;
   height: 30px;
   cursor: pointer;
 }
 
-.profile-editor .username-editor .close-container .leftright{
+.profile-editor .username-editor .close-container .leftright {
   height: 4px;
   width: 30px;
   position: absolute;
@@ -230,121 +237,123 @@
   background-color: black;
   border-radius: 2px;
   transform: rotate(45deg);
-  transition: all .3s ease-in;
+  transition: all 0.3s ease-in;
 }
 
-.profile-editor .username-editor .close-container .rightleft{
+.profile-editor .username-editor .close-container .rightleft {
   height: 4px;
   width: 30px;
   margin-top: 24px;
   background-color: black;
   border-radius: 2px;
   transform: rotate(-45deg);
-  transition: all .3s ease-in;
+  transition: all 0.3s ease-in;
 }
 
-.profile-editor .username-editor .close-container label{
+.profile-editor .username-editor .close-container label {
   color: black;
-  font-family: Helvetica, Arial, sans-serif; 
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  transition: all .3s ease-in;
+  transition: all 0.3s ease-in;
   opacity: 0;
 }
-.profile-editor .username-editor .close-container .close{
+.profile-editor .username-editor .close-container .close {
   margin: 20px 0 0 0;
 }
 
-.profile-editor .username-editor .close-container:hover .leftright{
+.profile-editor .username-editor .close-container:hover .leftright {
   transform: rotate(-45deg);
-  background-color: #5264AE;
+  background-color: #5264ae;
 }
-.profile-editor .username-editor .close-container:hover .rightleft{
+.profile-editor .username-editor .close-container:hover .rightleft {
   transform: rotate(45deg);
-  background-color: #5264AE;
+  background-color: #5264ae;
 }
-.profile-editor .username-editor .close-container:hover label{
+.profile-editor .username-editor .close-container:hover label {
   opacity: 1;
 }
 
 .profile-canvas-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
 }
 
 .profile-canvas-container .profile-picture {
-    border:dotted 3px #41403E;
-    transition-duration: 0.2s;
-    /* box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2); */
-    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border: dotted 3px #41403e;
+  transition-duration: 0.2s;
+  /* box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2); */
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
 }
 
 .profile-canvas-container .profile-picture:hover {
-    border:solid 4px #5264AE;
+  border: solid 4px #5264ae;
 }
 
 .canvas-editor-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    /* padding: 10px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* padding: 10px; */
 }
 
 .canvas-editor-container input {
-    border: none;
-    outline: none;
-    cursor: pointer;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
-.canvas-editor-container button, .update-button button {
+.canvas-editor-container button,
+.update-button button {
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
   background-color: none;
-  border:2px solid #5264AE;
-  color:#5264AE;
+  border: 2px solid #5264ae;
+  color: #5264ae;
   text-align: center;
   transition-duration: 0.4s;
   outline: none;
   border-radius: 4px;
   width: 100px;
-  font-family: 'Handlee', cursive;
+  font-family: "Handlee", cursive;
   padding: 6px 0px 5px 0px;
 }
 
-.canvas-editor-container button:hover, .update-button button:hover {
-    background: #5264AE;
-    color: white;
-    font-size: 15px;
-    transform:scale(1.1);
+.canvas-editor-container button:hover,
+.update-button button:hover {
+  background: #5264ae;
+  color: white;
+  font-size: 15px;
+  transform: scale(1.1);
 }
 
 .profile-editor label {
-    font-family: 'Handlee', cursive;
-    text-transform: uppercase;
+  font-family: "Handlee", cursive;
+  text-transform: uppercase;
 }
 
 #profile-checkbox {
-    display: flex;
+  display: flex;
 }
 
 #profile-checkbox input[type="checkbox"] {
-    transform: scale(2);
-    margin-right: 15px;
+  transform: scale(2);
+  margin-right: 15px;
 }
 #profile-checkbox input[type="checkbox"]:hover {
-    border: 5px solid orange;
+  border: 5px solid orange;
 }
 
 .update-button {
-    display: flex;
-    justify-content: flex-end;
-    padding: 0px 20px;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0px 20px;
+  margin-bottom: 20px;
 }
 
 .tablinks-container .active {
-    box-shadow: 0 2px 0 #000, 0 2px 0px 2px #f03755;
+  box-shadow: 0 2px 0 #000, 0 2px 0px 2px #f03755;
 }
