@@ -4,7 +4,6 @@
 .canvas-page {
   width: 800px;
   height: 600px;
-  display: flex;
 }
 
 .drawer-viewer {
@@ -21,11 +20,14 @@
 }
 
 .canvas-main {
-  display: flex;
-  flex-direction: column;
   width: 800px;
   height: 600px;
   cursor: crosshair;
+  border-radius: 35px;
+  background-color: white;
+  border-width: 5px 3px 3px 5px;
+  border: solid black;
+  -webkit-box-shadow: 9px 11px 15px 1px #344955;
 }
 
 #pictionary-canvas {
@@ -42,15 +44,8 @@
 }
 
 .canvas-container {
-  display: flex;
   height: 610px;
   width: 800px;
-  border-radius: 35px;
-  background-color: white;
-  border-width: 5px 3px 3px 5px;
-  border: solid black;
-  -webkit-box-shadow: 9px 11px 15px 1px #344955; 
-  flex-direction: column;
 }
 
 .canvas-button-container {
@@ -77,18 +72,16 @@
   display: flex;
   position: absolute;
   min-width: 150px;
-  top: 50px;
-  left: 90px;
 }
 
 .canvas-bottom-button {
   box-shadow: 3px 4px 0px 0px #bdbdbd;
-	background:linear-gradient(to bottom, #ffffff 5%, rgb(255, 217, 0) 100%);
-	background-color:#ffffff;
-	border-radius: 20px;
-	border:1px solid #0a0a0a;
-	color:#000000;
-	font-family: 'Indie Flower', cursive;
+  background: linear-gradient(to bottom, #ffffff 5%, rgb(255, 217, 0) 100%);
+  background-color: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #0a0a0a;
+  color: #000000;
+  font-family: "Indie Flower", cursive;
   font-size: 12px;
   font-weight: bold;
   text-decoration: none;
@@ -107,17 +100,14 @@
 }
 
 .target-word {
-  align-self: center;
   padding: 10px;
   font-size: 24px;
   font-family: "Indie Flower", cursive;
-  border-radius: 35px;
   background-color: white;
   border-width: 5px 3px 3px 5px;
-  border-radius:4% 95% 6% 95%/95% 4% 92% 5%;
+  border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
   border: solid black;
-  text-align: center;
-  margin-top: -4%;
+  margin-right: 100px;
 }
 
 .canvas-and-word {
@@ -126,7 +116,7 @@
   padding: 4% 2% 2% 5%;
 }
 
-.observer-leave { 
+.observer-leave {
   position: absolute;
   bottom: 20px;
   border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
@@ -152,18 +142,31 @@
   -webkit-box-shadow: none;
 }
 
-.instructions-button {
+.canvas-toolbar {
   display: flex;
+}
+
+.instructions-button {
   height: 30px;
+  width: 30px;
   font-size: 20px;
   cursor: pointer;
   padding: 10px 10px;
-  background: #FFF;
+  background: #fff;
   border-radius: 50%;
   border: 2px solid #000;
-  font-family: 'Indie Flower', cursive;
+  font-family: "Indie Flower", cursive;
+  z-index: 4;
 }
 
 .instructions-button:hover {
   -webkit-box-shadow: 0 2px 0 2px #f03755, 9px 11px 15px 1px #344955;
+}
+
+.flex {
+  display: flex;
+}
+
+.center {
+  align-self: center;
 }

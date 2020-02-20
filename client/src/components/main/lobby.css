@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Handlee&display=swap");
 
 .app-main {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   position: relative;
   min-width: 850px;
@@ -13,7 +13,7 @@
 
 .lobby-scoreboard-div {
   width: 100%;
-  padding-top: 4%;
+  padding: 25px;
 }
 
 .game-components-div {
@@ -56,13 +56,14 @@
   background-size: cover;
   position: relative;
   min-width: 850px;
+  height: 100%;
 }
 
 .lobby {
   display: flex;
   padding: 2%;
-  height: 100vh;
   flex-direction: row;
+  height: 75vh;
 }
 
 .lobby .nav-chat {

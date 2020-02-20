@@ -191,18 +191,22 @@ export default class Pictionary extends React.Component {
           <div className="return-lobby">{this.renderLeaveBtn()}</div>
           {this.renderScoreBoard()}
           <div className="canvas-and-word">
-            {this.renderTargetWord()}
-            <br/>
-            <div className="canvas-container">{this.renderCanvas()}<br/></div>
+            <div className="flex center">
+              {this.renderTargetWord()}
+              {this.renderTimer()}
+            </div>
+            <div className="flex">
+              <div className="canvas-container">{this.renderCanvas()}</div>
+              <div className="scoreboard-chat">
+                <div className="lobby-scoreboard-div">
+                  {/* {this.renderScoreBoard()} */}
+                  <Chat action={this.guess} messages={this.state.messages} />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="scoreboard-chat">
-          <div className="lobby-scoreboard-div">
-            {this.renderTimer()}
-            {/* {this.renderScoreBoard()} */}
-            <Chat action={this.guess} messages={this.state.messages} />
-          </div>
-        </div>
+
         {this.renderMidRound()}
       </div>
     );
