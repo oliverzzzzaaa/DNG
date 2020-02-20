@@ -237,9 +237,13 @@ export default class CanvasContainer extends React.Component {
   render() {
     return (
       <div className="canvas-page">
-        <div onClick={this.showInstructions} className="instructions-button">
-          ?
+        <div className="canvas-toolbar">
+          <div onClick={this.showInstructions} className="instructions-button">
+            ?
+          </div>
+          {this.renderTools()}
         </div>
+
         <div className="canvas-main">
           <canvas className="canvas-area" id="pictionary-canvas" />
         </div>
@@ -247,7 +251,7 @@ export default class CanvasContainer extends React.Component {
         {this.state.instructions ? (
           <Instructions hideInstructions={this.hideInstructions} />
         ) : null}
-        {this.renderTools()}
+
         {/* <div className="clues">clues right here!</div> */}
       </div>
     );
