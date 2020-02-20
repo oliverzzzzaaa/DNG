@@ -15,7 +15,6 @@ class Instructions extends React.Component {
             <div className="instructions-modal">
                 <div className="instructions-X" onClick={this.props.hideInstructions}>
                     &#x000D7;
-                    {/* x */}
                 </div>
                 <div className="instruction-header">
                     <h1>Instructions: </h1>

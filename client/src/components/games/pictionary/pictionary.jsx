@@ -191,7 +191,8 @@ export default class Pictionary extends React.Component {
           {this.renderScoreBoard()}
           <div className="canvas-and-word">
             {this.renderTargetWord()}
-            <div className="canvas-container">{this.renderCanvas()}</div>
+            <br/>
+            <div className="canvas-container">{this.renderCanvas()}<br/></div>
           </div>
         </div>
         <div className="scoreboard-chat">
