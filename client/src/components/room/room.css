@@ -15,10 +15,13 @@
   background-image: url("../images/colored-pencils.jpg");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+  overflow: scroll;
 }
 
 .game-or-waiting-div {
-    width: 100%;
+  width: 100%;
+  position: relative;
 }
 
 .room-chat-div {

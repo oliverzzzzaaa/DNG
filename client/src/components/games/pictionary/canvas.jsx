@@ -192,23 +192,6 @@ export default class CanvasContainer extends React.Component {
           />
           <br />
           {this.renderEraserButton()}
-          {/* <button
-            onClick={this.usePen}
-            className={`canvas-bottom-button ${
-              !this.state.isEraser ? "selected" : ""
-            }`}
-          >
-            Pen
-          </button>
-          <br />
-          <button
-            onClick={this.useEraser}
-            className={`canvas-bottom-button ${
-              this.state.isEraser ? "selected" : ""
-            }`}
-          >
-            Eraser
-          </button> */}
           <br />
           <button
             onClick={() => this.setStrokeWidth(2)}
@@ -267,11 +250,8 @@ export default class CanvasContainer extends React.Component {
     return (
       <div className="canvas-page">
         <div onClick={this.showInstructions} className="instructions-button">
-          Instructions
+          ?
         </div>
-        {/* <span className="drawer-viewer">{`you are the ${
-          this.props.isDrawer ? "drawer" : "viewer"
-        }!`}</span> */}
         <div className="canvas-main">
           <canvas className="canvas-area" id="pictionary-canvas" />
         </div>
