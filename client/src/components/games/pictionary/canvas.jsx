@@ -3,6 +3,7 @@ import paper from "paper";
 import "./canvas.css";
 import MySocket from "../../../socket";
 import Instructions from "../game_rooms/instructions_modal";
+import ColorPicker from "../tools/colorPicker";
 
 export default class CanvasContainer extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ export default class CanvasContainer extends React.Component {
     this.setStrokeWidth = this.setStrokeWidth.bind(this);
     this.uploadDrawing = this.uploadDrawing.bind(this);
     this.clear = this.clear.bind(this);
-    this.renderColorpicker = this.renderColorpicker.bind(this);
+    this.renderTools = this.renderTools.bind(this);
     this.tool = null;
     this.paper = new paper.PaperScope();
     this.useEraser = this.useEraser.bind(this);
@@ -29,7 +30,7 @@ export default class CanvasContainer extends React.Component {
     this.showInstructions = this.showInstructions.bind(this);
     this.hideInstructions = this.hideInstructions.bind(this);
     this.usePen = this.usePen.bind(this);
-    this.renderEraserButton = this.renderEraserButton.bind(this)
+    this.renderEraserButton = this.renderEraserButton.bind(this);
   }
 
   componentDidMount() {
@@ -80,9 +81,9 @@ export default class CanvasContainer extends React.Component {
     });
   }
 
-  setColor(e) {
+  setColor(color) {
     this.setState({
-      strokeColor: e.currentTarget.value
+      strokeColor: color
     });
   }
 
@@ -161,64 +162,51 @@ export default class CanvasContainer extends React.Component {
   renderEraserButton() {
     if (this.state.isEraser) {
       return (
-        <button
-            onClick={this.usePen}
-            className={`canvas-bottom-button`}
-          >
-            Pen
-          </button>
-      )
+        <button onClick={this.usePen} className={`canvas-bottom-button`}>
+          Pen
+        </button>
+      );
     } else {
-      return(
-        <button
-              onClick={this.useEraser}
-              className={`canvas-bottom-button`}
-            >
-              Eraser
-            </button>
-      )
+      return (
+        <button onClick={this.useEraser} className={`canvas-bottom-button`}>
+          Eraser
+        </button>
+      );
     }
   }
 
-  renderColorpicker() {
+  renderTools() {
     if (this.props.isDrawer) {
       return (
         <div className="color-picker-btn">
-          <input
-            className="canvas-bottom-button"
-            type="color"
-            value={this.state.strokeColor}
-            onChange={this.setColor}
-          />
-          <br />
-          {this.renderEraserButton()}
-          <br />
-          <button
-            onClick={() => this.setStrokeWidth(2)}
-            className="canvas-bottom-button"
-          >
-            Thin
-          </button>
-          <br />
-          <button
-            onClick={() => this.setStrokeWidth(10)}
-            className="canvas-bottom-button"
-          >
-            Thick
-          </button>
-          <br />
-          <button
-            className="canvas-bottom-button"
-            onClick={() => {
-              this.clear();
-              MySocket.getSocket().emit("gameAction", {
-                game: "Pictionary",
-                type: "clearDrawing"
-              });
-            }}
-          >
-            Clear
-          </button>
+          <ColorPicker selectColor={this.setColor} />
+          <div className="tool-others">
+            {this.renderEraserButton()}
+            <button
+              onClick={() => this.setStrokeWidth(2)}
+              className="canvas-bottom-button"
+            >
+              Thin
+            </button>
+            <button
+              onClick={() => this.setStrokeWidth(10)}
+              className="canvas-bottom-button"
+            >
+              Thick
+            </button>
+            <button
+              className="canvas-bottom-button"
+              onClick={() => {
+                this.clear();
+                MySocket.getSocket().emit("gameAction", {
+                  game: "Pictionary",
+                  type: "clearDrawing"
+                });
+              }}
+            >
+              Clear
+            </button>
+          </div>
         </div>
       );
     }
@@ -259,7 +247,7 @@ export default class CanvasContainer extends React.Component {
         {this.state.instructions ? (
           <Instructions hideInstructions={this.hideInstructions} />
         ) : null}
-        {this.renderColorpicker()}
+        {this.renderTools()}
         {/* <div className="clues">clues right here!</div> */}
       </div>
     );

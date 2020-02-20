@@ -19,7 +19,6 @@ class GameRooms extends React.Component {
   }
 
   render() {
-    // const rooms = Object.values(this.props.rooms);
     return (
       <div className="game-rooms-div">
         <div className="lobby-title">
@@ -54,25 +53,6 @@ class GameRooms extends React.Component {
             />
           ))}
         </div>
-        {/* <div className="game-rooms-buttons">
-          <div className="game-rooms-create-button">
-            <span
-              className="game-rooms-create-text"
-              onClick={() => {
-                this.createRoom();
-                this.setState({
-                  canCreateRoom: false
-                });
-              }}
-            >
-              Create
-            </span>
-          </div>
-          <JoinModal
-            join={this.props.joinRoom}
-            user={Object.assign({}, this.props.currentUser)}
-          />
-        </div> */}
       </div>
     );
   }
