@@ -5,9 +5,9 @@ const User = mongoose.model("User");
 let keys;
 
 if (process.env.NODE_ENV === "production") {
-  keys = require("../../config/keys_prod");
+  keys = require("./keys_prod");
 } else {
-  keys = require("../../config/keys");
+  keys = require("./keys");
 }
 
 const options = {};
