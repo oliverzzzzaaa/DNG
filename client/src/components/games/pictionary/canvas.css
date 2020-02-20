@@ -17,11 +17,16 @@
   font-size: 25px;
 }
 
+.tool-others {
+  transform: translateX(-80px);
+}
+
 .canvas-main {
   display: flex;
   flex-direction: column;
   width: 800px;
   height: 600px;
+  cursor: crosshair;
 }
 
 #pictionary-canvas {
