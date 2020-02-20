@@ -16,7 +16,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .game-or-waiting-div {
