@@ -6,7 +6,7 @@
   width: 100vw;
   position: relative;
   min-width: 850px;
-  overflow: scroll;
+  overflow: auto;
   background-position: center;
   background-size: cover;
 }
