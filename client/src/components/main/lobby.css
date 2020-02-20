@@ -13,7 +13,11 @@
 
 .lobby-scoreboard-div {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 25px;
+  height: 100%;
 }
 
 .game-components-div {
