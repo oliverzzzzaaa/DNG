@@ -17,7 +17,7 @@
   z-index: 10;
   padding: 10px;
   font-family: "Indie Flower", cursive;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .question-modal > div {
