@@ -12,7 +12,8 @@ export default class Pictionary extends React.Component {
     super(props);
     this.state = {
       messages: [],
-      canLeave: false
+      canLeave: false,
+      instructions: false
     };
     this.guess = this.guess.bind(this);
     this.renderTimer = this.renderTimer.bind(this);
@@ -191,7 +192,8 @@ export default class Pictionary extends React.Component {
           {this.renderScoreBoard()}
           <div className="canvas-and-word">
             {this.renderTargetWord()}
-            <div className="canvas-container">{this.renderCanvas()}</div>
+            <br/>
+            <div className="canvas-container">{this.renderCanvas()}<br/></div>
           </div>
         </div>
         <div className="scoreboard-chat">

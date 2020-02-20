@@ -238,7 +238,7 @@ export default class CanvasContainer extends React.Component {
     return (
       <div className="canvas-page">
         <div onClick={this.showInstructions} className="instructions-button">
-          Instructions
+          ?
         </div>
         <div className="canvas-main">
           <canvas className="canvas-area" id="pictionary-canvas" />
