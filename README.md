@@ -29,10 +29,10 @@ Technologies Used:
   + Heroku
   + Bootstrap 
   
-  We used the MERN stack (MongoDB as database, Express for routing, React.js for front-end, Node.js for back-end). 
+  The website uses the MERN stack (MongoDB as database, Express for routing, React.js for front-end, Node.js for back-end). 
   Also used were Paper.js and HTML Canvas for drawings, Bootstrap for some buttons and carousels, 
   and Socket.io for websocket connections.
-  Our site is hosted on Heroku.
+  The site is hosted on Heroku.
   
 -------------------
 
@@ -64,7 +64,7 @@ Technologies Used:
       To handle server actions for multiple games, the server includes a function to dispatch the action to the 
       appropriate handler based on the game, as shown below. 
       
-      ```
+      ``` javascript
       function handleGameAction(socket, lobby, payload) {
         let handler;
         switch (payload.game) {
@@ -80,7 +80,7 @@ Technologies Used:
       
       To handle a game action, only a game name, action type, and the action data is required.
       
-      ```
+      ``` javascript
       handleGameAction(socket, lobby, {
         game: <Game Name>,
         type: <Action Type>,
@@ -98,18 +98,18 @@ Technologies Used:
 
       Spectators are simply removed from the room upon disconnection.
       
-      ```
+      ``` javascript
       leaveRoom(userId) {
-      const roomId = this.map.get(userId);
-      const room = this.rooms.get(roomId);
-      if (room.remove(userId)) {
-        this.map.delete(userId);
-      }
-      const hasPlayer = room.hasConnectedPlayer();
-      if (!hasPlayer) {
-        this.rooms.delete(roomId);
-      }
-      return { id: roomId, isEmpty: !hasPlayer };
+        const roomId = this.map.get(userId);
+        const room = this.rooms.get(roomId);
+        if (room.remove(userId)) {
+          this.map.delete(userId);
+        }
+        const hasPlayer = room.hasConnectedPlayer();
+        if (!hasPlayer) {
+          this.rooms.delete(roomId);
+        }
+        return { id: roomId, isEmpty: !hasPlayer };
       }
 
       ```
