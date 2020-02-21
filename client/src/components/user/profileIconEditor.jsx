@@ -24,8 +24,8 @@ export default class ProfileIconEditor extends React.Component {
   }
 
   componentDidMount() {
-    this.canvas.current.width = 250;
-    this.canvas.current.height = 250;
+    this.canvas.current.width = 300;
+    this.canvas.current.height = 300;
     this.paper.setup(this.canvas.current);
     const tool = new this.paper.Tool();
     tool.onMouseDown = e => this.onMouseDown(e);
