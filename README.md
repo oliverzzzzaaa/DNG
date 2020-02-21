@@ -53,31 +53,66 @@ Technologies Used:
       in JavaScript, and convert it back on the front end to save space. In the future, we plan on moving all drawings
       to our AWS S3 bucket.
 
-  + Live Score and Chat Updates:
-  
-      When a message is submitted to the chat, the server has to check if the messages matches the target word.
-      If it does, the word is censored so other players can't see the correct guesses as they appear. Once a correct
-      guess is made, the scores must be updated on the server, and reflected on the scoreboard for each user. We chose
-      to have the front-end handle the censoring of correct guesses, since the front-end already stores the correct guess
-      for the drawer. The back-end only checks if it is a correct guess, and if scores need to be incremeneted. 
   + Future Addition of Games:
     
       We decided to refactor our code to allow for other games in our lobby and Create Game. We plan on including
       a few other games, and having our website and lobby host and handle these games. This allows our platform to 
       evolve and leaves space for future expansion.
       
+      To handle server actions for multiple games, we created a function to dispatch the action to the appropriate handler
+      based on the game.
+      
+      ```
+      function handleGameAction(socket, lobby, payload) {
+        let handler;
+        switch (payload.game) {
+          case "Pictionary":
+          handler = pictionaryHandler[payload.type];
+          break;
+        default:
+          break;  
+        }
+        handler(socket, lobby, payload.params);
+      }
+      ```
+      
+      To handle a game action, we just have to include the game name, action type, and the action data.
+      
+      ```
+      handleGameAction(socket, lobby, {
+        game: <Game Name>,
+        type: <Action Type>,
+        params: <Action Parameters>
+      });
+      ```
+      
+  + Handling Player Disconnect and Reconnect:
+  
+      Every time users disconnect from the server and they are a player in an ongoing game, they are kept 
+      in the game room. Upon reconnecting, users are placed back into the game room, allowing them to continue playing.
+      However, disconnected users are removed from the room if they do not reconnect before the game ends. 
+      In addition if only one player is left in the room, the last remaining player will have the option to leave the room.|
+      Once all the players have left, the room will be closed, removing everyone from the room.
+
+      Spectators are simply removed from the room upon disconnection.
+      
+      ```
+      leaveRoom(userId) {
+      const roomId = this.map.get(userId);
+      const room = this.rooms.get(roomId);
+      if (room.remove(userId)) {
+        this.map.delete(userId);
+      }
+      const hasPlayer = room.hasConnectedPlayer();
+      if (!hasPlayer) {
+        this.rooms.delete(roomId);
+      }
+      return { id: roomId, isEmpty: !hasPlayer };
+      }
+
+      ```
+      
+      
       
 -------------------
-
-## ***Code Snippets:***
-
-
-
-
-Screenshot: 
-
-
-Features to Add:
-  + Store drawings in AWS S3 
-  + Adding additional games to our lobby
 
