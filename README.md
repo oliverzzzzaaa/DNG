@@ -14,8 +14,6 @@ DrawIt is a game that requires at least 3 players, ideally four or more. Each ro
 
 -------------------
 
-[DrawIt!](https://pictionary4.herokuapp.com/)
-
 
 Technologies Used:
   + MongoDB
