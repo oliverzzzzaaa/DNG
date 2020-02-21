@@ -52,9 +52,8 @@ Technologies Used:
   + Draw your own profile picture!
 
       We reused the paper.js and html canvas to allow users to draw their own profile picture. It is a small but fun
-      feature we decided to include so everyone can share a "great" drawing. We currently store the image as base64 data
-      in JavaScript, and convert it back on the front end to save space. In the future, we plan on moving all drawings
-      to our AWS S3 bucket.
+      feature we decided to include so everyone can see your "great" drawing. We currently store the image as base64 data
+      in JavaScript, and convert it back on the front end to save space. 
       
       ![alt text](https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/profile.gif "Draw Your Own Profile Picture")
 
