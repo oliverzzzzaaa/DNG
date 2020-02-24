@@ -10,7 +10,7 @@ By: [Oliver Chen](https://github.com/oliverzzzzaaa) ,
 
 DrawIt is our take on the popular party game, Pictionary!
 
-DrawIt is a game that requires at least 3 players, ideally four or more. Each round, there is one drawer who has to draw a chosen word. Other users have to guess the words based on the drawing, and type the word into the chat box. Correct guesses yield one point for both the guesser and the drawer. It's a simple but fun party game, since there are varying levels of difficulty and drawing skill!
+DrawIt is a game that requires at least 2 players, ideally four or more. Each round, there is one drawer who has to draw a chosen word. Other users have to guess the words based on the drawing, and type the word into the chat box. Correct guesses yield one point for both the guesser and the drawer. It's a simple but fun party game, since there are varying levels of difficulty and drawing skill!
 
 -------------------
 
