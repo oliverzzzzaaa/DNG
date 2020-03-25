@@ -1,4 +1,4 @@
-# DrawIt!
+# [DrawIt!](https://pictionary4.herokuapp.com/)
 
 By: [Oliver Chen](https://github.com/oliverzzzzaaa) , 
 [Yinqian Zheng](https://github.com/yinqianzheng) ,
@@ -10,11 +10,10 @@ By: [Oliver Chen](https://github.com/oliverzzzzaaa) ,
 
 DrawIt is our take on the popular party game, Pictionary!
 
-DrawIt is a game that requires at least 3 players, ideally four or more. Each round, there is one drawer who has to draw a chosen word. Other users have to guess the words based on the drawing, and type the word into the chat box. Correct guesses yield one point for both the guesser and the drawer. It's a simple but fun party game, since there are varying levels of difficulty and drawing skill!
+DrawIt is a game that requires at least 2 players, ideally four or more. Each round, there is one drawer who has to draw a chosen word. Other users have to guess the words based on the drawing, and type the word into the chat box. Correct guesses yield one point for both the guesser and the drawer. It's a simple but fun party game, since there are varying levels of difficulty and drawing skill!!
 
+![](https://pictionary-images.s3-us-west-1.amazonaws.com/images/home.png)
 -------------------
-
-[DrawIt!](https://pictionary4.herokuapp.com/)
 
 
 Technologies Used:
@@ -29,10 +28,10 @@ Technologies Used:
   + Heroku
   + Bootstrap 
   
-  We used the MERN stack (MongoDB as database, Express for routing, React.js for front-end, Node.js for back-end). 
+  The website uses the MERN stack (MongoDB as database, Express for routing, React.js for front-end, Node.js for back-end). 
   Also used were Paper.js and HTML Canvas for drawings, Bootstrap for some buttons and carousels, 
   and Socket.io for websocket connections.
-  Our site is hosted on Heroku.
+  The site is hosted on Heroku.
   
 -------------------
 
@@ -41,33 +40,30 @@ Technologies Used:
   + Live Drawing: 
       
       When the drawer draws on the canvas, each mouse-down is emitted to the server, and then sent to every subscribed
-      socket in the matching game room. 
+      socket in the matching game room. The server stores the players in each lobby, and emits the strokes to only the
+      users in the lobby, creating a real-time drawing and viewing experience.
       
-      We had a fun time learning how to integrate HTML Canvas, Paper.js (to track mouse movements) and Socket.io
-      to emit and receive each user's actions. In addition, resizing some pre-built libraries reqiured a little more
-      investigating. 
       
       ![alt text](https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/drawing.gif "Gameplay")
       
   + Draw your own profile picture!
 
-      We reused the paper.js and html canvas to allow users to draw their own profile picture. It is a small but fun
-      feature we decided to include so everyone can share a "great" drawing. We currently store the image as base64 data
-      in JavaScript, and convert it back on the front end to save space. In the future, we plan on moving all drawings
-      to our AWS S3 bucket.
+      With the help of Paper.js and the HTML canvas, users can draw their own profile picture. It is a small but fun
+      feature included so everyone can show off their "great" drawing. Profile images are converted as base64 data
+      in JavaScript, and stored on AWS S3.
       
       ![alt text](https://active-storage-rotten-egg-dev.s3-us-west-1.amazonaws.com/profile.gif "Draw Your Own Profile Picture")
 
   + Future Addition of Games:
     
-      We decided to refactor our code to allow for other games in our lobby and Create Game. We plan on including
-      a few other games, and having our website and lobby host and handle these games. This allows our platform to 
-      evolve and leaves space for future expansion.
+      The code is written with minimal coupling to allow for other games to utilize the lobby system. In the future,
+      additional games can be added to the site, with the same server handling different game actions. This allows 
+      the platform to evolve and leaves space for future expansion.
       
-      To handle server actions for multiple games, we created a function to dispatch the action to the appropriate handler
-      based on the game.
+      To handle server actions for multiple games, the server includes a function to dispatch the action to the 
+      appropriate handler based on the game, as shown below. 
       
-      ```
+      ``` javascript
       function handleGameAction(socket, lobby, payload) {
         let handler;
         switch (payload.game) {
@@ -81,9 +77,9 @@ Technologies Used:
       }
       ```
       
-      To handle a game action, we just have to include the game name, action type, and the action data.
+      To handle a game action, only a game name, action type, and the action data is required.
       
-      ```
+      ``` javascript
       handleGameAction(socket, lobby, {
         game: <Game Name>,
         type: <Action Type>,
@@ -101,23 +97,19 @@ Technologies Used:
 
       Spectators are simply removed from the room upon disconnection.
       
-      ```
+      ``` javascript
       leaveRoom(userId) {
-      const roomId = this.map.get(userId);
-      const room = this.rooms.get(roomId);
-      if (room.remove(userId)) {
-        this.map.delete(userId);
-      }
-      const hasPlayer = room.hasConnectedPlayer();
-      if (!hasPlayer) {
-        this.rooms.delete(roomId);
-      }
-      return { id: roomId, isEmpty: !hasPlayer };
+        const roomId = this.map.get(userId);
+        const room = this.rooms.get(roomId);
+        if (room.remove(userId)) {
+          this.map.delete(userId);
+        }
+        const hasPlayer = room.hasConnectedPlayer();
+        if (!hasPlayer) {
+          this.rooms.delete(roomId);
+        }
+        return { id: roomId, isEmpty: !hasPlayer };
       }
 
       ```
-      
-      
-      
--------------------
 
