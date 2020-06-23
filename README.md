@@ -1,4 +1,4 @@
-# [DrawIt!](https://pictionary4.herokuapp.com/)
+# [DrawIt!](https://draw-it-game.herokuapp.com/#/)
 
 By: [Oliver Chen](https://github.com/oliverzzzzaaa) , 
 [Yinqian Zheng](https://github.com/yinqianzheng) ,
